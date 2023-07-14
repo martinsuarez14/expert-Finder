@@ -37,4 +37,18 @@ public class User {
     
     protected boolean active;
 
+    
+    public User(String name, String lastName, String email, String password, String role) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this. password = password;
+        if (name == "adminExpertFinder") {
+            this.role = RoleEnum.ADMIN;
+        } else {
+            this.role = RoleEnum.valueOf(role);
+        }
+        this.active = true;
+    }
+    
 }
