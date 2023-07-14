@@ -24,8 +24,7 @@ body {
   grid-template-areas:
     "header header header"
     "contenido contenido sidebar"
-    "widget-1 widget-2 sidebar"
-    "footer footer footer";
+    "widget-1 widget-2 sidebar";
 }
 
 .contenedor > div,
@@ -40,21 +39,22 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
   height: 40px;
-  background-color: #12203e;
+  background-color: #ff7217;
   grid-area: header;
   flex-grow: 1;
 }
 .header .logo {
+  clip-path: inset(0 0 20px 0); /*<---- Propiedad para cortar la parte de abajo de la imagen y que pueda verse mas grande*/
   cursor: pointer;
   margin-left: 10px;
   align-content: center;
 }
 .header .logo img {
-  height: 80px;
+  height: 120px;
   width: auto;
-  border-radius: 50px;
+  border-radius: 50% 50% 0 0;
   transition: all 0.3s;
 }
 .header .logo img:hover {
@@ -132,7 +132,7 @@ body {
 }
 .contenedor .sidebar {
   grid-column: 3/4;
-  background: #faa43d;
+  background: #ff7217;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -229,7 +229,10 @@ body {
 
 /*Footer*/
 
-.contenedor .footer {
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
   padding: 20px;
   background-color: #656565;
   color: white;
@@ -243,7 +246,6 @@ body {
       "header header header"
       "contenido contenido contenido"
       "sidebar sidebar sidebar"
-      "widget-1 widget-1 widget-2"
-      "footer footer footer";
+      "widget-1 widget-1 widget-2";
   }
 }
