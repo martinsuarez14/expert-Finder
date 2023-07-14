@@ -1,3 +1,4 @@
+/*Ajustes Generales*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap");
 ::-webkit-scrollbar {
   display: none;
@@ -13,10 +14,9 @@ body {
   color: black;
 }
 
+/*Grid de la pagina*/
 .contenedor {
   width: 100%;
-  max-width: 1200px;
-  margin: 20px auto;
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(3, 1fr);
@@ -28,13 +28,20 @@ body {
     "footer footer footer";
 }
 
+.contenedor > div,
+.contenedor .contenido,
+.contenedor .sidebar {
+  padding: 20px;
+  border-radius: 4px;
+}
+
+/*Header y barra de navegación*/
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 20px;
   height: 40px;
-  padding: 30px 30px;
-  width: auto;
   background-color: #12203e;
   grid-area: header;
   flex-grow: 1;
@@ -97,14 +104,7 @@ body {
   transform: scale(1.1);
 }
 
-.contenedor > div,
-.contenedor .header,
-.contenedor .contenido,
-.contenedor .sidebar,
-.contenedor .footer {
-  padding: 20px;
-  border-radius: 4px;
-}
+/*Contenido de la pagina*/
 
 .contenedor .contenido {
   grid-area: contenido;
@@ -140,6 +140,8 @@ body {
   justify-content: space-between;
   grid-area: sidebar;
 }
+
+/*Cards*/
 .card {
   display: flex;
   flex-direction: row;
@@ -194,6 +196,8 @@ body {
   padding: 10px;
 }
 
+/*Widjets*/
+
 .contenedor .widget-1,
 .contenedor .widget-2 {
   background-color: rgb(44, 26, 44);
@@ -223,12 +227,16 @@ body {
   grid-area: widget-2;
 }
 
+/*Footer*/
+
 .contenedor .footer {
-  background-color: darkgray;
-  color: azure;
+  padding: 20px;
+  background-color: #656565;
+  color: white;
   grid-area: footer;
 }
 
+/*Media Querys*/
 @media screen and (max-width: 768px) {
   .contenedor {
     grid-template-areas:
