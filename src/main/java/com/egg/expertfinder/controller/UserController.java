@@ -1,5 +1,7 @@
 package com.egg.expertfinder.controller;
 
+import com.egg.expertfinder.entity.User;
+import com.egg.expertfinder.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +18,10 @@ public class UserController {
 
     @GetMapping("/users")
     public String listar(ModelMap modelo) {
-        List<User> users = userService.listUsers();
+        List<User> users = userService.getAllUsers();
         modelo.addAttribute("users", users);
 
-        return "user_list";
+        return "user_list.html";
     }
 
 }
