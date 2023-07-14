@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,13 +32,14 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     protected RoleEnum role;
     
-    //protected Image image;
+    @OneToOne
+    protected Image image;
     
     // protected List<Comment> comments;
     
     protected boolean active;
 
-    
+//  Constructor creado para instanciar un Objeto user desde el  Service.
     public User(String name, String lastName, String email, String password, String role) {
         this.name = name;
         this.lastName = lastName;
@@ -49,6 +51,18 @@ public class User {
             this.role = RoleEnum.valueOf(role);
         }
         this.active = true;
+    }
+    
+    public void updateUser(String name, String lastName, String email) {
+        if (name != null || !name.isEmpty()) {
+            this.name = name;
+        }
+        if (lastName != null || !lastName.isEmpty()) {
+            this.lastName = lastName;
+        }
+        if (email != null || !email.isEmpty()) {
+            this.email = email;
+        }
     }
     
 }

@@ -1,6 +1,6 @@
-
 package com.egg.expertfinder.entity;
 
+import java.io.IOException;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,17 +11,28 @@ import javax.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String mime;
     private String name;
-    @Lob @Basic(fetch = FetchType.LAZY)
-    private Byte[] content;
-   
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] content;
+
+//  Constructor para instanciar una Image
+    public Image(MultipartFile file) throws IOException {
+        this.mime = file.getContentType();
+        this.name = file.getName();
+        this.content = file.getBytes();
+    }
+
 }
