@@ -13,4 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 //  Listamos los Users active = false
     List<User> findUserByActiveFalse();
+    
+//  Buscamos usuario por email
+    User findUserByEmail(String email);
 }
