@@ -1,31 +1,17 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Expert Finder</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" th:href="@{index.css}">
 </head>
 
 <body>
     <div class="contenedor">
-        <header class="header">
-            <div class="logo">
-                <img src="/img/logo.jpeg" alt="">
-            </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="">Podemos ayudarte?</a></li>
-                    <li><a href="">Obras en marcha</a></li>
-                </ul>
-            </nav>
-            <div class="navBtns">
-                <a href="" class="btn"><button>LogIn</button></a>
-                <a href="" class="btn"><button>Sign In</button></a>
-            </div>
-        </header>
+        <header th:include="fragments/templates.html::header" class="header"></header>
         <main class="contenido">
             <h1>Trabajamos para vos</h1>
             <h3>Todo lo que necesitas sin salir de tu casa, encontra aca todos los servicios habilitados por el barrio
@@ -35,7 +21,7 @@
         <aside class="sidebar">
             <div class="card">
                 <div class="card__img">
-                    <img src="/img/BobTheConstructor.jpg" alt="Not Found">
+                    <img th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
                 </div>
                 <div class="card__body">
                     <h2>Bob</h2>
@@ -62,9 +48,7 @@
             </a>
         </div>
     </div>
-    <footer class="footer">
-        <h3>footer</h3>
-    </footer>
+    <footer th:include="fragments/templates.html::footer"></footer>
 </body>
 
 </html>
