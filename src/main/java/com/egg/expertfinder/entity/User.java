@@ -1,6 +1,8 @@
 package com.egg.expertfinder.entity;
 
 import com.egg.expertfinder.enumeration.RoleEnum;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,17 +24,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    @Column(nullable = false)
     protected String name;
 
+    @Column(nullable = false)
     protected String lastName;
 
+    @Column(nullable = false, unique = true)
     protected String email;
 
+    @Column(nullable = false)
     protected String password;
+    
     @Enumerated(value = EnumType.STRING)
     protected RoleEnum role;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     protected Image image;
     
     // protected List<Comment> comments;
