@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/")  // localhost:8080/
 public class HomeController {
-    
+
     @Autowired
     private UserService userService;
 
@@ -27,25 +27,24 @@ public class HomeController {
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
             modelo.put("error", "Usuario o contraseña invalidos!");
-        }        
+        }
         return "login.html";
     }
-    
-//    @GetMapping("/register")
-//    public String register() {
-//        return "user_form.html";
-//    }
-//    
-//    @PostMapping("/register")
-//    public String registerUser(String name, String lastName, String email, String password,
-//            String password2, String role, MultipartFile file){
-//            
-//        try {
-//            userService.createUser(name, lastName, email, password, password2, role, file);
-//            return "index.html";
-//        } catch (MyException e) {
-//            System.out.println("Error al crear imagen.");
-//            return "index.html";
-//        }
-//    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "user_form.html";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(String name, String lastName, String email, String password, String password2, String role, MultipartFile file) {
+
+        try {
+            userService.createUser(name, lastName, email, password, password2, role, file);
+            return "index.html";
+        } catch (MyException e) {
+            System.out.println("Error al crear imagen.");
+            return "index.html";
+        }
+    }
 }
