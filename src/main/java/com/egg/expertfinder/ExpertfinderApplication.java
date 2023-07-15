@@ -8,6 +8,7 @@ public class ExpertfinderApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExpertfinderApplication.class, args);
+                System.out.println("Runing...");
 	}
 
 }
