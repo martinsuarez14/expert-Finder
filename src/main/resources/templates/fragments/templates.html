@@ -1,84 +1,80 @@
 <!--Header-->
 <div th:fragment="header">
-    <header class="header" >
-        <div class="logo">
-            <a th:href="@{/}"><img th:src="@{./img/logo.jpeg}" alt="Logo"></a>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="">Podemos ayudarte?</a></li>
-                <li><a href="">Obras en marcha</a></li>
-            </ul>
-        </nav>
-        <div class="navBtns">
-            <a href="" class="btn"><button>LogIn</button></a>
-            <a th:href="@{/register}" class="btn"><button>Sign In</button></a>
-        </div>
-    </header>
+  <header class="header">
+    <div class="logo">
+      <a th:href="@{/}"><img th:src="@{./img/logo.jpeg}" alt="Logo"></a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="">Podemos ayudarte?</a></li>
+        <li><a href="">Obras en marcha</a></li>
+      </ul>
+    </nav>
+    <div class="navBtns">
+      <a href="" class="btn"><button>LogIn</button></a>
+      <a th:href="@{/register}" class="btn"><button>Sign In</button></a>
+    </div>
+  </header>
 </div>
 <!--Footer-->
 <div th:fragment="footer">
-    <footer class="footer">
-        <footer class="pie">
-            <div class="header">
-              <div class="logo">
-                <img src="./logo.PNG" alt="">
-                <p class="inf">Informativa</p>
-              </div>
-              <div class="redes">
-                <span class="fb"><i class="fa-brands fa-square-facebook fa-sm"></i></span>
-                <span class="tw"><i class="fa-brands fa-square-twitter fa-sm"></i></span>       
-                <span class="gl"><i class="fa-brands fa-google fa-sm"></i></span>               
-                <span class="in"><i class="fa-brands fa-instagram fa-sm"></i></span>
-                <span class="li"><i class="fa-brands fa-linkedin"></i></span>  
-              </div>
-            </div>
-            <hr>
-            <div class="section">
-                <div>
-                <h2>Compañia</h2>  
-                  <a href="#">Home</a>
-                  <a href="#">Contacto</a>
-                  <a href="#">Nosotros</a>
-                  <a href="#">Ingresa</a>
-                </div>
-              <div>
-                <h2>Servicios</h2>  
-                  <a href="#">Reseñas</a>
-                  <a href="#">Imagenes</a>
-                  <a href="#">Colaboradores</a>
-                  <a href="#">Profesionales</a>
-                </div>
-              <div>
-                <h2>Ubcicacion</h2>  
-                  <a href="#">Busqueda</a>
-                  <a href="#">Acude</a>
-                  <a href="#">a</a>
-                  <a href="#">nosotros</a>
-                </div>
-              <div>
-                <h2>Categorias</h2>  
-                  <a href="#">Home</a>
-                  <a href="#">Inicio</a>
-                  <a href="#">Servicios</a>
-                  <a href="#">Formularios</a>
-                </div>
-                <div>
-                  <h2>Suscribete</h2>
-                  <form  action="">
-                  <input type="text" placeholder="Ingresa tu email"/>
-                    <button type="submit">Enviar</button>
-                  </form>
-                </div>
-            </div>
-            <div class="derechos">
-              <p>Copyright@2023DerechosReservadosExpertFinder</p>
-              <p>Politica</p>
-              <p>Condiciones y servicios</p>
-              
-                                                               
-            </div>
-            
-          </footer>
-    </footer>
+  <footer class="pie">
+    <div class="header">
+      <div class="logo">
+        <img src="./logo.PNG" alt="">
+        <p class="inf">Informativa</p>
+      </div>
+      <div class="redes">
+        <span class="fb"><i class="fa-brands fa-square-facebook fa-sm"></i></span>
+        <span class="tw"><i class="fa-brands fa-square-twitter fa-sm"></i></span>
+        <span class="gl"><i class="fa-brands fa-google fa-sm"></i></span>
+        <span class="in"><i class="fa-brands fa-instagram fa-sm"></i></span>
+        <span class="li"><i class="fa-brands fa-linkedin"></i></span>
+      </div>
+    </div>
+    <hr>
+    <div class="section">
+      <div>
+        <h2>Compañia</h2>
+        <a href="#">Home</a>
+        <a href="#">Contacto</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Ingresa</a>
+      </div>
+      <div>
+        <h2>Servicios</h2>
+        <a href="#">Reseñas</a>
+        <a href="#">Imagenes</a>
+        <a href="#">Colaboradores</a>
+        <a href="#">Profesionales</a>
+      </div>
+      <div>
+        <h2>Ubcicacion</h2>
+        <a href="#">Busqueda</a>
+        <a href="#">Acude</a>
+        <a href="#">a</a>
+        <a href="#">nosotros</a>
+      </div>
+      <div>
+        <h2>Categorias</h2>
+        <a href="#">Home</a>
+        <a href="#">Inicio</a>
+        <a href="#">Servicios</a>
+        <a href="#">Formularios</a>
+      </div>
+      <div>
+        <h2>Suscribete</h2>
+        <form action="">
+          <input type="text" placeholder="Ingresa tu email" />
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+    <div class="derechos">
+      <p>Copyright@2023DerechosReservadosExpertFinder</p>
+      <p>Politica</p>
+      <p>Condiciones y servicios</p>
+    </div>
+
+  </footer>
 </div>
