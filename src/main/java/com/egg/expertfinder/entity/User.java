@@ -1,12 +1,15 @@
 package com.egg.expertfinder.entity;
 
 import com.egg.expertfinder.enumeration.RoleEnum;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,23 +24,29 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    @Column(nullable = false)
     protected String name;
 
+    @Column(nullable = false)
     protected String lastName;
 
+    @Column(nullable = false, unique = true)
     protected String email;
 
+    @Column(nullable = false)
     protected String password;
+    
     @Enumerated(value = EnumType.STRING)
     protected RoleEnum role;
     
-    //protected Image image;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    protected Image image;
     
     // protected List<Comment> comments;
     
     protected boolean active;
 
-    
+//  Constructor creado para instanciar un Objeto user desde el  Service.
     public User(String name, String lastName, String email, String password, String role) {
         this.name = name;
         this.lastName = lastName;
@@ -49,6 +58,18 @@ public class User {
             this.role = RoleEnum.valueOf(role);
         }
         this.active = true;
+    }
+    
+    public void updateUser(String name, String lastName, String email) {
+        if (name != null || !name.isEmpty()) {
+            this.name = name;
+        }
+        if (lastName != null || !lastName.isEmpty()) {
+            this.lastName = lastName;
+        }
+        if (email != null || !email.isEmpty()) {
+            this.email = email;
+        }
     }
     
 }

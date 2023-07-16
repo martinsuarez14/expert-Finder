@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Registrar Usuario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{index.css}">
+</head>
+
+<body>
+    <header th:include="fragments/templates.html::header" class="header"></header>
+    <div class="form">
+        <div>Crear Usuario</div>
+        <br>
+        <form action="/register" method="post" enctype="multipart/form-data">
+            <label>Nombre</label>
+            <input type="text" name="name" required /> <br>
+            <label>Apellido</label>
+            <input type="text" name="lastName" required /> <br>
+            <label>Email</label>
+            <input type="email" name="email" required /> <br>
+            <label>Password</label>
+            <input type="password" name="password" required /> <br>
+            <label>Repetir la contraseña</label>
+            <input type="password" name="password2" required /> <br>
+            <label>Foto de Perfil</label>
+            <input type="file" name="file" required /> <br>
+            <select name="role" required>
+                <option value="USER">Usuario</option>
+                <option value="PRO">Profesional</option>
+            </select>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <footer th:include="fragments/templates.html::footer"></footer>
+</body>
+
+</html>

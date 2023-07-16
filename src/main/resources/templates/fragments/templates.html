@@ -1,0 +1,24 @@
+<!--Header-->
+<div th:fragment="header">
+    <header class="header" >
+        <div class="logo">
+            <a th:href="@{/}"><img th:src="@{./img/logo.jpeg}" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="">Podemos ayudarte?</a></li>
+                <li><a href="">Obras en marcha</a></li>
+            </ul>
+        </nav>
+        <div class="navBtns">
+            <a href="" class="btn"><button>LogIn</button></a>
+            <a th:href="@{/register}" class="btn"><button>Sign In</button></a>
+        </div>
+    </header>
+</div>
+<!--Footer-->
+<div th:fragment="footer">
+    <footer class="footer">
+        <h3>footer</h3>
+    </footer>
+</div>
