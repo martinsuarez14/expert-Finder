@@ -18,7 +18,6 @@
 body {
   background-image: url(../static/img/flor_backGround.jpg);
   color: black;
-
 }
 
 /*Grid de la pagina*/
@@ -35,7 +34,7 @@ body {
     "footer footer footer";
 }
 
-.contenedor>div,
+.contenedor > div,
 .contenedor .contenido,
 .contenedor .sidebar {
   padding: 20px;
@@ -62,7 +61,6 @@ body {
   margin-left: 10px;
   align-content: center;
   border-radius: 50px;
-
 }
 
 .header .logo img {
@@ -268,35 +266,54 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  
   background-color: #ff7217;
   border-radius: 2px;
   padding: 10px;
 }
 
 /*Footer*/
-
-.footer .redes {
-  margin-top: 10px;
-}
-
-.footer {
-  background-color: orange;
+.footer.footer{
+  background-color: rgb(255,114,23);
   grid-area: footer;
+  padding:  auto;
+  margin: 0; 
+  list-style: none;
+  height: 200px;
 }
-
-.footer img {
-  width: 70px;
-}
-
-.footer .header .logo {
+.footer .padre {
   display: flex;
+  padding: 20px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.footer .padre .row{
+ flex-wrap: wrap;
+ height: auto;
+ flex-direction: row;
+}
+
+.footer .padre .anuncio {
   align-items: center;
   gap: 10px;
+  padding: 10px;
+  border: 1px solid;
+  
+}
+.footer .img {
+  width:  auto;
+  height: auto;
 }
 
-.footer .header span {
-  font-size: 23px;
+.footer.anuncio.inf{
+ color:white;
+ font-style: normal;
+ font-size: smaller;
+}
+
+.footer .padre .row .redes {
+  margin-top: 10px;
 }
 
 .footer .redes .fb {
@@ -334,31 +351,27 @@ body {
   color: white;
 }
 
-.footer .header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  align-items: center;
-}
 
-.footer .header .inf {
+
+.footer .padre .inf {
   font-size: 18px;
   color: white;
-
 }
 
 .footer .section {
-  display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
+  width: 25%;
   gap: 20px;
 }
 
-.footer .section div {
-  display: flex;
+.footer .section .div {
   flex-direction: colum;
+  width: 25%;
+  padding:  0 15px;
 }
 
-.footer .section div h2 {
+.footer .section .div .h2 {
   color: white;
   padding: 10px 0;
 }
@@ -367,32 +380,25 @@ body {
   color: white;
   text-decoration: none;
   padding: 5px;
-
 }
 
-.footer .section form {
-  display: flex;
+.footer .section .F{
   flex-direction: column;
   gap: 10px;
 }
 
-.footer .section input {
+.footer .section .I {
   background-color: none;
   border: solid 2px white;
   padding: 10px;
-
 }
 
 .footer .derechos {
-  display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: orange;
+  background-color: rgb(44,26,44);
   color: white;
-
 }
-
-
 
 /*Media Querys*/
 @media screen and (max-width: 768px) {
