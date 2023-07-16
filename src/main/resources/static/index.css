@@ -247,88 +247,117 @@ body {
 }
 
 /*Footer*/
-.footer {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #0000;
-  width: 100%;
-  position:fixed;
-  bottom: 0%;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  background-color: black;
-  width: 100%;
-}
-
-.footer {
-  padding: 40px 0;
-}
-
-.footer-row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links h4 {
-  font-size: 20px;
-  color: #ff7217;
-  margin-bottom: 25px;
-  font-weight: 500;
-  border-bottom: 2px solid #12203e;
-  padding-bottom: 10px;
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.footer-links h4:last-child {
-  margin-bottom: 0;
-}
-
-.footer-links ul li a {
-  font-size: 18px;
-  text-decoration: none;
-  color: bisque;
-  margin-bottom: 15px;
-  transition: all .3s ease;
-}
-
-.footer-links ul li a:hover {
-  color: bisque;
-  padding-left: 6px;
-}
 
 .social-links {
   margin-top: 10px;
 }
 
-.social-links a {
-  display: inline-block;
-  min-height: 40px;
-  width: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 0 10px 10px 0;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 50%;
-  color: bisque;
-  transition: all .5s ease;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.social-links a:hover {
-  background-color: #ff7217;
+.pie {
+  background-color: orange;
 }
 
+img {
+  width: 70px;
+}
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+span{
+font-size: 23px;  
+}
+
+.fb{
+ background-color: blue;
+  padding: 8px;
+  border-radius: 50px;
+  color: white;
+}
+.tw{
+background-color: rgb(0,140,255);
+padding: 8px;
+border-radius: 50px;
+color: white; 
+}
+.gl{
+background-color: rgb(230,186,5);
+padding: 8px;
+border-radius: 50px;
+color: white; 
+}
+
+.in{
+background-color:rgb(244,2,209);
+padding: 8px;
+border-radius: 50px;
+color: white;
+}
+
+.li{
+background-color:rgb(10,102,194);
+padding: 8px;
+border-radius: 50px;
+color: white;
+}
+.header{
+  display:flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+.inf{
+font-size: 18px;
+  color: white;
+  
+}
+.section{
+ display: flex;
+justify-content: space-evenly;
+  gap: 20px;
+}
+.section div{
+  display: flex;
+  flex-direction:colum;
+}
+div h2{
+color:white;
+padding: 10px 0;
+}
+
+a{
+  color:white;
+  text-decoration: none;
+  padding: 5px;
+  
+}
+form{
+display: flex;
+flex-direction: column;
+ gap: 10px; 
+}
+input{
+background-color: none;
+  border: solid 2px white;
+  padding: 10px;
+  
+}
+.derechos{
+display: flex;
+justify-content: space-between ;
+  padding: 20px;
+  background-color: orange;
+  color: white;
+  
+}
 
 
 
