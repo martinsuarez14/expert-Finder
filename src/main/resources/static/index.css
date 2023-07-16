@@ -3,6 +3,9 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.url{cursor:url(img/martilo.png), auto;}
+
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -12,6 +15,7 @@
 body {
   background-image: url(../static/img/flor_backGround.jpg);
   color: black;
+
 }
 
 /*Grid de la pagina*/
@@ -243,16 +247,90 @@ body {
 }
 
 /*Footer*/
+.footer {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #0000;
+  width: 100%;
+  position:fixed;
+  bottom: 0%;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: black;
+  width: 100%;
+}
 
 .footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  padding: 20px;
-  background-color: #656565;
-  color: white;
-  grid-area: footer;
+  padding: 40px 0;
 }
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links h4 {
+  font-size: 20px;
+  color: #ff7217;
+  margin-bottom: 25px;
+  font-weight: 500;
+  border-bottom: 2px solid #12203e;
+  padding-bottom: 10px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-links h4:last-child {
+  margin-bottom: 0;
+}
+
+.footer-links ul li a {
+  font-size: 18px;
+  text-decoration: none;
+  color: bisque;
+  margin-bottom: 15px;
+  transition: all .3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: bisque;
+  padding-left: 6px;
+}
+
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a {
+  display: inline-block;
+  min-height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: bisque;
+  transition: all .5s ease;
+}
+
+.social-links a:hover {
+  background-color: #ff7217;
+}
+
+
+
+
 
 /*Media Querys*/
 @media screen and (max-width: 768px) {
