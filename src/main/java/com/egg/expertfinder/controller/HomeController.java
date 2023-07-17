@@ -42,8 +42,8 @@ public class HomeController {
             userService.createUser(name, lastName, email, password, password2, role, file);
             return "index.html";
         } catch (MyException e) {
-            System.out.println("Error al crear imagen.");
-            return "index.html";
+            System.out.println("Error al crear imagen." + e.getMessage());
+            return "user_form.html";
         }
     }
 }

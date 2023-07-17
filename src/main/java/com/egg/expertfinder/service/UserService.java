@@ -20,26 +20,30 @@ public class UserService {
 
     @Autowired
     private ImageService imageService;
-    
+
 //  Creamos un USER
     public void createUser(String name, String lastName, String email, String password,
             String password2, String role, MultipartFile file) throws MyException {
 
         validate(name, lastName, email, password, password2, role, file);
-        
+
+        if (userRepository.findUserByEmail(email) != null) {
+            throw new MyException("Ya existe un usuario con ese email.");
+        }
+
         User user = new User(name, lastName, email, password, role);
 
         Image image = imageService.createImage(file);
-        
+
         user.setImage(image);
-        
+
         userRepository.save(user);
     }
 
 //  Actualización de un User
-    public void updateUser(Long id, String name, String lastName, String email, 
+    public void updateUser(Long id, String name, String lastName, String email,
             MultipartFile file) throws MyException {
-        
+
 //      Corroboramos que exista el User con el Id que llega
         Optional<User> response = userRepository.findById(id);
         if (response.isPresent()) {
@@ -47,7 +51,7 @@ public class UserService {
 //          Actualizamos los valores que hayan llegado completos.
 
             user.updateUser(name, lastName, email);
-            
+
             if (file != null) {
                 Long idImage = user.getImage().getId();
                 Image image = imageService.updateImage(idImage, file);
@@ -67,7 +71,7 @@ public class UserService {
             throw new Exception("no se encontró al usuario");
         }
     }
-    
+
 //  Listamos los Users activos
     public List<User> getUsersActiveTrue() {
         return userRepository.findUserByActiveTrue();
@@ -77,7 +81,7 @@ public class UserService {
     public List<User> getUsersActiveFalse() {
         return userRepository.findUserByActiveFalse();
     }
-    
+
 //  Listamos TODOS los Users
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -92,11 +96,11 @@ public class UserService {
             throw new Exception("No se encontró al usuario");
         }
     }
-    
+
 //  Validamos que lleguen los datos necesarios para crear un User
     private void validate(String name, String lastName, String email, String password,
             String password2, String role, MultipartFile file) throws MyException {
-        
+
         if (name == null || name.isEmpty()) {
             throw new MyException("El nombre no de estar vacío.");
         }
