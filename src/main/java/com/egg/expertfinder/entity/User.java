@@ -52,7 +52,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this. password = password;
-        if (name == "adminExpertFinder") {
+        if (name.equalsIgnoreCase("adminExpertFinder")) {
             this.role = RoleEnum.ADMIN;
         } else {
             this.role = RoleEnum.valueOf(role);
@@ -60,15 +60,12 @@ public class User {
         this.active = true;
     }
     
-    public void updateUser(String name, String lastName, String email) {
-        if (name != null || !name.isEmpty()) {
+    public void updateUser(String name, String lastName) {
+        if (name != null) {
             this.name = name;
         }
-        if (lastName != null || !lastName.isEmpty()) {
+        if (lastName != null) {
             this.lastName = lastName;
-        }
-        if (email != null || !email.isEmpty()) {
-            this.email = email;
         }
     }
     

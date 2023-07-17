@@ -21,11 +21,11 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/user") // localhost:8080/user
 public class UserController {
     @Autowired
-    private UserService userservice;
+    private UserService userService;
 
     @GetMapping("/users")
     public String list(ModelMap modelo) {
-        List<User> users = userservice.getAllUsers();
+        List<User> users = userService.getAllUsers();
         modelo.addAttribute("users", users);
 
         return "user_list.html";
@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping("/regist")
     public String regist(@RequestParam String name,@RequestParam String lastName,@RequestParam String email,@RequestParam String password,@RequestParam String password2,@RequestParam String role,@RequestParam MultipartFile file){
         try {
-            userservice.createUser(name, lastName, email, password, password2, role, file);
+            userService.createUser(name, lastName, email, password, password2, role, file);
              return "";
         } catch (MyException ex) {
              Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,10 +54,12 @@ public class UserController {
     }
     
     @PostMapping("/updater")
-    public String update(@RequestParam Long id,@RequestParam String name,@RequestParam String lastName,@RequestParam String email,@RequestParam MultipartFile file){
+    public String update(@RequestParam Long id,@RequestParam(required = false) String name,
+            @RequestParam(required = false) String lastName, @RequestParam(required = false) String email,
+            @RequestParam(required = false) MultipartFile file){
         try {
-            userservice.updateUser(id,name,lastName,email,file);
-            return "";
+            userService.updateUser(id,name,lastName,email,file);
+            return "index.html";
         } catch (MyException e) {
             return "/updater";
         }
