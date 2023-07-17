@@ -16,7 +16,7 @@
 }
 
 body {
-  background-image: url(../static/img/flor_backGround.jpg);
+  background-image: url(./img/flor_backGround.jpg);
   color: black;
 }
 
@@ -34,7 +34,7 @@ body {
     "footer footer footer";
 }
 
-.contenedor > div,
+.contenedor>div,
 .contenedor .contenido,
 .contenedor .sidebar {
   padding: 20px;
@@ -51,6 +51,7 @@ body {
   background-color: #ff7217;
   grid-area: header;
   flex-grow: 1;
+  border-bottom: 2px solid black;
 }
 
 .header .logo {
@@ -130,7 +131,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url(../static/img/gotaDeAgua.jpg);
+  background-image: url(./img/gotaDeAgua.jpg);
 }
 
 .contenido h1 {
@@ -150,6 +151,7 @@ body {
 .contenido h2 {
   text-align: end;
   margin-top: 20px;
+  background-color: rgba(82, 136, 217, 0.4);
 }
 
 .contenedor .sidebar {
@@ -266,53 +268,57 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   background-color: #ff7217;
   border-radius: 2px;
   padding: 10px;
 }
 
 /*Footer*/
-.footer.footer{
-  background-color: rgb(255,114,23);
-  grid-area: footer;
-  padding:  auto;
-  margin: 0; 
-  list-style: none;
-  height: 200px;
-}
-.footer .padre {
+.footer {
   display: flex;
-  padding: 20px;
-  align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.footer .padre .row{
- flex-wrap: wrap;
- height: auto;
- flex-direction: row;
+  background-color: rgb(255, 114, 23);
+  grid-area: footer;
+  width: auto;
+  margin: 0;
+  list-style: none;
 }
 
-.footer .padre .anuncio {
+
+
+
+.footer .followUs {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   padding: 10px;
+  width: 35%;
+  min-width: 25%;
   border: 1px solid;
-  
+
 }
-.footer .img {
-  width:  auto;
-  height: auto;
+.footer .followUs .anuncio a{
+  display: flex;
+  max-width: 50px;
 }
 
-.footer.anuncio.inf{
- color:white;
- font-style: normal;
- font-size: smaller;
+.footer .followUs .anuncio a img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-.footer .padre .row .redes {
+.footer .followUs p {
+  color: white;
+  font-style: normal;
+  font-size: smaller;
+}
+
+.footer .followUs .redes ul{
+  justify-content: space-between;
+}
+.footer .followUs .redes {
   margin-top: 10px;
 }
 
@@ -353,50 +359,53 @@ body {
 
 
 
-.footer .padre .inf {
+.footer .followUs .anuncio p {
   font-size: 18px;
   color: white;
 }
 
-.footer .section {
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 25%;
-  gap: 20px;
+.footer .company {
+  display: flex;
+  flex-direction: row;
+
 }
 
-.footer .section .div {
-  flex-direction: colum;
-  width: 25%;
-  padding:  0 15px;
+
+.footer .company div {
+  text-align: center;
+  padding: 0 15px;
 }
 
-.footer .section .div .h2 {
-  color: white;
+.footer .company div h2 {
+  color: rgb(20, 19, 19);
   padding: 10px 0;
 }
 
-.footer .section a {
+.footer .company a {
   color: white;
   text-decoration: none;
   padding: 5px;
 }
 
-.footer .section .F{
+.footer .company .F {
   flex-direction: column;
   gap: 10px;
 }
 
-.footer .section .I {
+.footer .company .I {
   background-color: none;
   border: solid 2px white;
   padding: 10px;
 }
 
-.footer .derechos {
-  justify-content: space-between;
-  padding: 20px;
-  background-color: rgb(44,26,44);
+.derechos {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 20px;
+  flex-flow: column;
+  justify-content: center;
+  background-color: rgb(44, 26, 44);
   color: white;
 }
 
@@ -407,6 +416,7 @@ body {
       "header header header"
       "contenido contenido contenido"
       "sidebar sidebar sidebar"
-      "widget-1 widget-1 widget-2";
+      "widget-1 widget-1 widget-2"
+      "footer footer footer";
   }
 }
