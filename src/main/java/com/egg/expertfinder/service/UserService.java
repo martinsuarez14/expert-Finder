@@ -51,8 +51,19 @@ public class UserService {
             User user = response.get();
 //          Actualizamos los valores que hayan llegado completos.
 
-            user.updateUser(name, lastName, email);
+            user.updateUser(name, lastName);
+            
+//          Comprobamos que si llega un email para actualizar no exista en la DB
+            if (email != null) {
+                User userEmail = userRepository.findUserByEmail(email);
+                if (userEmail != null) {
+                    throw new MyException("Ya existe un usuario con ese Email.");
+                } else {
+                    user.setEmail(email);
+                }
+            }
 
+//          Si llega un MultipartFile lo actualizamos
             if (file != null) {
                 Long idImage = user.getImage().getId();
                 Image image = imageService.updateImage(idImage, file);
@@ -69,7 +80,7 @@ public class UserService {
         if (response.isPresent()) {
             return response.get();
         } else {
-            throw new Exception("no se encontró al usuario");
+            throw new Exception("No se encontró al usuario");
         }
     }
 
