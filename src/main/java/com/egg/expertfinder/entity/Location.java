@@ -35,13 +35,13 @@ public class Location {
     }
     
     public void updateLocation(String city, String country, String address) {
-        if (city != null || !city.isBlank()) {
+        if (city != null || !city.isEmpty()) {
             this.city = city;
         }
-        if (country != null || !country.isBlank()) {
+        if (country != null || !country.isEmpty()) {
             this.country = country;
         }
-        if (address != null || !address.isBlank()) {
+        if (address != null || !address.isEmpty()) {
             this.address = address;
         }
     }
