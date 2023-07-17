@@ -60,15 +60,12 @@ public class User {
         this.active = true;
     }
     
-    public void updateUser(String name, String lastName, String email) {
+    public void updateUser(String name, String lastName) {
         if (name != null) {
             this.name = name;
         }
         if (lastName != null) {
             this.lastName = lastName;
-        }
-        if (email != null) {
-            this.email = email;
         }
     }
     

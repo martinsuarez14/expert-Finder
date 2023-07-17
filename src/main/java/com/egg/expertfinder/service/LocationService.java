@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class LocationService {
 
     @Autowired
     private LocationRepository locationRepository;
 
+    @Transactional
     public Location createLocation(String city, String country, String address) throws MyException {
 
         validate(city, country, address);
@@ -24,6 +24,7 @@ public class LocationService {
         return locationRepository.save(location);
     }
 
+    @Transactional
     public void updateLocation(Long id, String city, String country, String address) throws MyException {
         Optional<Location> response = locationRepository.findById(id);
         if (response.isPresent()) {
