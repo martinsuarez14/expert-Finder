@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-@Transactional
 public class UserService {
 
     @Autowired
@@ -22,6 +21,7 @@ public class UserService {
     private ImageService imageService;
 
 //  Creamos un USER
+    @Transactional
     public void createUser(String name, String lastName, String email, String password,
             String password2, String role, MultipartFile file) throws MyException {
 
@@ -41,6 +41,7 @@ public class UserService {
     }
 
 //  Actualización de un User
+    @Transactional
     public void updateUser(Long id, String name, String lastName, String email,
             MultipartFile file) throws MyException {
 
@@ -88,6 +89,7 @@ public class UserService {
     }
 
 //  Eliminamos un User
+    @Transactional
     public void deleteUser(Long id) throws Exception {
         Optional<User> response = userRepository.findById(id);
         if (response.isPresent()) {

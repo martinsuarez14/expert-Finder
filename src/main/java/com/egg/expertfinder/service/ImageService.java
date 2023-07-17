@@ -11,13 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-@Transactional
 public class ImageService {
 
     @Autowired
     private ImageRepository imageRepository;
 
 //  Creamos una Image
+    @Transactional
     public Image createImage(MultipartFile file) {
         if (file != null) {
             try {
@@ -29,13 +29,14 @@ public class ImageService {
         }
         return null;
     }
-    
+
 //  Actualizamos una Image
+    @Transactional
     public Image updateImage(Long idImage, MultipartFile file) {
         if (file != null) {
             try {
                 Image image = new Image();
-                
+
 //              Corroboramos que exista la Image cuyo Id llega
                 if (idImage != null) {
                     Optional<Image> response = imageRepository.findById(idImage);
@@ -54,9 +55,9 @@ public class ImageService {
         }
         return null;
     }
-    
+
 //  Retornamos una Image
-    public Image getImage(Long idImage) throws MyException{
+    public Image getImage(Long idImage) throws MyException {
         Optional<Image> response = imageRepository.findById(idImage);
         if (response.isPresent()) {
             return response.get();
