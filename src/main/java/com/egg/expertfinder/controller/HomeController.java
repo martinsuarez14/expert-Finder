@@ -38,7 +38,6 @@ public class HomeController {
 
     @PostMapping("/register")
     public String registerUser(String name, String lastName, String email, String password, String password2, String role, MultipartFile file) {
-
         try {
             userService.createUser(name, lastName, email, password, password2, role, file);
             return "index.html";
