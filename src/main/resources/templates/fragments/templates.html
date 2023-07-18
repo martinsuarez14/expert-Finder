@@ -14,6 +14,10 @@
       <a href="" class="btn"><button>Login</button></a>
       <a th:href="@{/register}" class="btn"><button id="signIn">Sign Up</button></a>
     </div>
+
+    <div class="navBtns" th:if="${session.usuariosession != null}" >
+      <a th:href="@{/logout}" class="btn"><button id="signIn">Salir</button></a>
+    </div>
   </header>
 </div>
 <!--Footer-->
