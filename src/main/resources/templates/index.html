@@ -10,17 +10,20 @@
     <link rel="stylesheet" th:href="@{index.css}">
     <script src="https://kit.fontawesome.com/f882f47f7e.js" crossorigin="anonymous"></script>
 
-    
+
 </head>
 
 <body>
     <div class="contenedor">
         <header th:include="fragments/templates.html::header" class="header"></header>
         <main class="contenido">
-            <h1>Trabajamos para vos</h1>
-            <h3>Todo lo que necesitas sin salir de tu casa, encontra aca todos los servicios habilitados por el barrio
+            <h1>Trabajando para la comunidad</h1>
+            <h3>Todo lo que necesitas sin salir de tu casa, encontra aca todos los servicios habilitados por el barrio.
+                Chacras de Coria, junto a ExpertFinder, buscan brindarte todas las asistencias que requieras para hacer de tu estadía en nuestros barrios una experiencia única, relajante y de especial calidez para nuestros vecinos.
+                Aqui podrás encontrar a los mejores profesionales certificados por ExpertFinder, capaces de brindar un excelente servicio, y la mas alta calidad humana. Podrás elegir entre todo el personal disponible, contando con una calificacion proporcionada por los mismos vecinos basada en puntajes y una descripcion de la forma y el precio del profesional por dia, para que puedas elegir a quien mas se adapte a tus necesidades!.
+                Esperamos que tu estadía en las Charas de Coria cumplan con todos tus sueños y expectativas.
             </h3>
-            <h2>Chacras de coria</h2>
+            <h2>Chacras de coria les desea una buena vida</h2>
         </main>
         <aside class="sidebar">
             <div class="card">
@@ -37,9 +40,17 @@
             </div>
             <div class="card">
                 <div class="card__img">
-                    <img src="" alt="Not Found">
+                    <img th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
+                </div>
+                <div class="card__body">
+                    <h2>Bob</h2>
+                    <p>Constructor</p>
+                    <div class="card__footer">
+                        <h3>5 Estrellas</h3>
+                    </div>
                 </div>
             </div>
+            
         </aside>
         <div class="widget-1">
             <a href="http://">
@@ -51,9 +62,8 @@
                 <h3>MANTENIMIENTO</h3>
             </a>
         </div>
+        <footer class="footer" th:include="fragments/templates.html::footer"></footer>
     </div>
-
-    <footer th:include="fragments/templates.html::footer"></footer>
 
 </body>
 

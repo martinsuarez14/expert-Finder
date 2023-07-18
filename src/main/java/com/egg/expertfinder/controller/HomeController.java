@@ -23,7 +23,7 @@ public class HomeController {
         return "index.html";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login")  // localhost:8080/login
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
             modelo.put("error", "Usuario o contraseña invalidos!");
@@ -31,7 +31,7 @@ public class HomeController {
         return "login.html";
     }
 
-    @GetMapping("/register")
+    @GetMapping("/register")  // localhost:8080/register
     public String register() {
         return "user_form.html";
     }
@@ -43,8 +43,8 @@ public class HomeController {
             userService.createUser(name, lastName, email, password, password2, role, file);
             return "index.html";
         } catch (MyException e) {
-            System.out.println("Error al crear imagen.");
-            return "index.html";
+            System.out.println("Error al crear imagen." + e.getMessage());
+            return "user_form.html";
         }
     }
 }
