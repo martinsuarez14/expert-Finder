@@ -35,15 +35,7 @@ public class Location {
     }
     
     public void updateLocation(String city, String country, String address) {
-<<<<<<< HEAD
-        if (city != null || !city.isEmpty()) {
-            this.city = city;
-        }
-        if (country != null || !country.isEmpty()) {
-            this.country = country;
-        }
-        if (address != null || !address.isEmpty()) {
-=======
+
         if (city != null) {
             this.city = city;
         }
@@ -51,8 +43,7 @@ public class Location {
             this.country = country;
         }
         if (address != null) {
->>>>>>> 0b8c60b48e272de28fa48d139cfa29d2be19d50a
-            this.address = address;
-        }
+            this.address = address;            
+        }        
     }
 }
