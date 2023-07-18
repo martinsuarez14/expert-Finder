@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-@Transactional
 public class UserService {
 
     @Autowired
@@ -22,6 +21,7 @@ public class UserService {
     private ImageService imageService;
 
 //  Creamos un USER
+    @Transactional
     public void createUser(String name, String lastName, String email, String password,
             String password2, String role, MultipartFile file) throws MyException {
 
@@ -41,6 +41,7 @@ public class UserService {
     }
 
 //  Actualización de un User
+    @Transactional
     public void updateUser(Long id, String name, String lastName, String email,
             MultipartFile file) throws MyException {
 
@@ -50,8 +51,19 @@ public class UserService {
             User user = response.get();
 //          Actualizamos los valores que hayan llegado completos.
 
-            user.updateUser(name, lastName, email);
+            user.updateUser(name, lastName);
+            
+//          Comprobamos que si llega un email para actualizar no exista en la DB
+            if (email != null) {
+                User userEmail = userRepository.findUserByEmail(email);
+                if (userEmail != null) {
+                    throw new MyException("Ya existe un usuario con ese Email.");
+                } else {
+                    user.setEmail(email);
+                }
+            }
 
+//          Si llega un MultipartFile lo actualizamos
             if (file != null) {
                 Long idImage = user.getImage().getId();
                 Image image = imageService.updateImage(idImage, file);
@@ -68,7 +80,7 @@ public class UserService {
         if (response.isPresent()) {
             return response.get();
         } else {
-            throw new Exception("no se encontró al usuario");
+            throw new Exception("No se encontró al usuario");
         }
     }
 
@@ -88,6 +100,7 @@ public class UserService {
     }
 
 //  Eliminamos un User
+    @Transactional
     public void deleteUser(Long id) throws Exception {
         Optional<User> response = userRepository.findById(id);
         if (response.isPresent()) {
