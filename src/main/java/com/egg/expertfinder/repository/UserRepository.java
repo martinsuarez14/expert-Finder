@@ -1,19 +1,19 @@
 package com.egg.expertfinder.repository;
 
-import com.egg.expertfinder.entity.User;
+import com.egg.expertfinder.entity.CustomUser;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<CustomUser, Long> {
 
 //  Listamos los Users active = true
-    List<User> findUserByActiveTrue();
+    List<CustomUser> findCustomUserByActiveTrue();
 
 //  Listamos los Users active = false
-    List<User> findUserByActiveFalse();
+    List<CustomUser> findCustomUserByActiveFalse();
     
 //  Buscamos usuario por email
-    User findUserByEmail(String email);
+    CustomUser findCustomUserByEmail(String email);
 }

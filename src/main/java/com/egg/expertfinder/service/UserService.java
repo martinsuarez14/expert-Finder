@@ -1,18 +1,26 @@
 package com.egg.expertfinder.service;
 
 import com.egg.expertfinder.entity.Image;
-import com.egg.expertfinder.entity.User;
+import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.repository.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -27,11 +35,13 @@ public class UserService {
 
         validate(name, lastName, email, password, password2, role, file);
 
-        if (userRepository.findUserByEmail(email) != null) {
+        if (userRepository.findCustomUserByEmail(email) != null) {
             throw new MyException("Ya existe un usuario con ese email.");
         }
 
-        User user = new User(name, lastName, email, password, role);
+        CustomUser user = new CustomUser(name, lastName, email, role);
+        
+        user.setPassword(new BCryptPasswordEncoder().encode(password));
 
         Image image = imageService.createImage(file);
 
@@ -46,16 +56,16 @@ public class UserService {
             MultipartFile file) throws MyException {
 
 //      Corroboramos que exista el User con el Id que llega
-        Optional<User> response = userRepository.findById(id);
+        Optional<CustomUser> response = userRepository.findById(id);
         if (response.isPresent()) {
-            User user = response.get();
+            CustomUser user = response.get();
 //          Actualizamos los valores que hayan llegado completos.
 
             user.updateUser(name, lastName);
             
 //          Comprobamos que si llega un email para actualizar no exista en la DB
             if (email != null) {
-                User userEmail = userRepository.findUserByEmail(email);
+                CustomUser userEmail = userRepository.findCustomUserByEmail(email);
                 if (userEmail != null) {
                     throw new MyException("Ya existe un usuario con ese Email.");
                 } else {
@@ -75,8 +85,8 @@ public class UserService {
     }
 
 //  Traemos un User si es que existe
-    public User getUserById(Long id) throws Exception {
-        Optional<User> response = userRepository.findById(id);
+    public CustomUser getUserById(Long id) throws Exception {
+        Optional<CustomUser> response = userRepository.findById(id);
         if (response.isPresent()) {
             return response.get();
         } else {
@@ -85,24 +95,24 @@ public class UserService {
     }
 
 //  Listamos los Users activos
-    public List<User> getUsersActiveTrue() {
-        return userRepository.findUserByActiveTrue();
+    public List<CustomUser> getUsersActiveTrue() {
+        return userRepository.findCustomUserByActiveTrue();
     }
 
 //  Listamos los users desactivados
-    public List<User> getUsersActiveFalse() {
-        return userRepository.findUserByActiveFalse();
+    public List<CustomUser> getUsersActiveFalse() {
+        return userRepository.findCustomUserByActiveFalse();
     }
 
 //  Listamos TODOS los Users
-    public List<User> getAllUsers() {
+    public List<CustomUser> getAllUsers() {
         return userRepository.findAll();
     }
 
 //  Eliminamos un User
     @Transactional
     public void deleteUser(Long id) throws Exception {
-        Optional<User> response = userRepository.findById(id);
+        Optional<CustomUser> response = userRepository.findById(id);
         if (response.isPresent()) {
             userRepository.delete(response.get());
         } else {
@@ -134,6 +144,25 @@ public class UserService {
         }
         if (file == null) {
             throw new MyException("Debe ingresar una imagen de perfil.");
+        }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        
+        CustomUser userLogin = userRepository.findCustomUserByEmail(email);
+        
+        if (userLogin != null) {
+            
+            List<GrantedAuthority> permissions = new ArrayList<>();
+            
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + userLogin.getRole().toString());
+
+            permissions.add(p);
+            
+            return new User(userLogin.getEmail(), userLogin.getPassword(), permissions);
+        } else {
+            return null;
         }
     }
 

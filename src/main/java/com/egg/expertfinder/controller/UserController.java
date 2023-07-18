@@ -1,7 +1,7 @@
 package com.egg.expertfinder.controller;
 
 import com.egg.expertfinder.entity.Image;
-import com.egg.expertfinder.entity.User;
+import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.UserService;
 import java.util.List;
@@ -25,7 +25,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String list(ModelMap modelo) {
-        List<User> users = userService.getAllUsers();
+        List<CustomUser> users = userService.getAllUsers();
         modelo.addAttribute("users", users);
 
         return "user_list.html";

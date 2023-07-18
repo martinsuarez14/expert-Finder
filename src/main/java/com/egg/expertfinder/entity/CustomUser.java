@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class CustomUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,11 +47,10 @@ public class User {
     protected boolean active;
 
 //  Constructor creado para instanciar un Objeto user desde el  Service.
-    public User(String name, String lastName, String email, String password, String role) {
+    public CustomUser(String name, String lastName, String email, String role) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this. password = password;
         if (name.equalsIgnoreCase("adminExpertFinder")) {
             this.role = RoleEnum.ADMIN;
         } else {
