@@ -40,6 +40,9 @@ public class CustomUser {
     protected RoleEnum role;
     
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    protected Location location;
+    
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     protected Image image;
     
     // protected List<Comment> comments;
@@ -47,14 +50,14 @@ public class CustomUser {
     protected boolean active;
 
 //  Constructor creado para instanciar un Objeto user desde el  Service.
-    public CustomUser(String name, String lastName, String email, String role) {
+    public CustomUser(String name, String lastName, String email) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         if (name.equalsIgnoreCase("adminExpertFinder")) {
             this.role = RoleEnum.ADMIN;
         } else {
-            this.role = RoleEnum.valueOf(role);
+            this.role = RoleEnum.USER;
         }
         this.active = true;
     }

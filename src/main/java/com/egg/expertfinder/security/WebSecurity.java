@@ -25,9 +25,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
     
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
+                    .antMatchers("/admin/*").hasRole("ADMIN")
                     .antMatchers("/css/*", "/js/*", "/img/*", "/**")
                     .permitAll()
                 .and().formLogin()
@@ -38,10 +40,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
                     .defaultSuccessUrl("/home")
                     .permitAll()
                 .and().logout()
-                    .logoutUrl("/logout")
+                    .logoutUrl("/logout") 
                     .logoutSuccessUrl("/login")
                     .permitAll()
                 .and().csrf()
                     .disable();
     }
+    
 }

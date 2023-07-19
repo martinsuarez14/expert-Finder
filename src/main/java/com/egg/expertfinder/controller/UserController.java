@@ -9,9 +9,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.management.relation.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,17 +38,6 @@ public class UserController {
         return "";
     }
     
-    @PostMapping("/regist")
-    public String regist(@RequestParam String name,@RequestParam String lastName,@RequestParam String email,@RequestParam String password,@RequestParam String password2,@RequestParam String role,@RequestParam MultipartFile file){
-        try {
-            userService.createUser(name, lastName, email, password, password2, role, file);
-             return "";
-        } catch (MyException ex) {
-             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-             return "/regist";
-        }
-        }
-    
     @GetMapping("update")
     public String update(){
         
@@ -65,5 +56,17 @@ public class UserController {
         }
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/user/{id}")
+    public String getUserById(@PathVariable Long id, ModelMap model) {
+        try {
+            CustomUser user = userService.getUserById(id);
+            model.addAttribute("user", user);
+            return "user-details.html";
+        } catch (Exception ex) {
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/home";
+        }
+    }
 
 }

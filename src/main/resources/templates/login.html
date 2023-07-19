@@ -8,7 +8,7 @@
 </head>
 <body>
     <header th:include="fragments/templates.html::header" class="header"></header>
-    <form th:action="/login" method="post">
+    <form th:action="@{/logincheck}" method="post">
         <label>Email</label>
         <input type="email" name="email" required /> <br>
         <label>Password</label>
