@@ -21,5 +21,7 @@ public class Service {
     @Column(nullable = false)
     protected String name;
     
-    
+    public Service(String name){
+        this.name=name;
+    }
 }
