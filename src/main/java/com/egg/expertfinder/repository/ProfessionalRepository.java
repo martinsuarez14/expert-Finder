@@ -13,5 +13,6 @@ public interface ProfessionalRepository extends JpaRepository<Professional,Long>
     //Listamos los Professional active = false
     List<Professional> findProfessionalByActiveFalse();
     
-    //Buscar un Professional by Job
+    //Buscar un Professional by email
+    Professional findProfessionalByEmail(String email);
 }

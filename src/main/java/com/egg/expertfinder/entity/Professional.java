@@ -31,14 +31,14 @@ public class Professional extends CustomUser{
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Comment comment;
     
-    public void updateProfessional(String description, String license, String phone, String name, String lastName){
+    public void updateProfessional(String description, String phone, String name, String lastName){
         super.updateUser(name, lastName);
         if (description != null){
             this.description = description;
         }
-        if (license != null){
-            this.license = license;
-        }
+        /*if (license != null){
+            this.license = license; No creo que sea necesario, porque la matrícula es única.
+        }*/
         if (phone != null){
             this.phone = phone;
         }
