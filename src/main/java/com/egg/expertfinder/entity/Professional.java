@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 //@Inheritance(strategy = InheritanceType.JOINED)
-public class Professional extends User{
+public class Professional extends CustomUser{
     
     @Column(nullable = false)
     protected String description;

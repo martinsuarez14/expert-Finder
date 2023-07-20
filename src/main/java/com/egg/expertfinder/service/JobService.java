@@ -48,6 +48,15 @@ public class JobService {
     public List<Job> getAllJobs(){
         return jobRepository.findAll();
     } 
+    
+    public Job getJobById(Long id) throws MyException{
+        Optional<Job> response = jobRepository.findById(id);
+        if(response.isPresent()){
+            return response.get();
+        }else{
+            throw new MyException("No se encontró un Servicio con ese ID.");
+        }
+    }
     private void validate(String name) throws MyException {
         if(name == null || name.isEmpty()) {
             throw new MyException("El nombre del servicio no puede estar vacio.");
