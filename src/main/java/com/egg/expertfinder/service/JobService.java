@@ -47,12 +47,7 @@ public class JobService {
     }
     public List<Job> getAllJobs(){
         return jobRepository.findAll();
-<<<<<<< HEAD
-    } 
-=======
-    }
->>>>>>> 83631ad8488dece588e6374251c64dae1397ec2c
-    
+
     public Job getJobById(Long id) throws MyException{
         Optional<Job> response = jobRepository.findById(id);
         if(response.isPresent()){
@@ -61,10 +56,6 @@ public class JobService {
             throw new MyException("No se encontró un Servicio con ese ID.");
         }
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> 83631ad8488dece588e6374251c64dae1397ec2c
     private void validate(String name) throws MyException {
         if(name == null || name.isEmpty()) {
             throw new MyException("El nombre del servicio no puede estar vacio.");

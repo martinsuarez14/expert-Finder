@@ -9,13 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-<<<<<<< HEAD
-=======
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
->>>>>>> 83631ad8488dece588e6374251c64dae1397ec2c
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

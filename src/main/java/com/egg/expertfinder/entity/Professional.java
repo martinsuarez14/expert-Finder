@@ -1,5 +1,6 @@
 package com.egg.expertfinder.entity;
 
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,5 +28,5 @@ public class Professional extends CustomUser{
     protected String phone;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    protected Comment comment;
+    protected List<Comment> comment;
 }
