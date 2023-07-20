@@ -27,6 +27,9 @@ public class Professional extends CustomUser {
 
     @Column(nullable = false)
     private String phone;
+    
+    @OneToMany
+    private List<Task> tasks = new ArrayList<>();
 
     @OneToMany
     private List<Comment> comments;

@@ -34,9 +34,9 @@ public class CommentController {
     }
     
     @PostMapping("/register")
-    public String registComment(@RequestParam String content, ModelMap model)  {
+    public String registComment(@RequestParam String content,@RequestParam Double score, ModelMap model)  {
         try {
-            commentService.createComment(content);
+            commentService.createComment(content, score);
             model.put("exito", "Se ha agregado su comentario.");
             return "redirect:/admin/dashboard";
         } catch (MyException ex) {
