@@ -28,7 +28,7 @@ public class Professional extends CustomUser {
     @Column(nullable = false)
     private String phone;
     
-    @OneToMany
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks = new ArrayList<>();
 
     @OneToMany

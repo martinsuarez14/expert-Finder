@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,9 +29,14 @@ public class Task {
     private String description;
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
+    
+    @ManyToOne
+    @JoinColumn(name = "professional_id")
+    private Professional professional;
 
     public Task(String description) {
         this.description = description;
         this.status = StatusEnum.SOLICITADA;
     }
+    
 }

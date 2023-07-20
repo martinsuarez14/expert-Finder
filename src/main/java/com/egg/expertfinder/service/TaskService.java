@@ -61,8 +61,8 @@ public class TaskService {
         }
     }
     
-    public List<Task> getTaskByStatus(Long idpro, String status) {
-        return taskRepository.findTasksByProfessionalAndStatus(idpro, status);
+    public List<Task> getTaskByStatus(Long idPro, String status) {
+        return taskRepository.findTasksByProfessionalAndStatus(idPro, status);
     }
     
     private void validate(String description, Long id) throws MyException {
