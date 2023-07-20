@@ -20,13 +20,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-<<<<<<< HEAD:src/main/java/com/egg/expertfinder/entity/CustomUser.java
-public class CustomUser {
-=======
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
->>>>>>> d80aa888862fd5c7eddcc4ce81b51e3165f71a57:src/main/java/com/egg/expertfinder/entity/User.java
-
+public class CustomUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
