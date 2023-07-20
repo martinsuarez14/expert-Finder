@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Service {
+public class Job {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +22,7 @@ public class Service {
     @Column(nullable = false)
     protected String name;
     
-<<<<<<< HEAD
-=======
-    public Service(String name){
-        this.name=name;
+    public Job(String name){
+        this.name = name;
     }
->>>>>>> 02558f42cb7e5cd25a3c03280100ee2f0ba7a09c
 }
