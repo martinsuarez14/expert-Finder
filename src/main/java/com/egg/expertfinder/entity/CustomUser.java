@@ -22,7 +22,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public class CustomUser {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 83631ad8488dece588e6374251c64dae1397ec2c
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
