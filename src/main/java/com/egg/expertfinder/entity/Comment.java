@@ -1,14 +1,18 @@
 package com.egg.expertfinder.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-/**
- *
- * @author Fausto
- */
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +22,7 @@ public class Comment {
     protected String content;
     
     @Column(nullable = false)
-    protected Integer score;
+    protected Double score;
     
     @Column(nullable = false)
     protected boolean active;
@@ -29,4 +33,6 @@ public class Comment {
     public void deactivateComment(){
         active = false;
     }
+    
 }
+
