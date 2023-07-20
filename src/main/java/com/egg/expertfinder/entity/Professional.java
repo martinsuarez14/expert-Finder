@@ -16,16 +16,31 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 //@Inheritance(strategy = InheritanceType.JOINED)
 public class Professional extends CustomUser{
+    /*
+    *   EL PROFESIONAL TIENE, EN LA LOCATION, COUNTRY = VISITANTE;
+    */
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String description;
     
     @Column(nullable = false)
-    protected String description;
+    private String license;
     
     @Column(nullable = false)
-    protected String license;
-    
-    @Column(nullable = false)
-    protected String phone;
+    private String phone;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    protected Comment comment;
+    private Comment comment;
+    
+    public void updateProfessional(String description, String license, String phone, String name, String lastName){
+        super.updateUser(name, lastName);
+        if (description != null){
+            this.description = description;
+        }
+        if (license != null){
+            this.license = license;
+        }
+        if (phone != null){
+            this.phone = phone;
+        }
+    }
 }
