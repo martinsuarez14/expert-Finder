@@ -138,18 +138,18 @@ public class UserService implements UserDetailsService {
             String password2, String countryKey, MultipartFile file) throws MyException {
 
         if (name == null || name.isEmpty()) {
-            throw new MyException("El nombre no de estar vacío.");
+            throw new MyException("El nombre no debe estar vacío.");
         }
         if (lastName == null || lastName.isEmpty()) {
-            throw new MyException("El apellido no de estar vacío.");
+            throw new MyException("El apellido no debe estar vacío.");
         }
         if (email == null || email.isEmpty()) {
-            throw new MyException("El email no de estar vacío.");
+            throw new MyException("El email no debe estar vacío.");
         }
         if (!password.equals(password2)) {
             throw new MyException("Las contraseñas no coinciden.");
         }
-        if (password.length() <= 5 || password.isEmpty()) {
+        if (password == null || password.isEmpty()) {
             throw new MyException("La constraseña no debe estar vacía y debe ser mayor a 5 caracteres.");
         }
         if (countryKey == null || countryKey.isEmpty()) {

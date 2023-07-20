@@ -17,6 +17,37 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+<<<<<<< HEAD
+//@Inheritance(strategy = InheritanceType.JOINED)
+public class Professional extends CustomUser{
+    /*
+    *   EL PROFESIONAL TIENE, EN LA LOCATION, COUNTRY = VISITANTE;
+    */
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String description;
+    
+    @Column(nullable = false)
+    private String license;
+    
+    @Column(nullable = false)
+    private String phone;
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Comment comment;
+    
+    public void updateProfessional(String description, String phone, String name, String lastName){
+        super.updateUser(name, lastName);
+        if (description != null){
+            this.description = description;
+        }
+        /*if (license != null){
+            this.license = license; No creo que sea necesario, porque la matrícula es única.
+        }*/
+        if (phone != null){
+            this.phone = phone;
+        }
+    }
+=======
 public class Professional extends CustomUser {
 
     @Column(nullable = false)
@@ -61,4 +92,5 @@ public class Professional extends CustomUser {
         super.updateUser(name, lastName);
     }
     
+>>>>>>> e92afb29bb327a2c7f62042ed61bc13ce47033ed
 }
