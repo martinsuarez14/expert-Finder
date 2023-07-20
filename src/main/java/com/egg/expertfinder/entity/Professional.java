@@ -20,16 +20,16 @@ import lombok.NoArgsConstructor;
 public class Professional extends CustomUser {
 
     @Column(nullable = false)
-    protected String description;
+    private String description;
 
     @Column(nullable = false)
-    protected String license;
+    private String license;
 
     @Column(nullable = false)
-    protected String phone;
+    private String phone;
 
     @OneToMany
-    protected List<Comment> comment = new ArrayList<>();
+    private List<Comment> comments;
 
     public Professional(String name, String lastName, String email,
             String description, String license, String phone) {
@@ -57,6 +57,5 @@ public class Professional extends CustomUser {
     public void updateUser(String name, String lastName) {
         super.updateUser(name, lastName);
     }
-    
     
 }
