@@ -10,7 +10,7 @@
         <li><a href="">Obras en marcha</a></li>
       </ul>
     </nav>
-    <div class="navBtns">
+    <div class="navBtns" th:if="${session.usuariosession == null}">
       <a href="" class="btn"><button>Login</button></a>
       <a th:href="@{/register}" class="btn"><button id="signIn">Sign Up</button></a>
     </div>

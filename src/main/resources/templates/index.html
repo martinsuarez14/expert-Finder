@@ -15,6 +15,7 @@
 
 <body>
     <div class="contenedor">
+        <div th:if="${session.usuariosession != null}">Usuario Logueado</div>
         <header th:include="fragments/templates.html::header" class="header"></header>
         <main class="contenido">
             <h1>Trabajando para la comunidad</h1>

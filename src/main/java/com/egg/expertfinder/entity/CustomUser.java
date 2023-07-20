@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +20,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
+@Inheritance(strategy = InheritanceType.JOINED)
+public class CustomUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -40,6 +42,9 @@ public class User {
     protected RoleEnum role;
     
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    protected Location location;
+    
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     protected Image image;
     
     // protected List<Comment> comments;
@@ -47,15 +52,14 @@ public class User {
     protected boolean active;
 
 //  Constructor creado para instanciar un Objeto user desde el  Service.
-    public User(String name, String lastName, String email, String password, String role) {
+    public CustomUser(String name, String lastName, String email) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this. password = password;
         if (name.equalsIgnoreCase("adminExpertFinder")) {
             this.role = RoleEnum.ADMIN;
         } else {
-            this.role = RoleEnum.valueOf(role);
+            this.role = RoleEnum.USER;
         }
         this.active = true;
     }

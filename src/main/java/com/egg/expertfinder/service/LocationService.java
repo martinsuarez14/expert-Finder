@@ -15,21 +15,21 @@ public class LocationService {
     private LocationRepository locationRepository;
 
     @Transactional
-    public Location createLocation(String city, String country, String address) throws MyException {
+    public Location createLocation(String country, String address) throws MyException {
 
-        validate(city, country, address);
+        validate(country, address);
 
-        Location location = new Location(city, country, address);
+        Location location = new Location(country, address);
 
         return locationRepository.save(location);
     }
 
     @Transactional
-    public void updateLocation(Long id, String city, String country, String address) throws MyException {
+    public void updateLocation(Long id, String country, String address) throws MyException {
         Optional<Location> response = locationRepository.findById(id);
         if (response.isPresent()) {
             Location location = response.get();
-            location.updateLocation(city, country, address);
+            location.updateLocation(country, address);
             locationRepository.save(location);
         } else {
             throw new MyException("No se pudo modificar la ubicación.");
@@ -45,10 +45,7 @@ public class LocationService {
         }
     }
 
-    private void validate(String city, String country, String address) throws MyException {
-        if (city == null || city.isEmpty()) {
-            throw new MyException("Debe ingresar una ciudad.");
-        }
+    private void validate(String country, String address) throws MyException {
         if (country == null || country.isEmpty()) {
             throw new MyException("Debe ingresar el country al que pertenece.");
         }
