@@ -9,6 +9,7 @@ import com.egg.expertfinder.enumeration.KeyEnum;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.repository.ProfessionalRepository;
 import com.egg.expertfinder.repository.UserRepository;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,25 +35,20 @@ public class ProfessionalService {
     //Creación de un profesional.
     @Transactional
     public void createProfessional(String name, String lastName, String email, String password,
-            String password2, String countryKey, String country, String address, 
-            MultipartFile file, String description, String license, String phone, 
-            Comment comment) throws MyException{
+            String password2, String address, MultipartFile file, 
+            String description, String license, String phone) throws MyException{
             
-        validate(name, lastName, email, password, password2, countryKey, file, description, license, phone);
+        validate(name, lastName, email, password, password2, file, description, license, phone);
         
-        Professional professional = new Professional();
-        //Seteo de atributos
-        professional.setName(name);
-        professional.setLastName(lastName);
-        professional.setEmail(email);
-        professional.setDescription(description);
-        professional.setLicense(license);
-        professional.setPhone(phone);
+        Professional professional = new Professional(name, lastName, email,
+        description, license, phone);
         
         //Seteo de contraseña encriptada.
         professional.setPassword(new BCryptPasswordEncoder().encode(password));
         
-        Location location = locationService.createLocation(country, address);
+        Location location = new Location();
+        
+        location.setAddress(address);
         
         professional.setLocation(location);
         
@@ -65,19 +61,19 @@ public class ProfessionalService {
     
     @Transactional
     public void updateProfessional(Long id, String name, String lastName, String email,
-            MultipartFile file, String description, String phone) throws MyException{
+            MultipartFile file, String description, String phone) throws MyException {
         Optional<Professional> response = professionalRepository.findById(id);
         if(response.isPresent()){
             Professional professional = response.get();
             
-            professional.updateProfessional(description, phone, name, lastName);
+            professional.updateProfessional(name, lastName, description, phone);
             //Comprobamos que si llega un email para actualizar no exista en la DB
             if(email!=null){
                 Professional proEmail = professionalRepository.findProfessionalByEmail(email);
                 CustomUser userEmail = userRepository.findCustomUserByEmail(email);
-                if (proEmail!=null || userEmail!=null){
-                    throw new MyException("Ya existe un profesional registrado con ese email.");
-                }else{
+                if (proEmail!=null || userEmail!=null) {
+                    throw new MyException("Ya existe un usuario registrado con ese email.");
+                } else {
                     professional.setEmail(email);
                 }
             }
@@ -91,35 +87,35 @@ public class ProfessionalService {
             
             professionalRepository.save(professional);
         }
-        
-        
+    }
+    
+    @Transactional
+    public void deleteProfessional(Long id) throws MyException {
+        Optional<Professional> response = professionalRepository.findById(id);
+        if (response.isPresent()) {
+            professionalRepository.delete(response.get());
+        } else {
+            throw new MyException("No se encontró un usuario con ese id.");
+        }
     }
     
     public void validate(String name, String lastName, String email, String password,
-            String password2, String countryKey, MultipartFile file, String description, 
-            String license, String phone) throws MyException{
-        if(name == null || name.isEmpty()){
+            String password2, MultipartFile file, String description, 
+            String license, String phone) throws MyException {
+        if(name == null || name.isEmpty()) {
             throw new MyException("El nombre no puede ser nulo o estar vacío.");
         }
-        if(lastName == null || lastName.isEmpty()){
+        if(lastName == null || lastName.isEmpty()) {
             throw new MyException("El apellido no puede ser nulo o estar vacío.");
         }
-        if(password == null || password.isEmpty()){
+        if(password == null || password.isEmpty()) {
             throw new MyException("La contraseña no puede ser nula o estar vacía.");
         }
-        if(password.length()<=5){
+        if(password.length()<=5) {
             throw new MyException("La contraseña no puede contener 5 caracteres o menos.");
         }
         if(!password2.equals(password)){
             throw new MyException("Las contraseñas no coinciden.");
-        }
-        if (countryKey == null || countryKey.isEmpty()) {
-            throw new MyException("Debe ingresar la clave del Barrio.");
-        }
-        if (!countryKey.equalsIgnoreCase(KeyEnum.BARRIO1.toString())
-                || !countryKey.equalsIgnoreCase(KeyEnum.BARRIO2.toString())
-                || !countryKey.equalsIgnoreCase(KeyEnum.BARRIO3.toString())) {
-            throw new MyException("La clave del barrio es incorrecta.");
         }
         if (file == null) {
             throw new MyException("Debe ingresar una imagen de perfil.");
@@ -133,5 +129,21 @@ public class ProfessionalService {
         if (phone == null || phone.isEmpty()) {
             throw new MyException("Debe ingresar su número de teléfono.");
         }
+    }
+
+    public Professional getProfessionalById(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<Professional> getAllProfessionals() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<Professional> getProfessionalsDeactivate() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<Professional> getProfessionalsActivate() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

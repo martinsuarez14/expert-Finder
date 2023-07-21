@@ -6,19 +6,19 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@Inheritance(strategy = InheritanceType.JOINED)
-public class Professional extends CustomUser {
+
+public class Professional extends CustomUser{
 
     /*
     *   EL PROFESIONAL TIENE, EN LA LOCATION, COUNTRY = VISITANTE;
@@ -32,21 +32,34 @@ public class Professional extends CustomUser {
     @Column(nullable = false)
     private String phone;
 
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Comment comment;
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();
 
-    public void updateProfessional(String description, String phone, String name, String lastName) {
+    public Professional(String name, String lastName, String email,
+            String description, String license, String phone) {
+        super(name, lastName, email);
+        this.role = RoleEnum.PRO;
+        this.active = false;
+        this.description = description;
+        this.license = license;
+        this.phone = phone;
+    }
+    
+    public void updateProfessional(String name, String lastName, String description, String phone){
         super.updateUser(name, lastName);
-        if (description != null) {
+        if (description != null){
             this.description = description;
         }
-        /*if (license != null){
-            this.license = license; No creo que sea necesario, porque la matrícula es única.
-        }*/
-        if (phone != null) {
+        if (phone != null){
+
             this.phone = phone;
         }
     }
 
 
 }
+
