@@ -88,6 +88,15 @@ public class ProfessionalService {
         }
     }
     
+    public void deleteProfessional(Long id) throws MyException {
+        Optional<Professional> response = professionalRepository.findById(id);
+        if (response.isPresent()) {
+            professionalRepository.delete(response.get());
+        } else {
+            throw new MyException("No se encontró un usuario con ese id.");
+        }
+    }
+    
     public void validate(String name, String lastName, String email, String password,
             String password2, MultipartFile file, String description, 
             String license, String phone) throws MyException {
