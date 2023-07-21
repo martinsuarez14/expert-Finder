@@ -43,7 +43,7 @@ public class TaskService {
         Optional<Task> response = taskRepository.findById(idTask);
         if (response.isPresent()) {
             Task task = response.get();
-            task.setStatus(StatusEnum.valueOf(newStatus));
+//            task.setStatus(StatusEnum.valueOf(newStatus));
             taskRepository.save(task);
         }
     }
@@ -61,9 +61,11 @@ public class TaskService {
         }
     }
     
+
     public List<Task> getTaskByStatus(Long idPro, String status) {
         return taskRepository.findTasksByProfessionalAndStatus(idPro, status);
     }
+
     
     private void validate(String description, Long id) throws MyException {
         if (description == null || description.isEmpty()) {

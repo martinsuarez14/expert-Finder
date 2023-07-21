@@ -17,18 +17,21 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Professional extends CustomUser{
+
     /*
     *   EL PROFESIONAL TIENE, EN LA LOCATION, COUNTRY = VISITANTE;
-    */
+     */
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
-    
+
     @Column(nullable = false)
     private String license;
-    
+
     @Column(nullable = false)
     private String phone;
+
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
@@ -52,8 +55,11 @@ public class Professional extends CustomUser{
             this.description = description;
         }
         if (phone != null){
+
             this.phone = phone;
         }
     }
 
+
 }
+

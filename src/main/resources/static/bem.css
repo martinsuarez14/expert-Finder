@@ -1,0 +1,291 @@
+/*Contenido general de la pagina*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+.url {
+    cursor: url(img/martilo.png), auto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.body {
+    background-image: url(./img/fondo_index.jpg);
+    background-repeat: none;
+    background-size: cover;
+}
+
+/*Contenido header*/
+.header {
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background-color: orange;
+    opacity: 0.9;
+    padding: 20px;
+}
+
+.header__logo {
+    display: flex;
+    width: 80px;
+    border-radius: 50px;
+    max-width: 15vw;
+    cursor: pointer;
+    transition: .3s ease all;
+    text-decoration: none;
+    color: #fff;
+
+}
+
+.header__img {
+    width: auto;
+    border-radius: 50px;
+    max-width: 100%;
+    cursor: pointer;
+    transition: .3s ease all;
+    text-decoration: none;
+    color: #fff;
+}
+
+.header__btn {
+    display: block;
+    height: 40px;
+    width: 100px;
+    justify-items: baseline;
+    text-align: center;
+    padding: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    background-color: black;
+}
+
+.header__a {
+    display: flex;
+    text-decoration: none !important;
+    color: #fff !important;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.header__btn--red {
+    display: block;
+    height: 40px;
+    width: 100px;
+    justify-items: baseline;
+    text-align: center;
+    padding: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    background-color: red;
+}
+
+/*Contenido btn_modal*/
+.boton__modal {
+    padding: 20px;
+    background-color: white;
+}
+
+.boton__modal label {
+    padding: 10px 15px;
+    background-color: #5488a3;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 30ms ease;
+}
+
+.boton__modal label:hover {
+    background-color: #185e83;
+}
+
+/*Contenido input checkbox modal*/
+#boton__modal--btn {
+    display: none;
+}
+
+/*Contenido modal*/
+.modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(144, 148, 150, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#boton__modal--btn:checked~.modal {
+    display: flex;
+}
+
+.modal__body {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    flex-direction: column;
+}
+
+.modal__body h3 {
+    flex-grow: 1;
+    margin-bottom: 15px;
+    text-align: center;
+
+}
+
+.modal__btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.modal__btn {
+    display: block;
+    height: 40px;
+    width: 100px;
+    justify-items: baseline;
+    text-align: center;
+    padding: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    background-color: black;
+}
+
+.modal__a {
+    display: flex;
+    text-decoration: none !important;
+    color: #fff !important;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.modal__footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal__footer label {
+    margin-top: 15px;
+    padding: 7px 7px;
+    background-color: #5488a3;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 30ms ease;
+}
+
+.modal__footer label:hover {
+    background-color: #185e83;
+}
+
+
+
+
+
+
+
+
+
+/*Contenido article*/
+.article {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20% 10%;
+    width: 600px;
+    margin-top: 90px;
+    margin-left: 20px;
+    box-shadow: 1px 1px 1px 10px black;
+
+}
+
+.article__h1 {
+    color: gray;
+    margin-bottom: .7rem;
+    text-transform: uppercase;
+
+}
+
+.article__h3 {
+    font-weight: bold;
+    letter-spacing: -.02em;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+
+}
+
+
+/* Formulario */
+
+.article__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    height: 600px;
+    width: 600px;
+    margin: 5% 20%;
+    border: solid black;
+
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    height: 600px;
+    width: 600px;
+    margin: 5% 20%;
+    border: solid black;
+}
+
+.form label{
+    color: black;
+    margin-bottom: .7rem;
+    text-transform: uppercase;
+}
+.form input{
+    border-radius: 5px;
+    background-color: #dbdbdb;
+}
+
+/*Contenido footer*/
+.footer {
+    position: fixed;
+    bottom: 0%;
+    margin-left: 20px;
+    width: 100%;
+    min-height: 5vh;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+/*Contenido modal*/

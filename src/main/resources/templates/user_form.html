@@ -5,35 +5,61 @@
     <title>Registrar Usuario</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{index.css}">
+    <link rel="stylesheet" th:href="@{bem.css}">
 </head>
 
 <body>
-    <header th:include="fragments/templates.html::header" class="header"></header>
-    <div class="form">
-        <div>Crear Usuario</div>
-        <br>
-        <form th:action="@{/register}" method="post" enctype="multipart/form-data">
-            <label>Nombre</label>
-            <input type="text" name="name" required /> <br>
-            <label>Apellido</label>
-            <input type="text" name="lastName" required /> <br>
-            <label>Email</label>
-            <input type="email" name="email" required /> <br>
-            <label>Password</label>
-            <input type="password" name="password" required /> <br>
-            <label>Repetir la contraseña</label>
-            <input type="password" name="password2" required /> <br>
-            <label>Foto de Perfil</label>
-            <input type="file" name="file" required /> <br>
-            <select name="role" required>
-                <option value="USER">Usuario</option>
-                <option value="PRO">Profesional</option>
-            </select>
-            <button type="submit">Enviar</button>
-        </form>
+    <div class="body">
+        <div class="header">
+            <div class="header__logo">
+                <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
+            </div>
+            <div class="modal__btns" th:if="${session.usuariosession == null}">
+                <div class="header__btn--red">
+                    <a class="header__a" th:href="@{/login}">
+                        Iniciar Sesion
+                    </a>
+                </div>
+                <div class="boton__modal">
+                    <label for="boton__modal--btn">
+                        Registrarse
+                    </label>
+                </div>
+            </div>
+            <div class="modal__btns" th:if="${session.usuariosession != null}">
+                <a th:href="@{/logout}" class="header__btn--red">
+                    <button>Salir</button>
+                </a>
+            </div>
+        </div>
+       
+        <form class="form" th:action="@{/register}" method="post" enctype="multipart/form-data">
+                <div class="article__h3">Crear Usuario</div>
+                <br>
+                <label>Nombre</label>
+                <input type="text" name="name" required /> <br>
+                <label>Apellido</label>
+                <input type="text" name="lastName" required /> <br>
+                <label>Email</label>
+                <input type="email" name="email" required /> <br>
+                <label>Password</label>
+                <input type="password" name="password" required /> <br>
+                <label>Repetir la contraseña</label>
+                <input type="password" name="password2" required /> <br>
+                <label>Foto de Perfil</label>
+                <input type="file" name="file" required /> <br>
+                <select name="role" required>
+                    <option value="USER">Usuario</option>
+                    <option value="PRO">Profesional</option>
+                </select>
+                <button class="header__btn--red" type="submit">Enviar</button>
+            </form>
+ 
+        <div class="footer">
+            &copy; 2021 Chacras Company Inc. All rights reserved
+        </div>
+        <!--<footer th:include="fragments/templates.html::footer"></footer>-->
     </div>
-<!--<footer th:include="fragments/templates.html::footer"></footer>-->
 </body>
 
 </html>
