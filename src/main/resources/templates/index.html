@@ -26,7 +26,7 @@
                 <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
             </div>
             <div class="modal__btns" th:if="${session.usuariosession == null}">
-                <div class="header__btn--red">
+                <div class="header__btn">
                     <a class="header__a" th:href="@{/login}">
                         Iniciar Sesion
                     </a>
@@ -76,7 +76,7 @@
                 <div class="modal__btns">
 
                     <div class="modal__btn">
-                        <a class="modal__a" th:href="@{/register}">
+                        <a class="modal__a" th:href="@{/register-user}">
                             Usuario
                         </a>
                     </div>
