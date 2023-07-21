@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    @Query("SELECT t FROM Task t JOIN t.professional p WHERE p.id = :professionalId AND t.status = :status")
-    List<Task> findTasksByProfessionalAndStatus(@Param("professionalId") Long professionalId, @Param("status") String status);
+//    @Query("SELECT t FROM Task t JOIN t.professional p WHERE p.id = :professionalId AND t.status = :status")
+//    List<Task> findTasksByProfessionalAndStatus(@Param("professionalId") Long professionalId, @Param("status") String status);
 }

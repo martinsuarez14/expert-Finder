@@ -30,10 +30,10 @@ public class TaskService {
             Professional professional = response.get();
             Task task = new Task(description);
 
-            List<Task> tasks = professional.getTasks();
+//            List<Task> tasks = professional.getTasks();
 
-            tasks.add(taskRepository.save(task));
-            professional.setTasks(tasks);
+//            tasks.add(taskRepository.save(task));
+//            professional.setTasks(tasks);
             professionalRepository.save(professional);
         }
 
@@ -61,9 +61,9 @@ public class TaskService {
         }
     }
     
-    public List<Task> getTaskByStatus(Long idpro, String status) {
-        return taskRepository.findTasksByProfessionalAndStatus(idpro, status);
-    }
+//    public List<Task> getTaskByStatus(Long idpro, String status) {
+//        return taskRepository.findTasksByProfessionalAndStatus(idpro, status);
+//    }
     
     private void validate(String description, Long id) throws MyException {
         if (description == null || description.isEmpty()) {

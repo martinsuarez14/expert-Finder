@@ -1,4 +1,12 @@
 /*Contenido general de la pagina*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+.url {
+    cursor: url(img/martilo.png), auto;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +16,7 @@
 }
 
 .body {
-    background-image: url(../static/img/fondo_index.jpg);
+    background-image: url(./img/fondo_index.jpg);
     background-repeat: none;
     background-size: cover;
 }
@@ -122,7 +130,8 @@
     align-items: center;
     z-index: 100;
 }
-#boton__modal--btn:checked ~ .modal{
+
+#boton__modal--btn:checked~.modal {
     display: flex;
 }
 
@@ -177,11 +186,12 @@
 
 }
 
-.modal__footer{
-display: flex;
-justify-content: flex-end;
+.modal__footer {
+    display: flex;
+    justify-content: flex-end;
 }
-.modal__footer label{
+
+.modal__footer label {
     margin-top: 15px;
     padding: 7px 7px;
     background-color: #5488a3;
@@ -230,6 +240,41 @@ justify-content: flex-end;
     overflow-wrap: anywhere;
     hyphens: auto;
 
+}
+
+
+/* Formulario */
+
+.article__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    height: 600px;
+    width: 600px;
+    margin: 5% 20%;
+    border: solid black;
+
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    height: 600px;
+    width: 600px;
+    margin: 5% 20%;
+    border: solid black;
+}
+
+.form label{
+    color: black;
+    margin-bottom: .7rem;
+    text-transform: uppercase;
+}
+.form input{
+    border-radius: 5px;
+    background-color: #dbdbdb;
 }
 
 /*Contenido footer*/
