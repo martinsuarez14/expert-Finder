@@ -52,7 +52,7 @@ public class HomeController {
             userService.createUser(name, lastName, email, password, password2, countryKey,
                 country, address, file);
             model.put("exito", "Usuario registrado.");
-            return "index.html";
+            return "redirect:/login";
         } catch (MyException e) {
             model.put("error", e.getMessage());
             return "user_form.html";
@@ -72,7 +72,7 @@ public class HomeController {
             professionalService.createProfessional(name, lastName, email, password, password2, 
                     address, file, email, lastName, name);
             model.put("exito", "Usuario registrado.");
-            return "index.html";
+            return "redirect:/login";
         } catch (MyException e) {
             model.put("error", e.getMessage());
             return "user_form.html";

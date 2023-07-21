@@ -9,6 +9,7 @@ import com.egg.expertfinder.enumeration.KeyEnum;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.repository.ProfessionalRepository;
 import com.egg.expertfinder.repository.UserRepository;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -88,6 +89,7 @@ public class ProfessionalService {
         }
     }
     
+    @Transactional
     public void deleteProfessional(Long id) throws MyException {
         Optional<Professional> response = professionalRepository.findById(id);
         if (response.isPresent()) {
@@ -127,5 +129,21 @@ public class ProfessionalService {
         if (phone == null || phone.isEmpty()) {
             throw new MyException("Debe ingresar su número de teléfono.");
         }
+    }
+
+    public Professional getProfessionalById(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<Professional> getAllProfessionals() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<Professional> getProfessionalsDeactivate() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<Professional> getProfessionalsActivate() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
