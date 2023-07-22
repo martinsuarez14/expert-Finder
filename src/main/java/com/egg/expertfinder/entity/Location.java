@@ -20,19 +20,16 @@ public class Location {
     private Long id;
 
     @Column(nullable = false)
-    private String city;
-
-    @Column(nullable = false)
     private String country;
 
     @Column(nullable = false, unique = true)
     private String address;
-    
-    public Location(String city, String country, String address) {
-        this.city = city;
+
+    public Location(String country, String address) {
         this.country = country;
         this.address = address;
     }
+<<<<<<< HEAD
     
     public void updateLocation(String city, String country, String address) {
 
@@ -48,11 +45,18 @@ public class Location {
         if (city != null) {
             this.city = city;
         }
+=======
+
+    public void updateLocation(String country, String address) {
+>>>>>>> f76c388ae542fc6f53dc2667c957735208ba0f8d
         if (country != null) {
             this.country = country;
         }
         if (address != null) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> f76c388ae542fc6f53dc2667c957735208ba0f8d
             this.address = address;
         }
     }

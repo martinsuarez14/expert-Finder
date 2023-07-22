@@ -1,20 +1,28 @@
 <!--Header-->
 <div th:fragment="header">
   <header class="header">
-    <div class="logo">
-      <a th:href="@{/}"><img th:src="@{./img/Logo_Chacras.jpg}" alt="Logo"></a>
+    <div class="header__logo">
+        <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
     </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="">Podemos ayudarte?</a></li>
-        <li><a href="">Obras en marcha</a></li>
-      </ul>
-    </nav>
-    <div class="navBtns">
-      <a href="" class="btn"><button>LogIn</button></a>
-      <a th:href="@{/register}" class="btn"><button id="signIn">Sign In</button></a>
+    <div class="modal__btns" th:if="${session.usuariosession == null}">
+        <div class="header__btn--red">
+            <a class="header__a" th:href="@{/login}">
+                Iniciar Sesion
+            </a>
+        </div>
+        <div class="boton__modal">
+            <label for="boton__modal--btn">
+                Registrarse
+            </label>
+        </div>
     </div>
-  </header>
+    <div class="modal__btns" th:if="${session.usuariosession != null}">
+        <a th:href="@{/logout}" class="header__btn--red">
+            <button>Salir</button>
+        </a>
+    </div>
+</header>
+
 </div>
 <!--Footer-->
 <div th:fragment="footer">

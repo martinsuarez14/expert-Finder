@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html  lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Error 404</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{error_404.css}"/>
+    </head>
+    <body>
+        <header>
+            <div class="head-text">
+                <p>404 Not Found</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="main-wrapper">
+                <picture class="scarecrow-img">
+                    <img src="https://raw.githubusercontent.com/nat-oku/devchallenges/main/Scarecrow.png" alt="scarecrow">
+                </picture>
+                <div class="error-text">
+                    <h2>Tenemos malas noticias</h2>
+                    <p>La página a la que estás intentando acceder no existe o está en mantenimiento.</p>
+                    <span class="input-group-btn">
+                        <a th:href="@{/home}"><button class="btn" type="button">Volver al Inicio</button></a>
+                    </span>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p><i class="far fa-copyright"></i> &copy;Chacras Finder</p>
+        </footer>
+
+    </body>
+</html>
