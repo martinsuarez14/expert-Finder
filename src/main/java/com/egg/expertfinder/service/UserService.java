@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private LocationService locationService;
 
@@ -39,11 +39,11 @@ public class UserService implements UserDetailsService {
 //  Creamos un USER
     @Transactional
     public void createUser(String name, String lastName, String email, String password,
-            String password2, String countryKey, String country, String address, 
+            String password2, String countryKey, String country, String address,
             MultipartFile file) throws MyException {
 
         validate(name, lastName, email, password, password2, countryKey, file);
-
+        
         if (userRepository.findCustomUserByEmail(email) != null) {
             throw new MyException("Ya existe un usuario con ese email.");
         }
@@ -52,10 +52,10 @@ public class UserService implements UserDetailsService {
 
         user.setPassword(new BCryptPasswordEncoder().encode(password));
 
-        Location location = locationService.createLocation(country, address);
-        
+        Location location = locationService.createLocation(validateCountryKey(countryKey), address);
+
         user.setLocation(location);
-        
+
         Image image = imageService.createImage(file);
 
         user.setImage(image);
@@ -136,7 +136,6 @@ public class UserService implements UserDetailsService {
 //  Validamos que lleguen los datos necesarios para crear un User
     private void validate(String name, String lastName, String email, String password,
             String password2, String countryKey, MultipartFile file) throws MyException {
-
         if (name == null || name.isEmpty()) {
             throw new MyException("El nombre no debe estar vacío.");
         }
@@ -155,14 +154,35 @@ public class UserService implements UserDetailsService {
         if (countryKey == null || countryKey.isEmpty()) {
             throw new MyException("Debe ingresar la clave del Barrio.");
         }
-        if (!countryKey.equalsIgnoreCase(KeyEnum.BARRIO1.toString())
-                || !countryKey.equalsIgnoreCase(KeyEnum.BARRIO2.toString())
-                || !countryKey.equalsIgnoreCase(KeyEnum.BARRIO3.toString())) {
-            throw new MyException("La clave del barrio es incorrecta.");
-        }
         if (file == null) {
             throw new MyException("Debe ingresar una imagen de perfil.");
         }
+    }
+
+    private String validateCountryKey(String countryKey) throws MyException {
+
+        String[] claves = new String[3];
+
+        claves[0] = KeyEnum.BARRIO1.toString();
+        claves[1] = KeyEnum.BARRIO2.toString();
+        claves[2] = KeyEnum.BARRIO3.toString();
+
+        int count = 0;
+
+        for (int i = 0; i < claves.length; i++) {
+
+            boolean flag = claves[i].equals(countryKey);
+
+            if (claves[i].equals(countryKey)) {
+                break;
+            } else {
+                count++;
+            }
+        }
+        if (count == 3) {
+            throw new MyException("La contraseña del barrio es incorrecta.");
+        }
+        return countryKey;
     }
 
     @Override

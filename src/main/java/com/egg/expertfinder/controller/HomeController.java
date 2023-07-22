@@ -46,7 +46,7 @@ public class HomeController {
     @PostMapping("/register-user")
     public String registerUser(@RequestParam String name, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password, @RequestParam String password2,
-            @RequestParam String countryKey, @RequestParam String country, 
+            @RequestParam String countryKey, @RequestParam(required = false) String country, 
             @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
         try {
             userService.createUser(name, lastName, email, password, password2, countryKey,
@@ -75,7 +75,7 @@ public class HomeController {
             return "redirect:/login";
         } catch (MyException e) {
             model.put("error", e.getMessage());
-            return "user_form.html";
+            return "professional_form.html";
         }
     }
 
@@ -90,7 +90,6 @@ public class HomeController {
         } else {
             return "home.html";
         }
-
     }
 
 }

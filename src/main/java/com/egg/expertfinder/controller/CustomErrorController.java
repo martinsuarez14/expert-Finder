@@ -16,12 +16,12 @@ public class CustomErrorController implements ErrorController {
 
     @RequestMapping("/error/403")
     public String handle403Error() {
-        return "error_403.html";
+        return "error_403";
     }
 
     @RequestMapping("/error/404")
     public String handle404Error() {
-        return "error_404.html";
+        return "error_404";
     }
 
     public String getErrorPath() {

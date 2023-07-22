@@ -17,8 +17,8 @@ public class LocationService {
     @Transactional
     public Location createLocation(String country, String address) throws MyException {
 
-        validate(country, address);
-
+        validate(address);
+        
         Location location = new Location(country, address);
 
         return locationRepository.save(location);
@@ -45,10 +45,7 @@ public class LocationService {
         }
     }
 
-    private void validate(String country, String address) throws MyException {
-        if (country == null || country.isEmpty()) {
-            throw new MyException("Debe ingresar el country al que pertenece.");
-        }
+    private void validate(String address) throws MyException {
         if (address == null || address.isEmpty()) {
             throw new MyException("Debe ingresar la dirección.");
         }
