@@ -1,0 +1,143 @@
+.main {
+    display: flex;
+    
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    /*position: fixed;*/
+    left: 0;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+/* icons */
+.sidebar i {
+    margin-right: 8px; /* Espacio entre el icono y el texto "Administrador" */
+    font-size: 24px; /* Tamaño del icono */
+    color: #FF7218; /* Color del icono */
+}
+/* Animaciones de sidebareeee */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    display: block;
+}
+
+/* Animación de cambio de color al pasar el ratón por encima */
+.sidebar a:hover {
+    background-color: #FF7218;
+}
+
+/* btn boton salir  */
+.salir-btn {
+    background-color: #FF7218;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; 
+    margin-top: auto; 
+}
+/* li columna dondebse encuntra Botom salir */
+.salir-li {
+    margin-top: auto;
+    display: flex;
+    justify-content: center; 
+}
+
+.salir-btn:hover {
+    background-color: black; 
+}
+
+
+
+
+
+/* Estilos para el contenido principal */
+.contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*margin-left: 250px;  Ancho de la barra lateral */
+    padding: 20px;
+    width: 100%;
+    background-image: url(/img/locofinder.jpg);
+}
+
+
+/* ACA FUNCIONAMIENTO DE LA TABLA */
+.bodycolumna {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    /*height: 100vh;*/
+}
+
+
+/* titulo tabla */
+.titulotabla{
+  background-color: linear-gradient;
+  font-size: 24px;
+  color: #FF7218;
+  margin-bottom: 20px;
+  transition: color.3s ease-in-out;
+
+}
+.titulotabla:hover {
+    color: black; 
+}
+
+.container-usuarios {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.tabla-usuarios {
+    border-collapse: collapse;
+    width: 100%;
+ 
+}
+
+.tabla-usuarios th,
+.tabla-usuarios td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid white;
+    font-size: 18px;
+    
+}
+
+.tabla-usuarios th {
+    background-color: #FF7218;
+    color: white;
+}
+
+.tabla-usuarios tr{
+    background-color: rgb(40,45,48);
+}
+
+.tabla-usuarios td {
+    color: white;
+}

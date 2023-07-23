@@ -17,7 +17,12 @@ public class AdminController {
     private UserService userService;
     
     @GetMapping("/dashboard")
-    public String dashboard() {
+    public String dashboard(ModelMap model) {
+        
+        List<CustomUser> users = userService.getAllUsers();
+        
+        model.addAttribute("users", users);
+        
         return "panel.html";
     }
     
