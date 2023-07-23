@@ -1,5 +1,6 @@
 package com.egg.expertfinder.service;
 
+import com.egg.expertfinder.entity.Image;
 import com.egg.expertfinder.entity.Job;
 import com.egg.expertfinder.exception.MyException;
 import java.util.List;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import com.egg.expertfinder.repository.JobRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class JobService {
@@ -15,13 +17,20 @@ public class JobService {
     @Autowired
     private JobRepository jobRepository;
     
+    @Autowired
+    private ImageService imageService;
+    
     @Transactional
-    public void createJob(String name) throws MyException {
-        validate(name);
+    public void createJob(String name, MultipartFile file) throws MyException {
+        validate(name, file);
         if (jobRepository.findJobByName(name) != null) {
             throw new MyException("Ya existe este servicio");
         }
         Job job = new Job(name);
+        
+        Image image = imageService.createImage(file);
+        
+        job.setImage(image);
         
        jobRepository.save(job);
     }
@@ -60,10 +69,12 @@ public class JobService {
         }
     }
     
-    private void validate(String name) throws MyException {
-        if(name == null || name.isEmpty()) {
+    private void validate(String name, MultipartFile file) throws MyException {
+        if (name == null || name.isEmpty()) {
             throw new MyException("El nombre del servicio no puede estar vacio.");
-            
+        }
+        if (file == null) {
+            throw new MyException("Debe ingresar una imagen para identificar al Servicio.");
         }
     }
 }

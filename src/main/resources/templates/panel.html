@@ -2,11 +2,99 @@
 
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
+        <title>Dashboard - Administrador</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/bem.css}"/>
+        <link rel="stylesheet" th:href="@{/panel.css}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     </head>
     <body>
-        <div>ADMINNNNNN</div>
+        <!--HEADER-->
+        <div class="header">
+            <div class="header__logo">
+                <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
+            </div>
+            <div class="modal__btns" th:if="${session.usersession == null}">
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/login}">
+                        Iniciar Sesion
+                    </a>
+                </div>
+                <div class="boton__modal">
+                    <label for="boton__modal--btn">
+                        Registrarse
+                    </label>
+                </div>
+            </div>
+            <div class="modal__btns" th:if="${session.usuariosession != null}">
+                <a th:href="@{/logout}" class="header__btn--red">
+                    <button>Salir</button>
+                </a>
+            </div>
+        </div>
+
+        <!--Main-->
+        <main class="main">
+            <div class="sidebar">
+                <!-- Contenido de la barra lateral  en ul espacop etiqueta a para ingresar las paginas a redireccionar-->
+                <br>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-user-shield fa-2xs"></i>Usuarios Registrados</a></li>
+                    <br>
+                    <li><a href="#"><i class="fa-solid fa-id-card fa-2xs"></i>Comentarios Reportados</a></li>
+                    <br>
+                    <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xs"></i>Solicitudes de Profesionales</a></li>
+                    <br>
+                    <li><a href="#"><i class="fa-solid fa-box-open fa-xs"></i>Usuarios Desactivados</a></li>
+                    <br>
+                    <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
+                </ul>
+                <!--<br>-->
+            </div>
+            <div class="contenido">
+                <div class="bodycolumna">
+                    <h1 class="titulotabla">Usuarios Registrados</h1>
+                    <div class="container-usuarios">
+                        <table class="tabla-usuarios">
+                            <thead>
+                                <tr>
+                                    <!-- Primera Fila -->
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Email</th>
+                                    <th>Estado</th>
+                                </tr>    
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- Tercera Fila -->
+                                    <td>Ejemplo0</td>
+                                    <td>Ejemplo1</td>
+                                    <td>Ejemplo2</td>
+                                    <td>Ejemplo3</td>
+                                </tr>
+                                <tr>
+                                    <!-- Cuarta fila -->
+                                    <td>Ejemplo0</td>
+                                    <td>Ejemplo1</td>
+                                    <td> Ejemplo2</td>
+                                    <td>Ejemplo3</td>
+                                </tr>
+                                <tr th:each="user : ${users}">
+                                    <td th:text="${user.name}"></td>
+                                    <td th:text="${user.lastName}"></td>
+                                    <td th:text="${user.email}"></td>
+                                    <td th:text="${user.active}"></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
     </body>
 </html>
