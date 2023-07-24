@@ -97,11 +97,11 @@ body {
     transition: all 0.3s ease; /* Transición suave */
 }
 .header__btn:hover {
-    background-color: #FFDAB9; /* Cambia el fondo al pasar el mouse */
+    background-color: #ff7217; /* Cambia el fondo al pasar el mouse */
 }
 
 .header__btn--back {
-    background-color: #2d1e3b; /* Fondo naranja */
+    /* background-color: #2d1e3b; Fondo naranja */
     border: none; /* Sin borde */
     border-radius: 4px; /* borde redondeado */
     color: #FFFFFF; /* Texto en blanco */
@@ -110,9 +110,6 @@ body {
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
     transition: all 0.3s ease; /* Transición suave */
 }
-.header__btn--back:hover {
-    background-color: #291736; /* Cambia el fondo al pasar el mouse */
-}
 
 .header__a {
     display: flex;
@@ -120,7 +117,7 @@ body {
     color: #fff !important;
     justify-content: center;
     text-align: center;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 
 }
 
@@ -138,9 +135,10 @@ body {
     background-color: red;
 }
 
-/*Contenido btn_modal*/
+/* Contenido btn_modal/ */
 .boton__modal {
-    padding: 10px;
+    padding: 20px;
+    /* /background-color: white;/ */
     color: black;
 }
 
@@ -150,8 +148,9 @@ body {
     padding: 10px;
     background-color: #2A3A5B;
     color: white;
-    text-decoration: none;
     border-radius: 4px;
+    cursor: pointer;
+    transition: all 30ms ease;
 }
 
 .boton__modal label {
@@ -163,16 +162,16 @@ body {
     transition: all 30ms ease;
 }
 
-.boton__modal label:hover, .boton__modal a:hover {
+.boton__modal:hover a, .boton__modal:hover label {
     background-color: #185e83;
 }
 
-/*Contenido input checkbox modal*/
+/* /Contenido input checkbox modal/ */
 #boton__modal--btn {
     display: none;
 }
 
-/*Contenido modal*/
+/* /Contenido modal/ */
 .modal {
     width: 100%;
     height: 100vh;
@@ -194,18 +193,17 @@ body {
     display: flex;
     width: 100%;
     max-width: 400px;
-    height: 200px;
-    padding: 2%;    
-    justify-content: space-between;
+    height: auto;
+    padding: 20px;
+    background-color: #fff;
     border-radius: 4px;
     flex-direction: column;
 }
 
 .modal__body h3 {
+    flex-grow: 1;
+    margin-bottom: 15px;
     text-align: center;
-    justify-content: center;
-    height: 30px;
-    text-transform: uppercase;
 
 }
 
@@ -216,16 +214,47 @@ body {
     padding: 5px;
 }
 
+.modal__btn {
+    display: block;
+    height: 40px;
+    width: 100px;
+    justify-items: baseline;
+    text-align: center;
+    padding: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    background-color: black;
+}
 
+.modal__a {
+    display: flex;
+    text-decoration: none !important;
+    color: #fff !important;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
 
-
+}
 
 .modal__footer {
     display: flex;
     justify-content: flex-end;
 }
 
+.modal__footer label {
+    padding: 7px 7px;
+    background-color: #5488a3;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 30ms ease;
+}
 
+.modal__footer label:hover {
+    background-color: #185e83;
+}
 
 
 

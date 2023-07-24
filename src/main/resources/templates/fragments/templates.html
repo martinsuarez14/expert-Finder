@@ -19,40 +19,16 @@
         <a th:href="@{/logout}">
             Salir
         </a>
-      </div>
-      <!-- <div class="header__btn">
-        <label class="header__a" for="boton__modal--btn">
-          Registrarse
-        </label>
-      </div> -->
     </div>
-    
-    <div class="modal">
-      <div class="modal__body">
-          <h3>Bienvenido!</h3>
-          <div class="modal__btns">
+    <!-- <div class="header__btn">
+        <label class="header__a" for="boton__modal--btn">
+            Registrarse
+        </label>
+        </div> -->
+    </div>
 
-              <div class="header__btn">
-                  <a class="header__a" th:href="@{/register-user}">
-                      Usuario
-                  </a>
-              </div>
-              <div class="header__btn">
-                  <a class="header__a" th:href="@{/register-professional}">
-                      Trabajador
-                  </a>
-              </div>
-          </div>
-          <div class="modal__footer">
-              <div class="header__btn--back">
-                  <label class="header__a" for="boton__modal--btn">
-                      volver
-                  </label>
-              </div>
-          </div>
-      </div>
-  </div>
-  </header>
+    
+</header>
 
 
 <!--Footer-->
@@ -112,16 +88,16 @@
 <!-- Form de login -->
 <div th:fragment="form">
 
-  <div class="container--form">
-    <form class="form" th:action="@{/logincheck}" method="post">
-      <h2 class="form__head">Ingresar</h2>
-      <label class="form__label">Email</label><br>
-      <input class="form__input" type="email" name="email" required placeholder="email" /><br>
-      <label class="form__label">Password</label><br>
-      <input class="form__input" type="password" name="password" required placeholder="password" /><br>
-      <div class="form__btn">
-        <button class="header__btn" type="submit">Iniciar Sesión</button>
-      </div>
-    </form>
-  </div>
+    <div class="container--form">
+        <form class="form" th:action="@{/logincheck}" method="post">
+            <h2 class="form__head">Ingresar</h2>
+            <label class="form__label">Email</label><br>
+            <input class="form__input" type="email" name="email" required placeholder="email" /><br>
+            <label class="form__label">Password</label><br>
+            <input class="form__input" type="password" name="password" required placeholder="password" /><br>
+            <div class="form__btn">
+                <button class="header__btn" type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
 </div>

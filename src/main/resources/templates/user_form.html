@@ -9,17 +9,10 @@
    
 </head>
 
-<<<<<<< HEAD
     <body>
         <header th:replace="/fragments/templates.html :: header"></header>
 
         <div class="body">
-=======
-<body>
-    <div class="body">
-        <header th:include="fragments/templates.html::header"></header>
-        <div class="container--form">
->>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
 
             <form class="form" th:action="@{/register-user}" method="post" enctype="multipart/form-data">
                 <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
