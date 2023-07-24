@@ -5,24 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{bem.css}">
+    <link rel="stylesheet" th:href="@{login.css}">
     <title>Login</title>
 </head>
 
-<<<<<<< HEAD
     <body>
         
         <header th:replace="/fragments/templates.html :: header"></header>
 
-        <!--    <div class="body">
-        
-                <form class="form" th:action="@{/logincheck}" method="post">
-                    <label>Email</label>
-                    <input type="email" name="email" required /> <br>
-                    <label>Password</label>
-                    <input type="password" name="password" required /> <br>
-                    <button class="modal__btn" type="submit">Iniciar Sesión</button>
-                </form>
-            </div>-->
+        <!-- MODAL -->
+        <div class="modal">
+            <div class="modal__body">
+                <h3>Bienvenido!</h3>
+                <div class="modal__btns">
+
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/register-user}">
+                            Usuario
+                        </a>
+                    </div>
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/register-professional}">
+                            Trabajador
+                        </a>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <div class="header__btn--back">
+                        <label class="header__a" for="boton__modal--btn">
+                            volver
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <main class="body-login">
             <div class="container">
                 <form th:action="@{/logincheck}" method="post" class="form-login">
@@ -39,18 +58,11 @@
                 </form> 
             </div>
         </main>
+
+        
+
         
         <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
     </body>
-=======
-<body>
-    <header th:include="fragments/templates.html::header"></header>
-
-    <div th:include="fragments/templates.html::form"></div>
-
-
-    <footer th:include="fragments/templates.html::footer"></footer>
-</body>
->>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
 
 </html>

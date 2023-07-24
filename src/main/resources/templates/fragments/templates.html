@@ -1,5 +1,4 @@
 <!--Header-->
-<<<<<<< HEAD
 <header class="header">
     <a th:href="@{/home}" class="header__logo">
         <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
@@ -19,39 +18,44 @@
     <div class="boton__modal" th:if="${session.usersession != null}">
         <a th:href="@{/logout}">
             Salir
-=======
-<div th:fragment="header">
-
-  <header class="header">
-    <div class="header__logo">
-      <a ref="/index.html">
-        <img class="header__img" th:src="@{/img/logo-pestaña.jpeg}" alt="Not Found">
-      </a>
-    </div>
-    <div class="header__btns" th:if="${session.usuariosession == null}">
-      <div class="header__btn">
-        <a class="header__a" th:href="@{/login}">
-          Iniciar Sesion
->>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
         </a>
       </div>
-      <div class="header__btn">
+      <!-- <div class="header__btn">
         <label class="header__a" for="boton__modal--btn">
           Registrarse
         </label>
-      </div>
-      
-      <div class="header__btn" th:if="${session.usuariosession != null}">
-        <a th:href="@{/logout}" class="header__btn">
-          <button>Salir</button>
-        </a>
-      </div>
+      </div> -->
     </div>
+    
+    <div class="modal">
+      <div class="modal__body">
+          <h3>Bienvenido!</h3>
+          <div class="modal__btns">
+
+              <div class="header__btn">
+                  <a class="header__a" th:href="@{/register-user}">
+                      Usuario
+                  </a>
+              </div>
+              <div class="header__btn">
+                  <a class="header__a" th:href="@{/register-professional}">
+                      Trabajador
+                  </a>
+              </div>
+          </div>
+          <div class="modal__footer">
+              <div class="header__btn--back">
+                  <label class="header__a" for="boton__modal--btn">
+                      volver
+                  </label>
+              </div>
+          </div>
+      </div>
+  </div>
   </header>
 
 
 <!--Footer-->
-<<<<<<< HEAD
 <footer th:fragment="footer">
     <!--  <section class="followUs">
     
@@ -101,56 +105,6 @@
     <div class="derechos">
         <p>Copyright@2023DerechosReservadosExpertFinder</p>
     </div>
-=======
-<!--  <section class="followUs">
-  
-  <div class="anuncio">
-    <a th:href="@{/}"><img th:src="@{./img/logo.jpeg}" alt="Logo"></a>
-    <p>ExpertFinder</p>
-  </div>
-  
-  <div class="redes">
-    <ul>
-      <span class="fb"><i class="fa-brands fa-square-facebook fa-sm"></i></span>
-      <span class="tw"><i class="fa-brands fa-square-twitter fa-sm"></i></span>
-      <span class="gl"><i class="fa-brands fa-google fa-sm"></i></span>
-      <span class="in"><i class="fa-brands fa-instagram fa-sm"></i></span>
-      <span class="li"><i class="fa-brands fa-linkedin"></i></span>
-      <ul>
-      </div>
-    </section>-->
-
-
-<footer th:fragment="footer">
-  <div class="footer">
-
-    <div class="footer__sections">
-      <div class="footer__section">
-        <h2 class="footer__h2">Compañia</h2>
-        <ul class="footer__ul">
-          <a class="footer__a" href="#">Contacto</a>
-          <a class="footer__a" href="#">Home</a>
-          <a class="footer__a" href="#">Nosotros</a>
-          <a class="footer__a" href="#">Politica</a>
-          <a class="footer__a" href="#">Condiciones y servicios</a>
-        </ul>
-      </div>
-      <div class="footer__section">
-        <h2 class="footer__h2">Servicios</h2>
-        <ul class="footer__ul">
-          <a class="footer__a" href="#">Reseñas</a>
-          <a class="footer__a" href="#">Imagenes</a>
-          <a class="footer__a" href="#">Colaboradores</a>
-          <a class="footer__a" href="#">Profesionales</a>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer__right">
-      <p>Copyright@2023DerechosReservadosExpertFinder</p>
-    </div>
-  </div>
->>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
 
 </footer>
 

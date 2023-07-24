@@ -13,14 +13,14 @@ Contenido general de la pagina
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-
+/* 
 body {
     display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
     background: url(./img/locofinder.jpg) no-repeat center center fixed;
     background-size: cover;
-}
+} */
 .container{
     align-items: center;
     justify-content: center;
@@ -29,28 +29,16 @@ body {
 /*ESTILOS HEADER*/
 .header {
     display: flex;
-    width: auto;
+    max-width: 100%;
     justify-content: space-between;
     align-items: center;
-<<<<<<< HEAD
     height: 80px;
-    /*background-color: orange;*/
     opacity: 0.9;
-    padding: 20px;
+    padding: 10px;
     z-index: 5;
     background-color: #ff7217;
     border-bottom: 2px solid black;
-=======
-    height: 60px;
-    background-color: orange;
-    opacity: 0.9;
-    padding: 20px; background: #e65c00;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f9d52377, #e65c009e);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f9d52377, #e65c009e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
->>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
 }
-
 
 .header__logo {
     display: flex;
@@ -127,7 +115,6 @@ body {
 }
 
 .header__a {
-<<<<<<< HEAD
     display: flex;
     text-decoration: none !important;
     color: #fff !important;
@@ -153,8 +140,7 @@ body {
 
 /*Contenido btn_modal*/
 .boton__modal {
-    padding: 20px;
-    /*background-color: white;*/
+    padding: 10px;
     color: black;
 }
 
@@ -162,18 +148,15 @@ body {
     color: white;
     text-decoration: none;
     padding: 10px;
-    background-color: #5488a3;
-=======
-    padding: 10px 15px;
->>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
+    background-color: #2A3A5B;
     color: white;
     text-decoration: none;
+    border-radius: 4px;
 }
 
-<<<<<<< HEAD
 .boton__modal label {
     padding: 10px;
-    background-color: #5488a3;
+    background-color: #2A3A5B;
     color: white;
     border-radius: 4px;
     cursor: pointer;
@@ -183,12 +166,6 @@ body {
 .boton__modal label:hover, .boton__modal a:hover {
     background-color: #185e83;
 }
-=======
-
-
-
-
->>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
 
 /*Contenido input checkbox modal*/
 #boton__modal--btn {

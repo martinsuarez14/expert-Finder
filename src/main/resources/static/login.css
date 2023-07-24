@@ -13,7 +13,7 @@ body {
 .body-login {
     font-family: Arial, sans-serif;
     padding: 50px;
-    background-image: url(./img/fondo_index.jpg);
+    /* background-image: url(./img/fondo_index.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -39,6 +39,8 @@ body {
 
 .form-group {
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .label-email, .label-contraseña {
@@ -49,7 +51,7 @@ body {
 input[type="email"],
 input[type="password"] {
     padding: 10px;
-    width: 100%;
+    /* width: 100%; */
     border: 1px solid #cccccc;
     border-radius: 4px;
 }
@@ -81,9 +83,6 @@ button[type="submit"]:focus {
     margin: 0;
     list-style: none;
 }
-
-
-
 
 .footer .followUs {
     display: flex;
