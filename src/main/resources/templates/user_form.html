@@ -14,26 +14,27 @@
         <div>Crear Usuario</div>
         <br>
         <form action="/register" method="post" enctype="multipart/form-data">
-            <label>Nombre</label>
+            <label>Nombre:</label><br>
             <input type="text" name="name" required /> <br>
-            <label>Apellido</label>
+            <label>Apellido:</label><br>
             <input type="text" name="lastName" required /> <br>
-            <label>Email</label>
+            <label>Email:</label><br>
             <input type="email" name="email" required /> <br>
-            <label>Password</label>
+            <label>Password:</label><br>
             <input type="password" name="password" required /> <br>
-            <label>Repetir la contraseña</label>
+            <label>Repetir la contraseña:</label><br>
             <input type="password" name="password2" required /> <br>
-            <label>Foto de Perfil</label>
+            <label>Foto de Perfil:</label><br>
             <input type="file" name="file" required /> <br>
+            <label>Rol:</label><br>
             <select name="role" required>
                 <option value="USER">Usuario</option>
                 <option value="PRO">Profesional</option>
             </select>
+            </select><br>
             <button type="submit">Enviar</button>
         </form>
     </div>
 <!--<footer th:include="fragments/templates.html::footer"></footer>-->
 </body>
-
 </html>

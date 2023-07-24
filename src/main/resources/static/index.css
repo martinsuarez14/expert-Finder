@@ -5,10 +5,6 @@
   display: none;
 }
 
-.url {
-  cursor: url(img/martilo.png), auto;
-}
-
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -16,7 +12,9 @@
 }
 
 body {
-  background-image: url(./img/flor_backGround.jpg);
+  background-image: url("./img/construccion.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   color: black;
 }
 
@@ -34,7 +32,7 @@ body {
     "footer footer footer";
 }
 
-.contenedor>div,
+.contenedor > div,
 .contenedor .contenido,
 .contenedor .sidebar {
   padding: 20px;
@@ -48,26 +46,23 @@ body {
   align-items: center;
   padding: 25px;
   height: 40px;
-  background-color: #ff7217;
+  background-color: #333;
   grid-area: header;
   flex-grow: 1;
-  border-bottom: 2px solid black;
 }
 
 .header .logo {
   display: flex;
-  clip-path: inset(0 0 20px 0);
+  /*clip-path: inset(0 0 20px 0);
   /*<---- Propiedad para cortar la parte de abajo de la imagen y que pueda verse mas grande*/
   cursor: pointer;
   margin-left: 10px;
   align-content: center;
-  border-radius: 50px;
 }
 
 .header .logo img {
-  height: 120px;
-  width: auto;
-  border-radius: 50% 50% 0 0;
+  height: 100%;
+  /*border-radius: 50% 50% 0 0;*/
   transition: all 0.3s;
 }
 
@@ -131,7 +126,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url(./img/gotaDeAgua.jpg);
 }
 
 .contenido h1 {
@@ -156,7 +150,7 @@ body {
 
 .contenedor .sidebar {
   grid-column: 3/4;
-  background: #ff7217;
+  background: #333;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -263,29 +257,47 @@ body {
 .form {
   margin: 0 auto;
   margin-top: 30px;
-  width: 50%;
+  width: 35%;
   min-width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: #ff7217;
-  border-radius: 2px;
+  flex-direction: column;
+  background-color: #333;
+  color: #ff7217;
+  border-radius: 10px;
   padding: 10px;
+}
+.form form input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+}
+.form form input:focus {
+  outline: none;
+}
+.form form select {
+  padding-right: 10px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+}
+
+.form form select::-ms-expand {
+  display: none;
 }
 
 /*Footer*/
 .footer {
   display: flex;
-  background-color: rgb(255, 114, 23);
+  background-color: #333;
   grid-area: footer;
   width: auto;
   margin: 0;
   list-style: none;
 }
-
-
-
 
 .footer .followUs {
   display: flex;
@@ -293,12 +305,10 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  width: 35%;
+  width: 100%;
   min-width: 25%;
-  border: 1px solid;
-
 }
-.footer .followUs .anuncio a{
+.footer .followUs .anuncio a {
   display: flex;
   max-width: 50px;
 }
@@ -315,97 +325,28 @@ body {
   font-size: smaller;
 }
 
-.footer .followUs .redes ul{
+.footer .followUs .redes ul {
   justify-content: space-between;
 }
 .footer .followUs .redes {
   margin-top: 10px;
 }
 
-.footer .redes .fb {
-  background-color: blue;
-  padding: 8px;
+.footer .redes span {
+  padding: 10px;
   border-radius: 50px;
   color: white;
 }
-
-.footer .redes .tw {
-  background-color: rgb(0, 140, 255);
-  padding: 8px;
-  border-radius: 50px;
-  color: white;
-}
-
-.footer .redes .gl {
-  background-color: rgb(230, 186, 5);
-  padding: 8px;
-  border-radius: 50px;
-  color: white;
-}
-
-.footer .redes .in {
-  background-color: rgb(244, 2, 209);
-  padding: 8px;
-  border-radius: 50px;
-  color: white;
-}
-
-.footer .redes .li {
-  background-color: rgb(10, 102, 194);
-  padding: 8px;
-  border-radius: 50px;
-  color: white;
-}
-
-
 
 .footer .followUs .anuncio p {
   font-size: 18px;
   color: white;
 }
 
-.footer .company {
-  display: flex;
-  flex-direction: row;
-
-}
-
-
-.footer .company div {
-  text-align: center;
-  padding: 0 15px;
-}
-
-.footer .company div h2 {
-  color: rgb(20, 19, 19);
-  padding: 10px 0;
-}
-
-.footer .company a {
-  color: white;
-  text-decoration: none;
-  padding: 5px;
-}
-
-.footer .company .F {
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer .company .I {
-  background-color: none;
-  border: solid 2px white;
-  padding: 10px;
-}
-
 .derechos {
-  position: fixed;
-  bottom: 0;
-  right: 0;
   height: 20px;
   flex-flow: column;
   justify-content: center;
-  background-color: rgb(44, 26, 44);
   color: white;
 }
 
