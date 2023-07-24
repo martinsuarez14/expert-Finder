@@ -12,8 +12,10 @@ body {
 
 .body-login {
     font-family: Arial, sans-serif;
-    margin: 100px auto;
-    padding: 0;
+    padding: 50px;
+    background-image: url(./img/fondo_index.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {

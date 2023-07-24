@@ -10,7 +10,8 @@
     </head>
 
     <body>
-        <header th:include="fragments/templates.html::header" class="header"></header>
+        
+        <header th:replace="/fragments/templates.html :: header"></header>
 
         <!--    <div class="body">
         
@@ -39,7 +40,7 @@
             </div>
         </main>
         
-        <footer th:include="fragments/templates.html :: footer" class="footer"></footer>
+        <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
     </body>
 
 </html>

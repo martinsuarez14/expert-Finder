@@ -10,32 +10,9 @@
     </head>
 
     <body>
-        <div class="body">
-            <div class="header">
-                <div class="header__logo">
-                    <a class="header__a" th:href="@{/}">
-                        <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
-                    </a>
+        <header th:replace="/fragments/templates.html :: header"></header>
 
-                </div>
-                <div class="modal__btns" th:if="${session.usuariosession == null}">
-                    <div class="header__btn--red">
-                        <a class="header__a" th:href="@{/login}">
-                            Iniciar Sesion
-                        </a>
-                    </div>
-                    <div class="boton__modal">
-                        <label for="boton__modal--btn">
-                            Registrarse
-                        </label>
-                    </div>
-                </div>
-                <div class="modal__btns" th:if="${session.usuariosession != null}">
-                    <a th:href="@{/logout}" class="header__btn--red">
-                        <button>Salir</button>
-                    </a>
-                </div>
-            </div>
+        <div class="body">
 
             <form class="form" th:action="@{/register-user}" method="post" enctype="multipart/form-data">
                 <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">

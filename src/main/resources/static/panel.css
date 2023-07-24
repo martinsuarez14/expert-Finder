@@ -1,6 +1,6 @@
 .main {
     display: flex;
-    
+
 }
 
 .sidebar {
@@ -52,18 +52,18 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
-    width: 100%; 
-    margin-top: auto; 
+    width: 100%;
+    margin-top: auto;
 }
 /* li columna dondebse encuntra Botom salir */
 .salir-li {
     margin-top: auto;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .salir-btn:hover {
-    background-color: black; 
+    background-color: black;
 }
 
 
@@ -98,15 +98,15 @@
 
 /* titulo tabla */
 .titulotabla{
-  background-color: linear-gradient;
-  font-size: 24px;
-  color: #FF7218;
-  margin-bottom: 20px;
-  transition: color.3s ease-in-out;
+    background-color: linear-gradient;
+    font-size: 24px;
+    color: #2e0d23;
+    margin-bottom: 20px;
+    transition: color.3s ease-in-out;
 
 }
 .titulotabla:hover {
-    color: black; 
+    color: black;
 }
 
 .container-usuarios {
@@ -117,27 +117,38 @@
 .tabla-usuarios {
     border-collapse: collapse;
     width: 100%;
- 
-}
 
-.tabla-usuarios th,
-.tabla-usuarios td {
-    padding: 15px;
-    text-align: center;
-    border: 1px solid white;
-    font-size: 18px;
-    
 }
 
 .tabla-usuarios th {
-    background-color: #FF7218;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid white;
+    font-size: 16px;
+}
+
+
+.tabla-usuarios td {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid white;
+    font-size: 16px;
+}
+
+.tabla-usuarios th {
+    background-color: #2e0d23;
     color: white;
 }
 
 .tabla-usuarios tr{
-    background-color: rgb(40,45,48);
+    background-color: #f7803c;
 }
 
 .tabla-usuarios td {
-    color: white;
+    color: black;
+}
+
+.tabla-usuarios td img {
+    width: 75px;
+    border-radius: 50%;
 }

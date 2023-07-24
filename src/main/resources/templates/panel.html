@@ -12,28 +12,7 @@
     </head>
     <body>
         <!--HEADER-->
-        <div class="header">
-            <div class="header__logo">
-                <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
-            </div>
-            <div class="modal__btns" th:if="${session.usersession == null}">
-                <div class="header__btn">
-                    <a class="header__a" th:href="@{/login}">
-                        Iniciar Sesion
-                    </a>
-                </div>
-                <div class="boton__modal">
-                    <label for="boton__modal--btn">
-                        Registrarse
-                    </label>
-                </div>
-            </div>
-            <div class="modal__btns" th:if="${session.usuariosession != null}">
-                <a th:href="@{/logout}" class="header__btn--red">
-                    <button>Salir</button>
-                </a>
-            </div>
-        </div>
+        <header th:replace="/fragments/templates.html :: header"></header>
 
         <!--Main-->
         <main class="main">
@@ -61,32 +40,22 @@
                             <thead>
                                 <tr>
                                     <!-- Primera Fila -->
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
+                                    <th>Foto</th>
+                                    <th>Nombre Completo</th>
                                     <th>Email</th>
+                                    <th>Dirección</th>
                                     <th>Estado</th>
+                                    <th>Eliminar</th>
                                 </tr>    
                             </thead>
                             <tbody>
-                                <tr>
-                                    <!-- Tercera Fila -->
-                                    <td>Ejemplo0</td>
-                                    <td>Ejemplo1</td>
-                                    <td>Ejemplo2</td>
-                                    <td>Ejemplo3</td>
-                                </tr>
-                                <tr>
-                                    <!-- Cuarta fila -->
-                                    <td>Ejemplo0</td>
-                                    <td>Ejemplo1</td>
-                                    <td> Ejemplo2</td>
-                                    <td>Ejemplo3</td>
-                                </tr>
                                 <tr th:each="user : ${users}">
-                                    <td th:text="${user.name}"></td>
-                                    <td th:text="${user.lastName}"></td>
+                                    <td><img th:src='@{/image/profile-user/__${user.image.id}__}' /></td>
+                                    <td th:text="${user.name} + ' ' + ${user.lastName}"></td>
                                     <td th:text="${user.email}"></td>
-                                    <td th:text="${user.active}"></td>
+                                    <td th:text="${user.location.address}"></td>
+                                    <td th:text="${user.active ? 'Activo' : 'No Activo'}"></td>
+                                    <td><a th:href="@{/user/delete/__${user.id}__}"><button>Eliminar</button></a></td>
                                 </tr>
                             </tbody>
 

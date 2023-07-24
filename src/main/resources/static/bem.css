@@ -21,17 +21,19 @@
     background-size: cover;
 }
 
-/*Contenido header*/
+/*ESTILOS HEADER*/
 .header {
     display: flex;
     max-width: 100%;
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    background-color: orange;
+    /*background-color: orange;*/
     opacity: 0.9;
     padding: 20px;
     z-index: 5;
+    background-color: #ff7217;
+    border-bottom: 2px solid black;
 }
 
 .header__logo {
@@ -42,8 +44,25 @@
     cursor: pointer;
     transition: .3s ease all;
     text-decoration: none;
-    color: #fff;
+    padding: 5px;
+    margin: 10px;
+    align-content: center;
+    border-radius: 50px;
+    transition: all 0.3s ease-in;
+}
 
+.header__logo:hover {
+    transform: scale(1.1);
+}
+
+.header__logo img {
+    width: 100%;
+    border-radius: 50% 50%;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover {
+    transform: scale(1.2);
 }
 
 .header__img {
@@ -97,11 +116,14 @@
 /*Contenido btn_modal*/
 .boton__modal {
     padding: 20px;
-    background-color: white;
+    /*background-color: white;*/
+    color: black;
 }
 
-.boton__modal label {
-    padding: 10px 15px;
+.boton__modal a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
     background-color: #5488a3;
     color: white;
     border-radius: 4px;
@@ -109,7 +131,16 @@
     transition: all 30ms ease;
 }
 
-.boton__modal label:hover {
+.boton__modal label {
+    padding: 10px;
+    background-color: #5488a3;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 30ms ease;
+}
+
+.boton__modal label:hover, .boton__modal a:hover {
     background-color: #185e83;
 }
 
@@ -158,9 +189,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 15px;
-    border-top: 1px solid #dbdbdb;
-    border-bottom: 1px solid #dbdbdb;
+    padding: 5px;
 }
 
 .modal__btn {

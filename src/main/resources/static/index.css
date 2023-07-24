@@ -5,22 +5,18 @@
     display: none;
 }
 
-.url {
-    cursor: url(img/martilo.png), auto;
-}
-
 * {
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
 }
-
+/*
 body {
-    /*background-image: url(./img/flor_backGround.jpg);*/
+    background-image: url(./img/flor_backGround.jpg);
     color: black;
 }
 
-/*Grid de la pagina*/
+Grid de la pagina
 .contenedor {
     width: 100%;
     display: grid;
@@ -39,10 +35,10 @@ body {
 .contenedor .sidebar {
     padding: 20px;
     border-radius: 4px;
-}
+}*/
 
 /*Header y barra de navegación*/
-.header {
+/*.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,27 +50,32 @@ body {
     border-bottom: 2px solid black;
 }
 
-.header .logo {
+.header__logo {
     display: flex;
     clip-path: inset(0 0 20px 0);
-    /*<---- Propiedad para cortar la parte de abajo de la imagen y que pueda verse mas grande*/
+    <---- Propiedad para cortar la parte de abajo de la imagen y que pueda verse mas grande
     cursor: pointer;
-    margin-left: 10px;
+    padding: 5px;
+    margin: 10px;
     align-content: center;
     border-radius: 50px;
+    transition: all 0.3s ease-in;
 }
 
-.header .logo img {
-    height: 120px;
-    width: auto;
-    border-radius: 50% 50% 0 0;
+.header__logo:hover {
+    transform: scale(1.1);
+}
+
+.header__logo img {
+    width: 100%;
+    border-radius: 50% 50%;
     transition: all 0.3s;
 }
 
 .header .logo img:hover {
     transform: scale(1.2);
-}
-
+}*/
+/*
 .header .nav-links {
     list-style: none;
     padding: 10px 10px;
@@ -122,9 +123,9 @@ body {
     background-color: lightgray;
     color: brown;
     transform: scale(1.1);
-}
+}*/
 
-/*Contenido de la pagina*/
+/*Contenido de la pagina
 
 .contenedor .contenido {
     grid-area: contenido;
@@ -165,7 +166,7 @@ body {
     grid-area: sidebar;
 }
 
-/*Cards*/
+Cards
 .card {
     display: flex;
     flex-direction: row;
@@ -226,7 +227,7 @@ body {
     padding: 10px;
 }
 
-/*Widjets*/
+Widjets
 
 .contenedor .widget-1,
 .contenedor .widget-2 {
@@ -259,7 +260,7 @@ body {
     grid-area: widget-2;
 }
 
-/*Forms*/
+Forms
 .form {
     margin: 0 auto;
     margin-top: 30px;
@@ -271,7 +272,7 @@ body {
     background-color: #ff7217;
     border-radius: 2px;
     padding: 10px;
-}
+}*/
 
 
 /*  MAIN  */
