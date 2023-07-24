@@ -20,24 +20,17 @@ public class Location {
     private Long id;
 
     @Column(nullable = false)
-    private String city;
-
-    @Column(nullable = false)
     private String country;
 
     @Column(nullable = false, unique = true)
     private String address;
 
-    public Location(String city, String country, String address) {
-        this.city = city;
+    public Location(String country, String address) {
         this.country = country;
         this.address = address;
     }
 
-    public void updateLocation(String city, String country, String address) {
-        if (city != null) {
-            this.city = city;
-        }
+    public void updateLocation(String country, String address) {
         if (country != null) {
             this.country = country;
         }
@@ -45,4 +38,5 @@ public class Location {
             this.address = address;
         }
     }
+    
 }

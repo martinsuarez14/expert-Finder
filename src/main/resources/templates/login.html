@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bem.css}">
+    <title>Login</title>
+</head>
+
+<body>
+    <header th:include="fragments/templates.html::header"></header>
+
+    <div th:include="fragments/templates.html::form"></div>
+
+
+    <footer th:include="fragments/templates.html::footer"></footer>
+</body>
+
+</html>

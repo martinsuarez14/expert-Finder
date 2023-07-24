@@ -1,0 +1,325 @@
+Contenido general de la pagina
+::-webkit-scrollbar {
+    display: none;
+}
+
+.url {
+    cursor: url(img/martilo.png), auto;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    background: url(./img/locofinder.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+.container{
+    align-items: center;
+    justify-content: center;
+}
+
+/*Contenido header*/
+.header {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: orange;
+    opacity: 0.9;
+    padding: 20px; background: #e65c00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f9d52377, #e65c009e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f9d52377, #e65c009e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+
+.header__logo {
+    display: flex;
+    width: 80px;
+    border-radius: 50px;
+    max-width: 15vw;
+    cursor: pointer;
+    transition: .3s ease all;
+    text-decoration: none;
+    color: #fff;
+
+}
+
+.header__img {
+    width: auto;
+    border-radius: 50px;
+    max-width: 100%;
+    cursor: pointer;
+    transition: .3s ease all;
+    text-decoration: none;
+    color: #fff;
+}
+.header__btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.header__btn {
+    background-color: #FFA500; /* Fondo naranja */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* borde redondeado */
+    color: #FFFFFF; /* Texto en blanco */
+    padding: 12px 30px; /* Espaciado interno */
+    font-size: 18px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: all 0.3s ease; /* Transición suave */
+}
+.header__btn:hover {
+    background-color: #FFDAB9; /* Cambia el fondo al pasar el mouse */
+}
+
+.header__btn--back {
+    background-color: #2d1e3b; /* Fondo naranja */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* borde redondeado */
+    color: #FFFFFF; /* Texto en blanco */
+    padding: 12px 30px; /* Espaciado interno */
+    font-size: 18px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: all 0.3s ease; /* Transición suave */
+}
+.header__btn--back:hover {
+    background-color: #291736; /* Cambia el fondo al pasar el mouse */
+}
+
+.header__a {
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+
+
+/*Contenido input checkbox modal*/
+#boton__modal--btn {
+    display: none;
+}
+
+/*Contenido modal*/
+.modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(144, 148, 150, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#boton__modal--btn:checked~.modal {
+    display: flex;
+}
+
+.modal__body {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    padding: 2%;    
+    justify-content: space-between;
+    border-radius: 4px;
+    flex-direction: column;
+}
+
+.modal__body h3 {
+    text-align: center;
+    justify-content: center;
+    height: 30px;
+    text-transform: uppercase;
+
+}
+
+.modal__btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+
+
+
+
+.modal__footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
+
+
+
+/*Contenido article*/
+.article {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content:space-around;
+    padding: 20px 10px;
+    width: 40%;
+    height: 80%;
+    margin: 5% 5%;
+    box-shadow: 0 0 20px black;
+
+}
+
+.article__h1 {
+    color:black;
+    margin-bottom: 10px;
+    height: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+
+}
+
+.article__h3 {
+    height: 60%;
+    margin-top: 15px;
+    font-weight: bold;
+    letter-spacing: -.02em;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    text-shadow: 1px 0.9px #e0952b ;
+
+}
+
+
+
+
+
+/*Contenido footer*/
+.footer {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: orange;
+    opacity: 0.9;
+    padding: 20px;
+    padding: 20px; background: #e65c00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f9d52377, #e65c009e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f9d52377, #e65c009e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.footer__sections{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer__section{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size:.8rem;
+    
+}
+.footer__h2{
+    color:black;
+    margin-bottom: 10px;
+    height: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+}
+
+.footer__ul{
+    color: #291736;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.footer__a{
+    text-decoration: none;
+    
+}
+.footer__right p{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+/* Formulario */
+.container--form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid black;
+    margin: 10% 20%;
+    padding: 2%;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+.form__head{
+    color:black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+
+}
+
+.form__label{
+    color: black;
+    margin-bottom: .7rem;
+    text-transform: uppercase;
+    justify-content: center;
+    text-align: center;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.form__input{
+    border-radius: 5px;
+    background-color: #dbdbdb;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+.form__btn{
+    display: flex;
+    justify-content: center;
+}

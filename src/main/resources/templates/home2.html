@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/home2.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <header>
+        <!-- <header th:include="fragments/templates.html::header"></header> -->
+        <nav>
+            <a href="">Servicios</a>
+            <a href="">Algo x2</a>
+            <a href="">Algo x3</a>
+        </nav>
+        <div class="slider-frame">
+            <ul>
+                <li><img src="/static/img/BobTheConstructor.jpg" alt=""></li>
+                <li><img src="/static/img/fondo_index.jpg" alt=""></li>
+                <li><img src="/static/img/gotaDeAgua.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+            style="height: 100%; width: 100%;">
+            <path d="M0.00,50.10 C186.98,116.99 349.20,-50.10 500.00,50.10 L500.00,150.33 L0.00,150.33 Z"
+            style="stroke: none; fill:white;"></path>
+        </svg>
+    </div>
+    <section class="textoinicio">
+        <h1>Encuentra el servicio que necesites en chacras de coria</h1>
+        <h3>Expertfinder</h3>
+    </section>
+</header>
+    <main>
+        <section class="personas">
+            <div class="personas">
+                <h2>Los 10 mejores</h2>
+                <div class="persona">
+                    <div class="imagenpersona">
+                        <img src="/static/img/gotaDeAgua.jpg" alt="persona 1">
+                        <div class="hoverpersona">
+                            <p class="nombre">nombre</p>
+                            <p class="descripcion">descripcion</p>
+                        </div>
+                    </div>
+                    <div class="imagenpersona">
+                        <img src="./carrusel/imagenes/personann.png" alt="persona 1">
+                        <div class="hoverpersona">
+                            <p class="nombre">nombre</p>
+                            <p class="descripcion">descripcion</p>
+                        </div>
+                    </div>
+                    <div class="imagenpersona">
+                        <img src="./carrusel/imagenes/personann.png" alt="persona 1">
+                        <div class="hoverpersona">
+                            <p class="nombre">nombre</p>
+                            <p class="descripcion">descripcion</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="contenedorfooter">
+                <div class="contenidofooter">Email</div>
+                <div class="contenidofooter">Phone</div>
+                <div class="contenidofooter">Other</div>
+            </div>
+        </footer>
+    </main>
+</body>
+
+</html>

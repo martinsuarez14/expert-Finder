@@ -1,6 +1,146 @@
 <!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chacras Finder</title>
+    <link rel="stylesheet" href="../static/bem.css">
+    <link rel="stylesheet" th:href="@{bem.css}">
+    <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
+    <!--<link rel="stylesheet" th:href="@{index.css}">-->
+    <script src="https://kit.fontawesome.com/f882f47f7e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- <div th:if="${session.usuariosession != null}">Usuario Logueado</div>
+        <header th:include="fragments/templates.html::header" class="header"></header> -->
+
+
+
+        <!-- Header -->
+
+
+        <div class="header">
+            <div class="header__logo">
+                <img class="header__img" th:src="@{/img/logo-pestaña.jpeg}" alt="Not Found">
+            </div>
+            <div class="header__btns" th:if="${session.usuariosession == null}">
+
+               
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/login}">
+                            Iniciar Sesion
+                        </a>
+                    </div>
+                    <div class="header__btn">
+                        <label class="header__a" for="boton__modal--btn">
+                            Registrarse
+                        </label>
+                    </div>
+                
+                <div class="header__btn" th:if="${session.usuariosession != null}">
+                    <a th:href="@{/logout}" class="header__btn">
+                        <button>Salir</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Articulo -->
+
+
+        <article class="article">
+            <h1 class="article__h1">Bienvenido vecino!</h1>
+            <h3 class="article__h3">Encontra al personal de mejor calidad que estabas buscando!.
+            </h3>
+            <h3 class="article__h3">
+                Todos los servicios que se brindan en este espacio son certificados por la administracion y la misma comunidad de vecinos.     
+            </h3>
+            <h3 class="article__h3"> 
+                Ingresa a nuestra web con tu codigo de barrio y sumate a esta red de vecinos y trabajadores!
+            </h3>
+        </article>
+
+
+
+        <!-- Footer -->
+    <footer class="footer" th:include="fragments/templates.html::footer"></footer> 
+
+
+
+
+
+        <!-- Modal -->
+
+        <input type="checkbox" id="boton__modal--btn">
+
+        <div class="modal">
+            <div class="modal__body">
+                <h3>Bienvenido!</h3>
+                <div class="modal__btns">
+
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/register-user}">
+                            Usuario
+                        </a>
+                    </div>
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/register-professional}">
+                            Trabajador
+                        </a>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <div class="header__btn--back">
+                        <label class="header__a" for="boton__modal--btn">
+                            volver
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <title>Expert Finder</title>
@@ -15,6 +155,7 @@
 
 <body>
     <div class="contenedor">
+        <div th:if="${session.usuariosession != null}">Usuario Logueado</div>
         <header th:include="fragments/templates.html::header" class="header"></header>
         <main class="contenido">
             <h1>Trabajando para la comunidad</h1>
@@ -67,4 +208,4 @@
 
 </body>
 
-</html>
+</html> -->
