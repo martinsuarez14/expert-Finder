@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="body">
+    <div class="container">
 
         <!-- <div th:if="${session.usuariosession != null}">Usuario Logueado</div>
         <header th:include="fragments/templates.html::header" class="header"></header> -->
@@ -25,45 +25,50 @@
 
         <div class="header">
             <div class="header__logo">
-                <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
+                <img class="header__img" th:src="@{/img/logo-pestaña.jpeg}" alt="Not Found">
             </div>
-            <div class="modal__btns" th:if="${session.usuariosession == null}">
-                <div class="header__btn">
-                    <a class="header__a" th:href="@{/login}">
-                        Iniciar Sesion
+            <div class="header__btns" th:if="${session.usuariosession == null}">
+
+               
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/login}">
+                            Iniciar Sesion
+                        </a>
+                    </div>
+                    <div class="header__btn">
+                        <label class="header__a" for="boton__modal--btn">
+                            Registrarse
+                        </label>
+                    </div>
+                
+                <div class="header__btn" th:if="${session.usuariosession != null}">
+                    <a th:href="@{/logout}" class="header__btn">
+                        <button>Salir</button>
                     </a>
                 </div>
-                <div class="boton__modal">
-                    <label for="boton__modal--btn">
-                        Registrarse
-                    </label>
-                </div>
-            </div>
-            <div class="modal__btns" th:if="${session.usuariosession != null}">
-                <a th:href="@{/logout}" class="header__btn--red">
-                    <button>Salir</button>
-                </a>
             </div>
         </div>
 
         <!-- Articulo -->
 
 
-        <main class="article">
-            <h1 class="article__h1">we are the world</h1>
-            <h3 class="article__h3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium necessitatibus
-                officia mollitia omnis odit ipsum perspiciatis. Porro quae assumenda hic. Dolore, excepturi perspiciatis
-                aperiam ipsum at nam vel laboriosam numquam.</h3>
-        </main>
+        <article class="article">
+            <h1 class="article__h1">Bienvenido vecino!</h1>
+            <h3 class="article__h3">Encontra al personal de mejor calidad que estabas buscando!.
+            </h3>
+            <h3 class="article__h3">
+                Todos los servicios que se brindan en este espacio son certificados por la administracion y la misma comunidad de vecinos.     
+            </h3>
+            <h3 class="article__h3"> 
+                Ingresa a nuestra web con tu codigo de barrio y sumate a esta red de vecinos y trabajadores!
+            </h3>
+        </article>
 
 
 
         <!-- Footer -->
-        <!-- <footer class="footer" th:include="fragments/templates.html::footer"></footer> -->
+    <footer class="footer" th:include="fragments/templates.html::footer"></footer> 
 
-        <div class="footer">
-            &copy; 2021 Chacras Company Inc. All rights reserved
-        </div>
 
 
 
@@ -77,21 +82,23 @@
                 <h3>Bienvenido!</h3>
                 <div class="modal__btns">
 
-                    <div class="modal__btn">
-                        <a class="modal__a" th:href="@{/register-user}">
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/register-user}">
                             Usuario
                         </a>
                     </div>
-                    <div class="modal__btn">
-                        <a class="modal__a" th:href="@{/register-professional}">
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/register-professional}">
                             Trabajador
                         </a>
                     </div>
                 </div>
                 <div class="modal__footer">
-                    <label for="boton__modal--btn">
-                        volver
-                    </label>
+                    <div class="header__btn--back">
+                        <label class="header__a" for="boton__modal--btn">
+                            volver
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,45 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{bem.css}">
-        <link rel="stylesheet" th:href="@{login.css}">
-        <title>Login</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bem.css}">
+    <title>Login</title>
+</head>
 
-    <body>
-        <header th:include="fragments/templates.html::header" class="header"></header>
+<body>
+    <header th:include="fragments/templates.html::header"></header>
 
-        <!--    <div class="body">
-        
-                <form class="form" th:action="@{/logincheck}" method="post">
-                    <label>Email</label>
-                    <input type="email" name="email" required /> <br>
-                    <label>Password</label>
-                    <input type="password" name="password" required /> <br>
-                    <button class="modal__btn" type="submit">Iniciar Sesión</button>
-                </form>
-            </div>-->
-        <main class="body-login">
-            <div class="container">
-                <form th:action="@{/logincheck}" method="post" class="form-login">
-                    <h2 class="form-login-titulo">Ingresar</h2>
-                    <div class="form-group">
-                        <label class="label-email">Email</label>
-                        <input type="email" name="email" required placeholder="email"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="label-contraseña">Password</label>
-                        <input type="password" name="password" required placeholder="password"/>
-                    </div>
-                    <button type="submit">Iniciar Sesión</button>
-                </form> 
-            </div>
-        </main>
-        
-        <footer th:include="fragments/templates.html :: footer" class="footer"></footer>
-    </body>
+    <div th:include="fragments/templates.html::form"></div>
+
+
+    <footer th:include="fragments/templates.html::footer"></footer>
+</body>
 
 </html>

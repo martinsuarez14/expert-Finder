@@ -1,80 +1,99 @@
 <!--Header-->
 <div th:fragment="header">
+
   <header class="header">
     <div class="header__logo">
-        <img class="header__img" th:src="@{/img/BobTheConstructor.jpg}" alt="Not Found">
+      <a ref="/index.html">
+        <img class="header__img" th:src="@{/img/logo-pestaña.jpeg}" alt="Not Found">
+      </a>
     </div>
-    <div class="modal__btns" th:if="${session.usuariosession == null}">
-        <div class="header__btn--red">
-            <a class="header__a" th:href="@{/login}">
-                Iniciar Sesion
-            </a>
-        </div>
-        <div class="boton__modal">
-            <label for="boton__modal--btn">
-                Registrarse
-            </label>
-        </div>
-    </div>
-    <div class="modal__btns" th:if="${session.usuariosession != null}">
-        <a th:href="@{/logout}" class="header__btn--red">
-            <button>Salir</button>
+    <div class="header__btns" th:if="${session.usuariosession == null}">
+      <div class="header__btn">
+        <a class="header__a" th:href="@{/login}">
+          Iniciar Sesion
         </a>
+      </div>
+      <div class="header__btn">
+        <label class="header__a" for="boton__modal--btn">
+          Registrarse
+        </label>
+      </div>
+      
+      <div class="header__btn" th:if="${session.usuariosession != null}">
+        <a th:href="@{/logout}" class="header__btn">
+          <button>Salir</button>
+        </a>
+      </div>
     </div>
-</header>
+  </header>
 
 </div>
 <!--Footer-->
-<footer th:fragment="footer">
 <!--  <section class="followUs">
-
-    <div class="anuncio">
-      <a th:href="@{/}"><img th:src="@{./img/logo.jpeg}" alt="Logo"></a>
-      <p>ExpertFinder</p>
-    </div>
-
-    <div class="redes">
+  
+  <div class="anuncio">
+    <a th:href="@{/}"><img th:src="@{./img/logo.jpeg}" alt="Logo"></a>
+    <p>ExpertFinder</p>
+  </div>
+  
+  <div class="redes">
+    <ul>
+      <span class="fb"><i class="fa-brands fa-square-facebook fa-sm"></i></span>
+      <span class="tw"><i class="fa-brands fa-square-twitter fa-sm"></i></span>
+      <span class="gl"><i class="fa-brands fa-google fa-sm"></i></span>
+      <span class="in"><i class="fa-brands fa-instagram fa-sm"></i></span>
+      <span class="li"><i class="fa-brands fa-linkedin"></i></span>
       <ul>
-        <span class="fb"><i class="fa-brands fa-square-facebook fa-sm"></i></span>
-        <span class="tw"><i class="fa-brands fa-square-twitter fa-sm"></i></span>
-        <span class="gl"><i class="fa-brands fa-google fa-sm"></i></span>
-        <span class="in"><i class="fa-brands fa-instagram fa-sm"></i></span>
-        <span class="li"><i class="fa-brands fa-linkedin"></i></span>
-        <ul>
-    </div>
-  </section>-->
-  <hr>
-  <section class="company">
+      </div>
+    </section>-->
 
 
-    <div>
-      <h2>Compañia</h2>
-      <ul>
-        <a href="#">Home</a>
-        <a href="#">Contacto</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Politica</a>
-        <a href="#">Condiciones y servicios</a>
-      </ul>
-    </div>
-    <div>
-      <h2>Servicios</h2>
-      <ul>
-        <a href="#">Reseñas</a>
-        <a href="#">Imagenes</a>
-        <a href="#">Colaboradores</a>
-        <a href="#">Profesionales</a>
-      </ul>
+<footer th:fragment="footer">
+  <div class="footer">
+
+    <div class="footer__sections">
+      <div class="footer__section">
+        <h2 class="footer__h2">Compañia</h2>
+        <ul class="footer__ul">
+          <a class="footer__a" href="#">Contacto</a>
+          <a class="footer__a" href="#">Home</a>
+          <a class="footer__a" href="#">Nosotros</a>
+          <a class="footer__a" href="#">Politica</a>
+          <a class="footer__a" href="#">Condiciones y servicios</a>
+        </ul>
+      </div>
+      <div class="footer__section">
+        <h2 class="footer__h2">Servicios</h2>
+        <ul class="footer__ul">
+          <a class="footer__a" href="#">Reseñas</a>
+          <a class="footer__a" href="#">Imagenes</a>
+          <a class="footer__a" href="#">Colaboradores</a>
+          <a class="footer__a" href="#">Profesionales</a>
+        </ul>
+      </div>
     </div>
 
-    
-  </section>
-
-
-  <div class="derechos">
-    <p>Copyright@2023DerechosReservadosExpertFinder</p>
+    <div class="footer__right">
+      <p>Copyright@2023DerechosReservadosExpertFinder</p>
+    </div>
   </div>
 
 </footer>
 
 
+<!-- Form de login -->
+<div th:fragment="form">
+
+  <div class="container--form">
+    <form class="form" th:action="@{/logincheck}" method="post">
+      <h2 class="form__head">Ingresar</h2>
+      <label class="form__label">Email</label><br>
+      <input class="form__input" type="email" name="email" required placeholder="email" /><br>
+      <label class="form__label">Password</label><br>
+      <input class="form__input" type="password" name="password" required placeholder="password" /><br>
+      <div class="form__btn">
+        <button class="header__btn" type="submit">Iniciar Sesión</button>
+      </div>
+    </form>
+  </div>
+</div>
