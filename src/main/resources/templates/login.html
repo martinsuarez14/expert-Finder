@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{bem.css}">
-        <link rel="stylesheet" th:href="@{login.css}">
-        <title>Login</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bem.css}">
+    <title>Login</title>
+</head>
 
+<<<<<<< HEAD
     <body>
         
         <header th:replace="/fragments/templates.html :: header"></header>
@@ -42,5 +42,15 @@
         
         <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
     </body>
+=======
+<body>
+    <header th:include="fragments/templates.html::header"></header>
+
+    <div th:include="fragments/templates.html::form"></div>
+
+
+    <footer th:include="fragments/templates.html::footer"></footer>
+</body>
+>>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
 
 </html>
