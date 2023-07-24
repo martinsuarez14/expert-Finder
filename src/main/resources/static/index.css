@@ -16,7 +16,7 @@
 }
 
 body {
-    background-image: url(./img/flor_backGround.jpg);
+    /*background-image: url(./img/flor_backGround.jpg);*/
     color: black;
 }
 
@@ -268,10 +268,50 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background-color: #ff7217;
     border-radius: 2px;
     padding: 10px;
+}
+
+
+/*  MAIN  */
+.index-main {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 5rem;
+    background-image: url(./img/fondo_index.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.index-main .container-card-index {
+    /*margin-top: 3rem;*/
+    min-width: 350px;
+    max-width: 700px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    gap: 15px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    transition: all 0.3s ease;
+}
+
+.index-main .container-card-index:hover {
+    box-shadow: 10px 10px 15px black;
+}
+
+.index-main .container-card-index p {
+    text-align: justify;
 }
 
 /*Footer*/
@@ -419,13 +459,4 @@ body {
             "widget-1 widget-1 widget-2"
             "footer footer footer";
     }
-}
-
-.main-index {
-    background: rgba( 77, 84, 83, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 7px );
-    -webkit-backdrop-filter: blur( 7px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }

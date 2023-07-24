@@ -7,7 +7,7 @@
     <div class="modal__btns" th:if="${session.usuariosession == null}">
         <div class="header__btn--red">
             <a class="header__a" th:href="@{/login}">
-                Iniciar Sesion
+                Iniciar Sesión
             </a>
         </div>
         <div class="boton__modal">
@@ -16,7 +16,7 @@
             </label>
         </div>
     </div>
-    <div class="modal__btns" th:if="${session.usuariosession != null}">
+    <div class="modal__btns" th:if="${session.usersession != null}">
         <a th:href="@{/logout}" class="header__btn--red">
             <button>Salir</button>
         </a>
