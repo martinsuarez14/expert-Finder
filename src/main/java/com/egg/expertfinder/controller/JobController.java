@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/job")
@@ -33,9 +34,9 @@ public class JobController {
     }
     
     @PostMapping("/register")
-    public String regist(@RequestParam String name, ModelMap model){
+    public String registerJob(@RequestParam String name, MultipartFile file, ModelMap model){
         try {
-            jobService.createJob(name);
+            jobService.createJob(name, file);
             model.put("exito", "Se creó con éxito el Servicio.");
             return "redirect:/admin/dashboard";
         } catch (MyException ex) {

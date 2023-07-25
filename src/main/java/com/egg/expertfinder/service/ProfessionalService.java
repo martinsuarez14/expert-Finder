@@ -1,11 +1,9 @@
 package com.egg.expertfinder.service;
 
-import com.egg.expertfinder.entity.Comment;
 import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.entity.Image;
 import com.egg.expertfinder.entity.Location;
 import com.egg.expertfinder.entity.Professional;
-import com.egg.expertfinder.enumeration.KeyEnum;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.repository.ProfessionalRepository;
 import com.egg.expertfinder.repository.UserRepository;
@@ -19,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ProfessionalService {
+    
     @Autowired
     private ProfessionalRepository professionalRepository;
     

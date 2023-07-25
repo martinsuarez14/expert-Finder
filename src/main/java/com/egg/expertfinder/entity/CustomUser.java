@@ -56,7 +56,7 @@ public class CustomUser {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        if (name.equalsIgnoreCase("adminExpertFinder")) {
+        if (name.equalsIgnoreCase("adminChacras")) {
             this.role = RoleEnum.ADMIN;
         } else {
             this.role = RoleEnum.USER;
