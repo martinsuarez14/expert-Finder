@@ -4,7 +4,9 @@ import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.ProfessionalService;
 import com.egg.expertfinder.service.UserService;
+
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -21,7 +23,7 @@ public class HomeController {
 
     @Autowired
     private UserService userService;
-    
+
     @Autowired
     private ProfessionalService professionalService;
 
@@ -43,19 +45,14 @@ public class HomeController {
         return "user_form.html";
     }
 
-<<<<<<< HEAD
-    @PostMapping("/register")
-    public String registerUser(String name, String lastName, String email, String password, String password2, String role, MultipartFile file) {
-=======
     @PostMapping("/register-user")
     public String registerUser(@RequestParam String name, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password, @RequestParam String password2,
-            @RequestParam String countryKey, @RequestParam(required = false) String country, 
-            @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
->>>>>>> 7c2eec2636bf7699b9a8210034ca0ce3170f4b22
+                               @RequestParam String email, @RequestParam String password, @RequestParam String password2,
+                               @RequestParam String countryKey, @RequestParam(required = false) String country,
+                               @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
         try {
             userService.createUser(name, lastName, email, password, password2, countryKey,
-                country, address, file);
+                    country, address, file);
             model.put("exito", "Usuario registrado.");
             return "redirect:/login";
         } catch (MyException e) {
@@ -63,7 +60,7 @@ public class HomeController {
             return "user_form.html";
         }
     }
-    
+
     @GetMapping("/register-professional")  // localhost:8080/register
     public String registerProfessional() {
         return "professional_form.html";
@@ -71,10 +68,10 @@ public class HomeController {
 
     @PostMapping("/register-professional")
     public String registerProfessional(@RequestParam String name, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password, @RequestParam String password2, 
-            @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
+                                       @RequestParam String email, @RequestParam String password, @RequestParam String password2,
+                                       @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
         try {
-            professionalService.createProfessional(name, lastName, email, password, password2, 
+            professionalService.createProfessional(name, lastName, email, password, password2,
                     address, file, email, lastName, name);
             model.put("exito", "Usuario registrado.");
             return "redirect:/login";
