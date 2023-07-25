@@ -1,7 +1,8 @@
 /*Ajustes Generales*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     display: none;
 }
 .url {
@@ -12,7 +13,7 @@
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
-}
+} */
 
 body {
   background-image: url("./img/construccion.jpg");
@@ -274,7 +275,6 @@ body {
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .contenedor .widget-1 {
@@ -315,13 +315,34 @@ body {
     margin-top: 30px;
     width: 50%;
     min-width: 350px;
+    max-width: 700px;
+    padding: 3rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: left;
     align-items: center;
+    gap: 15px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    transition: all 0.3s ease;
+}
 
-    background-color: #ff7217;
-    border-radius: 2px;
-    padding: 10px;
+.index-main .container-card-index:hover {
+    box-shadow: 10px 10px 15px black;
+}
+
+.index-main .container-card-index h1 {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.index-main .container-card-index p {
+    text-align: justify;
+    font-size: 20px;
 }
 .form form input {
   width: 100%;

@@ -3,6 +3,7 @@ package com.egg.expertfinder.controller;
 import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.service.UserService;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,7 +18,9 @@ public class AdminController {
     private UserService userService;
     
     @GetMapping("/dashboard")
-    public String dashboard(ModelMap model) {
+    public String dashboard(HttpSession session, ModelMap model) {
+        
+        CustomUser userLogin = (CustomUser) session.getAttribute("usersession");
         
         List<CustomUser> users = userService.getAllUsers();
         

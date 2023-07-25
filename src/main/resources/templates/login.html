@@ -4,17 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{login.css}">
     <link rel="stylesheet" th:href="@{bem.css}">
     <title>Login</title>
 </head>
 
-<body>
-    <header th:include="fragments/templates.html::header"></header>
+    <body>
+        
+        <header th:replace="/fragments/templates.html :: header"></header>
 
-    <div th:include="fragments/templates.html::form"></div>
+        <!-- Modal -->
+        <input type="checkbox" id="boton__modal--btn">
+
+        <div class="modal">
+            <div class="modal__body">
+                <h3>Bienvenido!</h3>
+                <div class="modal__btns">
+
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/register-user}">
+                            Usuario
+                        </a>
+                    </div>
+                    <div class="header__btn">
+                        <a class="header__a" th:href="@{/register-professional}">
+                            Trabajador
+                        </a>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <div class="header__btn--back">
+                        <label class="header__a" for="boton__modal--btn">
+                            volver
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-    <footer th:include="fragments/templates.html::footer"></footer>
-</body>
+
+        <main class="body-login">
+            <div class="container">
+                <form th:action="@{/logincheck}" method="post" class="form-login">
+                    <h2 class="form-login-titulo">Ingresar</h2>
+                    <div class="form-group">
+                        <label class="label-email">Email</label>
+                        <input type="email" name="email" required placeholder="email"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-contraseña">Password</label>
+                        <input type="password" name="password" required placeholder="password"/>
+                    </div>
+                    <button type="submit">Iniciar Sesión</button>
+                </form> 
+            </div>
+        </main>
+
+        
+
+        
+        <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
+    </body>
 
 </html>

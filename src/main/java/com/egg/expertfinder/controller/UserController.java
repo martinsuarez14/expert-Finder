@@ -87,15 +87,15 @@ public class UserController {
         return "user-activate.html";
     }
     
-    @PostMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteUserById(@PathVariable Long id, ModelMap model) {
         try {
             userService.deleteUser(id);
             model.put("exito", "Se eliminó el usuario correctamente.");
-            return "redirect:/user/users-list";
+            return "redirect:/admin/dashboard";
         } catch (Exception ex) {
             model.put("error", ex.getMessage());
-            return "redirect:/user/home";
+            return "redirect:/admin/dashboard";
         }
     }
 
