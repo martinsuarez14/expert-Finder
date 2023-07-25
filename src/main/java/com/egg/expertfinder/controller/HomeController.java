@@ -87,8 +87,11 @@ public class HomeController {
 
         if (userLogin.getRole().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
-        } else {
+        } if (userLogin.getRole().toString().equals("USER") || 
+                userLogin.getRole().toString().equals("PRO")) {
             return "home.html";
+        } else {
+            return "index.html";
         }
     }
 
