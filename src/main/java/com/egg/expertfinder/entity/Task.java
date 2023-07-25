@@ -31,8 +31,16 @@ public class Task {
     private StatusEnum status;
     
     @ManyToOne
+    @JoinColumn(name = "custom_user_id")
+    private CustomUser user;
+    
+    @ManyToOne
     @JoinColumn(name = "professional_id")
     private Professional professional;
+    
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    private Comment comment;
 
     public Task(String description) {
         this.description = description;

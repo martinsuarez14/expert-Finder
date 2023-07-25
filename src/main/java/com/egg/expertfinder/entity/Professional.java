@@ -31,7 +31,6 @@ public class Professional extends CustomUser{
 
     @Column(nullable = false)
     private String phone;
-
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();

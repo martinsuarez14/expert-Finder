@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
-public interface ProfessionalRepository extends JpaRepository<Professional,Long>{
-    //  Listamos los Professional active = true
+public interface ProfessionalRepository extends JpaRepository<Professional,Long> {
+    
+    //Listamos los Professional active = true
     List<Professional> findProfessionalByActiveTrue();
 
     //Listamos los Professional active = false
