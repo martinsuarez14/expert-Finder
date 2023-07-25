@@ -16,12 +16,17 @@
     flex-direction: column;
     z-index: 1;
 }
+
 /* icons */
 .sidebar i {
-    margin-right: 8px; /* Espacio entre el icono y el texto "Administrador" */
-    font-size: 24px; /* Tamaño del icono */
-    color: #FF7218; /* Color del icono */
+    margin-right: 8px;
+    /* Espacio entre el icono y el texto "Administrador" */
+    font-size: 24px;
+    /* Tamaño del icono */
+    color: #FF7218;
+    /* Color del icono */
 }
+
 /* Animaciones de sidebareeee */
 .sidebar ul {
     list-style: none;
@@ -30,16 +35,25 @@
 
 .sidebar li {
     margin-bottom: 10px;
+    transition: all 0.3s ease;
 }
 
 .sidebar a {
     text-decoration: none;
     color: white;
     padding: 5px 10px;
-    display: block;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Animación de cambio de color al pasar el ratón por encima */
+.sidebar li:hover i {
+    color: #333;
+}
+
 .sidebar a:hover {
     background-color: #FF7218;
 }
@@ -55,6 +69,7 @@
     width: 100%;
     margin-top: auto;
 }
+
 /* li columna dondebse encuntra Botom salir */
 .salir-li {
     margin-top: auto;
@@ -97,7 +112,7 @@
 
 
 /* titulo tabla */
-.titulotabla{
+.titulotabla {
     background-color: linear-gradient;
     font-size: 24px;
     color: #2e0d23;
@@ -105,6 +120,7 @@
     transition: color.3s ease-in-out;
 
 }
+
 .titulotabla:hover {
     color: black;
 }
@@ -140,7 +156,7 @@
     color: white;
 }
 
-.tabla-usuarios tr{
+.tabla-usuarios tr {
     background-color: #f7803c;
 }
 

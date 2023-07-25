@@ -1,17 +1,13 @@
-Contenido general de la pagina
+/* Contenido general de la pagina */
 ::-webkit-scrollbar {
     display: none;
-}
-
-.url {
-    cursor: url(img/martilo.png), auto;
 }
 
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 /* 
 body {
@@ -82,8 +78,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-top: 1px solid #dbdbdb;
-    border-bottom: 1px solid #dbdbdb;
+    /* border-top: 1px solid #dbdbdb; */
+    /* border-bottom: 1px solid #dbdbdb; */
 }
 
 .header__btn {
@@ -96,6 +92,7 @@ body {
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
     transition: all 0.3s ease; /* Transición suave */
 }
+
 .header__btn:hover {
     background-color: #ff7217; /* Cambia el fondo al pasar el mouse */
 }
@@ -106,7 +103,7 @@ body {
     border-radius: 4px; /* borde redondeado */
     color: #FFFFFF; /* Texto en blanco */
     padding: 12px 30px; /* Espaciado interno */
-    font-size: 18px; /* Tamaño de fuente */
+    font-size: 20px; /* Tamaño de fuente */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
     transition: all 0.3s ease; /* Transición suave */
 }
@@ -150,7 +147,7 @@ body {
     color: white;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 30ms ease;
+    transition: all 0.3s ease;
 }
 
 .boton__modal label {
@@ -159,7 +156,7 @@ body {
     color: white;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 30ms ease;
+    transition: all 0.3s ease;
 }
 
 .boton__modal:hover a, .boton__modal:hover label {

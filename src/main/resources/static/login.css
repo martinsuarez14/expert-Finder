@@ -6,8 +6,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : 23 jul. 2023, 17:07:24
     Author     : marti
 */
+/* * {
+    
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+} */
+
 body {
     background-color: #f0f0f0;
+    /* font-family: "Poppins", sans-serif; */
 }
 
 .body-login {
