@@ -30,11 +30,14 @@ public class Location {
         this.address = address;
     }
 
+
     public void updateLocation(String country, String address) {
+
         if (country != null) {
             this.country = country;
         }
         if (address != null) {
+
             this.address = address;
         }
     }
