@@ -17,7 +17,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findByProfessional_Id(Long idProfessional);
     
-    @Query("SELECT t FROM Task t WHERE t.userId = :userId AND t.professionalId = :professionalId")
+    @Query("SELECT t FROM Task t WHERE t.user.id = :userId AND t.professional.id = :professionalId")
     List<Task> findTaskByUserAndProfessionalIds(@Param("userId") Long userId, @Param("professionalId") Long professionalId);
 
 }
