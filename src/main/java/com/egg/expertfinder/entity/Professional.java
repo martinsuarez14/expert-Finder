@@ -56,6 +56,14 @@ public class Professional extends CustomUser{
             this.phone = phone;
         }
     }
+    
+    public void activateProfessional() {
+        this.active = true;
+    }
+
+    public void deactivateProfessional() {
+        this.active = false;
+    }
 
     public void handleChangeRoleUser() {
         this.role = RoleEnum.USER;

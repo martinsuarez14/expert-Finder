@@ -77,4 +77,8 @@ public class CustomUser {
         this.role = RoleEnum.PRO;
     }
     
+    public void deactivateUser(){
+        this.active = false;
+    }
+    
 }
