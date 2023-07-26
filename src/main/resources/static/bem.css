@@ -9,14 +9,14 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
-/* 
+
 body {
     display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
     background: url(./img/locofinder.jpg) no-repeat center center fixed;
     background-size: cover;
-} */
+} 
 .container{
     align-items: center;
     justify-content: center;
@@ -31,7 +31,6 @@ body {
     height: 80px;
     opacity: 0.9;
     padding: 10px;
-    z-index: 5;
     background-color: #ff7217;
     border-bottom: 2px solid black;
 }
@@ -140,6 +139,7 @@ body {
 }
 
 .boton__modal a {
+    display: flex;
     color: white;
     text-decoration: none;
     padding: 10px;
