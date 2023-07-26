@@ -14,9 +14,11 @@ body {
     display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
-    background: url(./img/locofinder.jpg) no-repeat center center fixed;
+    background: url(./img/fondo_index.jpg) no-repeat center center fixed;
     background-size: cover;
-} 
+}  
+
+
 .container{
     align-items: center;
     justify-content: center;
@@ -259,38 +261,37 @@ body {
 
 /*Contenido article*/
 .article {
+    margin: 0 20px;
+    min-width: 350px;
+    max-width: 700px;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    justify-content:space-around;
-    padding: 20px 10px;
-    width: 40%;
-    height: 80%;
-    margin: 5% 5%;
-    box-shadow: 0 0 20px black;
+    justify-content: left;
+    align-items: center;
+    gap: 15px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    transition: all 0.3s ease;
+
+}
+.article:hover{
+    box-shadow: 10px 10px 15px black;
 
 }
 
 .article__h1 {
-    color:black;
-    margin-bottom: 10px;
-    height: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    border-bottom: 1px solid black;
-
+    font-weight: bold;
+    font-size: 40px;
 }
 
-.article__h3 {
-    height: 60%;
-    margin-top: 15px;
-    font-weight: bold;
-    letter-spacing: -.02em;
-    word-wrap: break-word;
-    overflow-wrap: anywhere;
-    hyphens: auto;
-    text-shadow: 1px 0.9px #e0952b ;
-
+.article__p {
+    text-align: justify;
+    font-size: 20px;
 }
 
 
@@ -344,7 +345,7 @@ body {
     text-decoration: none;
     
 }
-.footer__right p{
+.footer__right{
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -356,51 +357,3 @@ body {
 
 
 
-/* Formulario */
-.container--form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: solid black;
-    margin: 10% 20%;
-    padding: 2%;
-}
-.form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
-}
-.form__head{
-    color:black;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    height: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    border-bottom: 1px solid black;
-
-}
-
-.form__label{
-    color: black;
-    margin-bottom: .7rem;
-    text-transform: uppercase;
-    justify-content: center;
-    text-align: center;
-    background-color: lightgray;
-    border-radius: 5px;
-}
-
-.form__input{
-    border-radius: 5px;
-    background-color: #dbdbdb;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-}
-.form__btn{
-    display: flex;
-    justify-content: center;
-}

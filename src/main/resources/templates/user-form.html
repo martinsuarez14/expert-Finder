@@ -6,13 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{bem.css}">
+    <link rel="stylesheet" th:href="@{forms.css}">
     
 </head>
 
     <body>
         <header th:replace="/fragments/templates.html :: header"></header>
 
-        <div class="body">
+        <div class="container--form">
 
             <form class="form" th:action="@{/register-user}" method="post" enctype="multipart/form-data">
                 <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
@@ -51,7 +52,7 @@
             </form>
         </div>
 
-        <footer th:include="fragments/templates.html::footer"></footer>
+        <footer th:include="fragments/templates.html::footer" class="footer"></footer>
     </div>
 </body>
 
