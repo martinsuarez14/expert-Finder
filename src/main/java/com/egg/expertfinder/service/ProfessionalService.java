@@ -17,75 +17,74 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ProfessionalService {
-    
+
     @Autowired
     private ProfessionalRepository professionalRepository;
-    
+
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private LocationService locationService;
 
     @Autowired
     private ImageService imageService;
-    
-    
+
     //Creación de un profesional.
     @Transactional
     public void createProfessional(String name, String lastName, String email, String password,
-            String password2, String address, MultipartFile file, 
-            String description, String license, String phone) throws MyException{
-            
+            String password2, String address, MultipartFile file,
+            String description, String license, String phone) throws MyException {
+
         validate(name, lastName, email, password, password2, file, description, license, phone);
-        
+
         Professional professional = new Professional(name, lastName, email,
-        description, license, phone);
-        
+                description, license, phone);
+
         //Seteo de contraseña encriptada.
         professional.setPassword(new BCryptPasswordEncoder().encode(password));
-        
+
         Location location = new Location("Chacras de Coria", address);
-        
+
         professional.setLocation(location);
-        
+
         Image image = imageService.createImage(file);
 
         professional.setImage(image);
-        
+
         professionalRepository.save(professional);
     }
-    
+
     @Transactional
     public void updateProfessional(Long id, String name, String lastName, String email,
             MultipartFile file, String description, String phone) throws MyException {
         Optional<Professional> response = professionalRepository.findById(id);
-        if(response.isPresent()){
+        if (response.isPresent()) {
             Professional professional = response.get();
-            
+
             professional.updateProfessional(name, lastName, description, phone);
             //Comprobamos que si llega un email para actualizar no exista en la DB
-            if(email!=null){
+            if (email != null) {
                 Professional proEmail = professionalRepository.findProfessionalByEmail(email);
                 CustomUser userEmail = userRepository.findCustomUserByEmail(email);
-                if (proEmail!=null || userEmail!=null) {
+                if (proEmail != null || userEmail != null) {
                     throw new MyException("Ya existe un profesional registrado con ese email.");
                 } else {
                     professional.setEmail(email);
                 }
             }
-            
+
             //Si llega un MultipartFile lo actualizamos
             if (file != null) {
                 Long idImage = professional.getImage().getId();
                 Image image = imageService.updateImage(idImage, file);
                 professional.setImage(image);
             }
-            
+
             professionalRepository.save(professional);
         }
     }
-    
+
     @Transactional
     public void deleteProfessional(Long id) throws MyException {
         Optional<Professional> response = professionalRepository.findById(id);
@@ -95,24 +94,24 @@ public class ProfessionalService {
             throw new MyException("No se encontró un profesional con ese ID.");
         }
     }
-    
+
     //Validación de datos del profesional.
     public void validate(String name, String lastName, String email, String password,
-            String password2, MultipartFile file, String description, 
+            String password2, MultipartFile file, String description,
             String license, String phone) throws MyException {
-        if(name == null || name.isEmpty()) {
+        if (name == null || name.isEmpty()) {
             throw new MyException("El nombre no puede ser nulo o estar vacío.");
         }
-        if(lastName == null || lastName.isEmpty()) {
+        if (lastName == null || lastName.isEmpty()) {
             throw new MyException("El apellido no puede ser nulo o estar vacío.");
         }
-        if(password == null || password.isEmpty()) {
+        if (password == null || password.isEmpty()) {
             throw new MyException("La contraseña no puede ser nula o estar vacía.");
         }
-        if(password.length()<=5) {
+        if (password.length() <= 5) {
             throw new MyException("La contraseña no puede contener 5 caracteres o menos.");
         }
-        if(!password2.equals(password)){
+        if (!password2.equals(password)) {
             throw new MyException("Las contraseñas no coinciden.");
         }
         if (file == null) {
@@ -132,13 +131,13 @@ public class ProfessionalService {
     //Obtener un profesional de la base de datos usando su ID.
     public Professional getProfessionalById(Long id) throws MyException {
         Optional<Professional> response = professionalRepository.findById(id);
-        if(response.isPresent()){
+        if (response.isPresent()) {
             return response.get();
-        }else{
-            throw new MyException("No se encontró un profesional con ese ID.");      
+        } else {
+            throw new MyException("No se encontró un profesional con ese ID.");
         }
     }
-    
+
     //Listar todos los profesionales existentes.
     public List<Professional> getAllProfessionals() {
         return professionalRepository.findAll();
@@ -147,7 +146,9 @@ public class ProfessionalService {
     //Listar todos los profesionales que están activos.
     public List<Professional> getProfessionalsActivate() {
         return professionalRepository.findProfessionalByActiveTrue();
-        
+
+    }
+
     //Listar todos los profesionales que están inactivos.
     public List<Professional> getProfessionalsDeactivate() {
         return professionalRepository.findProfessionalByActiveFalse();
