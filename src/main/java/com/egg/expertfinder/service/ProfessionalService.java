@@ -45,9 +45,7 @@ public class ProfessionalService {
         //Seteo de contraseña encriptada.
         professional.setPassword(new BCryptPasswordEncoder().encode(password));
         
-        Location location = new Location();
-        
-        location.setAddress(address);
+        Location location = new Location("Chacras de Coria", address);
         
         professional.setLocation(location);
         
@@ -151,12 +149,9 @@ public class ProfessionalService {
         return professionalRepository.findProfessionalByActiveTrue();
     }
     
-<<<<<<< HEAD
-=======
     //Listar todos los profesionales que están inactivos.
     public List<Professional> getProfessionalsDeactivate() {
         return professionalRepository.findProfessionalByActiveFalse();
     }
 
->>>>>>> 6f449d12603e59712bc3400571a8c57d4b1ee5cd
 }
