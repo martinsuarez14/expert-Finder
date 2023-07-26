@@ -11,16 +11,16 @@
 
 <body>
 
-    <h1>Formulario de Creación del profesional</h1>
+    <h1 class="form-profesional-titulo">Formulario del profesional</h1>
 
-    <form th:action="@{/logincheck}" method="post">
-        <label for="nombre">Nombre del Profesional:</label>
+    <form th:action="@{/logincheck}" method="post" class="form-profesional">
+        <label  class="label-nombre" for="nombre">Nombre del Profesional:</label>
         <input type="text" id="name" name="nombre" required>
         <br>
-        <label for="nombre">Nombre de la Matricula:</label>
+        <label class="label-matricula" for="nombre">Nombre de la Matricula:</label>
         <input type="text" id="matricula" name="nombre" required>
         <br>
-        <label for="nombre">Nombre del servicio:</label>
+        <label class="label-servicio" for="nombre">Nombre del servicio:</label>
         <input type="text" id="service" name="nombre" required>
         <br>
 
@@ -37,10 +37,12 @@
 
         <label for="precio">Precio:</label>
         <input type="number" id="precio" name="precio" min="0.01" step="0.01" required>
+
         <br>
 
         <label for="descripcion">Descripción del servicio:</label>
         <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
+        
         <br>
 
         <input type="submit" value="Crear Servicio">
