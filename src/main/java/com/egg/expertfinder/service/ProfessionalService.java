@@ -71,7 +71,7 @@ public class ProfessionalService {
                 Professional proEmail = professionalRepository.findProfessionalByEmail(email);
                 CustomUser userEmail = userRepository.findCustomUserByEmail(email);
                 if (proEmail!=null || userEmail!=null) {
-                    throw new MyException("Ya existe un usuario registrado con ese email.");
+                    throw new MyException("Ya existe un profesional registrado con ese email.");
                 } else {
                     professional.setEmail(email);
                 }
@@ -94,10 +94,11 @@ public class ProfessionalService {
         if (response.isPresent()) {
             professionalRepository.delete(response.get());
         } else {
-            throw new MyException("No se encontró un usuario con ese id.");
+            throw new MyException("No se encontró un profesional con ese ID.");
         }
     }
     
+    //Validación de datos del profesional.
     public void validate(String name, String lastName, String email, String password,
             String password2, MultipartFile file, String description, 
             String license, String phone) throws MyException {
@@ -130,20 +131,32 @@ public class ProfessionalService {
         }
     }
 
-    public Professional getProfessionalById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public List<Professional> getAllProfessionals() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public List<Professional> getProfessionalsDeactivate() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public List<Professional> getProfessionalsActivate() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    //Obtener un profesional de la base de datos usando su ID.
+    public Professional getProfessionalById(Long id) throws MyException {
+        Optional<Professional> response = professionalRepository.findById(id);
+        if(response.isPresent()){
+            return response.get();
+        }else{
+            throw new MyException("No se encontró un profesional con ese ID.");      
+        }
     }
     
+    //Listar todos los profesionales existentes.
+    public List<Professional> getAllProfessionals() {
+        return professionalRepository.findAll();
+    }
+
+    //Listar todos los profesionales que están activos.
+    public List<Professional> getProfessionalsActivate() {
+        return professionalRepository.findProfessionalByActiveTrue();
+    }
+    
+<<<<<<< HEAD
+=======
+    //Listar todos los profesionales que están inactivos.
+    public List<Professional> getProfessionalsDeactivate() {
+        return professionalRepository.findProfessionalByActiveFalse();
+    }
+
+>>>>>>> 6f449d12603e59712bc3400571a8c57d4b1ee5cd
 }
