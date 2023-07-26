@@ -21,13 +21,6 @@ public class JobController {
     @Autowired
     private JobService jobService;
     
-    @GetMapping("/list")
-    public String list(ModelMap model){
-        List<Job> jobs = jobService.getAllJobs();
-        model.put("jobs", jobs);
-        return "job_list.html";
-    }
-    
     @GetMapping("/register")
     public String registerJob(ModelMap Model){
         return "job-register.html";
@@ -53,7 +46,7 @@ public class JobController {
             return "update-job.html";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "redirect:/admin/home";
+            return "update-job.html";
         }
     }
     
@@ -69,15 +62,22 @@ public class JobController {
         }
     }
     
+    @GetMapping("/list")
+    public String list(ModelMap model){
+        List<Job> jobs = jobService.getAllJobs();
+        model.addAttribute("jobs", jobs);
+        return "job-list.html";
+    }
+    
     @PostMapping("/delete/{id}")
     public String deleteJobById(@PathVariable Long id, ModelMap model) {
         try {
             jobService.deleteJob(id);
             model.put("exito", "Se editó el Servicio correctamente.");
-            return "redirect:/admin/home";
+            return "redirect:/admin/dashboard";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "redirect:/admin/home";
+            return "redirect:/admin/dashboard";
         }
     }
 }

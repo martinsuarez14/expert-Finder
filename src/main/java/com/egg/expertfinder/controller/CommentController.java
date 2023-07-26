@@ -25,7 +25,7 @@ public class CommentController {
     public String list(ModelMap model) {
         List<Comment> comment = commentService.getAllComments();
         model.put("comment", comment);
-        return "comment_list.html";
+        return "comment-list.html";
     }
 
     @GetMapping("/register")
@@ -40,7 +40,7 @@ public class CommentController {
         try {
             commentService.createComment(idTask, idUser, idProfessional, content, score);
             model.put("exito", "El comentario fue registrado.");
-            return "redirect:/home";
+            return "redirect:/professional/profile/" + idProfessional;
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
             return "comment-register.html";
@@ -49,18 +49,19 @@ public class CommentController {
 
     @GetMapping("/update/{id}")
     public String updateComment(@PathVariable Long id, ModelMap model) {
+
         try {
             Comment comment = commentService.getCommentById(id);
             model.addAttribute("comment", comment);
             return "update-comment.html";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "redirect:/admin/home";
+            return "redirect:/professional/profile/";
         }
     }
 
     @PostMapping("/update")
-    public String updateComment(@RequestParam Long idTask, @RequestParam Long idUser, 
+    public String updateComment(@RequestParam Long idTask, @RequestParam Long idUser,
             @RequestParam String content, ModelMap model) {
         try {
             commentService.updateComment(idTask, idUser, content);
@@ -71,13 +72,34 @@ public class CommentController {
             return "redirect:/admin/home";
         }
     }
+    
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/comments-reports")
+    public String getCommentsWithReports(ModelMap model) {
+        List<Comment> comments = commentService.getCommentsWithReports();
+        model.addAttribute("comments", comments);
+        return "comments-list.html";
+    }
+    
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/deactivate/{id}")
+    public String deactivateCommentById(@RequestParam Long id, ModelMap model) {
+        try {
+            commentService.deactivateCommentById(id);
+            model.put("exito", "El comentario se desactivó con éxito.");
+            return "redirect:/admin/dashboard";
+        } catch (MyException ex) {
+            model.put("error", ex.getMessage());
+            return "redirect:/admin/comments-reports";
+        }
+    }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list-reports")
     public String getAllCommentsWithReports(ModelMap model) {
         List<Comment> comments = commentService.getCommentsWithReports();
         model.addAttribute("comments", comments);
-        return "comment_list.html";
+        return "comment-list.html";
     }
-    
+
 }

@@ -29,13 +29,13 @@ public class AdminController {
         return "panel.html";
     }
     
-    @GetMapping("/usersList")
+    @GetMapping("/users-list")
     public String usersList(ModelMap model) {
         List<CustomUser> users = userService.getAllUsers();
         
         model.addAttribute("users", users);
         
-        return "users_list.html";
+        return "users-list.html";
     }
     
     @GetMapping("/reports")
