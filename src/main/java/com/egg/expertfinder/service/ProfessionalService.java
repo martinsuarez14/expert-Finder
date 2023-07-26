@@ -147,13 +147,7 @@ public class ProfessionalService {
     //Listar todos los profesionales que están activos.
     public List<Professional> getProfessionalsActivate() {
         return professionalRepository.findProfessionalByActiveTrue();
-<<<<<<< HEAD
-    }    
-
-=======
-    }
-    
->>>>>>> dcc7dcfb58cb5624a38bf684cc753b5608ab62ca
+        
     //Listar todos los profesionales que están inactivos.
     public List<Professional> getProfessionalsDeactivate() {
         return professionalRepository.findProfessionalByActiveFalse();
