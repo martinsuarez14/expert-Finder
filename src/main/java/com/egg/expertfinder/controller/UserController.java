@@ -4,6 +4,8 @@ import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.UserService;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list") // /user/list
     public String list(ModelMap modelo) {
         List<CustomUser> users = userService.getAllUsers();
@@ -30,7 +32,7 @@ public class UserController {
         return "user-list.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+//    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/update/{id}") // /user/update/{id}
     public String updateUser(@PathVariable Long id, ModelMap model) {
         try {
@@ -43,7 +45,7 @@ public class UserController {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+//    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/update") // /user/update
     public String updateUser(@RequestParam Long id, @RequestParam(required = false) String name,
             @RequestParam(required = false) String lastName, @RequestParam(required = false) String email,
@@ -58,8 +60,8 @@ public class UserController {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @GetMapping("/user/{id}") // /user/user/{id}
+//    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/get/{id}") // /user/user/{id}
     public String getUserById(@PathVariable Long id, ModelMap model) {
         try {
             CustomUser user = userService.getUserById(id);
@@ -71,20 +73,20 @@ public class UserController {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list-deactivate")
     public String getUsersDeactivate(ModelMap model) {
         List<CustomUser> users = userService.getUsersActiveFalse();
         model.addAttribute("users", users);
-        return "user-deactivate.html";
+        return "user-list.html";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list-activate")
     public String getUsersActivate(ModelMap model) {
         List<CustomUser> users = userService.getUsersActiveTrue();
         model.addAttribute("users", users);
-        return "user-activate.html";
+        return "user-list.html";
     }
     
     @GetMapping("/delete/{id}")
@@ -94,6 +96,18 @@ public class UserController {
             model.put("exito", "Se eliminó el usuario correctamente.");
             return "redirect:/admin/dashboard";
         } catch (Exception ex) {
+            model.put("error", ex.getMessage());
+            return "redirect:/admin/dashboard";
+        }
+    }
+    
+    @PostMapping("/deactivate/{id}")
+    public String deactivateUser(@PathVariable Long id, ModelMap model) {
+        try {
+            userService.deactivateUser(id);
+            model.put("exito", "El usuario fué desactivado con éxito.");
+            return "redirect:/admin/dashboard";
+        } catch (MyException ex) {
             model.put("error", ex.getMessage());
             return "redirect:/admin/dashboard";
         }

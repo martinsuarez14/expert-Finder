@@ -87,6 +87,30 @@ public class ProfessionalService {
     }
     
     @Transactional
+    public void deactivateProfessional(Long id) throws MyException {
+        Optional<Professional> response = professionalRepository.findById(id);
+        if (response.isPresent()) {
+            Professional professional = response.get();
+            professional.deactivateProfessional();
+            professionalRepository.save(professional);
+        } else {
+            throw new MyException("No se encontró un profesional con ese ID.");
+        }
+    }
+    
+    @Transactional
+    public void activateProfessional(Long id) throws MyException {
+        Optional<Professional> response = professionalRepository.findById(id);
+        if (response.isPresent()) {
+            Professional professional = response.get();
+            professional.activateProfessional();
+            professionalRepository.save(professional);
+        } else {
+            throw new MyException("No se encontró un profesional con ese ID.");
+        }
+    }
+    
+    @Transactional
     public void deleteProfessional(Long id) throws MyException {
         Optional<Professional> response = professionalRepository.findById(id);
         if (response.isPresent()) {
@@ -146,12 +170,17 @@ public class ProfessionalService {
 
     //Listar todos los profesionales que están activos.
     public List<Professional> getProfessionalsActivate() {
-        return professionalRepository.findProfessionalByActiveTrue();
+        return professionalRepository.findByActiveTrue();
     }
     
     //Listar todos los profesionales que están inactivos.
     public List<Professional> getProfessionalsDeactivate() {
-        return professionalRepository.findProfessionalByActiveFalse();
+        return professionalRepository.findByActiveFalse();
     }
+    
+    //Listar todos los profesionales según el service que ofrece
+//    public List<Professional> getProfessionalsByJobName(String job) {
+//        return professionalRepository.findByJob_Name(job);
+//    }
 
 }
