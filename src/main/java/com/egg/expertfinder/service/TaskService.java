@@ -1,11 +1,13 @@
 package com.egg.expertfinder.service;
 
+import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.entity.Professional;
 import com.egg.expertfinder.entity.Task;
 import com.egg.expertfinder.enumeration.StatusEnum;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.repository.ProfessionalRepository;
 import com.egg.expertfinder.repository.TaskRepository;
+import com.egg.expertfinder.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,31 +22,47 @@ public class TaskService {
 
     @Autowired
     private ProfessionalRepository professionalRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional
-    public void createTask(String description, Long id) throws MyException {
-        validate(description, id);
-
-        Optional<Professional> response = professionalRepository.findById(id);
+    public void createTask(String description, Long idProfessional, Long idUser) throws MyException {
+         
+        validate(description, idProfessional, idUser);
+         
+        Optional<Professional> response = professionalRepository.findById(idProfessional);
         if (response.isPresent()) {
             Professional professional = response.get();
             Task task = new Task(description);
-
+            
+            CustomUser user = userRepository.getReferenceById(idUser);
+         
+            task.setUser(user);
+            
             List<Task> tasks = professional.getTasks();
-
+         
             tasks.add(taskRepository.save(task));
+            
             professional.setTasks(tasks);
+            
             professionalRepository.save(professional);
         }
-
     }
 
-    public void updateTask(Long idTask, String newStatus) {
+    @Transactional
+    public void updateTask(Long idTask, String newStatus) throws MyException {
         Optional<Task> response = taskRepository.findById(idTask);
         if (response.isPresent()) {
             Task task = response.get();
-//            task.setStatus(StatusEnum.valueOf(newStatus));
+            task.setStatus(StatusEnum.valueOf(newStatus));
+            
+            if (task.getStatus().equals(StatusEnum.FINALIZADA)) {
+//                Enviar mensaje        
+            }
             taskRepository.save(task);
+        } else {
+            throw new MyException("No se encontró una tarea con ese Id.");
         }
     }
     
@@ -60,19 +78,42 @@ public class TaskService {
             throw new MyException("No se encontró la tarea.");
         }
     }
-    
 
     public List<Task> getTaskByStatus(Long idPro, String status) {
         return taskRepository.findTasksByProfessionalAndStatus(idPro, status);
     }
-
     
-    private void validate(String description, Long id) throws MyException {
+    public List<Task> getTasksByUserId(Long id) {
+        return taskRepository.findByUser_Id(id);
+    }
+    
+    public List<Task> getTasksByProfessionalId(Long id) {
+        return taskRepository.findByProfessional_Id(id);
+    }
+    
+    public List<Task> getTasksByUserAndProfessionalIds(Long idUser, Long idProfessional) {
+        return taskRepository.findTaskByUserAndProfessionalIds(idUser, idProfessional);
+    }
+    
+    @Transactional
+    public void deleteTaskById(Long id) throws MyException {
+        Optional<Task> response = taskRepository.findById(id);
+        if (response.isPresent()) {
+            taskRepository.delete(response.get());
+        } else {
+            throw new MyException("No se encontró una Tarea con ese Id.");
+        }
+    }
+    
+    private void validate(String description, Long idProfessional, Long idUser) throws MyException {
         if (description == null || description.isEmpty()) {
             throw new MyException("La tarea no puede estar vacia.");
         }
-        if (id == null) {
+        if (idProfessional == null) {
             throw new MyException("El id del profesional no puede ser nulo.");
+        }
+        if (idUser == null) {
+            throw new MyException("El id del usuario no puede ser nulo.");
         }
     }
 }

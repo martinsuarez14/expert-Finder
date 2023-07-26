@@ -17,7 +17,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Professional extends CustomUser{
 
     /*
@@ -31,7 +30,6 @@ public class Professional extends CustomUser{
 
     @Column(nullable = false)
     private String phone;
-
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
@@ -55,11 +53,13 @@ public class Professional extends CustomUser{
             this.description = description;
         }
         if (phone != null){
-
             this.phone = phone;
         }
     }
 
+    public void handleChangeRoleUser() {
+        this.role = RoleEnum.USER;
+    }
 
 }
 

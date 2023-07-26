@@ -1,9 +1,12 @@
-
 package com.egg.expertfinder.service;
 
 import com.egg.expertfinder.entity.Comment;
+import com.egg.expertfinder.entity.Task;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.repository.CommentRepository;
+import com.egg.expertfinder.repository.ProfessionalRepository;
+import com.egg.expertfinder.repository.TaskRepository;
+import com.egg.expertfinder.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,51 +15,109 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CommentService {
-    
+
     @Autowired
     private CommentRepository commentRepository;
-    
+
+    @Autowired
+    private TaskRepository taskRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ProfessionalRepository professionalRepository;
+
     @Transactional
-    public void createComment(String content, Double score) throws MyException {
-        validate(content, score);
-        if (commentRepository.findCommentByContent(content) != null) {
-            throw new MyException("Ya existe este comentario");
-        }
-        Comment comment = new Comment(content, score);        
-        
-       commentRepository.save(comment);
-    }    
-    
-    @Transactional
-    public void updateComment(Long id, String content) throws MyException{
-        Optional<Comment> response = commentRepository.findById(id);
-        if (response.isPresent()) {
-            Comment comment = response.get();
-            comment.setContent(content);
+    public void createComment(Long idTask, Long idUser, Long idProfessional,
+            String content, Double score) throws MyException {
+
+        validate(idTask, idUser, idProfessional, content, score);
+
+        Task task = taskRepository.getReferenceById(idTask);
+
+        if (task != null) {
+
+            if (task.getComment() == null) {
+
+                Comment comment = new Comment(content, score);
+
+                comment.setUser(userRepository.getReferenceById(idUser));
+                comment.setProfessional(professionalRepository.getReferenceById(idProfessional));
+
+                task.setComment(commentRepository.save(comment));
+                taskRepository.save(task);
+
+            } else {
+                throw new MyException("Ya existe un comentario en esta tarea.");
+            }
+
         } else {
-            throw new MyException("No se encontro el servicio.");
+            throw new MyException("No existe una tarea con ese Id.");
         }
     }
-    public List<Comment> getAllComments(){
+
+    @Transactional
+    public void updateComment(Long idTask, Long idUser, String content) throws MyException {
+        Optional<Task> response = taskRepository.findById(idTask);
+        if (response.isPresent()) {
+            Comment comment = response.get().getComment();
+            if (comment != null && comment.getUser().getId() == idUser) {
+                comment.setContent(content);
+                commentRepository.save(comment);
+            } else {
+                throw new MyException("No existe un comentario con ese id o el usuario no corresponde.");
+            }
+        } else {
+            throw new MyException("No existe una tarea con ese Id.");
+        }
+    }
+
+    public List<Comment> getAllComments() {
         return commentRepository.findAll();
     }
-    
-    public Comment getCommentById(Long id) throws MyException{
+
+    public Comment getCommentById(Long id) throws MyException {
         Optional<Comment> response = commentRepository.findById(id);
-        if(response.isPresent()){
+        if (response.isPresent()) {
             return response.get();
-        }else{
+        } else {
             throw new MyException("No se encontró un comentario con ese ID.");
         }
     }
     
-    private void validate(String content, Double score) throws MyException {
-        if(content == null || content.isEmpty()) {
+    public List<Comment> getCommentsWithReports() {
+        return commentRepository.findCommentsWithReportsGreaterThanZero();
+    }
+    
+    @Transactional
+    public void deactivateCommentById(Long id) throws MyException {
+        Optional<Comment> response = commentRepository.findById(id);
+        if (response.isPresent()) {
+            Comment comment = response.get();
+            comment.deactivateComment();
+            commentRepository.save(comment);
+        } else {
+            throw new MyException("No se encontró el comentario.");
+        }
+    }
+
+    private void validate(Long idTask, Long idUser, Long idProfessional, String content, Double score) throws MyException {
+        if (idTask == null) {
+            throw new MyException("No se ingresó el Id de la tarea.");
+        }
+        if (idUser == null) {
+            throw new MyException("No se ingresó el Id del Usuario.");
+        }
+        if (idProfessional == null) {
+            throw new MyException("No se ingresó el Id del Professional.");
+        }
+        if (content == null || content.isEmpty()) {
             throw new MyException("El contenido del comentario no puede estar vacio.");
         }
-        if(score == null) {
+        if (score == null) {
             throw new MyException("Debe ingresar una valoración por el trabajo.");
         }
     }
-    
+
 }

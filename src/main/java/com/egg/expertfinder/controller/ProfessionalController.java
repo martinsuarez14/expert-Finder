@@ -23,7 +23,7 @@ public class ProfessionalController {
 
     @PreAuthorize("hasRole('ROLE_PRO')")
     @GetMapping("/update/{id}") // /professional/update/{id}
-    public String updateProfessional(@PathVariable Long id, ModelMap model) {
+    public String updateProfessional(@PathVariable Long id, ModelMap model) throws MyException {
         Professional professional = professionalService.getProfessionalById(id);
         model.addAttribute("professional", professional);
         return "update-professional.html";
@@ -69,7 +69,7 @@ public class ProfessionalController {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_PRO')")
     @GetMapping("/detail/{id}") // /professional/detail/{id}
-    public String profileProfessional(@PathVariable Long id, ModelMap model) {
+    public String profileProfessional(@PathVariable Long id, ModelMap model) throws MyException {
         Professional professional = professionalService.getProfessionalById(id);
         model.addAttribute("professional", professional);
         return "professional-detail.html";
