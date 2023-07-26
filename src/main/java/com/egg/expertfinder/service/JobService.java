@@ -23,9 +23,11 @@ public class JobService {
     @Transactional
     public void createJob(String name, MultipartFile file) throws MyException {
         validate(name, file);
+        
         if (jobRepository.findJobByName(name) != null) {
             throw new MyException("Ya existe este servicio");
         }
+        
         Job job = new Job(name);
         
         Image image = imageService.createImage(file);

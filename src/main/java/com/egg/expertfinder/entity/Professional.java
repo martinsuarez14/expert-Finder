@@ -17,7 +17,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Professional extends CustomUser{
 
     /*
@@ -54,11 +53,13 @@ public class Professional extends CustomUser{
             this.description = description;
         }
         if (phone != null){
-
             this.phone = phone;
         }
     }
 
+    public void handleChangeRoleUser() {
+        this.role = RoleEnum.USER;
+    }
 
 }
 
