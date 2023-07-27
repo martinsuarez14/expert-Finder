@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <title>Registrar Usuario</title>
@@ -7,52 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{bem.css}">
     <link rel="stylesheet" th:href="@{forms.css}">
-    
+
 </head>
 
-    <body>
-        <header th:replace="/fragments/templates.html :: header"></header>
+<body>
+    <header th:replace="/fragments/templates.html :: header"></header>
 
-        <div class="container--form">
+    <div class="container--form">
 
-            <form class="form" th:action="@{/register-user}" method="post" enctype="multipart/form-data">
-                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                    <div class="card-body">
-                        <h5 class="card-title">Error al cargar</h5>
-                        <p class="card-text" th:text="${error}"></p>
-                    </div>
+        <form class="form" th:action="@{/register-user}" method="post" enctype="multipart/form-data">
+            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                <div class="card-body">
+                    <h5 class="card-title">Error al cargar</h5>
+                    <p class="card-text" th:text="${error}"></p>
                 </div>
-                <div th:if="${exito != null}" class="card text-white bg-success mb-3 mensajeExito">
-                    <div class="card-body">
-                        <h5 class="card-title">Éxito!</h5>
-                        <p class="card-text" th:text="${exito}"></p>
-                    </div>
+            </div>
+            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mensajeExito">
+                <div class="card-body">
+                    <h5 class="card-title">Éxito!</h5>
+                    <p class="card-text" th:text="${exito}"></p>
                 </div>
-                <div class="form__head">Crear Usuario</div>
-                <br>
-                <label class="form__label">Nombre</label>
-                <input class="form__input" type="text" placeholder="Juan" name="name" required /> <br>
-                <label class="form__label">Apellido</label>
-                <input class="form__input" type="text" placeholder="Perez" name="lastName" required /> <br>
-                <label class="form__label">Email</label>
-                <input class="form__input" type="email" placeholder="correo@correo.com" name="email" required /> <br>
-                <label class="form__label">Password</label>
-                <input class="form__input" type="password" placeholder="123456" name="password" required /> <br>
-                <label class="form__label">Repetir la contraseña</label>
-                <input class="form__input" type="password" placeholder="123456" name="password2" required /> <br>
-                <label class="form__label">Contraseña del Barrio</label>
-                <input class="form__input" type="password" placeholder="Clave del barrio pa" name="countryKey" required /> <br>
-                <label class="form__label">Dirección</label>
-                <input class="form__input" type="text" placeholder="Direccion" name="address" required /> <br>
+            </div>
+            <div class="form__head">Crear Usuario</div>
+            <br>
+            <label class="form__label">Nombre</label>
+            <input class="form__input" type="text" placeholder="Juan" name="name" required /> <br>
+            <label class="form__label">Apellido</label>
+            <input class="form__input" type="text" placeholder="Perez" name="lastName" required /> <br>
+            <label class="form__label">Email</label>
+            <input class="form__input" type="email" placeholder="correo@correo.com" name="email" required /> <br>
+            <label class="form__label">Password</label>
+            <input class="form__input" type="password" placeholder="123456" name="password" required /> <br>
+            <label class="form__label">Repetir la contraseña</label>
+            <input class="form__input" type="password" placeholder="123456" name="password2" required /> <br>
+            <label class="form__label">Contraseña del Barrio</label>
+            <input class="form__input" type="password" placeholder="Clave del barrio pa" name="countryKey" required />
+            <br>
+            <label class="form__label">Dirección</label>
+            <input class="form__input" type="text" placeholder="Direccion" name="address" required /> <br>
 
-                <label class="form__label">Foto de Perfil</label>
-                <input class="form__input" type="file" placeholder="" name="file" required /> <br>
+            <label class="form__label">Foto de Perfil</label>
+            <input class="form__input" type="file" placeholder="" name="file" required /> <br>
 
-                <button class="header__btn" type="submit">Enviar</button>
-            </form>
-        </div>
+            <button class="header__btn" type="submit">Enviar</button>
+        </form>
+    </div>
 
-        <footer th:include="fragments/templates.html::footer" class="footer"></footer>
+    <footer th:include="fragments/templates.html::footer" class="footer"></footer>
     </div>
 </body>
 

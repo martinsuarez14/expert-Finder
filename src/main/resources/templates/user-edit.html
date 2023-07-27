@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bem.css}">
+    <link rel="stylesheet" th:href="@{forms.css}">
+    <title>user-edit</title>
+</head>
+<body>
+    <header th:replace="/fragments/templates.html :: header"></header>
+
+        <div class="container--form">
+
+            <form class="form" th:action="@{/update/{id}}" method="post" enctype="multipart/form-data">
+
+                <!-- cards boostrap error y check -->
+                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                    <div class="card-body">
+                        <h5 class="card-title">Error al cargar</h5>
+                        <p class="card-text" th:text="${error}"></p>
+                    </div>
+                </div>
+                <div th:if="${exito != null}" class="card text-white bg-success mb-3 mensajeExito">
+                    <div class="card-body">
+                        <h5 class="card-title">Éxito!</h5>
+                        <p class="card-text" th:text="${exito}"></p>
+                    </div>
+                </div>
+
+
+                <!-- Formulario  -->
+
+                <div class="form__head">Editar Perfil</div>
+                <br>
+                <label class="form__label" >Nombre</label>
+                <input class="form__input" th:text="${user.name}" type="text" placeholder="Juan" name="name" /> <br>
+                <label class="form__label">Apellido</label>
+                <input class="form__input" th:text="${user.lastName}" type="text" placeholder="Perez" name="lastName"  /> <br>
+                <label class="form__label">Email</label>
+                <input class="form__input" th:text="${user.email}" type="email" placeholder="correo@correo.com" name="email" /> <br>
+                <label class="form__label">Contraseña</label>
+                <input class="form__input" type="password" placeholder="123456" name="password"  /> <br>
+                <label class="form__label">Nueva Contraseña</label>
+                <input class="form__input" type="password" placeholder="Ej: 123456" name="password"  /> <br>
+                <label class="form__label">Repetir contraseña</label>
+                <input class="form__input" type="password" placeholder="Ej: 123456" name="password2"/> <br>
+                <label class="form__label">Foto de Perfil</label>
+                <input class="form__input" type="file" placeholder="" name="file" /> <br>
+
+                <button class="header__btn" type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <footer th:include="fragments/templates.html::footer" class="footer"></footer>
+    </div>
+</body>
+</html>

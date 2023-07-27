@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>Details</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{bem.css}">
+        <link rel="stylesheet" th:href="@{forms.css}">
     </head>
     <body>
-        <div>TODO write content</div>
-        <p th:text="${user.name}"></p>
+        <div class="table__container">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tu perfil!</th>
+                    </tr>
+                </thead>
+                <div class="table__img">
+                    <img th:src="${user.image}" alt="not found">
+                </div>
+                <tbody>
+                    <tr>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.email}"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p th:text="${user.name}"></p>
+        </div>
     </body>
 </html>
