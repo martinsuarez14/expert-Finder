@@ -132,6 +132,18 @@ public class UserService implements UserDetailsService {
             throw new Exception("No se encontró al usuario");
         }
     }
+    
+    @Transactional
+    public void deactivateUser(Long id) throws MyException {
+        Optional<CustomUser> response = userRepository.findById(id);
+        if (response.isPresent()) {
+            CustomUser user = response.get();
+            user.deactivateUser();
+            userRepository.save(user);
+        } else {
+            throw new MyException("No se encontró al usuario con ese id.");
+        }
+    }
 
 //  Validamos que lleguen los datos necesarios para crear un User
     private void validate(String name, String lastName, String email, String password,

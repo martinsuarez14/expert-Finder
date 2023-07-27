@@ -51,9 +51,10 @@ public class JobController {
     }
     
     @PostMapping("/update")
-    public String updateJob(@RequestParam Long id, @RequestParam String name, ModelMap model){
+    public String updateJob(@RequestParam Long id, @RequestParam(required = false) String name, 
+            @RequestParam(required = false) MultipartFile file, ModelMap model){
         try {
-            jobService.updateJob(id, name);
+            jobService.updateJob(id, name, file);
             model.put("exito", "Se editó el Servicio correctamente.");
             return "redirect:/admin/home";
         } catch (MyException ex) {

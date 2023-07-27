@@ -8,6 +8,13 @@
     </head>
     <body>
         <div>TODO write content</div>
+        <form th:action="@{/job/register}" enctype="multipart/form-data" method="post" class="job-form">
+            <label  class="label-nombre" for="nombre">Nombre del Servicio</label>
+            <input type="text" id="name" name="name" required>
+            <label  class="label-nombre" for="nombre">Nombre del Servicio</label>
+            <input type="file" id="name" name="file" required>
+            <input type="submit" value="Crear Servicio">
+        </form>
         <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
             <div class="card-body">
                 <h5 class="card-title">Error al cargar</h5>

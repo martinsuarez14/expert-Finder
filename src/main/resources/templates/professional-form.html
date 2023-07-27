@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" th:href="@{bem.css}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" th:href="@{bem.css}">
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <h1 class="form-profesional-titulo">Formulario del profesional</h1>
+        <h1 class="form-profesional-titulo">Formulario del profesional</h1>
 
-    <form th:action="@{/logincheck}" method="post" class="form-profesional">
-        <label  class="label-nombre" for="nombre">Nombre del Profesional:</label>
-        <input type="text" id="name" name="nombre" required>
-        <br>
-        <label class="label-matricula" for="nombre">Nombre de la Matricula:</label>
-        <input type="text" id="matricula" name="nombre" required>
-        <br>
-        <label class="label-servicio" for="nombre">Nombre del servicio:</label>
-        <input type="text" id="service" name="nombre" required>
-        <br>
+        <form th:action="@{/register-professional}" enctype="multipart/form-data" method="post" class="form-profesional">
+            <label  class="label-nombre" for="nombre">Nombre del Profesional:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label  class="label-nombre" for="nombre">Apellido del Profesional:</label>
+            <input type="text" id="name" name="lastName" required>
+            <br>
+            <label  class="label-nombre" for="nombre">Correo electrónico:</label>
+            <input type="text" id="name" name="email" required>
+            <br>
+            <label  class="label-nombre" for="nombre">Ingrese una contraseña:</label>
+            <input type="text" id="name" name="password" required>
+            <br>
+            <label  class="label-nombre" for="nombre">Repita la contraseña:</label>
+            <input type="text" id="name" name="password2" required>
+            <br>
+            <label  class="label-nombre" for="nombre">Domicilio:</label>
+            <input type="text" id="name" name="address" required>
+            <br>
+            <label  class="label-nombre" for="nombre">Cargar imagen de perfil:</label>
+            <input type="file" id="name" name="file" required>
+            <br>
+            <label  class="label-nombre" for="nombre">Elija una profesión:</label>
+            <select name="idJob">                
+                <option th:each="job : ${jobs}" th:value="${job.id}" th:text="${job.name}"></option>
+            </select>
+            <label class="label-matricula" for="nombre">Nombre de la Matricula:</label>
+            <input type="text" id="matricula" name="license" required>
+            <br>
+            <label class="label-servicio" for="nombre">Número de teléfono:</label>
+            <input type="text" id="service" name="phone" required>
+            <br>
+            <label class="label-servicio" for="nombre">Descripción:</label>
+            <input type="text" id="service" name="description" required>
+            <br>
 
-        <label for="categoria">Categoría:</label>
-        <select id="categoria" name="categoria" required>
-            <option value="">Seleccione una categoría</option>
-            <option value="Limpieza">Limpieza</option>
-            <option value="Mantenimiento">Mantenimiento</option>
-            <option value="Reparacion">Reparación</option>
-            <option value="Cerrajero">Cerrajero</option>
-            <option value="Jardineria">Jardineria</option>
-        </select>
-        <br>
+            <!--<label for="descripcion">Descripción del servicio:</label>-->
+            <!--<textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>-->
+            
+            <input type="submit" value="Crear Servicio">
+        </form>
 
-        <label for="precio">Precio:</label>
-        <input type="number" id="precio" name="precio" min="0.01" step="0.01" required>
-
-        <br>
-
-        <label for="descripcion">Descripción del servicio:</label>
-        <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
-        
-        <br>
-
-        <input type="submit" value="Crear Servicio">
-    </form>
-
-</body>
+    </body>
 
 </html>

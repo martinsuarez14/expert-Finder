@@ -2,6 +2,7 @@ package com.egg.expertfinder.service;
 
 import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.entity.Image;
+import com.egg.expertfinder.entity.Job;
 import com.egg.expertfinder.entity.Location;
 import com.egg.expertfinder.entity.Professional;
 import com.egg.expertfinder.exception.MyException;
@@ -30,13 +31,16 @@ public class ProfessionalService {
     @Autowired
     private ImageService imageService;
 
+    @Autowired
+    private JobService jobService;
+
     //Creación de un profesional.
     @Transactional
     public void createProfessional(String name, String lastName, String email, String password,
-            String password2, String address, MultipartFile file,
+            String password2, String address, MultipartFile file, Long idJob,
             String description, String license, String phone) throws MyException {
 
-        validate(name, lastName, email, password, password2, file, description, license, phone);
+        validate(name, lastName, email, password, password2, file, idJob, description, license, phone);
 
         Professional professional = new Professional(name, lastName, email,
                 description, license, phone);
@@ -44,9 +48,13 @@ public class ProfessionalService {
         //Seteo de contraseña encriptada.
         professional.setPassword(new BCryptPasswordEncoder().encode(password));
 
-        Location location = new Location("Chacras de Coria", address);
+        Location location = locationService.createLocation("Chacras de Coria", address);
 
         professional.setLocation(location);
+
+        Job job = jobService.getJobById(idJob);
+
+        professional.setJob(job);
 
         Image image = imageService.createImage(file);
 
@@ -86,6 +94,30 @@ public class ProfessionalService {
     }
 
     @Transactional
+    public void deactivateProfessional(Long id) throws MyException {
+        Optional<Professional> response = professionalRepository.findById(id);
+        if (response.isPresent()) {
+            Professional professional = response.get();
+            professional.deactivateProfessional();
+            professionalRepository.save(professional);
+        } else {
+            throw new MyException("No se encontró un profesional con ese ID.");
+        }
+    }
+
+    @Transactional
+    public void activateProfessional(Long id) throws MyException {
+        Optional<Professional> response = professionalRepository.findById(id);
+        if (response.isPresent()) {
+            Professional professional = response.get();
+            professional.activateProfessional();
+            professionalRepository.save(professional);
+        } else {
+            throw new MyException("No se encontró un profesional con ese ID.");
+        }
+    }
+
+    @Transactional
     public void deleteProfessional(Long id) throws MyException {
         Optional<Professional> response = professionalRepository.findById(id);
         if (response.isPresent()) {
@@ -97,8 +129,9 @@ public class ProfessionalService {
 
     //Validación de datos del profesional.
     public void validate(String name, String lastName, String email, String password,
-            String password2, MultipartFile file, String description,
+            String password2, MultipartFile file, Long idJob, String description,
             String license, String phone) throws MyException {
+        
         if (name == null || name.isEmpty()) {
             throw new MyException("El nombre no puede ser nulo o estar vacío.");
         }
@@ -116,6 +149,9 @@ public class ProfessionalService {
         }
         if (file == null) {
             throw new MyException("Debe ingresar una imagen de perfil.");
+        }
+        if (idJob == null) {
+            throw new MyException("Debe ingresar un servicio a ofrecer.");
         }
         if (description == null || description.isEmpty()) {
             throw new MyException("Debe ingresar una descripción.");
@@ -145,13 +181,18 @@ public class ProfessionalService {
 
     //Listar todos los profesionales que están activos.
     public List<Professional> getProfessionalsActivate() {
-        return professionalRepository.findProfessionalByActiveTrue();
-
+        
+        return professionalRepository.findByActiveTrue();        
     }
 
     //Listar todos los profesionales que están inactivos.
     public List<Professional> getProfessionalsDeactivate() {
-        return professionalRepository.findProfessionalByActiveFalse();
+        return professionalRepository.findByActiveFalse();
+    }
+
+    //Listar todos los profesionales según el service que ofrece
+    public List<Professional> getProfessionalsByJobName(String job) {
+        return professionalRepository.findByJob_Name(job);
     }
 
 }
