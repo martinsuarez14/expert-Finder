@@ -1,52 +1,91 @@
 <!DOCTYPE html>
 
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{bem.css}"/>
-        <link rel="stylesheet" th:href="@{home.css}"/>
-    </head>
-    <body>
 
-        <header th:replace="/fragments/templates.html :: header"></header>
+<head>
+    <title>Servicios</title>
+    <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bem.css}" />
+    <link rel="stylesheet" th:href="@{home.css}" />
+</head>
 
+<body>
 
-        <main class="fondo">
-            <ul class="card-list">
-
-                <li class="card">
-                    <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
-                        <img src="https://ecohabitar.org/wp-content/uploads/original.jpg" alt="Psychopomp" />
-                    </a>
-                    <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
-                        <h2>Carpintería</h2>
-			<p>21 Profesionales</p>
-                    </a>
-                </li>
-                <li class="card">
-                    <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
-                        <img src="https://homesolution.net/blog/wp-content/uploads/2019/02/plomero_a_domicilio_teusaquillo_bogota_colombia.jpg" alt="Psychopomp" />
-                    </a>
-                    <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
-                        <h2>Plomería</h2>
-			<p>12 Profesionales</p>
-                    </a>
-                </li>
-                <li class="card">
-                    <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZt0h5A35LHrauX4SLMDBlYbuwBclkGxrMkKf4JxYhyRfNNPi-boQwC3na3IgY4WI3AZo&usqp=CAU" alt="Psychopomp" />
-                    </a>
-                    <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
-                        <h2>Jardinería</h2>
-			<p>15 Profesionales</p>
-                    </a>
-                </li>
-            </ul>
-            
-        </main>
+    <header th:replace="/fragments/templates.html :: header"></header>
 
 
-            </body>
-                    </html>
+    <main class="fondo">
+        <ul class="card-list">
+
+            <li class="card">
+                <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+                    <img src="https://ecohabitar.org/wp-content/uploads/original.jpg" alt="Psychopomp" />
+                </a>
+                <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2"
+                    target="_blank">
+                    <h2>Carpintería</h2>
+                    <p>21 Profesionales</p>
+                </a>
+            </li>
+            <li class="card">
+                <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+                    <img src="https://homesolution.net/blog/wp-content/uploads/2019/02/plomero_a_domicilio_teusaquillo_bogota_colombia.jpg"
+                        alt="Psychopomp" />
+                </a>
+                <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2"
+                    target="_blank">
+                    <h2>Mantenimiento</h2>
+                    <p>12 Profesionales</p>
+                </a>
+            </li>
+            <li class="card">
+                <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+                    <img th:src="@{img/jardineria.PNG}" alt="jardineria" />
+                </a>
+                <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2"
+                    target="_blank">
+                    <h2>Jardinería</h2>
+                    <p>15 Profesionales</p>
+                </a>
+            </li>
+           <li class="card">
+            <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+                <img th:src="@{img/Limpieza.PNG}"
+                alt="Limpieza"/>
+             </a>
+             <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+              <h2>Limpieza</h2>
+              <p>20 Profesionales</p>
+              </a>
+         </li>
+         <li class="card">
+            <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+                <img th:src="@{img/pintor.PNG}"
+                alt="pintor"/>
+             </a>
+             <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+              <h2>Pintor</h2>
+              <p>10 Profesionales</p>
+              </a>
+         </li>
+         <li class="card">
+            <a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+                <img th:src="@{img/electricista.PNG}"
+                alt="pintor"/>
+             </a>
+             <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
+              <h2>Electricista</h2>
+              <p>6 Profesionales</p>
+              </a>
+         </li>
+
+        </ul>
+
+    </main>
+
+
+</body>
+
+</html>
