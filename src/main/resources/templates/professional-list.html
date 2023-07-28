@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>PRofessional List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Lista de Profesionales</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="professional : ${professionals}">
+                    <td th:text="${professional.name}"></td>
+                    <td th:text="${professional.email}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

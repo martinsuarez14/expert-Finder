@@ -1,10 +1,13 @@
 package com.egg.expertfinder.controller;
 
 import com.egg.expertfinder.entity.CustomUser;
+import com.egg.expertfinder.entity.Job;
 import com.egg.expertfinder.exception.MyException;
+import com.egg.expertfinder.service.JobService;
 import com.egg.expertfinder.service.ProfessionalService;
 import com.egg.expertfinder.service.UserService;
 
+import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/")  // localhost:8080/
 public class HomeController {
+    
+    @Autowired
+    private JobService jobService;
 
     @Autowired
     private UserService userService;
@@ -42,7 +48,7 @@ public class HomeController {
 
     @GetMapping("/register-user")  // localhost:8080/register
     public String registerUser() {
-        return "user_form.html";
+        return "user-form.html";
     }
 
     @PostMapping("/register-user")
@@ -57,27 +63,31 @@ public class HomeController {
             return "redirect:/login";
         } catch (MyException e) {
             model.put("error", e.getMessage());
-            return "user_form.html";
+            return "user-form.html";
         }
     }
 
     @GetMapping("/register-professional")  // localhost:8080/register
-    public String registerProfessional() {
-        return "professional_form.html";
+    public String registerProfessional(ModelMap model) {
+        List<Job> jobs = jobService.getAllJobs();
+        model.addAttribute("jobs",jobs);
+        return "professional-form.html";
     }
 
     @PostMapping("/register-professional")
     public String registerProfessional(@RequestParam String name, @RequestParam String lastName,
-                                       @RequestParam String email, @RequestParam String password, @RequestParam String password2,
-                                       @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
+            @RequestParam String email, @RequestParam String password, @RequestParam String password2, 
+            @RequestParam String address, @RequestParam MultipartFile file, @RequestParam Long idJob,
+            @RequestParam String description, @RequestParam String license, 
+            @RequestParam String phone, ModelMap model) {
         try {
-            professionalService.createProfessional(name, lastName, email, password, password2,
-                    address, file, email, lastName, name);
+            professionalService.createProfessional(name, lastName, email, password, password2, 
+                    address, file, idJob, description, license, phone);
             model.put("exito", "Usuario registrado.");
             return "redirect:/login";
         } catch (MyException e) {
             model.put("error", e.getMessage());
-            return "professional_form.html";
+            return "professional-form.html";
         }
     }
 

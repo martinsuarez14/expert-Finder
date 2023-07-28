@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,12 +19,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Professional extends CustomUser{
 
-    /*
-    *   EL PROFESIONAL TIENE, EN LA LOCATION, COUNTRY = VISITANTE;
-     */
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Job job;
+    
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
@@ -31,7 +33,6 @@ public class Professional extends CustomUser{
 
     @Column(nullable = false)
     private String phone;
-
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
@@ -55,11 +56,21 @@ public class Professional extends CustomUser{
             this.description = description;
         }
         if (phone != null){
-
             this.phone = phone;
         }
     }
+    
+    public void activateProfessional() {
+        this.active = true;
+    }
 
+    public void deactivateProfessional() {
+        this.active = false;
+    }
+
+    public void handleChangeRoleUser() {
+        this.role = RoleEnum.USER;
+    }
 
 }
 

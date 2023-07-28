@@ -21,13 +21,6 @@ public class JobController {
     @Autowired
     private JobService jobService;
     
-    @GetMapping("/list")
-    public String list(ModelMap model){
-        List<Job> jobs = jobService.getAllJobs();
-        model.put("jobs", jobs);
-        return "job_list.html";
-    }
-    
     @GetMapping("/register")
     public String registerJob(ModelMap Model){
         return "job-register.html";
@@ -53,20 +46,28 @@ public class JobController {
             return "update-job.html";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "redirect:/admin/home";
+            return "update-job.html";
         }
     }
     
     @PostMapping("/update")
-    public String updateJob(@RequestParam Long id, @RequestParam String name, ModelMap model){
+    public String updateJob(@RequestParam Long id, @RequestParam(required = false) String name, 
+            @RequestParam(required = false) MultipartFile file, ModelMap model){
         try {
-            jobService.updateJob(id, name);
+            jobService.updateJob(id, name, file);
             model.put("exito", "Se editó el Servicio correctamente.");
             return "redirect:/admin/home";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
             return "redirect:/admin/home";
         }
+    }
+    
+    @GetMapping("/list")
+    public String list(ModelMap model){
+        List<Job> jobs = jobService.getAllJobs();
+        model.addAttribute("jobs", jobs);
+        return "job-list.html";
     }
     
     @PostMapping("/delete/{id}")
@@ -74,10 +75,10 @@ public class JobController {
         try {
             jobService.deleteJob(id);
             model.put("exito", "Se editó el Servicio correctamente.");
-            return "redirect:/admin/home";
+            return "redirect:/admin/dashboard";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "redirect:/admin/home";
+            return "redirect:/admin/dashboard";
         }
     }
 }

@@ -73,4 +73,12 @@ public class CustomUser {
         }
     }
     
+    public void handleChangeRoleProfessional() {
+        this.role = RoleEnum.PRO;
+    }
+    
+    public void deactivateUser(){
+        this.active = false;
+    }
+    
 }

@@ -13,28 +13,30 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class JobService {
-    
+
     @Autowired
     private JobRepository jobRepository;
-    
+
     @Autowired
     private ImageService imageService;
-    
+
     @Transactional
     public void createJob(String name, MultipartFile file) throws MyException {
         validate(name, file);
+
         if (jobRepository.findJobByName(name) != null) {
             throw new MyException("Ya existe este servicio");
         }
+
         Job job = new Job(name);
-        
+
         Image image = imageService.createImage(file);
-        
+
         job.setImage(image);
-        
-       jobRepository.save(job);
+
+        jobRepository.save(job);
     }
-    
+
     @Transactional
     public void deleteJob(Long id) throws MyException {
         Optional<Job> response = jobRepository.findById(id);
@@ -44,31 +46,39 @@ public class JobService {
             throw new MyException("No se encontro el servicio.");
         }
     }
-    
+
     @Transactional
-    public void updateJob(Long id, String name) throws MyException{
+    public void updateJob(Long id, String name, MultipartFile file) throws MyException {
         Optional<Job> response = jobRepository.findById(id);
         if (response.isPresent()) {
             Job job = response.get();
-            job.setName(name);
+            if (name != null) {
+                job.setName(name);
+            }
+            if (file != null) {
+                Image image = job.getImage();
+                image = imageService.updateImage(image.getId(), file);
+                job.setImage(image);
+            }
+            jobRepository.save(job);
         } else {
             throw new MyException("No se encontro el servicio.");
         }
     }
-    
-    public List<Job> getAllJobs(){
+
+    public List<Job> getAllJobs() {
         return jobRepository.findAll();
     }
 
-    public Job getJobById(Long id) throws MyException{
+    public Job getJobById(Long id) throws MyException {
         Optional<Job> response = jobRepository.findById(id);
-        if(response.isPresent()){
+        if (response.isPresent()) {
             return response.get();
-        }else{
+        } else {
             throw new MyException("No se encontró un Servicio con ese ID.");
         }
     }
-    
+
     private void validate(String name, MultipartFile file) throws MyException {
         if (name == null || name.isEmpty()) {
             throw new MyException("El nombre del servicio no puede estar vacio.");
