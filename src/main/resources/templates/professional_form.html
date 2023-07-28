@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Profesional</title>
     <link rel="icon" th:href="@{img/logo-pestaña.jpeg}" type="image/x-icon">
-    <link rel="stylesheet" th:href="@{login.css}">
+    <link rel="stylesheet" th:href="@{/prologin.css}">
+
 </head>
 
 <body class="body-form-profesional">
@@ -14,13 +15,13 @@
     <h1 class="form-profesional-titulo">Formulario del profesional</h1>
 
     <form th:action="@{/logincheck}" method="post" class="form-profesional">
-        <label   for="nombre">Nombre del Profesional:</label>
+        <label for="nombre">Nombre del Profesional:</label>
         <input type="text" id="name" name="nombre" required>
         <br>
-        <label  for="nombre">Nombre de la Matricula:</label>
+        <label for="nombre">Nombre de la Matricula:</label>
         <input type="text" id="matricula" name="nombre" required>
         <br>
-        <label  for="nombre">Nombre del servicio:</label>
+        <label for="nombre">Nombre del servicio:</label>
         <input type="text" id="service" name="nombre" required>
         <br>
 
@@ -43,7 +44,7 @@
 
         <label for="descripcion">Descripción del servicio:</label>
         <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>
-        
+
         <br>
 
         <input type="submit" value="Crear Servicio">
