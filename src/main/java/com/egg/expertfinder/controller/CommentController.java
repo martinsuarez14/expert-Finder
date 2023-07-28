@@ -40,10 +40,10 @@ public class CommentController {
         try {
             commentService.createComment(idTask, idUser, idProfessional, content, score);
             model.put("exito", "El comentario fue registrado.");
-            return "redirect:/professional/profile/" + idProfessional;
-        } catch (MyException ex) {
+            return "redirect:/home";
+        } catch (Exception ex) {
             model.put("error", ex.getMessage());
-            return "comment-register.html";
+            return "redirect:/home";
         }
     }
 
@@ -72,7 +72,7 @@ public class CommentController {
             return "redirect:/admin/home";
         }
     }
-    
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/comments-reports")
     public String getCommentsWithReports(ModelMap model) {
@@ -80,10 +80,10 @@ public class CommentController {
         model.addAttribute("comments", comments);
         return "comments-list.html";
     }
-    
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/deactivate/{id}")
-    public String deactivateCommentById(@RequestParam Long id, ModelMap model) {
+    public String deactivateCommentById(@PathVariable Long id, ModelMap model) {
         try {
             commentService.deactivateCommentById(id);
             model.put("exito", "El comentario se desactivó con éxito.");
