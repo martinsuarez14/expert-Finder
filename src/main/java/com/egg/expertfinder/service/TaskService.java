@@ -34,7 +34,10 @@ public class TaskService {
         Optional<Professional> response = professionalRepository.findById(idProfessional);
         if (response.isPresent()) {
             Professional professional = response.get();
+            
             Task task = new Task(description);
+            
+            task.setProfessional(professional);
             
             CustomUser user = userRepository.getReferenceById(idUser);
          
@@ -80,7 +83,7 @@ public class TaskService {
     }
 
     public List<Task> getTaskByStatus(Long idPro, String status) {
-        return taskRepository.findTasksByProfessionalAndStatus(idPro, status);
+        return taskRepository.findTasksByProfessionalAndStatus(idPro, StatusEnum.valueOf(status));
     }
     
     public List<Task> getTasksByUserId(Long id) {
