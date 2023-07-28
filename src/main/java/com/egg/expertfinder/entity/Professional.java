@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,9 +21,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Professional extends CustomUser{
 
-    /*
-    *   EL PROFESIONAL TIENE, EN LA LOCATION, COUNTRY = VISITANTE;
-     */
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Job job;
+    
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
