@@ -4,9 +4,7 @@ import com.egg.expertfinder.entity.Comment;
 import com.egg.expertfinder.entity.Task;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.repository.CommentRepository;
-import com.egg.expertfinder.repository.ProfessionalRepository;
 import com.egg.expertfinder.repository.TaskRepository;
-import com.egg.expertfinder.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +21,14 @@ public class CommentService {
     private TaskRepository taskRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    private ProfessionalRepository professionalRepository;
+    private ProfessionalService professionalService;
 
     @Transactional
     public void createComment(Long idTask, Long idUser, Long idProfessional,
-            String content, Double score) throws MyException {
+            String content, Double score) throws MyException, Exception {
 
         validate(idTask, idUser, idProfessional, content, score);
 
@@ -42,18 +40,36 @@ public class CommentService {
 
                 Comment comment = new Comment(content, score);
 
-                comment.setUser(userRepository.getReferenceById(idUser));
-                comment.setProfessional(professionalRepository.getReferenceById(idProfessional));
+                comment.setUser(userService.getUserById(idUser));
+                comment.setProfessional(professionalService.getProfessionalById(idProfessional));
 
                 task.setComment(commentRepository.save(comment));
                 taskRepository.save(task);
-
             } else {
                 throw new MyException("Ya existe un comentario en esta tarea.");
             }
 
         } else {
             throw new MyException("No existe una tarea con ese Id.");
+        }
+    }
+    
+    @Transactional
+    public void reportComment(Long idComment, Long idUser, Long idProfessional) throws MyException {
+        Optional<Comment> response = commentRepository.findById(idComment);
+        if (response.isPresent()) {
+            Comment comment = response.get();
+            
+            if (comment.getUser().getId() == idUser && 
+                    comment.getProfessional().getId() == idProfessional) {
+                comment.setReports(comment.getReports() + 1);
+                commentRepository.save(comment);
+            } else {
+                throw new MyException("El id del usuario o del profesional no "
+                        + "coinciden con los del Comentario.");
+            }
+        } else {
+            throw new MyException("No se encontró el comentario con ese Id.");
         }
     }
 
