@@ -1,71 +1,76 @@
 <!DOCTYPE html>
 
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Dashboard - Administrador</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{/bem.css}"/>
-        <link rel="stylesheet" th:href="@{/panel.css}" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    </head>
-    <body>
-        <!--HEADER-->
-        <header th:replace="/fragments/templates.html :: header"></header>
+<head th:replace="/fragments/templates.html :: head"></head>
 
-        <!--Main-->
-        <main class="main">
-            <div class="sidebar">
-                <!-- Contenido de la barra lateral  en ul espacop etiqueta a para ingresar las paginas a redireccionar-->
+<body>
+    <!--HEADER-->
+    <header th:replace="/fragments/templates.html :: header"></header>
+
+    <!--Main-->
+    <main class="main-container">
+        <div class="sidebar">
+            <!-- Contenido de la barra lateral  en ul espacop etiqueta a para ingresar las paginas a redireccionar-->
+            <br>
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-user-shield fa-2xs"></i>
+                        <p>Usuarios Registrados</p>
+                    </a></li>
                 <br>
-                <ul>
-                    <li><a href="#"><i class="fa-solid fa-user-shield fa-2xs"></i><p>Usuarios Registrados</p></a></li>
-                    <br>
-                    <li><a href="#"><i class="fa-solid fa-id-card fa-2xs"></i><p>Comentarios Reportados</p></a></li>
-                    <br>
-                    <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xs"></i><p>Solicitudes de Profesionales</p></a></li>
-                    <br>
-                    <li><a href="#"><i class="fa-solid fa-box-open fa-xs"></i><p>Usuarios Desactivados</p></a></li>
-                    <br>
-                    <li><a th:href="@{/job/register}"><i class="fa-solid fa-bell-concierge"></i><p>Crear Nuevo Servicio</p></a></li>
-                    <br>
-                    <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
-                </ul>
-                <!--<br>-->
-            </div>
-            <div class="contenido">
-                <div class="bodycolumna">
-                    <h1 class="titulotabla">Usuarios Registrados</h1>
-                    <div class="container-usuarios">
-                        <table class="tabla-usuarios">
-                            <thead>
-                                <tr>
-                                    <!-- Primera Fila -->
-                                    <th>Foto</th>
-                                    <th>Nombre Completo</th>
-                                    <th>Email</th>
-                                    <th>Dirección</th>
-                                    <th>Estado</th>
-                                    <th>Eliminar</th>
-                                </tr>    
-                            </thead>
-                            <tbody>
-                                <tr th:each="user : ${users}">
-                                    <td><img th:src='@{/image/profile-user/__${user.image.id}__}' /></td>
-                                    <td th:text="${user.name} + ' ' + ${user.lastName}"></td>
-                                    <td th:text="${user.email}"></td>
-                                    <td th:text="${user.location.address}"></td>
-                                    <td th:text="${user.active ? 'Activo' : 'No Activo'}"></td>
-                                    <td><a th:href="@{/user/delete/__${user.id}__}"><button>Eliminar</button></a></td>
-                                </tr>
-                            </tbody>
+                <li><a href="#"><i class="fa-solid fa-id-card fa-2xs"></i>
+                        <p>Comentarios Reportados</p>
+                    </a></li>
+                <br>
+                <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xs"></i>
+                        <p>Solicitudes de Profesionales</p>
+                    </a></li>
+                <br>
+                <li><a href="#"><i class="fa-solid fa-box-open fa-xs"></i>
+                        <p>Usuarios Desactivados</p>
+                    </a></li>
+                <br>
+                <li><a th:href="@{/job/register}"><i class="fa-solid fa-bell-concierge"></i>
+                        <p>Crear Nuevo Servicio</p>
+                    </a></li>
+                <br>
+                <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
+            </ul>
+            <!--<br>-->
+        </div>
+        <div class="contenido">
+            <div class="bodycolumna">
+                <h1 class="titulotabla">Usuarios Registrados</h1>
+                <div class="container-usuarios">
+                    <table class="tabla-usuarios">
+                        <thead>
+                            <tr>
+                                <!-- Primera Fila -->
+                                <th>Foto</th>
+                                <th>Nombre Completo</th>
+                                <th>Email</th>
+                                <th>Dirección</th>
+                                <th>Estado</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="user : ${users}">
+                                <td><img th:src='@{/image/profile-user/__${user.image.id}__}' /></td>
+                                <td th:text="${user.name} + ' ' + ${user.lastName}"></td>
+                                <td th:text="${user.email}"></td>
+                                <td th:text="${user.location.address}"></td>
+                                <td th:text="${user.active ? 'Activo' : 'No Activo'}"></td>
+                                <td><a th:href="@{/user/delete/__${user.id}__}"><button>Eliminar</button></a></td>
+                            </tr>
+                        </tbody>
 
-                        </table>
-                    </div>
+                    </table>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
 
-    </body>
+</body>
+
 </html>

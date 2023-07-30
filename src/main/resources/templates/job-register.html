@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Crear Servicio</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{/bem.css}"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
-    <body>
 
-        <!--HEADER-->
-        <header th:replace="/fragments/templates.html :: header"></header>
+<head th:replace="/fragments/templates.html :: head"></head>
 
-        <main class="main-container-flex">
-            
-            <aside th:replace="/fragments/templates.html :: aside"></aside>
+<body>
 
-            <div class="container--form">
+    <!--HEADER-->
+    <header th:replace="/fragments/templates.html :: header"></header>
 
-                <form th:action="@{/job/register}" enctype="multipart/form-data" method="post" class="form">
-                    <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                        <div class="card-body">
-                            <h5 class="card-title">Error al cargar</h5>
-                            <p class="card-text" th:text="${error}"></p>
-                        </div>
+    <main class="main-container-flex">
+
+        <aside th:replace="/fragments/templates.html :: aside"></aside>
+
+        <section class="container--form">
+
+            <form th:action="@{/job/register}" enctype="multipart/form-data" method="post" class="form">
+                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                    <div class="card-body">
+                        <h5 class="card-title">Error al cargar</h5>
+                        <p class="card-text" th:text="${error}"></p>
                     </div>
-                    <div class="form__head">Crear Servicio</div>
-                    <br>
-                    <label  class="form__label" for="nombre">Nombre del Servicio</label>
-                    <input class="form__input" type="text" id="name" name="name" required>
-                    <label  class="form__label" for="nombre">Nombre del Servicio</label>
-                    <input class="form__input" type="file" id="name" name="file" required>
-                    <input class="form__btn" type="submit" value="Crear Servicio">
-                </form>
-            </div>
-        </main>
-        
-        
-    </body>
+                </div>
+                <div class="form__head">Crear Servicio</div>
+                <br>
+                <label class="form__label" for="nombre">Nombre del Servicio</label>
+                <input class="form__input" type="text" id="name" name="name" required>
+                <label class="form__label" for="nombre">Nombre del Servicio</label>
+                <input class="form__input" type="file" id="name" name="file" required>
+                <div class="frame">
+                    <button type="submit" class="custom-btn btn-3"><span>Crear Servicio</span></button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+
+</body>
+
 </html>
