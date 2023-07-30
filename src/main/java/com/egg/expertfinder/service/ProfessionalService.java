@@ -191,8 +191,8 @@ public class ProfessionalService {
     }
 
     //Listar todos los profesionales según el service que ofrece
-    public List<Professional> getProfessionalsByJobName(String job) {
-        return professionalRepository.findByJob_Name(job);
+    public List<Professional> getProfessionalsByJobId(Long idJob) {
+        return professionalRepository.findByJobId(idJob);
     }
 
 }

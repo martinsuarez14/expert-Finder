@@ -91,7 +91,7 @@ public class HomeController {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/home")
-    public String home(HttpSession session) {
+    public String home(HttpSession session, ModelMap model) {
 
         CustomUser userLogin = (CustomUser) session.getAttribute("usersession");
 
@@ -99,6 +99,7 @@ public class HomeController {
             return "redirect:/admin/dashboard";
         } if (userLogin.getRole().toString().equals("USER") || 
                 userLogin.getRole().toString().equals("PRO")) {
+            model.addAttribute("jobs", jobService.getAllJobs());
             return "home.html";
         } else {
             return "index.html";

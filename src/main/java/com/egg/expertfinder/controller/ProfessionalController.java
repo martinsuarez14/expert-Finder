@@ -79,9 +79,11 @@ public class ProfessionalController {
         return "professional-detail.html";
     }
 
-    @GetMapping("/list-by-job")
-    public String listByJobName(@RequestParam String name) {
-        return "";
+    @GetMapping("/list-job/{id}")
+    public String listByJobName(@PathVariable Long id, ModelMap model) {
+        List<Professional> professionals = professionalService.getProfessionalsByJobId(id);
+        model.addAttribute("professionals", professionals);
+        return "professional-list.html";
     }
 
 //    @PreAuthorize("hasRole('ROLE_ADMIN')")

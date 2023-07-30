@@ -1,3 +1,24 @@
+<!-- HEAD  -->
+<head>
+    <!-- TÍTULO -->
+    <title>Dashboard</title>
+
+    <!-- ÍCONO PESTAÑA -->
+    <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BEM CSS -->
+    <link rel="stylesheet" th:href="@{/bem.css}" />
+
+    <!-- PANEL CSS -->
+    <link rel="stylesheet" th:href="@{/panel.css}" />
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
 <!--Header-->
 <header class="header">
     <a th:href="@{/}" class="header__logo">
@@ -27,8 +48,39 @@
         </div> -->
     </div>
 
-    
+
 </header>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <!-- Contenido de la barra lateral  en ul espacop etiqueta a para ingresar las paginas a redireccionar-->
+    <br>
+    <ul>
+        <li><a th:href="@{/admin/dashboard}"><i class="fa-solid fa-user-shield fa-2xs"></i>
+                <p>Usuarios Registrados</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-id-card fa-2xs"></i>
+                <p>Comentarios Reportados</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xs"></i>
+                <p>Solicitudes de Profesionales</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-box-open fa-xs"></i>
+                <p>Usuarios Desactivados</p>
+            </a></li>
+        <br>
+        <li><a th:href="@{/job/register}"><i class="fa-solid fa-bell-concierge"></i>
+                <p>Crear Nuevo Servicio</p>
+            </a></li>
+        <br>
+        <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
+    </ul>
+    <!--<br>-->
+</aside>
+
 
 
 <!--Footer-->
