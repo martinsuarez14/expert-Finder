@@ -1,13 +1,14 @@
 /* Lazy Load Styles */
 .card-image {
 	display: block;
-	min-height: 15rem; /* layout hack */
+	min-height: 15rem;
+	/* layout hack */
 	background: #fff center center no-repeat;
 	background-size: cover;
 	/*filter: blur(3px);  blur the lowres image */
 }
 
-.card-image > img {
+.card-image>img {
 	display: block;
 	width: 100%;
 	/*opacity: 0;  visually hide the img element */
@@ -15,20 +16,21 @@
 
 
 /* Layout Styles */
-html, body {
+html,
+body {
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	font-size: 16px;
 	font-family: sans-serif;
 }
-.fondo{
-  background-color: #4158D0;
-background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 31%, #FFCC70 100%);  
-    
-    
-    
+
+.fondo {
+	background-color: #4158D0;
+	background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 31%, #FFCC70 100%);
+	display: flex;
 }
+
 .card-list {
 	display: block;
 	margin: 1rem auto;
@@ -46,13 +48,14 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 31%, #FFCC70 100%);
 	font-size: 1rem;
 	text-decoration: none;
 	overflow: hidden;
-	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+	box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
+	background-color: white;
 	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
 }
 
 .card:hover {
 	transform: translateY(-0.5rem) scale(1.0125);
-	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
 }
 
 .card-description {
@@ -62,11 +65,10 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 31%, #FFCC70 100%);
 	text-decoration: none;
 }
 
-.card-description > h2 {
+.card-description>h2 {
 	margin: 0 0 0.5em;
 }
 
-.card-description > p {
+.card-description>p {
 	margin: 0;
 }
-
