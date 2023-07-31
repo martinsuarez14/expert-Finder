@@ -18,23 +18,24 @@ body {
     background: url(./img/locofinder.jpg) no-repeat center center fixed;
     background-size: cover;
 } */
-.container {
+
+.container{
+    display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
+
 
 /*ESTILOS HEADER*/
 .header {
     display: flex;
-    max-width: 100%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
-    opacity: 0.9;
-    padding: 10px;
+    padding: 8px;
     z-index: 5;
-    background-color: #ff7217;
-    border-bottom: 2px solid black;
+    background-color: #333;
 }
 
 .header__logo {
@@ -46,7 +47,6 @@ body {
     transition: .3s ease all;
     text-decoration: none;
     padding: 5px;
-    margin: 10px;
     align-content: center;
     border-radius: 50px;
     transition: all 0.3s ease-in;
@@ -296,6 +296,9 @@ body {
     background-color: #333;
     color: white;
     padding-top: 20px;
+    position: fixed;
+    top: 15%;
+    left: 0;
     bottom: 0;
     /* Hacemos que llegue hasta el borde inferior */
     display: flex;
@@ -367,10 +370,6 @@ body {
     background-color: black;
 }
 
-
-
-
-
 /*Contenido article*/
 .article {
     display: flex;
@@ -406,10 +405,6 @@ body {
     text-shadow: 1px 0.9px #e0952b;
 
 }
-
-
-
-
 
 /*Contenido footer*/
 .footer {
@@ -471,69 +466,50 @@ body {
     margin-top: 20px;
 }
 
-
-.main-container-flex {
-    display: flex;
-    flex-direction: row;
-}
-
-
-
-
-
 /* FORMULARIO */
-.container--form {
-    display: flex;
-    flex-direction: column;
-    /*justify-content: center;*/
-    border: solid black;
-    margin: 2rem auto;
-    padding: 2%;
-    height: auto;
-}
-
 .form {
+    width: 50%;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
+    background-color: #333;
+    margin-top: 100px;
+    border-radius: 5px;
 }
 
 .form__head {
-    color: black;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    /*height: 50px;*/
+    color: #ff7217;
     text-align: center;
     text-transform: uppercase;
-    border-bottom: 1px solid black;
+    border-bottom: #979797 1px solid;
+    padding: 5px;
+    margin: 10px;
 }
 
 .form__label {
-    color: black;
-    margin-bottom: 15px;
+    color: #ff7217;
     text-transform: uppercase;
-    justify-content: center;
-    text-align: center;
-    background-color: lightgray;
-    border-radius: 5px;
+    background-color: transparent;
 }
 
 .form__input {
+    width: 50%;
+    outline: none;
     margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: #dbdbdb;
-    justify-content: center;
-    align-items: center;
+    background-color: transparent;
     padding: 5px;
-    /* width: 70%; */
+    border: none;
+    border-bottom: #ff7217 solid 2px;
+    color: white;
 }
 
 .form__btn {
-    display: flex;
-    justify-content: center;
+    width: 90%;
     padding: 5px;
     cursor: pointer;
+    text-align: center;
 }
 
 .frame {
@@ -543,19 +519,15 @@ body {
 }
 
 .custom-btn {
-    width: 130px;
-    height: 40px;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px 25px;
+    color: #333;
+    border-radius: 7px;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
-    background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
-    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    box-shadow: inset 2px 2px 2px 0px #333,
         7px 7px 20px 0px rgba(0, 0, 0, .1),
         4px 4px 5px 0px rgba(0, 0, 0, .1);
     outline: none;
@@ -563,14 +535,12 @@ body {
 
 /* 3 */
 .btn-3 {
-    background: rgb(0, 172, 238);
-    background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
+    background: linear-gradient(0deg, #ff7217 0%, #ff7217 100%);
     width: 130px;
     height: 40px;
     line-height: 42px;
     padding: 0;
     border: none;
-
 }
 
 .btn-3 span {
@@ -586,7 +556,7 @@ body {
     content: "";
     right: 0;
     top: 0;
-    background: rgba(2, 126, 251, 1);
+    background: #ff7217;
     transition: all 0.3s ease;
 }
 
@@ -614,7 +584,7 @@ body {
 }
 
 .btn-3 span:hover {
-    color: rgba(2, 126, 251, 1);
+    color:#ff7217;
 }
 
 .btn-3 span:before,
@@ -623,7 +593,7 @@ body {
     content: "";
     left: 0;
     bottom: 0;
-    background: rgba(2, 126, 251, 1);
+    background: #ff7217;
     transition: all 0.3s ease;
 }
 
