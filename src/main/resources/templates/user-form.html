@@ -10,9 +10,9 @@
 </head>
 
     <body>
-        <header th:replace="/fragments/templates.html :: header"></header>
+        <header th:include="/fragments/templates.html::header"></header>
 
-        <div class="body">
+        <div class="container">
 
             <form class="form" th:action="@{/register-user}" method="post" enctype="multipart/form-data">
                 <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
@@ -51,7 +51,6 @@
             </form>
         </div>
 
-        <footer th:include="fragments/templates.html::footer"></footer>
     </div>
 </body>
 
