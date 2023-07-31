@@ -16,34 +16,16 @@
     <!--PANEL CSS
     <link rel="stylesheet" th:href="@{/panel.css}" />-->
 
-<<<<<<< HEAD
-    <!-- LOGIN CSS  -->
-    <link rel="stylesheet" th:href="@{login.css}">
-
-    <!-- FONT AWESOME -->
-=======
     <!--FONT AWESOME-->
->>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <!--Header-->
-<<<<<<< HEAD
-<header class="header">
-    <a th:href="@{/home}" class="header__logo">
-        <img class="header__img" th:src="@{/img/logo.jpeg}" alt="Not Found">
-    </a>
-    <div class="modal__btns" th:if="${session.usersession == null}">
-        <div class="boton__modal">
-            <a th:href="@{/login}">
-                Iniciar Sesion
-=======
 <div th:fragment="header">
     <header class="header">
         <div class="header__logo">
             <a ref="/index.html">
                 <img class="header__img" th:src="@{/img/logo-pestaña.jpeg}" alt="Not Found">
->>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
             </a>
         </div>
         <div class="boton__modal" th:if="${session.usersession != null}">

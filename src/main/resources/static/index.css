@@ -16,11 +16,11 @@
 } */
 
 body {
-  background-image: url("./img/construccion.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: black;
-    background-image: url(./img/flor_backGround.jpg);
+    background-image: url("./img/construccion.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black;
+    /* background-image: url(./img/flor_backGround.jpg); */
     color: black;
 }
 
@@ -38,7 +38,7 @@ body {
         "footer footer footer";
 }
 
-.contenedor > div,
+.contenedor>div,
 .contenedor .contenido,
 .contenedor .sidebar {
     padding: 20px;
@@ -47,29 +47,26 @@ body {
 
 /*Header y barra de navegación*/
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px;
-  height: 40px;
-  background-color: #333;
-  grid-area: header;
-  flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    height: 40px;
+    background-color: #333;
+    grid-area: header;
+    flex-grow: 1;
 }
 
 .header .logo {
-  display: flex;
-  /*clip-path: inset(0 0 20px 0);
-  /*<---- Propiedad para cortar la parte de abajo de la imagen y que pueda verse mas grande*/
-  cursor: pointer;
-  margin-left: 10px;
-  align-content: center;
+    display: flex;
+    cursor: pointer;
+    margin-left: 10px;
+    align-content: center;
 }
 
 .header .logo img {
-  height: 100%;
-  /*border-radius: 50% 50% 0 0;*/
-  transition: all 0.3s;
+    height: 100%;
+    transition: all 0.3s;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,7 +81,6 @@ body {
 .header .logo {
     display: flex;
     clip-path: inset(0 0 20px 0);
-    /*<---- Propiedad para cortar la parte de abajo de la imagen y que pueda verse mas grande*/
     cursor: pointer;
     margin-left: 10px;
     align-content: center;
@@ -149,15 +145,15 @@ body {
     background-color: lightgray;
     color: brown;
     transform: scale(1.1);
-}
+} 
 
 /*Contenido de la pagina*/
 
 .contenedor .contenido {
-  grid-area: contenido;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    grid-area: contenido;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     grid-area: contenido;
     display: flex;
     flex-direction: column;
@@ -186,14 +182,14 @@ body {
 }
 
 .contenedor .sidebar {
-  grid-column: 3/4;
-  background: #333;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  grid-area: sidebar;
+    grid-column: 3/4;
+    background: #333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    grid-area: sidebar;
     grid-column: 3/4;
     background: #ff7217;
     text-align: center;
@@ -299,18 +295,18 @@ body {
 
 /*Forms*/
 .form {
-  margin: 0 auto;
-  margin-top: 30px;
-  width: 35%;
-  min-width: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #333;
-  color: #ff7217;
-  border-radius: 10px;
-  padding: 10px;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 35%;
+    min-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #333;
+    color: #ff7217;
+    border-radius: 10px;
+    padding: 10px;
     margin: 0 auto;
     margin-top: 30px;
     width: 50%;
@@ -322,12 +318,12 @@ body {
     justify-content: left;
     align-items: center;
     gap: 15px;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 2.5px );
-    -webkit-backdrop-filter: blur( 2.5px );
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
     transition: all 0.3s ease;
 }
 
@@ -344,35 +340,38 @@ body {
     text-align: justify;
     font-size: 20px;
 }
+
 .form form input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid white;
-  color: white;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
 }
+
 .form form input:focus {
-  outline: none;
+    outline: none;
 }
+
 .form form select {
-  padding-right: 10px;
-  border-radius: 5px;
-  font-family: "Poppins", sans-serif;
-  outline: none;
+    padding-right: 10px;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    outline: none;
 }
 
 .form form select::-ms-expand {
-  display: none;
+    display: none;
 }
 
 /*Footer*/
 .footer {
-  display: flex;
-  background-color: #333;
-  grid-area: footer;
-  width: auto;
-  margin: 0;
-  list-style: none;
+    display: flex;
+    background-color: #333;
+    grid-area: footer;
+    width: auto;
+    margin: 0;
+    list-style: none;
 
     display: flex;
     background-color: rgb(255, 114, 23);
@@ -383,17 +382,18 @@ body {
 }
 
 .footer .followUs {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  width: 100%;
-  min-width: 25%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    min-width: 25%;
 }
+
 .footer .followUs .anuncio a {
-  display: flex;
-  max-width: 50px;
+    display: flex;
+    max-width: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -404,7 +404,8 @@ body {
     border: 1px solid;
 
 }
-.footer .followUs .anuncio a{
+
+.footer .followUs .anuncio a {
     display: flex;
     max-width: 50px;
 }
@@ -422,16 +423,17 @@ body {
 }
 
 .footer .followUs .redes ul {
-  justify-content: space-between;
+    justify-content: space-between;
 }
+
 .footer .followUs .redes {
     margin-top: 10px;
 }
 
 .footer .redes span {
-  padding: 10px;
-  border-radius: 50px;
-  color: white;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
 }
 
 .footer .redes .fb {
@@ -477,12 +479,13 @@ body {
 }
 
 .derechos {
-  height: 20px;
-  flex-flow: column;
-  justify-content: center;
-  color: white;
+    height: 20px;
+    flex-flow: column;
+    justify-content: center;
+    color: white;
 }
-  .footer .company {
+
+.footer .company {
     display: flex;
     flex-direction: row;
 
@@ -529,22 +532,22 @@ body {
 
 /*Media Querys*/
 @media screen and (max-width: 768px) {
-  .contenedor {
-    grid-template-areas:
-      "header header header"
-      "contenido contenido contenido"
-      "sidebar sidebar sidebar"
-      "widget-1 widget-1 widget-2"
-      "footer footer footer";
-  }
+    .contenedor {
+        grid-template-areas:
+            "header header header"
+            "contenido contenido contenido"
+            "sidebar sidebar sidebar"
+            "widget-1 widget-1 widget-2"
+            "footer footer footer";
+    }
 }
 
 
 .main-index {
-    background: rgba( 77, 84, 83, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 7px );
-    -webkit-backdrop-filter: blur( 7px );
+    background: rgba(77, 84, 83, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
