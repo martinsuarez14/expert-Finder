@@ -296,6 +296,9 @@ body {
     background-color: #333;
     color: white;
     padding-top: 20px;
+    position: fixed;
+    top: 15%;
+    left: 0;
     bottom: 0;
     /* Hacemos que llegue hasta el borde inferior */
     display: flex;
@@ -367,10 +370,6 @@ body {
     background-color: black;
 }
 
-
-
-
-
 /*Contenido article*/
 .article {
     display: flex;
@@ -406,10 +405,6 @@ body {
     text-shadow: 1px 0.9px #e0952b;
 
 }
-
-
-
-
 
 /*Contenido footer*/
 .footer {
@@ -471,16 +466,10 @@ body {
     margin-top: 20px;
 }
 
-
-.main-container-flex {
-    display: flex;
-    flex-direction: row;
-}
-
-
 /* FORMULARIO */
 .form {
     width: 50%;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -494,31 +483,30 @@ body {
     color: #ff7217;
     text-align: center;
     text-transform: uppercase;
+    border-bottom: #979797 1px solid;
+    padding: 5px;
+    margin: 10px;
 }
 
 .form__label {
     color: #ff7217;
-    margin-bottom: 15px;
     text-transform: uppercase;
-    justify-content: center;
-    text-align: center;
     background-color: transparent;
 }
 
 .form__input {
+    width: 50%;
     outline: none;
     margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: inherit;
-    justify-content: center;
-    align-items: center;
+    background-color: transparent;
     padding: 5px;
+    border: none;
     border-bottom: #ff7217 solid 2px;
+    color: white;
 }
 
 .form__btn {
-    display: flex;
-    justify-content: center;
+    width: 90%;
     padding: 5px;
     cursor: pointer;
     text-align: center;
@@ -531,14 +519,10 @@ body {
 }
 
 .custom-btn {
-    width: 130px;
-    height: 40px;
     color: #333;
     border-radius: 7px;
-    padding: 10px 25px;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
-    background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -551,14 +535,12 @@ body {
 
 /* 3 */
 .btn-3 {
-    background: #ff7217;
     background: linear-gradient(0deg, #ff7217 0%, #ff7217 100%);
     width: 130px;
     height: 40px;
     line-height: 42px;
     padding: 0;
     border: none;
-
 }
 
 .btn-3 span {

@@ -6,35 +6,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{bem.css}">
-
+    
 </head>
 
-<body>
-    <header th:include="fragments/templates.html::header" class="header"></header>
-    <div class="form">
-        <div>Crear Usuario</div>
-        <br>
-        <form action="/register" method="post" enctype="multipart/form-data">
-            <label>Nombre:</label><br>
-            <input type="text" name="name" required /> <br>
-            <label>Apellido:</label><br>
-            <input type="text" name="lastName" required /> <br>
-            <label>Email:</label><br>
-            <input type="email" name="email" required /> <br>
-            <label>Password:</label><br>
-            <input type="password" name="password" required /> <br>
-            <label>Repetir la contraseña:</label><br>
-            <input type="password" name="password2" required /> <br>
-            <label>Foto de Perfil:</label><br>
-            <input type="file" name="file" required /> <br>
-            <label>Rol:</label><br>
-            <select name="role" required>
-                <option value="USER">Usuario</option>
-                <option value="PRO">Profesional</option>
-            </select>
-            </select><br>
-            <button type="submit">Enviar</button>
-        </form>
+    <body>
+        <header th:include="/fragments/templates.html::header"></header>
+
+        <div class="container">
+
+            <form class="form" th:action="@{/register-user}" method="post" enctype="multipart/form-data">
+                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                    <div class="card-body">
+                        <h5 class="card-title">Error al cargar</h5>
+                        <p class="card-text" th:text="${error}"></p>
+                    </div>
+                </div>
+                <div th:if="${exito != null}" class="card text-white bg-success mb-3 mensajeExito">
+                    <div class="card-body">
+                        <h5 class="card-title">Éxito!</h5>
+                        <p class="card-text" th:text="${exito}"></p>
+                    </div>
+                </div>
+                <div class="form__head">Crear Usuario</div>
+                <br>
+                <label class="form__label">Nombre</label>
+                <input class="form__input" type="text" name="name" required /> <br>
+                <label class="form__label">Apellido</label>
+                <input class="form__input" type="text" name="lastName" required /> <br>
+                <label class="form__label">Email</label>
+                <input class="form__input" type="email" name="email" required /> <br>
+                <label class="form__label">Password</label>
+                <input class="form__input" type="password" name="password" required /> <br>
+                <label class="form__label">Repetir la contraseña</label>
+                <input class="form__input" type="password" name="password2" required /> <br>
+                <label class="form__label">Contraseña del Barrio</label>
+                <input class="form__input" type="password" name="countryKey" required /> <br>
+                <label class="form__label">Dirección</label>
+                <input class="form__input" type="text" name="address" required /> <br>
+
+                <label class="form__label">Foto de Perfil</label>
+                <input class="form__input" type="file" name="file" required /> <br>
+
+                <button class="header__btn" type="submit">Enviar</button>
+            </form>
+        </div>
+
     </div>
 </body>
 
