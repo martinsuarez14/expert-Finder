@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="/fragments/templates.html :: head"></head>
 
@@ -56,7 +56,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="user : ${users}">
-                                <td><img th:src='@{/image/profile-user/__${user.image.id}__}' /></td>
+                                <td><img th:src='@{/image/__${user.image.id}__}' /></td>
                                 <td th:text="${user.name} + ' ' + ${user.lastName}"></td>
                                 <td th:text="${user.email}"></td>
                                 <td th:text="${user.location.address}"></td>
