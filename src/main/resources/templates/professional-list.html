@@ -12,6 +12,7 @@
 
         <aside th:replace="/fragments/templates.html :: aside"></aside>
 
+<<<<<<< HEAD
         <div>Lista de Profesionales</div>
         <table>
             <thead>
@@ -34,6 +35,48 @@
 
     </main>
 
+=======
+        <div class="contenido">
+            <div class="bodycolumna">
+                <h1 class="titulotabla">Lista de Profesionales</h1>
+                <div class="container-usuarios">
+                    <table class="tabla-usuarios">
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>Nombre Completo</th>
+                                <th>Email</th>
+                                <th>Dirección</th>
+                                <th>Teléfono</th>
+                                <th>Puntuación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="professional : ${professionals}">
+                                <td><img th:src='@{/image/profile-professional/__${professional.id}__}' /></td>
+                                <td th:text="${professional.name} + ' ' + ${professional.lastName}"></td>
+                                <td th:text="${professional.email}"></td>
+                                <td th:text="${professional.location.address}"></td>
+                                <td th:text="${professional.phone}"></td>
+                                <td>
+                                    <div class="boton__modal" th:if="${session.usersession != null}">
+                                        <a th:href="@{/professional/profile/__${professional.id}__}">
+                                            Ver Perfil
+                                        </a>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+    </main>
+
+    <footer th:replace="/fragments/templates.html :: footer"></footer>
+
+>>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 </body>
 
 </html>

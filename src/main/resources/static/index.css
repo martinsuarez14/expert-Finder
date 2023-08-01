@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 
+<<<<<<< HEAD
 /* ::-webkit-scrollbar {
     display: none;
 } */
@@ -19,6 +20,18 @@
     height: 70vh;
     width: 100%;
     margin: 0;
+=======
+
+* {
+    font-family: "Poppins", sans-serif; 
+}
+
+/*  MAIN  */
+.index-main {
+    height: 70vh;
+    width: 100%;
+    margin: 0;
+>>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
     padding: 3rem 3rem 3rem 0;
     background-image: url(./img/fondo_index.jpg);
     background-repeat: no-repeat;
@@ -59,6 +72,7 @@
     text-align: justify;
     font-size: 20px;
 }
+<<<<<<< HEAD
 
 /*Footer*/
 .footer {
@@ -206,3 +220,5 @@
             "footer footer footer";
     }
 }
+=======
+>>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
