@@ -13,7 +13,7 @@
 
         <aside th:replace="/fragments/templates.html :: aside"></aside>
 
-        <section class="container--form">
+        <section class="contenido">
 
             <form th:action="@{/job/register}" enctype="multipart/form-data" method="post" class="form">
                 <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">

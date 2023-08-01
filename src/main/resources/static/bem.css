@@ -270,7 +270,8 @@
 
 /* MENÚ SIDEBAR */
 .sidebar {
-    width: 250px;
+    width: 20%;
+    height: 100%;
     background-color: #333;
     color: white;
     padding-top: 20px;
@@ -442,6 +443,26 @@
     border: none;
     border-bottom: #ff7217 solid 2px;
     color: white;
+}
+
+.form__input[type=file]{
+    border: none;
+}
+
+.form__input[type=file]::file-selector-button{
+    color: #333;
+    background-color: #ff7217;
+    border: 1px #333 solid;
+    outline: none;
+    padding: 5px;
+    border-radius: 3px;
+    transition: all 0.5s ease;
+}
+
+.form__input[type=file]::file-selector-button:hover{
+    color: #ff7217;
+    background-color: #333;
+    border: 1px #ff7217 solid;
 }
 
 .form__select:focus {
