@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- BEM CSS -->
+
     <link rel="stylesheet" th:href="@{/bem.css}" />
 
     <!-- INDEX CSS -->
@@ -43,10 +43,10 @@
                 Iniciar Sesion
             </a>
         </div>
-        <div class="boton__modal">
-            <label for="boton__modal--btn">
-                Registrarse
-            </label>
+        <div class="boton__modal" th:if="${session.usersession != null}">
+            <a th:href="@{/logout}">
+                Salir
+            </a>
         </div>
     </div>
     <div class="boton__modal" th:if="${session.usersession != null}">
@@ -124,17 +124,14 @@
 
 <!-- Form de login -->
 <div th:fragment="form">
-
-    <div class="container--form">
-        <form class="form" th:action="@{/logincheck}" method="post">
-            <h2 class="form__head">Ingresar</h2>
-            <label class="form__label">Email</label><br>
-            <input class="form__input" type="email" name="email" required placeholder="email" /><br>
-            <label class="form__label">Password</label><br>
-            <input class="form__input" type="password" name="password" required placeholder="password" /><br>
-            <div class="form__btn">
-                <button class="header__btn" type="submit">Iniciar Sesión</button>
-            </div>
-        </form>
-    </div>
+    <form class="form" th:action="@{/logincheck}" method="post">
+        <h2 class="form__head">Ingresar</h2>
+        <label class="form__label">Email</label><br>
+        <input class="form__input" type="email" name="email" required placeholder="email" /><br>
+        <label class="form__label">Password</label><br>
+        <input class="form__input" type="password" name="password" required placeholder="password" /><br>
+        <div class="form__btn">
+            <button class="custom-btn btn-3" type="submit"><span>Iniciar Sesion</span></button>
+        </div>
+    </form>
 </div>

@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
+<<<<<<< HEAD
 <head th:replace="/fragments/templates.html :: head"></head>
 
 <body>
 
     <header th:replace="/fragments/templates.html :: header"></header>
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bem.css}">
+    <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
+    <title>Login</title>
+</head>
+
+<body>
+
+<<<<<<< HEAD
+        <!-- Modal -->
+        <input type="checkbox" id="boton__modal--btn">
+>>>>>>> 1f0889327bbb8f2ea61fc9be9578deaab5697e92
 
     
     <!-- Modal -->
@@ -37,12 +53,31 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <main class="main-login">
         <form th:action="@{/logincheck}" method="post" class="form">
             <h2 class="form__head">Ingresar</h2>
             <div class="form__group">
                 <label class="form__label">Email</label>
                 <input class="form__input" type="email" name="email" required placeholder="jhon-doe@gmail.com" />
+=======
+
+
+        <main class="body-login">
+            <div class="container">
+                <form th:action="@{/logincheck}" method="post" class="form-login">
+                    <h2 class="form-login-titulo">Ingresar</h2>
+                    <div class="form-group">
+                        <label class="label-email">Email</label>
+                        <input type="email" name="email" required placeholder="Email"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-contraseña">Password</label>
+                        <input type="password" name="password" required placeholder="Password"/>
+                    </div>
+                    <button type="submit">Iniciar Sesión</button>
+                </form> 
+>>>>>>> 1f0889327bbb8f2ea61fc9be9578deaab5697e92
             </div>
             <div class="form__group">
                 <label class="form__label">Password</label>
@@ -55,7 +90,18 @@
     </main>
 
 
+<<<<<<< HEAD
     <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
 </body>
+=======
+        
+        <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
+    </body>
+=======
+    <header th:include="/fragments/templates.html::header"></header>
+    <div th:include="/fragments/templates.html::form" class="container"></div>
+</body>
+>>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
+>>>>>>> 1f0889327bbb8f2ea61fc9be9578deaab5697e92
 
 </html>
