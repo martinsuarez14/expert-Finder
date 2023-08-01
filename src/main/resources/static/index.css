@@ -366,6 +366,15 @@ body {
 }
 
 /*Footer*/
+<<<<<<< HEAD
+footer{
+background-color: #FF802E;
+text-align: center;
+padding: 20px;
+}
+
+footer a {
+=======
 .footer {
   display: flex;
   background-color: #333;
@@ -501,31 +510,23 @@ body {
 
 .footer .company a {
     color: white;
+>>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
     text-decoration: none;
-    padding: 5px;
+    margin: 0 10px;
+}
+footer a img {
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+footer a img {
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
 }
 
-.footer .company .F {
-    flex-direction: column;
-    gap: 10px;
-}
 
-.footer .company .I {
-    background-color: none;
-    border: solid 2px white;
-    padding: 10px;
-}
 
-.derechos {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    height: 20px;
-    flex-flow: column;
-    justify-content: center;
-    background-color: rgb(44, 26, 44);
-    color: white;
-}
 
 /*Media Querys*/
 @media screen and (max-width: 768px) {
