@@ -11,6 +11,7 @@
 
     <!-- BEM CSS -->
     <link rel="stylesheet" th:href="@{/bem.css}" />
+    <link rel="stylesheet" th:href="@{index.css}">
 
     <!-- PANEL CSS -->
     <link rel="stylesheet" th:href="@{/panel.css}" />
@@ -55,7 +56,7 @@
 <aside class="sidebar">
     <!-- Contenido de la barra lateral  en ul espacop etiqueta a para ingresar las paginas a redireccionar-->
     <br>
-    <ul>
+    <ul sec:authorize="hasRole('ADMIN')">
         <li><a th:href="@{/admin/dashboard}"><i class="fa-solid fa-user-shield fa-2xs"></i>
                 <p>Usuarios Registrados</p>
             </a></li>
@@ -76,6 +77,30 @@
                 <p>Crear Nuevo Servicio</p>
             </a></li>
         <br>
+        <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
+    </ul>
+
+    <ul sec:authorize="hasRole('USER')">
+        <li><a th:href="@{/admin/dashboard}"><i class="fa-solid fa-user-shield fa-2xs"></i>
+                <p>Servicios</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-id-card fa-2xs"></i>
+                <p>Tareas Pendientes</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xs"></i>
+                <p>Tareas Finalizadas</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-box-open fa-xs"></i>
+                <p>Perfil</p>
+            </a></li>
+        <br>
+        <!-- <li><a th:href="@{/job/register}"><i class="fa-solid fa-bell-concierge"></i>
+                <p></p>
+            </a></li>
+        <br> -->
         <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
     </ul>
     <!--<br>-->

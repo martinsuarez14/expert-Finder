@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>PRofessional List</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+
+<head th:replace="/fragments/templates.html :: head"></head>
+
+<body>
+
+    <header th:replace="/fragments/templates.html :: header"></header>
+
+    <main class="main-container">
+
+        <aside th:replace="/fragments/templates.html :: aside"></aside>
+
         <div>Lista de Profesionales</div>
         <table>
             <thead>
@@ -26,5 +31,9 @@
                 </tr>
             </tbody>
         </table>
-    </body>
+
+    </main>
+
+</body>
+
 </html>
