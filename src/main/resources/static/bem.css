@@ -12,18 +12,20 @@
 .container {
     align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
 
 /* ESTILOS HEADER */
 .header {
     display: flex;
-    width: 100%;
+    max-width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
+    height: 80px;
+    opacity: 0.9;
+    padding: 10px;
     z-index: 5;
-    background-color: #333;
+    background-color: #ff7217;
+    border-bottom: 2px solid black;
 }
 
 .header__logo {
@@ -35,6 +37,7 @@
     transition: .3s ease all;
     text-decoration: none;
     padding: 5px;
+    margin: 10px;
     align-content: center;
     border-radius: 50px;
     transition: all 0.3s ease-in;
