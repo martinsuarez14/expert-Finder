@@ -1,67 +1,57 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chacras Finder</title>
-        <link rel="stylesheet" th:href="@{bem.css}">
-        <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
-        <link rel="stylesheet" th:href="@{index.css}">
-        <script src="https://kit.fontawesome.com/f882f47f7e.js" crossorigin="anonymous"></script>
-    </head>
+<head th:replace="/fragments/templates.html :: head"></head>
 
-    <body>
+<body>
 
-        <header th:replace="/fragments/templates.html :: header"></header>
-        
-        <!-- Modal -->
-        <input type="checkbox" id="boton__modal--btn">
+    <header th:replace="/fragments/templates.html :: header"></header>
 
-        <div class="modal">
-            <div class="modal__body">
-                <h3>Bienvenido!</h3>
-                <div class="modal__btns">
+    <!-- Modal -->
+    <input type="checkbox" id="boton__modal--btn">
 
-                    <div class="header__btn">
-                        <a class="header__a" th:href="@{/register-user}">
-                            Usuario
-                        </a>
-                    </div>
-                    <div class="header__btn">
-                        <a class="header__a" th:href="@{/register-professional}">
-                            Trabajador
-                        </a>
-                    </div>
+    <div class="modal">
+        <div class="modal__body">
+            <h3>Bienvenido!</h3>
+            <div class="modal__btns">
+
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/register-user}">
+                        Usuario
+                    </a>
                 </div>
-                <div class="modal__footer">
-                    <div class="header__btn--back">
-                        <label class="header__a" for="boton__modal--btn">
-                            Volver
-                        </label>
-                    </div>
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/register-professional}">
+                        Trabajador
+                    </a>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <div class="header__btn--back">
+                    <label class="header__a" for="boton__modal--btn">
+                        Volver
+                    </label>
                 </div>
             </div>
         </div>
+    </div>
 
 
-
-        <div class="index-main">
-            <div class="container-card-index">
-                <h1>¡Bienvenido a Chacras Finder!</h1>
-                <p>En Chacras Finder, nos enorgullecemos de ser tu aliado confiable en la 
-                    ciudad de Chacras de Coria. Somos un equipo de profesionales 
-                    a brindar servicios especializados en gasfitería, electricidad, 
-                    plomería y mucho más. Nuestra misión es llevar soluciones rápidas y 
-                    eficientes a los residentes de los hermosos barrios cerrados de la zona.</p>
-            </div> 
-
+    <div class="index-main">
+        <div class="container-card-index">
+            <h1>¡Bienvenido a Chacras Finder!</h1>
+            <p>En Chacras Finder, nos enorgullecemos de ser tu aliado confiable en la
+                ciudad de Chacras de Coria. Somos un equipo de profesionales
+                a brindar servicios especializados en gasfitería, electricidad,
+                plomería y mucho más. Nuestra misión es llevar soluciones rápidas y
+                eficientes a los residentes de los hermosos barrios cerrados de la zona.</p>
         </div>
 
-        <div class="footer">
-            &copy; 2021 Chacras Company Inc. All rights reserved
-        </div>
-    </body>
+    </div>
+
+    <footer th:replace="/fragments/templates.html :: footer"></footer>
+
+</body>
 
 </html>
 
