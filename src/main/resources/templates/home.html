@@ -3,12 +3,21 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
+<<<<<<< HEAD
     <title>Servicios</title>
     <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
+=======
+    <title>Chacras Finder</title>
+>>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{bem.css}" />
     <link rel="stylesheet" th:href="@{home.css}" />
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+>>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
 </head>
 
 <body>
@@ -17,6 +26,7 @@
 
 
     <main class="fondo">
+<<<<<<< HEAD
         <ul class="card-list">
 
             <li class="card">
@@ -86,6 +96,31 @@
     </main>
 
 
+=======
+
+        <!-- SIDEBAR -->
+        <aside th:replace="/fragments/templates.html :: aside"></aside>
+
+        <ul class="card-list">
+
+            <li th:each="job : ${jobs}" class="card">
+                <a class="card-image" th:href="@{/professional/list-job/__${job.id}__}">
+                    <img th:src="@{/image/job/__${job.id}__}" alt="Foto Servicio" />
+                </a>
+                <a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2"
+                    target="_blank">
+                    <h2 th:text="${job.name}"></h2>
+                    <!--			<p>15 Profesionales</p>-->
+                </a>
+            </li>
+
+        </ul>
+
+
+    </main>
+
+
+>>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
 </body>
 
 </html>

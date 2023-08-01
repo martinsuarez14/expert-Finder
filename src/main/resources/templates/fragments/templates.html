@@ -1,37 +1,99 @@
+<!-- HEAD  -->
+
+<head>
+    <!-- TÍTULO -->
+    <title>Dashboard</title>
+
+    <!-- ÍCONO PESTAÑA -->
+    <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" th:href="@{/bem.css}" />
+
+    <!--PANEL CSS
+    <link rel="stylesheet" th:href="@{/panel.css}" />-->
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
 <!--Header-->
-<header class="header">
-    <a th:href="@{/}" class="header__logo">
-        <img class="header__img" th:src="@{/img/logo.jpeg}" alt="Not Found">
-    </a>
-    <div class="modal__btns" th:if="${session.usersession == null}">
-        <div class="boton__modal">
-            <a th:href="@{/login}">
-                Iniciar Sesion
+<div th:fragment="header">
+    <header class="header">
+        <div class="header__logo">
+            <a ref="/index.html">
+                <img class="header__img" th:src="@{/img/logo-pestaña.jpeg}" alt="Not Found">
             </a>
         </div>
-        <div class="boton__modal">
-            <label for="boton__modal--btn">
-                Registrarse
-            </label>
+        <div class="boton__modal" th:if="${session.usersession != null}">
+            <a th:href="@{/logout}">
+                Salir
+            </a>
         </div>
-    </div>
-    <div class="boton__modal" th:if="${session.usersession != null}">
-        <a th:href="@{/logout}">
-            Salir
-        </a>
-    </div>
-    <!-- <div class="header__btn">
+        <!-- <div class="header__btn">
         <label class="header__a" for="boton__modal--btn">
             Registrarse
         </label>
         </div> -->
-    </div>
+    </header>
+</div>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <!-- Contenido de la barra lateral  en ul espacop etiqueta a para ingresar las paginas a redireccionar-->
+    <br>
+    <ul>
+        <li><a th:href="@{/admin/dashboard}"><i class="fa-solid fa-user-shield fa-2xs"></i>
+                <p>Usuarios Registrados</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-id-card fa-2xs"></i>
+                <p>Comentarios Reportados</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xs"></i>
+                <p>Solicitudes de Profesionales</p>
+            </a></li>
+        <br>
+        <li><a href="#"><i class="fa-solid fa-box-open fa-xs"></i>
+                <p>Usuarios Desactivados</p>
+            </a></li>
+        <br>
+        <li><a th:href="@{/job/register}"><i class="fa-solid fa-bell-concierge"></i>
+                <p>Crear Nuevo Servicio</p>
+            </a></li>
+        <br>
+        <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
+    </ul>
+    <!--<br>-->
+</aside>
 
-    
-</header>
 
 
 <!--Footer-->
+<div th:fragment="footer">
+    <section class="followUs">
+
+        <div class="anuncio">
+            <a th:href="@{/}"><img th:src="@{./img/logo.PNG}" alt="Logo"></a>
+            <p>ExpertFinder</p>
+        </div>
+        <div class="derechos">
+            <p>Copyright@2023DerechosReservadosExpertFinder</p>
+        </div>
+        <div class="redes">
+            <ul>
+                <span class="fb"><i class="fa-brands fa-square-facebook fa-sm"></i></span>
+                <span class="tw"><i class="fa-brands fa-square-twitter fa-sm"></i></span>
+                <span class="gl"><i class="fa-brands fa-google fa-sm"></i></span>
+                <span class="in"><i class="fa-brands fa-instagram fa-sm"></i></span>
+                <span class="li"><i class="fa-brands fa-linkedin"></i></span>
+                <ul>
+        </div>
+    </section>
+</div>
 <footer th:fragment="footer">
    <div class="container">
     <br>
@@ -51,17 +113,14 @@
 
 <!-- Form de login -->
 <div th:fragment="form">
-
-    <div class="container--form">
-        <form class="form" th:action="@{/logincheck}" method="post">
-            <h2 class="form__head">Ingresar</h2>
-            <label class="form__label">Email</label><br>
-            <input class="form__input" type="email" name="email" required placeholder="email" /><br>
-            <label class="form__label">Password</label><br>
-            <input class="form__input" type="password" name="password" required placeholder="password" /><br>
-            <div class="form__btn">
-                <button class="header__btn" type="submit">Iniciar Sesión</button>
-            </div>
-        </form>
-    </div>
+    <form class="form" th:action="@{/logincheck}" method="post">
+        <h2 class="form__head">Ingresar</h2>
+        <label class="form__label">Email</label><br>
+        <input class="form__input" type="email" name="email" required placeholder="email" /><br>
+        <label class="form__label">Password</label><br>
+        <input class="form__input" type="password" name="password" required placeholder="password" /><br>
+        <div class="form__btn">
+            <button class="custom-btn btn-3" type="submit"><span>Iniciar Sesion</span></button>
+        </div>
+    </form>
 </div>

@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{login.css}">
     <link rel="stylesheet" th:href="@{bem.css}">
+    <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
     <title>Login</title>
 </head>
 
-    <body>
-        
-        <header th:replace="/fragments/templates.html :: header"></header>
+<body>
 
+<<<<<<< HEAD
         <!-- Modal -->
         <input type="checkbox" id="boton__modal--btn">
 
@@ -66,5 +65,10 @@
         
         <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
     </body>
+=======
+    <header th:include="/fragments/templates.html::header"></header>
+    <div th:include="/fragments/templates.html::form" class="container"></div>
+</body>
+>>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
 
 </html>

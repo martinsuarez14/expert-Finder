@@ -9,6 +9,7 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
+
 /* 
 body {
     display: grid;
@@ -17,23 +18,24 @@ body {
     background: url(./img/locofinder.jpg) no-repeat center center fixed;
     background-size: cover;
 } */
+
 .container{
+    display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
+
 
 /*ESTILOS HEADER*/
 .header {
     display: flex;
-    max-width: 100%;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
-    opacity: 0.9;
-    padding: 10px;
+    padding: 8px;
     z-index: 5;
-    background-color: #ff7217;
-    border-bottom: 2px solid black;
+    background-color: #333;
 }
 
 .header__logo {
@@ -45,7 +47,6 @@ body {
     transition: .3s ease all;
     text-decoration: none;
     padding: 5px;
-    margin: 10px;
     align-content: center;
     border-radius: 50px;
     transition: all 0.3s ease-in;
@@ -74,7 +75,8 @@ body {
     text-decoration: none;
     color: #fff;
 }
-.header__btns{
+
+.header__btns {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -83,29 +85,45 @@ body {
 }
 
 .header__btn {
-    background-color: #FFA500; /* Fondo naranja */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* borde redondeado */
-    color: #FFFFFF; /* Texto en blanco */
-    padding: 12px 30px; /* Espaciado interno */
-    font-size: 18px; /* Tamaño de fuente */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    transition: all 0.3s ease; /* Transición suave */
+    background-color: #FFA500;
+    /* Fondo naranja */
+    border: none;
+    /* Sin borde */
+    border-radius: 4px;
+    /* borde redondeado */
+    color: #FFFFFF;
+    /* Texto en blanco */
+    padding: 12px 30px;
+    /* Espaciado interno */
+    font-size: 18px;
+    /* Tamaño de fuente */
+    cursor: pointer;
+    /* Cambia el cursor al pasar el mouse */
+    transition: all 0.3s ease;
+    /* Transición suave */
 }
 
 .header__btn:hover {
-    background-color: #ff7217; /* Cambia el fondo al pasar el mouse */
+    background-color: #ff7217;
+    /* Cambia el fondo al pasar el mouse */
 }
 
 .header__btn--back {
     /* background-color: #2d1e3b; Fondo naranja */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* borde redondeado */
-    color: #FFFFFF; /* Texto en blanco */
-    padding: 12px 30px; /* Espaciado interno */
-    font-size: 20px; /* Tamaño de fuente */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    transition: all 0.3s ease; /* Transición suave */
+    border: none;
+    /* Sin borde */
+    border-radius: 4px;
+    /* borde redondeado */
+    color: #FFFFFF;
+    /* Texto en blanco */
+    padding: 12px 30px;
+    /* Espaciado interno */
+    font-size: 20px;
+    /* Tamaño de fuente */
+    cursor: pointer;
+    /* Cambia el cursor al pasar el mouse */
+    transition: all 0.3s ease;
+    /* Transición suave */
 }
 
 .header__a {
@@ -159,7 +177,8 @@ body {
     transition: all 0.3s ease;
 }
 
-.boton__modal:hover a, .boton__modal:hover label {
+.boton__modal:hover a,
+.boton__modal:hover label {
     background-color: #185e83;
 }
 
@@ -253,16 +272,110 @@ body {
     background-color: #185e83;
 }
 
+.main-container {
+    display: flex;
+}
 
+/*MENÚ SIDEBAR*/
 
+/* .sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    /*position: fixed;*/
+/*left: 0;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+} */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    top: 15%;
+    left: 0;
+    bottom: 0;
+    /* Hacemos que llegue hasta el borde inferior */
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
 
+/* icons */
+.sidebar i {
+    margin-right: 8px;
+    /* Espacio entre el icono y el texto "Administrador" */
+    font-size: 24px;
+    /* Tamaño del icono */
+    color: #FF7218;
+    /* Color del icono */
+}
+
+/* Animaciones de sidebareeee */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animación de cambio de color al pasar el ratón por encima */
+.sidebar li:hover i {
+    color: #333;
+}
+
+.sidebar a:hover {
+    background-color: #FF7218;
+}
+
+/* btn boton salir  */
+.salir-btn {
+    background-color: #FF7218;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* li columna dondebse encuntra Botom salir */
+.salir-li {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.salir-btn:hover {
+    background-color: black;
+}
 
 /*Contenido article*/
 .article {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    justify-content:space-around;
+    justify-content: space-around;
     padding: 20px 10px;
     width: 40%;
     height: 80%;
@@ -272,7 +385,7 @@ body {
 }
 
 .article__h1 {
-    color:black;
+    color: black;
     margin-bottom: 10px;
     height: 50px;
     text-align: center;
@@ -289,13 +402,9 @@ body {
     word-wrap: break-word;
     overflow-wrap: anywhere;
     hyphens: auto;
-    text-shadow: 1px 0.9px #e0952b ;
+    text-shadow: 1px 0.9px #e0952b;
 
 }
-
-
-
-
 
 /*Contenido footer*/
 .footer {
@@ -305,27 +414,32 @@ body {
     background-color: orange;
     opacity: 0.9;
     padding: 20px;
-    padding: 20px; background: #e65c00;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f9d52377, #e65c009e);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f9d52377, #e65c009e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    padding: 20px;
+    background: #e65c00;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f9d52377, #e65c009e);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f9d52377, #e65c009e);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-.footer__sections{
+.footer__sections {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.footer__section{
+.footer__section {
     display: flex;
     flex-direction: column;
     text-align: left;
-    font-size:.8rem;
-    
+    font-size: .8rem;
+
 }
-.footer__h2{
-    color:black;
+
+.footer__h2 {
+    color: black;
     margin-bottom: 10px;
     height: 50px;
     text-align: center;
@@ -333,74 +447,170 @@ body {
     border-bottom: 1px solid black;
 }
 
-.footer__ul{
+.footer__ul {
     color: #291736;
     list-style: none;
     justify-content: space-around;
     align-items: center;
 
 }
-.footer__a{
+
+.footer__a {
     text-decoration: none;
-    
+
 }
-.footer__right p{
+
+.footer__right p {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-
-
-
-
-
-
-/* Formulario */
-.container--form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: solid black;
-    margin: 10% 20%;
-    padding: 2%;
-}
-.form{
+/* FORMULARIO */
+.form {
+    width: 50%;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
-}
-.form__head{
-    color:black;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    height: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    border-bottom: 1px solid black;
-
-}
-
-.form__label{
-    color: black;
-    margin-bottom: .7rem;
-    text-transform: uppercase;
-    justify-content: center;
-    text-align: center;
-    background-color: lightgray;
+    background-color: #333;
+    margin-top: 100px;
     border-radius: 5px;
 }
 
-.form__input{
-    border-radius: 5px;
-    background-color: #dbdbdb;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
+.form__head {
+    color: #ff7217;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: #979797 1px solid;
+    padding: 5px;
+    margin: 10px;
 }
-.form__btn{
-    display: flex;
-    justify-content: center;
+
+.form__label {
+    color: #ff7217;
+    text-transform: uppercase;
+    background-color: transparent;
+}
+
+.form__input {
+    width: 50%;
+    outline: none;
+    margin-bottom: 20px;
+    background-color: transparent;
+    padding: 5px;
+    border: none;
+    border-bottom: #ff7217 solid 2px;
+    color: white;
+}
+
+.form__btn {
+    width: 90%;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.frame {
+    width: 90%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.custom-btn {
+    color: #333;
+    border-radius: 7px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px #333,
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+/* 3 */
+.btn-3 {
+    background: linear-gradient(0deg, #ff7217 0%, #ff7217 100%);
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.btn-3 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-3:before,
+.btn-3:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: #ff7217;
+    transition: all 0.3s ease;
+}
+
+.btn-3:before {
+    height: 0%;
+    width: 2px;
+}
+
+.btn-3:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-3:hover {
+    background: transparent;
+    box-shadow: none;
+}
+
+.btn-3:hover:before {
+    height: 100%;
+}
+
+.btn-3:hover:after {
+    width: 100%;
+}
+
+.btn-3 span:hover {
+    color:#ff7217;
+}
+
+.btn-3 span:before,
+.btn-3 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: #ff7217;
+    transition: all 0.3s ease;
+}
+
+.btn-3 span:before {
+    width: 2px;
+    height: 0%;
+}
+
+.btn-3 span:after {
+    width: 0%;
+    height: 2px;
+}
+
+.btn-3 span:hover:before {
+    height: 100%;
+}
+
+.btn-3 span:hover:after {
+    width: 100%;
 }

@@ -6,8 +6,10 @@ import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.JobService;
 import com.egg.expertfinder.service.ProfessionalService;
 import com.egg.expertfinder.service.UserService;
+
 import java.util.List;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,7 @@ public class HomeController {
 
     @Autowired
     private UserService userService;
-    
+
     @Autowired
     private ProfessionalService professionalService;
 
@@ -51,12 +53,12 @@ public class HomeController {
 
     @PostMapping("/register-user")
     public String registerUser(@RequestParam String name, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password, @RequestParam String password2,
-            @RequestParam String countryKey, @RequestParam(required = false) String country, 
-            @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
+                               @RequestParam String email, @RequestParam String password, @RequestParam String password2,
+                               @RequestParam String countryKey, @RequestParam(required = false) String country,
+                               @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
         try {
             userService.createUser(name, lastName, email, password, password2, countryKey,
-                country, address, file);
+                    country, address, file);
             model.put("exito", "Usuario registrado.");
             return "redirect:/login";
         } catch (MyException e) {
@@ -64,7 +66,7 @@ public class HomeController {
             return "user-form.html";
         }
     }
-    
+
     @GetMapping("/register-professional")  // localhost:8080/register
     public String registerProfessional(ModelMap model) {
         List<Job> jobs = jobService.getAllJobs();
@@ -91,7 +93,7 @@ public class HomeController {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/home")
-    public String home(HttpSession session) {
+    public String home(HttpSession session, ModelMap model) {
 
         CustomUser userLogin = (CustomUser) session.getAttribute("usersession");
 
@@ -99,6 +101,7 @@ public class HomeController {
             return "redirect:/admin/dashboard";
         } if (userLogin.getRole().toString().equals("USER") || 
                 userLogin.getRole().toString().equals("PRO")) {
+            model.addAttribute("jobs", jobService.getAllJobs());
             return "home.html";
         } else {
             return "index.html";

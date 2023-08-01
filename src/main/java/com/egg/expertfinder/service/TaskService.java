@@ -1,5 +1,6 @@
 package com.egg.expertfinder.service;
 
+import com.egg.expertfinder.entity.Comment;
 import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.entity.Professional;
 import com.egg.expertfinder.entity.Task;
@@ -22,33 +23,36 @@ public class TaskService {
 
     @Autowired
     private ProfessionalRepository professionalRepository;
-    
+
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     @Transactional
     public void createTask(String description, Long idProfessional, Long idUser) throws MyException {
-         
+
         validate(description, idProfessional, idUser);
-         
+
         Optional<Professional> response = professionalRepository.findById(idProfessional);
         if (response.isPresent()) {
             Professional professional = response.get();
-            
+
             Task task = new Task(description);
-            
+
             task.setProfessional(professional);
-            
+
             CustomUser user = userRepository.getReferenceById(idUser);
-         
+
             task.setUser(user);
-            
+
             List<Task> tasks = professional.getTasks();
-         
+
             tasks.add(taskRepository.save(task));
-            
+
             professional.setTasks(tasks);
-            
+
             professionalRepository.save(professional);
         }
     }
@@ -58,26 +62,36 @@ public class TaskService {
         Optional<Task> response = taskRepository.findById(idTask);
         if (response.isPresent()) {
             Task task = response.get();
-            task.setStatus(StatusEnum.valueOf(newStatus));
-            
-            if (task.getStatus().equals(StatusEnum.FINALIZADA)) {
-//                Enviar mensaje        
+
+            if (newStatus != null) {
+                task.setStatus(StatusEnum.valueOf(newStatus));
             }
+
+            if (task.getStatus().equals(StatusEnum.FINALIZADA)) {
+//                Enviar mensaje
+                emailService.sendEmail(
+                        task.getUser().getEmail(),
+                        "Trabajo Finalizado",
+                        "El Trabajo con el profesional " + task.getProfessional().getName() + " "
+                        + task.getProfessional().getLastName() + " fue finalizado. Por favor, deja un comentario "
+                        + "y una valoración de la atención recibida.");
+            }
+            
             taskRepository.save(task);
         } else {
             throw new MyException("No se encontró una tarea con ese Id.");
         }
     }
-    
-    public List<Task> getAllTasks(){
+
+    public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
-    
-    public Task getTaskById(Long id) throws MyException{
+
+    public Task getTaskById(Long id) throws MyException {
         Optional<Task> response = taskRepository.findById(id);
-        if(response.isPresent()){
+        if (response.isPresent()) {
             return response.get();
-        }else{
+        } else {
             throw new MyException("No se encontró la tarea.");
         }
     }
@@ -85,19 +99,19 @@ public class TaskService {
     public List<Task> getTaskByStatus(Long idPro, String status) {
         return taskRepository.findTasksByProfessionalAndStatus(idPro, StatusEnum.valueOf(status));
     }
-    
+
     public List<Task> getTasksByUserId(Long id) {
         return taskRepository.findByUser_Id(id);
     }
-    
+
     public List<Task> getTasksByProfessionalId(Long id) {
         return taskRepository.findByProfessional_Id(id);
     }
-    
+
     public List<Task> getTasksByUserAndProfessionalIds(Long idUser, Long idProfessional) {
         return taskRepository.findTaskByUserAndProfessionalIds(idUser, idProfessional);
     }
-    
+
     @Transactional
     public void deleteTaskById(Long id) throws MyException {
         Optional<Task> response = taskRepository.findById(id);
@@ -107,7 +121,7 @@ public class TaskService {
             throw new MyException("No se encontró una Tarea con ese Id.");
         }
     }
-    
+
     private void validate(String description, Long idProfessional, Long idUser) throws MyException {
         if (description == null || description.isEmpty()) {
             throw new MyException("La tarea no puede estar vacia.");
@@ -119,4 +133,5 @@ public class TaskService {
             throw new MyException("El id del usuario no puede ser nulo.");
         }
     }
+
 }
