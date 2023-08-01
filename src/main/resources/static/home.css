@@ -24,18 +24,11 @@ body {
 	font-size: 16px;
 	font-family: sans-serif;
 }
-<<<<<<< HEAD
-.fondo{
-background-color: none;
-    
-    
-=======
 
 .fondo {
 	background-color: #4158D0;
 	background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 31%, #FFCC70 100%);
 	display: flex;
->>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
 }
 
 .card-list {

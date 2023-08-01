@@ -2,7 +2,7 @@
 
 <head>
     <!-- TÍTULO -->
-    <title>Dashboard</title>
+    <title>Chacras Finder</title>
 
     <!-- ÍCONO PESTAÑA -->
     <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
@@ -10,41 +10,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+    <!-- BEM CSS -->
     <link rel="stylesheet" th:href="@{/bem.css}" />
 
-    <!--PANEL CSS
-    <link rel="stylesheet" th:href="@{/panel.css}" />-->
+    <!-- INDEX CSS -->
+    <link rel="stylesheet" th:href="@{/index.css}" />
 
-    <!--FONT AWESOME-->
+    <!-- PANEL CSS -->
+    <link rel="stylesheet" th:href="@{/panel.css}" />
+
+    <!-- HOME CSS -->
+    <link rel="stylesheet" th:href="@{/home.css}" />
+
+    <!-- LOGIN CSS -->
+    <link rel="stylesheet" th:href="@{/login.css}" />
+
+    <!-- BOOTSTRAP ICONS  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <!--Header-->
-<div th:fragment="header">
-    <header class="header">
-        <div class="header__logo">
-            <a ref="/index.html">
-                <img class="header__img" th:src="@{/img/logo-pestaña.jpeg}" alt="Not Found">
+<header class="header">
+    <a th:href="@{/home}" class="header__logo">
+        <img class="header__img" th:src="@{/img/logo.jpeg}" alt="Not Found">
+    </a>
+    <div class="modal__btns" th:if="${session.usersession == null}">
+        <div class="boton__modal">
+            <a th:href="@{/login}">
+                Iniciar Sesion
             </a>
         </div>
-        <div class="boton__modal" th:if="${session.usersession != null}">
-            <a th:href="@{/logout}">
-                Salir
-            </a>
+        <div class="boton__modal">
+            <label for="boton__modal--btn">
+                Registrarse
+            </label>
         </div>
-        <!-- <div class="header__btn">
-        <label class="header__a" for="boton__modal--btn">
-            Registrarse
-        </label>
-        </div> -->
-    </header>
-</div>
+    </div>
+    <div class="boton__modal" th:if="${session.usersession != null}">
+        <a th:href="@{/logout}">
+            Salir
+        </a>
+    </div>
+</header>
+
 <!-- SIDEBAR -->
 <aside class="sidebar">
     <!-- Contenido de la barra lateral  en ul espacop etiqueta a para ingresar las paginas a redireccionar-->
     <br>
-    <ul>
+
+    <!-- SIDERBAR ADMIN  -->
+    <ul sec:authorize="hasRole('ADMIN')">
         <li><a th:href="@{/admin/dashboard}"><i class="fa-solid fa-user-shield fa-2xs"></i>
                 <p>Usuarios Registrados</p>
             </a></li>
@@ -67,60 +85,56 @@
         <br>
         <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
     </ul>
-    <!--<br>-->
+
+    <!-- SIDEBAR USER -->
+    <ul sec:authorize="hasRole('USER')">
+        <li><a th:href="@{/home}"><i class="bi bi-person-vcard"></i>
+                <p>Lista de Servicios</p>
+            </a></li>
+        <br>
+        <li><a th:href="@{/task/list}"><i class="bi bi-list-task"></i>
+                <p>Tareas Pendientes</p>
+            </a></li>
+        <br>
+        <li><a th:href="@{/user/profile}"><i class="bi bi-person"></i>
+                <p>Perfil</p>
+            </a></li>
+        <br>
+        <li><a th:href="@{/contact-form}"><i class="bi bi-question-circle"></i>
+                <p>Solicitar Ayuda</p>
+            </a></li>
+        <br>
+    </ul>
 </aside>
 
-
-
-<!--Footer-->
-<div th:fragment="footer">
-    <section class="followUs">
-
-        <div class="anuncio">
-            <a th:href="@{/}"><img th:src="@{./img/logo.PNG}" alt="Logo"></a>
-            <p>ExpertFinder</p>
-        </div>
-        <div class="derechos">
-            <p>Copyright@2023DerechosReservadosExpertFinder</p>
-        </div>
-        <div class="redes">
-            <ul>
-                <span class="fb"><i class="fa-brands fa-square-facebook fa-sm"></i></span>
-                <span class="tw"><i class="fa-brands fa-square-twitter fa-sm"></i></span>
-                <span class="gl"><i class="fa-brands fa-google fa-sm"></i></span>
-                <span class="in"><i class="fa-brands fa-instagram fa-sm"></i></span>
-                <span class="li"><i class="fa-brands fa-linkedin"></i></span>
-                <ul>
-        </div>
-    </section>
-</div>
-<footer th:fragment="footer">
-   <div class="container">
-    <br>
-    <p>Síguenos en redes sociales:</p>
-    <a><img th:src="@{img/f.PNG}" alt="Facebook" height="40"></a>
-    <br>
-    <a><img th:src="@{img/t.PNG}" alt="Twitter" height="40"></a>
-    <br>
-    <a><img th:src="@{img/p.PNG}" alt="Instagram" height="40"></a>
-    <br>
+<!-- FOOTER  -->
+<footer class="footer">
+    <h2 class="footer__h2">Síguenos en redes sociales:</h2>
+    <div class="footer__container">
+        <br>
+        <a class="footer__a"><i class="bi bi-facebook"></i></a>
+        <br>
+        <a class="footer__a"><i class="bi bi-instagram"></i></a>
+        <br>
+        <a class="footer__a"><i class="bi bi-twitter"></i></a>
+        <br>
+    </div>
     <p>&copy; 2021 Chacras Company Inc. All rights reserved</p>
-   </div>
-    
-        
 </footer>
-
 
 <!-- Form de login -->
 <div th:fragment="form">
-    <form class="form" th:action="@{/logincheck}" method="post">
-        <h2 class="form__head">Ingresar</h2>
-        <label class="form__label">Email</label><br>
-        <input class="form__input" type="email" name="email" required placeholder="email" /><br>
-        <label class="form__label">Password</label><br>
-        <input class="form__input" type="password" name="password" required placeholder="password" /><br>
-        <div class="form__btn">
-            <button class="custom-btn btn-3" type="submit"><span>Iniciar Sesion</span></button>
-        </div>
-    </form>
+
+    <div class="container--form">
+        <form class="form" th:action="@{/logincheck}" method="post">
+            <h2 class="form__head">Ingresar</h2>
+            <label class="form__label">Email</label><br>
+            <input class="form__input" type="email" name="email" required placeholder="email" /><br>
+            <label class="form__label">Password</label><br>
+            <input class="form__input" type="password" name="password" required placeholder="password" /><br>
+            <div class="form__btn">
+                <button class="header__btn" type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
 </div>
