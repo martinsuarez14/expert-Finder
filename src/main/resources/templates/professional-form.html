@@ -1,60 +1,106 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" th:href="@{bem.css}">
+<head th:replace="/fragments/templates.html :: head"></head>
 
-    </head>
+<body>
 
-    <body>
+    <header th:replace="/fragments/templates.html :: header"></header>
 
-        <h1 class="form-profesional-titulo">Formulario del profesional</h1>
+    <!-- Modal -->
+    <input type="checkbox" id="boton__modal--btn">
 
-        <form th:action="@{/register-professional}" enctype="multipart/form-data" method="post" class="form-profesional">
-            <label  class="label-nombre" for="nombre">Nombre del Profesional:</label>
-            <input type="text" id="name" name="name" required>
-            <br>
-            <label  class="label-nombre" for="nombre">Apellido del Profesional:</label>
-            <input type="text" id="name" name="lastName" required>
-            <br>
-            <label  class="label-nombre" for="nombre">Correo electrónico:</label>
-            <input type="text" id="name" name="email" required>
-            <br>
-            <label  class="label-nombre" for="nombre">Ingrese una contraseña:</label>
-            <input type="text" id="name" name="password" required>
-            <br>
-            <label  class="label-nombre" for="nombre">Repita la contraseña:</label>
-            <input type="text" id="name" name="password2" required>
-            <br>
-            <label  class="label-nombre" for="nombre">Domicilio:</label>
-            <input type="text" id="name" name="address" required>
-            <br>
-            <label  class="label-nombre" for="nombre">Cargar imagen de perfil:</label>
-            <input type="file" id="name" name="file" required>
-            <br>
-            <label  class="label-nombre" for="nombre">Elija una profesión:</label>
-            <select name="idJob">                
-                <option th:each="job : ${jobs}" th:value="${job.id}" th:text="${job.name}"></option>
-            </select>
-            <label class="label-matricula" for="nombre">Nombre de la Matricula:</label>
-            <input type="text" id="matricula" name="license" required>
-            <br>
-            <label class="label-servicio" for="nombre">Número de teléfono:</label>
-            <input type="text" id="service" name="phone" required>
-            <br>
-            <label class="label-servicio" for="nombre">Descripción:</label>
-            <input type="text" id="service" name="description" required>
-            <br>
+    <div class="modal">
+        <div class="modal__body">
+            <h3>Bienvenido!</h3>
+            <div class="modal__btns">
 
-            <!--<label for="descripcion">Descripción del servicio:</label>-->
-            <!--<textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea>-->
-            
-            <input type="submit" value="Crear Servicio">
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/register-user}">
+                        Usuario
+                    </a>
+                </div>
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/register-professional}">
+                        Trabajador
+                    </a>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <div class="header__btn--back">
+                    <label class="header__a" for="boton__modal--btn">
+                        Volver
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-login">
+        <form th:action="@{/logincheck}" method="post" class="form">
+            <h2 class="form__head">Crear Perfil Profesional</h2>
+            <div class="form__group">
+                <label for="name" class="form__label">Nombre</label>
+                <input class="form__input" type="text" id="name" name="name" required /> <br>
+            </div>
+            <div class="form__group">
+                <label for="lastName" class="form__label">Apellido</label>
+                <input class="form__input" type="text" id="lastName" name="lastName" required /> <br>
+            </div>
+            <div class="form__group">
+                <label for="email" class="form__label">Email</label>
+                <input class="form__input" type="email" id="email" name="email" required /> <br>
+            </div>
+            <div class="form__group">
+                <label for="password" class="form__label">Password</label>
+                <input class="form__input" type="password" id="password" name="password" required /> <br>
+            </div>
+            <div class="form__group">
+                <label for="password2" class="form__label">Repetir la contraseña</label>
+                <input class="form__input" type="password" id="password2" name="password2" required /> <br>
+            </div>
+
+            <div class="form__group">
+                <label for="address" class="form__label">Dirección</label>
+                <input class="form__input" type="text" id="address" name="address" required /> <br>
+            </div>
+
+            <div class="form__group">
+                <label for="file" class="form__label">Foto de Perfil</label>
+                <input class="form__input" type="file" id="file" name="file" required /> <br>
+            </div>
+
+            <div class="form__group">
+                <label for="job" class="form__label">Servicio a Ofrecer</label>
+                <select class="form__select" id="job" name="idJob" required>
+                    <option th:each="job : ${jobs}" th:value="${job.id}" th:text="${job.name}"></option>
+                </select>
+            </div>
+
+            <div class="form__group">
+                <label for="description" class="form__label">Descripción</label>
+                <textarea class="form__textarea" name="description" id="description" rows="10"></textarea>
+            </div>
+
+            <div class="form__group">
+                <label for="license" class="form__label">Matrícula</label>
+                <input class="form__input" type="text" id="license" name="license" required /> <br>
+            </div>
+
+            <div class="form__group">
+                <label for="phone" class="form__label">Teléfono</label>
+                <input class="form__input" type="tel" id="phone" name="phone" required /> <br>
+            </div>
+
+            <div class="frame">
+                <button type="submit" class="custom-btn btn-3"><span>Crear Perfil</span></button>
+            </div>
         </form>
+    </main>
 
-    </body>
+    <footer th:replace="/fragments/templates.html :: footer"></footer>
+
+
+</body>
 
 </html>

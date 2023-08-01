@@ -1,6 +1,7 @@
 package com.egg.expertfinder.controller;
 
 import com.egg.expertfinder.entity.CustomUser;
+import com.egg.expertfinder.entity.Image;
 import com.egg.expertfinder.entity.Job;
 import com.egg.expertfinder.entity.Professional;
 import com.egg.expertfinder.exception.MyException;
@@ -76,35 +77,18 @@ public class ImageController {
         return new ResponseEntity<>(image, headers, HttpStatus.OK);
     }
     
-//    @GetMapping("/noticia/{id}")
-//    public ResponseEntity<byte[]> imagenNoticia(@PathVariable Long id) {
-//        
-//        Noticia noticia = noticiaServicio.getOne(id);
-//        
-//        Imagen foto = imagenServicio.traerImagen(noticia.getImagen().getId());
-//        
-//        byte[] imagen = foto.getContenido();
-//        
-//        HttpHeaders headers = new HttpHeaders();
-//        
-//        headers.setContentType(MediaType.IMAGE_JPEG);
-//        
-//        return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<byte[]> imageById(@PathVariable Long id) throws MyException {
+        
+        Image image = imageService.getImage(id);
+        
+        byte[] img = image.getContent();
+        
+        HttpHeaders headers = new HttpHeaders();
+        
+        headers.setContentType(MediaType.IMAGE_JPEG);
+        
+        return new ResponseEntity<>(img, headers, HttpStatus.OK);
+    }
     
-//    @GetMapping("/periodista/{id}")
-//    public ResponseEntity<byte[]> imagenPeriodista(@PathVariable Long id) {
-//        
-//        Periodista periodista = periodistaServicios.getOne(id);
-//        
-//        Imagen foto = imagenServicio.traerImagen(periodista.getImagen().getId());
-//        
-//        byte[] imagen = foto.getContenido();
-//        
-//        HttpHeaders headers = new HttpHeaders();
-//        
-//        headers.setContentType(MediaType.IMAGE_JPEG);
-//        
-//        return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
-//    }
 }

@@ -1,0 +1,55 @@
+.body-form-profesional {
+  background-color: #f9f9f9;
+}
+
+.form-profesional {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-profesional input[type="text"],
+.form-profesional select,
+.form-profesional textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-profesional input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.form-profesional input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Estilos al enfocar los campos de entrada */
+.form-profesional input[type="text"]:focus,
+.form-profesional select:focus,
+.form-profesional textarea:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+  outline: none;
+  transform: scale(1.05);
+  background-color: #f9f9f9;
+}
+
+.form-profesional-titulo {
+  text-align: center;
+  color: #4caf50;
+}

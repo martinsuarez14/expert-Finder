@@ -1,18 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{bem.css}">
-    <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
-    <title>Login</title>
-</head>
+<head th:replace="/fragments/templates.html :: head"></head>
 
 <body>
 
-    <header th:include="/fragments/templates.html::header"></header>
-    <div th:include="/fragments/templates.html::form" class="container"></div>
+    <header th:replace="/fragments/templates.html :: header"></header>
+
+    
+    <!-- Modal -->
+    <input type="checkbox" id="boton__modal--btn">
+
+    <div class="modal">
+        <div class="modal__body">
+            <h3>Bienvenido!</h3>
+            <div class="modal__btns">
+
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/register-user}">
+                        Usuario
+                    </a>
+                </div>
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/register-professional}">
+                        Trabajador
+                    </a>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <div class="header__btn--back">
+                    <label class="header__a" for="boton__modal--btn">
+                        Volver
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-login">
+        <form th:action="@{/logincheck}" method="post" class="form">
+            <h2 class="form__head">Ingresar</h2>
+            <div class="form__group">
+                <label class="form__label">Email</label>
+                <input class="form__input" type="email" name="email" required placeholder="jhon-doe@gmail.com" />
+            </div>
+            <div class="form__group">
+                <label class="form__label">Password</label>
+                <input class="form__input" type="password" name="password" required placeholder="*********" />
+            </div>
+            <div class="frame">
+                <button type="submit" class="custom-btn btn-3"><span>Iniciar Sesión</span></button>
+            </div>
+        </form>
+    </main>
+
+
+    <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
 </body>
 
 </html>
