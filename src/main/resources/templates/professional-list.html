@@ -12,30 +12,6 @@
 
         <aside th:replace="/fragments/templates.html :: aside"></aside>
 
-<<<<<<< HEAD
-        <div>Lista de Profesionales</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Nombre
-                    </th>
-                    <th>
-                        Email
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="professional : ${professionals}">
-                    <td th:text="${professional.name}"></td>
-                    <td th:text="${professional.email}"></td>
-                </tr>
-            </tbody>
-        </table>
-
-    </main>
-
-=======
         <div class="contenido">
             <div class="bodycolumna">
                 <h1 class="titulotabla">Lista de Profesionales</h1>
@@ -76,7 +52,6 @@
 
     <footer th:replace="/fragments/templates.html :: footer"></footer>
 
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 </body>
 
 </html>

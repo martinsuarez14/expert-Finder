@@ -76,12 +76,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-<<<<<<< HEAD
-<dependency>
-    <groupId>org.thymeleaf.extras</groupId>
-    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-</dependency>
-=======
 
         <!--THYMELEAF SECURITY--> 
         <dependency>
@@ -89,7 +83,6 @@
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
         
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
     </dependencies>
 
     <build>

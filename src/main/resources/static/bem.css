@@ -9,27 +9,12 @@
     font-family: "Poppins", sans-serif;
 }
 
-<<<<<<< HEAD
-/* 
-body {
-    display: grid;
-    min-height: 100vh;
-    grid-template-rows: auto 1fr auto;
-    background: url(./img/locofinder.jpg) no-repeat center center fixed;
-    background-size: cover;
-} */
-=======
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 .container {
     align-items: center;
     justify-content: center;
 }
 
-<<<<<<< HEAD
-/*ESTILOS HEADER*/
-=======
 /* ESTILOS HEADER */
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 .header {
     display: flex;
     max-width: 100%;
@@ -289,11 +274,6 @@ body {
     background-color: #333;
     color: white;
     padding-top: 20px;
-<<<<<<< HEAD
-    bottom: 0;
-    /* Hacemos que llegue hasta el borde inferior */
-=======
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
     display: flex;
     flex-direction: column;
     margin-bottom: 0;
@@ -368,57 +348,9 @@ body {
     background-color: black;
 }
 
-<<<<<<< HEAD
-
-
-
-
-/*Contenido article*/
-.article {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    justify-content: space-around;
-    padding: 20px 10px;
-    width: 40%;
-    height: 80%;
-    margin: 5% 5%;
-    box-shadow: 0 0 20px black;
-=======
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 
 /* FOOTER */
 
-<<<<<<< HEAD
-.article__h1 {
-    color: black;
-    margin-bottom: 10px;
-    height: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    border-bottom: 1px solid black;
-
-}
-
-.article__h3 {
-    height: 60%;
-    margin-top: 15px;
-    font-weight: bold;
-    letter-spacing: -.02em;
-    word-wrap: break-word;
-    overflow-wrap: anywhere;
-    hyphens: auto;
-    text-shadow: 1px 0.9px #e0952b;
-
-}
-
-
-
-
-
-/*Contenido footer*/
-=======
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 .footer {
     display: flex;
     justify-content: center;
@@ -461,22 +393,13 @@ body {
 }
 
 
-<<<<<<< HEAD
-=======
 /* CONTENEDOR MAIN  */
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 .main-container-flex {
     display: flex;
     flex-direction: row;
 }
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 /* FORMULARIO */
 .container--form {
     display: flex;
@@ -492,14 +415,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-<<<<<<< HEAD
-    /* align-items: center; */
-=======
     align-items: center;
     background-color: #333;
     margin: 3rem auto;
     border-radius: 5px;
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 }
 
 .form__head {
@@ -520,15 +439,6 @@ body {
     color: black;
     margin-bottom: 15px;
     text-transform: uppercase;
-<<<<<<< HEAD
-    justify-content: center;
-    text-align: center;
-    background-color: lightgray;
-    border-radius: 5px;
-}
-
-.form__input {
-=======
     background-color: transparent;
     width: 100%;
 }
@@ -552,7 +462,6 @@ body {
 .form__textarea {
     width: 100%;
     outline: none;
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
     margin-bottom: 20px;
     border-radius: 5px;
     background-color: #dbdbdb;
@@ -647,11 +556,7 @@ body {
 }
 
 .btn-3 span:hover {
-<<<<<<< HEAD
-    color: rgba(2, 126, 251, 1);
-=======
     color: #ff7217;
->>>>>>> 5d6cc09152b3e0131d2752d2950387237b90861a
 }
 
 .btn-3 span:before,
