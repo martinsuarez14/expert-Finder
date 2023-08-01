@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/templates.html :: head"></head>
+
+<body>
+
+  <!--HEADER-->
+  <header th:replace="/fragments/templates.html :: header"></header>
+
+  <main class="main-container-flex">
+
+    <aside th:replace="/fragments/templates.html :: aside"></aside>
+
+    <ul class="card-list">
+      
+      <li class="card">
+        <a class="card-image" th:href="@{/job/register}">
+          <img src="https://sas-production-uploads.s3.eu-west-2.amazonaws.com/article_main_img/tool/large_964134918.png" alt="Foto Servicio" />
+        </a>
+        <a class="card-description" th:href="@{/job/register}">
+          <h2>Crear Servicio</h2>
+          <div class="frame">
+            <button type="submit" class="custom-btn btn-3"><span>Crear Servicio</span></button>
+          </div>
+        </a>
+      </li>
+
+      <li th:each="job : ${jobs}" class="card">
+        <a class="card-image" th:href="@{/professional/list-job/__${job.id}__}">
+          <img th:src="@{/image/job/__${job.id}__}" alt="Foto Servicio" />
+        </a>
+        <a class="card-description" th:href="@{/job/update/__${job.id}__}">
+          <h2 th:text="${job.name}"></h2>
+          <div class="frame">
+            <button type="submit" class="custom-btn btn-3"><span>Editar Servicio</span></button>
+          </div>
+        </a>
+      </li>
+
+    </ul>
+  </main>
+
+
+</body>
+
+</html>
