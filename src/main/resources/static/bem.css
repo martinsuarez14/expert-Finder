@@ -420,16 +420,17 @@
     background-color: #333;
     margin: 3rem auto;
     border-radius: 5px;
+    width: 50%;
 }
 
 .form__head {
-    color: black;
+    color: #e65c00;
     margin-top: 10px;
     margin-bottom: 10px;
     /*height: 50px;*/
     text-align: center;
     text-transform: uppercase;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #e65c00;
 }
 
 .form__group {
@@ -437,7 +438,7 @@
 }
 
 .form__label {
-    color: black;
+    color: #e65c00;
     margin-bottom: 15px;
     text-transform: uppercase;
     background-color: transparent;

@@ -10,34 +10,9 @@
 
     <!--Main-->
     <main class="main-container">
-        <div class="sidebar">
-            <!-- Contenido de la barra lateral  en ul espacop etiqueta a para ingresar las paginas a redireccionar-->
-            <br>
-            <ul>
-                <li><a href="#"><i class="fa-solid fa-user-shield fa-2xs"></i>
-                        <p>Usuarios Registrados</p>
-                    </a></li>
-                <br>
-                <li><a href="#"><i class="fa-solid fa-id-card fa-2xs"></i>
-                        <p>Comentarios Reportados</p>
-                    </a></li>
-                <br>
-                <li><a href="#"><i class="fa-solid fa-pen-to-square fa-xs"></i>
-                        <p>Solicitudes de Profesionales</p>
-                    </a></li>
-                <br>
-                <li><a href="#"><i class="fa-solid fa-box-open fa-xs"></i>
-                        <p>Usuarios Desactivados</p>
-                    </a></li>
-                <br>
-                <li><a th:href="@{/job/register}"><i class="fa-solid fa-bell-concierge"></i>
-                        <p>Crear Nuevo Servicio</p>
-                    </a></li>
-                <br>
-                <li class="salir-li"><a th:href="@{/logout}"><button class="salir-btn">Cerrar Sesión</button></a></li>
-            </ul>
-            <!--<br>-->
-        </div>
+        
+        <aside th:replace="/fragments/templates.html :: aside"></aside>
+
         <div class="contenido">
             <div class="bodycolumna">
                 <h1 class="titulotabla">Usuarios Registrados</h1>
@@ -71,6 +46,7 @@
         </div>
     </main>
 
+    <footer th:replace="/fragments/templates.html :: footer"></footer>
 </body>
 
 </html>

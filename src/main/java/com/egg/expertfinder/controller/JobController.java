@@ -3,6 +3,7 @@ package com.egg.expertfinder.controller;
 import com.egg.expertfinder.entity.Job;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.JobService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -80,5 +81,22 @@ public class JobController {
             model.put("error", ex.getMessage());
             return "redirect:/admin/dashboard";
         }
+    }
+    
+    @GetMapping("/buscar")
+    public String findJobs(@RequestParam(name = "q", required = false) String query, ModelMap model) {
+        if (query != null && !query.isEmpty()) {
+            List<Job> results = new ArrayList<>();
+            for (Job job : jobService.getAllJobs()) {
+                if (job.getName().toLowerCase().contains(query.toLowerCase())) {
+                    results.add(job);
+                }
+            }
+            model.addAttribute("results", results);
+        } else {
+            model.addAttribute("results", null);
+        }
+
+        return "/fragments/busqueda-trabajos-fragment.html"; // Nombre de la vista HTML parcial para la lista de resultados
     }
 }
