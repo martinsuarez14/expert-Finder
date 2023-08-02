@@ -3,39 +3,29 @@
     display: none;
 }
 
-
 * {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
 
-/* 
-body {
-    display: grid;
-    min-height: 100vh;
-    grid-template-rows: auto 1fr auto;
-    background: url(./img/locofinder.jpg) no-repeat center center fixed;
-    background-size: cover;
-} */
-
-.container{
-    display: flex;
+.container {
     align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
 
-
-/*ESTILOS HEADER*/
+/* ESTILOS HEADER */
 .header {
     display: flex;
-    width: 100%;
+    max-width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
+    height: 80px;
+    opacity: 0.9;
+    padding: 10px;
     z-index: 5;
-    background-color: #333;
+    background-color: #ff7217;
+    border-bottom: 2px solid black;
 }
 
 .header__logo {
@@ -47,6 +37,7 @@ body {
     transition: .3s ease all;
     text-decoration: none;
     padding: 5px;
+    margin: 10px;
     align-content: center;
     border-radius: 50px;
     transition: all 0.3s ease-in;
@@ -276,55 +267,42 @@ body {
     display: flex;
 }
 
-/*MENÚ SIDEBAR*/
 
-/* .sidebar {
-    width: 250px;
-    background-color: #333;
-    color: white;
-    padding-top: 20px;
-    /*position: fixed;*/
-/*left: 0;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-} */
+/* MENÚ SIDEBAR */
 .sidebar {
-    width: 250px;
+    width: 20%;
+    height: 100%;
     background-color: #333;
     color: white;
     padding-top: 20px;
-    position: fixed;
-    top: 15%;
-    left: 0;
-    bottom: 0;
-    /* Hacemos que llegue hasta el borde inferior */
     display: flex;
     flex-direction: column;
+    margin-bottom: 0;
     z-index: 1;
-}
-
-/* icons */
-.sidebar i {
-    margin-right: 8px;
-    /* Espacio entre el icono y el texto "Administrador" */
-    font-size: 24px;
-    /* Tamaño del icono */
-    color: #FF7218;
-    /* Color del icono */
 }
 
 /* Animaciones de sidebareeee */
 .sidebar ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
 }
 
 .sidebar li {
     margin-bottom: 10px;
     transition: all 0.3s ease;
+}
+
+/* icons */
+.sidebar i {
+    margin-right: 8px;
+    /* Espacio entre el icono y el texto */
+    font-size: 24px;
+    /* Tamaño del icono */
+    color: #FF7218;
+    /* Color del icono */
 }
 
 .sidebar a {
@@ -334,8 +312,9 @@ body {
 
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    text-align: left;
 }
 
 /* Animación de cambio de color al pasar el ratón por encima */
@@ -370,43 +349,9 @@ body {
     background-color: black;
 }
 
-/*Contenido article*/
-.article {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    justify-content: space-around;
-    padding: 20px 10px;
-    width: 40%;
-    height: 80%;
-    margin: 5% 5%;
-    box-shadow: 0 0 20px black;
 
-}
+/* FOOTER */
 
-.article__h1 {
-    color: black;
-    margin-bottom: 10px;
-    height: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    border-bottom: 1px solid black;
-
-}
-
-.article__h3 {
-    height: 60%;
-    margin-top: 15px;
-    font-weight: bold;
-    letter-spacing: -.02em;
-    word-wrap: break-word;
-    overflow-wrap: anywhere;
-    hyphens: auto;
-    text-shadow: 1px 0.9px #e0952b;
-
-}
-
-/*Contenido footer*/
 .footer {
     display: flex;
     justify-content: center;
@@ -442,7 +387,7 @@ body {
 
 .footer__a {
     text-decoration: none;
-
+    cursor: pointer;
 }
 
 .footer__right p {
@@ -451,36 +396,59 @@ body {
     margin-top: 20px;
 }
 
+
+/* CONTENEDOR MAIN  */
+.main-container-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+
 /* FORMULARIO */
+.container--form {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    border: solid black;
+    margin: 2rem auto;
+    padding: 2%;
+    height: auto;
+}
+
 .form {
-    width: 50%;
-    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #333;
-    margin-top: 100px;
+    margin: 3rem auto;
     border-radius: 5px;
 }
 
 .form__head {
-    color: #ff7217;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /*height: 50px;*/
     text-align: center;
     text-transform: uppercase;
-    border-bottom: #979797 1px solid;
-    padding: 5px;
-    margin: 10px;
+    border-bottom: 1px solid black;
+}
+
+.form__group {
+    width: 90%;
 }
 
 .form__label {
-    color: #ff7217;
+    color: black;
+    margin-bottom: 15px;
     text-transform: uppercase;
     background-color: transparent;
+    width: 100%;
 }
 
-.form__input {
-    width: 50%;
+.form__input, .form__select {
+    width: 100%;
     outline: none;
     margin-bottom: 20px;
     background-color: transparent;
@@ -490,11 +458,48 @@ body {
     color: white;
 }
 
+.form__input[type=file]{
+    border: none;
+}
+
+.form__input[type=file]::file-selector-button{
+    color: #333;
+    background-color: #ff7217;
+    border: 1px #333 solid;
+    outline: none;
+    padding: 5px;
+    border-radius: 3px;
+    transition: all 0.5s ease;
+}
+
+.form__input[type=file]::file-selector-button:hover{
+    color: #ff7217;
+    background-color: #333;
+    border: 1px #ff7217 solid;
+}
+
+.form__select:focus {
+    background-color: #333;
+    color: white;
+}
+
+.form__textarea {
+    width: 100%;
+    outline: none;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #dbdbdb;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    /* width: 70%; */
+}
+
 .form__btn {
-    width: 90%;
+    display: flex;
+    justify-content: center;
     padding: 5px;
     cursor: pointer;
-    text-align: center;
 }
 
 .frame {
@@ -504,15 +509,19 @@ body {
 }
 
 .custom-btn {
-    color: #333;
-    border-radius: 7px;
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
+    background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
-    box-shadow: inset 2px 2px 2px 0px #333,
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
         7px 7px 20px 0px rgba(0, 0, 0, .1),
         4px 4px 5px 0px rgba(0, 0, 0, .1);
     outline: none;
@@ -520,12 +529,14 @@ body {
 
 /* 3 */
 .btn-3 {
-    background: linear-gradient(0deg, #ff7217 0%, #ff7217 100%);
+    background: rgb(0, 172, 238);
+    background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
     width: 130px;
     height: 40px;
     line-height: 42px;
     padding: 0;
     border: none;
+
 }
 
 .btn-3 span {
@@ -541,7 +552,7 @@ body {
     content: "";
     right: 0;
     top: 0;
-    background: #ff7217;
+    background: rgba(2, 126, 251, 1);
     transition: all 0.3s ease;
 }
 
@@ -569,7 +580,7 @@ body {
 }
 
 .btn-3 span:hover {
-    color:#ff7217;
+    color: #ff7217;
 }
 
 .btn-3 span:before,
@@ -578,7 +589,7 @@ body {
     content: "";
     left: 0;
     bottom: 0;
-    background: #ff7217;
+    background: rgba(2, 126, 251, 1);
     transition: all 0.3s ease;
 }
 
@@ -598,4 +609,11 @@ body {
 
 .btn-3 span:hover:after {
     width: 100%;
+}
+
+@media screen and (max-width: 650px) {
+
+    .form {
+        width: 90%;
+    }
 }
