@@ -43,10 +43,10 @@ public class JobController {
         try {
             Job job = jobService.getJobById(id);
             model.addAttribute("job", job);
-            return "update-job.html";
+            return "job-update.html";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "update-job.html";
+            return "job-update.html";
         }
     }
     
@@ -59,7 +59,7 @@ public class JobController {
             return "redirect:/admin/home";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "redirect:/admin/home";
+            return "job-update.html";
         }
     }
     

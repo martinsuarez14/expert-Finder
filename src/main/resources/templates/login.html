@@ -1,74 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{bem.css}">
-    <link rel="icon" th:href="@{/img/logo-pestaña.jpeg}" type="image/x-icon">
-    <title>Login</title>
-</head>
+<head th:replace="/fragments/templates.html :: head"></head>
 
 <body>
 
-<<<<<<< HEAD
-        <!-- Modal -->
-        <input type="checkbox" id="boton__modal--btn">
+    <header th:replace="/fragments/templates.html :: header"></header>
 
-        <div class="modal">
-            <div class="modal__body">
-                <h3>Bienvenido!</h3>
-                <div class="modal__btns">
+    
+    <!-- Modal -->
+    <input type="checkbox" id="boton__modal--btn">
 
-                    <div class="header__btn">
-                        <a class="header__a" th:href="@{/register-user}">
-                            Usuario
-                        </a>
-                    </div>
-                    <div class="header__btn">
-                        <a class="header__a" th:href="@{/register-professional}">
-                            Trabajador
-                        </a>
-                    </div>
+    <div class="modal">
+        <div class="modal__body">
+            <h3>Bienvenido!</h3>
+            <div class="modal__btns">
+
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/register-user}">
+                        Usuario
+                    </a>
                 </div>
-                <div class="modal__footer">
-                    <div class="header__btn--back">
-                        <label class="header__a" for="boton__modal--btn">
-                            Volver
-                        </label>
-                    </div>
+                <div class="header__btn">
+                    <a class="header__a" th:href="@{/register-professional}">
+                        Trabajador
+                    </a>
+                </div>
+            </div>
+            <div class="modal__footer">
+                <div class="header__btn--back">
+                    <label class="header__a" for="boton__modal--btn">
+                        Volver
+                    </label>
                 </div>
             </div>
         </div>
+    </div>
 
-
-
-        <main class="body-login">
-            <div class="container">
-                <form th:action="@{/logincheck}" method="post" class="form-login">
-                    <h2 class="form-login-titulo">Ingresar</h2>
-                    <div class="form-group">
-                        <label class="label-email">Email</label>
-                        <input type="email" name="email" required placeholder="Email"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="label-contraseña">Password</label>
-                        <input type="password" name="password" required placeholder="Password"/>
-                    </div>
-                    <button type="submit">Iniciar Sesión</button>
-                </form> 
+    <main class="main-login">
+        <form th:action="@{/logincheck}" method="post" class="form">
+            <h2 class="form__head">Ingresar</h2>
+            <div class="form__group">
+                <label class="form__label">Email</label>
+                <input class="form__input" type="email" name="email" required placeholder="jhon-doe@gmail.com" />
             </div>
-        </main>
+            <div class="form__group">
+                <label class="form__label">Password</label>
+                <input class="form__input" type="password" name="password" required placeholder="*********" />
+            </div>
+            <div class="frame">
+                <button type="submit" class="custom-btn btn-3"><span>Iniciar Sesión</span></button>
+            </div>
+        </form>
+    </main>
 
-        
 
-        
-        <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
-    </body>
-=======
-    <header th:include="/fragments/templates.html::header"></header>
-    <div th:include="/fragments/templates.html::form" class="container"></div>
+    <!--<footer th:include="fragments/templates.html :: footer" class="footer"></footer>-->
 </body>
->>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
 
 </html>

@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="/fragments/templates.html::head"></head>
+<head th:replace="/fragments/templates.html :: head"></head>
 
 <body>
 
     <!--HEADER-->
-    <header th:replace="/fragments/templates.html::header"></header>
-    <aside th:replace="/fragments/templates.html::aside"></aside>
+    <header th:replace="/fragments/templates.html :: header"></header>
 
-    <section class="container">
+    <main class="main-container-flex">
 
-        <form th:action="@{/job/register}" enctype="multipart/form-data" method="post" class="form">
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                <div class="card-body">
-                    <h5 class="card-title">Error al cargar</h5>
-                    <p class="card-text" th:text="${error}"></p>
+        <aside th:replace="/fragments/templates.html :: aside"></aside>
+
+        <section class="contenido">
+
+            <form th:action="@{/job/register}" enctype="multipart/form-data" method="post" class="form">
+                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                    <div class="card-body">
+                        <h5 class="card-title">Error al cargar</h5>
+                        <p class="card-text" th:text="${error}"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="form__head">Crear Servicio</div>
-            <br>
-            <label class="form__label" for="nombre">Nombre del Servicio</label>
-            <input class="form__input" type="text" id="name" name="name" required>
-            <label class="form__label" for="nombre">Nombre del Servicio</label>
-            <input class="form__input" type="file" id="name" name="file" required>
-            <div class="frame">
-                <button type="submit" class="custom-btn btn-3"><span>Crear Servicio</span></button>
-            </div>
-        </form>
-    </section>
+                <div class="form__head">Crear Servicio</div>
+                <br>
+                <label class="form__label" for="nombre">Nombre del Servicio</label>
+                <input class="form__input" type="text" id="name" name="name" required>
+                <label class="form__label" for="nombre">Nombre del Servicio</label>
+                <input class="form__input" type="file" id="name" name="file" required>
+                <div class="frame">
+                    <button type="submit" class="custom-btn btn-3"><span>Crear Servicio</span></button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+
 </body>
 
 </html>
