@@ -366,15 +366,15 @@ body {
 }
 
 /*Footer*/
-<<<<<<< HEAD
-footer{
+
+/* footer{ 
 background-color: #FF802E;
 text-align: center;
 padding: 20px;
 }
 
 footer a {
-=======
+    
 .footer {
   display: flex;
   background-color: #333;
@@ -510,7 +510,7 @@ footer a {
 
 .footer .company a {
     color: white;
->>>>>>> 0349275dd8a6efa3e3dd9b94c81b0bb1007a207b
+
     text-decoration: none;
     margin: 0 10px;
 }
@@ -526,7 +526,7 @@ footer a img {
 }
 
 
-
+ */
 
 /*Media Querys*/
 @media screen and (max-width: 768px) {

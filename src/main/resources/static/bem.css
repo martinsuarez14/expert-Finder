@@ -409,28 +409,21 @@ body {
 /*Contenido footer*/
 .footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
     background-color: orange;
     opacity: 0.9;
     padding: 20px;
-    padding: 20px;
     background: #e65c00;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f9d52377, #e65c009e);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f9d52377, #e65c009e);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}   
 
-}
-
-.footer__sections {
+.footer__container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.footer__section {
+.footer__container{
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -445,14 +438,6 @@ body {
     text-align: center;
     text-transform: uppercase;
     border-bottom: 1px solid black;
-}
-
-.footer__ul {
-    color: #291736;
-    list-style: none;
-    justify-content: space-around;
-    align-items: center;
-
 }
 
 .footer__a {
