@@ -8,6 +8,8 @@ import com.egg.expertfinder.service.ProfessionalService;
 import com.egg.expertfinder.service.UserService;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,8 +87,28 @@ public class HomeController {
                     address, file, idJob, description, license, phone);
             model.put("exito", "Usuario registrado.");
             return "redirect:/login";
-        } catch (MyException e) {
-            model.put("error", e.getMessage());
+        } catch (MyException ex) {
+            List<Job> jobs = jobService.getAllJobs();
+            model.addAttribute("jobs",jobs);
+            model.put("name", name);
+            model.put("lastName", lastName);
+            model.put("address", address);
+            model.put("description",description);
+            model.put("license", license);
+            model.put("phone", phone);
+            model.put("email", email);
+            
+            int i =1;
+            do {
+                try {
+                    professionalService.validateAll(name, lastName, email, password, password2, file, idJob, description, license, phone, address, i);
+                } catch (MyException e) {
+                    model.put("error"+i, e.getMessage());
+                }finally{
+                    i++;
+                }
+            } while (i<=11);
+            
             return "professional-form.html";
         }
     }

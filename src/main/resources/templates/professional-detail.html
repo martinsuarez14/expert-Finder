@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/perfilprofesional.css}" />
+    <title>Vista detalles profesional</title>
+</head>
+<body>
+    <header th:replace="/fragments/templates.html :: header"></header>
+    <main>
+        <div class="barrasflex">
+
+            <div class="barraIzquierda">
+                <div class="cajaImagen">
+                    <img th:src="@{/image/__${professional.image.id}__}" alt="">
+                </div>
+                <div class="informacion">
+                    <div  id="tarea">
+                        <p>Tarea:</p>
+                        <p th:if="${professional.tasks == null}">El profesional esta ocupado actualmente</p>
+                        <p th:if="${professional.tasks != null}">El profesional esta desocupado actualmente</p>
+                    </div>
+                    <div  id="profesion" >
+                        <p>Profesion: </p>
+                        <p th:text="${professional.job.name}"></p>
+                    </div>
+                    <div  id="licencia">
+                        <p>Licencia</p>
+                        <p th:text="${professional.license}"></p>
+                    </div>
+                    <div  id="numero">
+                        <p>Numero</p>
+                        <p th:text="${professional.phone}"></p>
+                    </div>
+                    <div  id="descripcion">
+                        <p>Descripcion</p>
+                        <p th:text="${professional.description}"></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="barraDerecha">
+
+                <h1>Comentarios de tareas</h1>
+                 
+                <div class="carts">
+                    <div class="cart">
+                            <div class="hovercart">
+                                <p class="nombre">nombre</p>
+                                <p class="descripcion">descripcion</p>
+                            </div>
+                    </div>
+                    <div class="cart">
+                        <div class="hovercart">
+                            <p class="nombre">nombre</p>
+                            <p class="descripcion">descripcion</p>
+                        </div>
+                    </div>
+                    <div class="cart">
+                        <div class="hovercart">
+                            <p class="nombre">nombre</p>
+                            <p class="descripcion">descripcion</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="barraFinal">
+
+            <h2>Contactese con el profesional</h2>
+                <form action="">
+                    <input type="text">
+                    <input type="text">
+                    <input type="submit" value="">
+                </form>
+                
+        </div>
+        
+    </main>
+</body>
+</html>

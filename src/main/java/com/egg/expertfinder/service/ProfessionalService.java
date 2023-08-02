@@ -40,7 +40,7 @@ public class ProfessionalService {
             String password2, String address, MultipartFile file, Long idJob,
             String description, String license, String phone) throws MyException {
 
-        validate(name, lastName, email, password, password2, file, idJob, description, license, phone);
+        validate(name, lastName, email, password, password2, file, idJob, description, license, phone,address);
 
         Professional professional = new Professional(name, lastName, email,
                 description, license, phone);
@@ -130,7 +130,7 @@ public class ProfessionalService {
     //Validación de datos del profesional.
     public void validate(String name, String lastName, String email, String password,
             String password2, MultipartFile file, Long idJob, String description,
-            String license, String phone) throws MyException {
+            String license, String phone,String address) throws MyException {
         
         if (name == null || name.isEmpty()) {
             throw new MyException("El nombre no puede ser nulo o estar vacío.");
@@ -162,6 +162,82 @@ public class ProfessionalService {
         if (phone == null || phone.isEmpty()) {
             throw new MyException("Debe ingresar su número de teléfono.");
         }
+        if (address==null || address.isEmpty()){
+            throw new MyException("Debe ingresar una direccion");
+        }
+        if (email==null) {
+            throw new MyException("Debe ingresar un correo");
+        }else if(!email.contains("@")){
+            throw new MyException("El correo debe poseer '@'");
+        }else if(email.substring(email.length()-1).equals("@")){
+            throw new MyException("El correo debe poseer caracteres luego de la '@'");
+        }
+    }
+       public void validateAll(String name, String lastName, String email, String password,
+            String password2, MultipartFile file, Long idJob, String description,
+            String license, String phone,String address,int num) throws MyException {
+        
+           switch (num) {
+               case 1:
+                   if (name == null || name.isEmpty()) {
+                       throw new MyException("El nombre no puede ser nulo o estar vacío.");
+                   }
+                   break;
+               case 2:
+                   if (lastName == null || lastName.isEmpty()) {
+                       throw new MyException("El apellido no puede ser nulo o estar vacío.");
+                   }
+                   break;
+               case 3:
+                   if (password == null || password.isEmpty()) {
+                       throw new MyException("La contraseña no puede contener 5 caracteres o menos.");
+                   }
+                   break;
+               case 4:
+                   if (!password2.equals(password)) {
+                       throw new MyException("Las contraseñas no coinciden.");
+                   }
+                   break;
+               case 5:
+                   if (address == null || address.isEmpty()) {
+                       throw new MyException("Debe ingresar una direccion");
+                   }
+                   break;
+               case 6:
+                   if (file == null) {
+                       throw new MyException("Debe ingresar una imagen de perfil.");
+                   }
+                   break;
+               case 7:
+                   if (idJob == null) {
+                       throw new MyException("Debe ingresar un servicio a ofrecer.");
+                   }
+                   break;
+               case 8:
+                   if (description == null || description.isEmpty()) {
+                       throw new MyException("Debe ingresar una descripción.");
+                   }
+                   break;
+               case 9:
+                   if (license == null || license.isEmpty()) {
+                       throw new MyException("Debe presentar su matrícula.");
+                   }
+                   break;
+               case 10:
+                   if (phone == null || phone.isEmpty()) {
+                       throw new MyException("Debe ingresar su número de teléfono.");
+                   }
+                       break;
+                case 11:
+                    if (email == null) {
+                        throw new MyException("Debe ingresar un correo");
+                    } else if (!email.contains("@")) {
+                        throw new MyException("El correo debe poseer '@'");
+                    } else if (email.substring(email.length() - 1).equals("@")) {
+                        throw new MyException("El correo debe poseer caracteres luego de la '@'");
+                    }
+                       break;
+           }
     }
 
     //Obtener un profesional de la base de datos usando su ID.
