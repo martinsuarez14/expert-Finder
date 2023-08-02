@@ -1,0 +1,14 @@
+<!-- busqueda-trabajos-fragment.html -->
+<ul class="card-list">
+  <li th:each="result : ${results}" class="card">
+      <a class="card-image" th:href="@{/professional/list-job/__${result.id}__}">
+          <img th:src="@{/image/job/__${result.id}__}" alt="Foto Servicio" />
+      </a>
+      <a class="card-description" th:href="@{/job/update/__${result.id}__}">
+          <h2 th:text="${result.name}"></h2>
+          <div class="frame">
+              <button type="submit" class="custom-btn btn-3"><span>Editar Servicio</span></button>
+          </div>
+      </a>
+  </li>
+</ul>
