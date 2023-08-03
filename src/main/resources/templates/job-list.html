@@ -11,37 +11,54 @@
 
   <main class="main-container-flex">
 
-    <aside th:replace="/fragments/templates.html :: aside"></aside>
+    <section>
+      <aside th:replace="/fragments/templates.html :: aside"></aside>
 
-    <ul class="card-list">
-      
-      <li class="card">
-        <a class="card-image" th:href="@{/job/register}">
-          <img src="https://sas-production-uploads.s3.eu-west-2.amazonaws.com/article_main_img/tool/large_964134918.png" alt="Foto Servicio" />
-        </a>
-        <a class="card-description" th:href="@{/job/register}">
-          <h2>Crear Servicio</h2>
-          <div class="frame">
-            <button type="submit" class="custom-btn btn-3"><span>Crear Servicio</span></button>
-          </div>
-        </a>
-      </li>
+      <form th:action="@{/buscar}" method="get" class="form">
+        <div class="form__group">
+          <input type="text" name="q" placeholder="Buscar trabajos por nombre" onkeyup="findJobs(this.value)" />
+          <button type="submit">Buscar</button>
+        </div>
+      </form>
 
-      <li th:each="job : ${jobs}" class="card">
-        <a class="card-image" th:href="@{/professional/list-job/__${job.id}__}">
-          <img th:src="@{/image/job/__${job.id}__}" alt="Foto Servicio" />
-        </a>
-        <a class="card-description" th:href="@{/job/update/__${job.id}__}">
-          <h2 th:text="${job.name}"></h2>
-          <div class="frame">
-            <button type="submit" class="custom-btn btn-3"><span>Editar Servicio</span></button>
-          </div>
-        </a>
-      </li>
+      <!-- Aquí se mostrarán los resultados de la búsqueda -->
+      <div id="resultadosBusqueda"></div>
 
-    </ul>
+      <ul class="card-list">
+
+        <li class="card">
+          <a class="card-image" th:href="@{/job/register}">
+            <img
+              src="https://sas-production-uploads.s3.eu-west-2.amazonaws.com/article_main_img/tool/large_964134918.png"
+              alt="Foto Servicio" />
+          </a>
+          <a class="card-description" th:href="@{/job/register}">
+            <h2>Crear Servicio</h2>
+            <div class="frame">
+              <button type="submit" class="custom-btn btn-3"><span>Crear Servicio</span></button>
+            </div>
+          </a>
+        </li>
+
+        <li th:each="job : ${jobs}" class="card">
+          <a class="card-image" th:href="@{/professional/list-job/__${job.id}__}">
+            <img th:src="@{/image/job/__${job.id}__}" alt="Foto Servicio" />
+          </a>
+          <a class="card-description" th:href="@{/job/update/__${job.id}__}">
+            <h2 th:text="${job.name}"></h2>
+            <div class="frame">
+              <button type="submit" class="custom-btn btn-3"><span>Editar Servicio</span></button>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+
+
   </main>
 
+  <script th:src="@{job-list.js}"></script>
 
 </body>
 

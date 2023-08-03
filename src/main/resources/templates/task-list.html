@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/templates.html :: head"></head>
+
+<body>
+
+  <header th:replace="/fragments/templates.html :: header"></header>
+
+  <main class="main-container">
+
+    <aside th:replace="/fragments/templates :: aside"></aside>
+
+    <div class="contenido">
+      <div class="bodycolumna">
+        <h1 class="titulotabla">Lista de Tareas</h1>
+        <div class="container-usuarios">
+          <table class="tabla-usuarios">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Profesional</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="task : ${tasks}">
+                <td th:text="${task.createAt}"></td>
+                <td th:text="${task.professional.name}"></td>
+                <td th:text="${task.status}"></td>
+                <td>
+                  <div class="boton__modal" th:if="${session.usersession != null}">
+                    <a th:href="@{/task/__${professional.id}__}">
+                      Ver Perfil
+                    </a>
+                  </div>
+                </td>
+
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer th:replace="/fragments/templates.html :: footer"></footer>
+
+</body>
+
+</html>
