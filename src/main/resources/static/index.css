@@ -52,3 +52,217 @@
     text-align: justify;
     font-size: 20px;
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2b9c2b76167e4535a6f286772f27c97f24b9538d
+.form form input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+}
+.form form input:focus {
+  outline: none;
+}
+.form form select {
+  padding-right: 10px;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+}
+
+.form form select::-ms-expand {
+  display: none;
+}
+
+/*Footer*/
+
+/* footer{ 
+background-color: #FF802E;
+text-align: center;
+padding: 20px;
+}
+
+footer a {
+    
+.footer {
+  display: flex;
+  background-color: #333;
+  grid-area: footer;
+  width: auto;
+  margin: 0;
+  list-style: none;
+
+    display: flex;
+    background-color: rgb(255, 114, 23);
+    grid-area: footer;
+    width: auto;
+    margin: 0;
+    list-style: none;
+}
+
+.footer .followUs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+  min-width: 25%;
+}
+.footer .followUs .anuncio a {
+  display: flex;
+  max-width: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    width: 35%;
+    min-width: 25%;
+    border: 1px solid;
+
+}
+.footer .followUs .anuncio a{
+    display: flex;
+    max-width: 50px;
+}
+
+.footer .followUs .anuncio a img {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.footer .followUs p {
+    color: white;
+    font-style: normal;
+    font-size: smaller;
+}
+
+.footer .followUs .redes ul {
+  justify-content: space-between;
+}
+.footer .followUs .redes {
+    margin-top: 10px;
+}
+
+.footer .redes span {
+  padding: 10px;
+  border-radius: 50px;
+  color: white;
+}
+
+.footer .redes .fb {
+    background-color: blue;
+    padding: 8px;
+    border-radius: 50px;
+    color: white;
+}
+
+.footer .redes .tw {
+    background-color: rgb(0, 140, 255);
+    padding: 8px;
+    border-radius: 50px;
+    color: white;
+}
+
+.footer .redes .gl {
+    background-color: rgb(230, 186, 5);
+    padding: 8px;
+    border-radius: 50px;
+    color: white;
+}
+
+.footer .redes .in {
+    background-color: rgb(244, 2, 209);
+    padding: 8px;
+    border-radius: 50px;
+    color: white;
+}
+
+.footer .redes .li {
+    background-color: rgb(10, 102, 194);
+    padding: 8px;
+    border-radius: 50px;
+    color: white;
+}
+
+
+
+.footer .followUs .anuncio p {
+    font-size: 18px;
+    color: white;
+}
+
+.derechos {
+  height: 20px;
+  flex-flow: column;
+  justify-content: center;
+  color: white;
+}
+  .footer .company {
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.footer .company div {
+    text-align: center;
+    padding: 0 15px;
+}
+
+.footer .company div h2 {
+    color: rgb(20, 19, 19);
+    padding: 10px 0;
+}
+
+.footer .company a {
+    color: white;
+
+    text-decoration: none;
+    margin: 0 10px;
+}
+footer a img {
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+footer a img {
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+
+ */
+
+/*Media Querys*/
+@media screen and (max-width: 768px) {
+  .contenedor {
+    grid-template-areas:
+      "header header header"
+      "contenido contenido contenido"
+      "sidebar sidebar sidebar"
+      "widget-1 widget-1 widget-2"
+      "footer footer footer";
+  }
+}
+
+
+.main-index {
+    background: rgba( 77, 84, 83, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> df3fa429a87d25f00935f91fb1475ca09765c706
+>>>>>>> 2b9c2b76167e4535a6f286772f27c97f24b9538d
