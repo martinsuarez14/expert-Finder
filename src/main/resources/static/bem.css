@@ -355,28 +355,22 @@
 .footer {
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
-=======
+
     align-items: center;
->>>>>>> df3fa429a87d25f00935f91fb1475ca09765c706
+
     flex-direction: column;
     background-color: orange;
     opacity: 0.9;
     padding: 20px;
     background: #e65c00;
-<<<<<<< HEAD
-}   
-=======
+
+
+
     margin-bottom: 0;
 }
->>>>>>> df3fa429a87d25f00935f91fb1475ca09765c706
 
-.footer__container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-<<<<<<< HEAD
-}
+
+
 
 .footer__container{
     display: flex;
@@ -384,11 +378,9 @@
     text-align: left;
     font-size: .8rem;
 
-=======
     gap: 30px;
     font-size: 2rem;
     margin-bottom: 10px;
->>>>>>> df3fa429a87d25f00935f91fb1475ca09765c706
 }
 
 .footer__h2 {

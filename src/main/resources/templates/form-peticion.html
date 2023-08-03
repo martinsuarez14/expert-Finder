@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/fragments/templates.html :: head"></head>   
+
+<body>
+    <header th:replace="/fragments/templates.html :: header"></header>
+   
+    <form action="@{/form-peticion}" method="post" name="Peticion">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Escribe tu nombre" required/>
+    
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required/>
+    
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email" required />
+    
+        <label for="asunto">Asunto</label>
+        <input type ="text" name="asunto" id="asunto" placeholder="Asunto" required/>
+    
+        <label for="mensaje">Mensaje</label>
+        <textarea name="mensaje" for="mensaje" placeholder="Describe tu petición en menos de 300 carácteres" maxlength="300"></textarea>
+        
+        <input type="submit" name="enviar" value="enviar datos"/>
+    </form>
+    
+</body>
+
+
+</html>
