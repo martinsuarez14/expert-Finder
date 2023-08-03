@@ -21,7 +21,7 @@
                             <tr>
                                 <th>Foto</th>
                                 <th>Nombre Completo</th>
-                                <th>Email</th>
+                                <th>Servicio</th>
                                 <th>Dirección</th>
                                 <th>Teléfono</th>
                                 <th>Puntuación</th>
@@ -31,7 +31,7 @@
                             <tr th:each="professional : ${professionals}">
                                 <td><img th:src='@{/image/profile-professional/__${professional.id}__}' /></td>
                                 <td th:text="${professional.name} + ' ' + ${professional.lastName}"></td>
-                                <td th:text="${professional.email}"></td>
+                                <td th:text="${professional.job.name}"></td>
                                 <td th:text="${professional.location.address}"></td>
                                 <td th:text="${professional.phone}"></td>
                                 <td>
@@ -48,6 +48,7 @@
                     </table>
                 </div>
             </div>
+        </div>
     </main>
 
     <footer th:replace="/fragments/templates.html :: footer"></footer>

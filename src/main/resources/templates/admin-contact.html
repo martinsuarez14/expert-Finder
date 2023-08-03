@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/fragments/templates.html :: head"></head>
+
+<body>
+
+  <!--HEADER-->
+  <header th:replace="/fragments/templates.html :: header"></header>
+
+  <main class="main-container-flex">
+
+    <aside th:replace="/fragments/templates.html :: aside"></aside>
+
+    
+    <form th:action="@{/email}" method="post" class="form">
+      <h2 class="form__head">Describa su Inconveniente</h2>
+      <div class="form__group">
+          <label class="form__label">Title</label>
+          <input class="form__input" type="text" name="subject" required placeholder="jhon-doe@gmail.com" />
+      </div>
+      <div class="form__group">
+          <label class="form__label">Contenido</label>
+          <input class="form__input" type="text" name="body" required placeholder="*********" />
+      </div>
+      <div class="frame">
+          <button type="submit" class="custom-btn btn-3"><span>Iniciar Sesión</span></button>
+      </div>
+  </form>
+
+  </main>
+
+
+</body>
+
+</html>

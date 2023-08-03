@@ -78,7 +78,7 @@ public class CommentController {
     public String getCommentsWithReports(ModelMap model) {
         List<Comment> comments = commentService.getCommentsWithReports();
         model.addAttribute("comments", comments);
-        return "comments-list.html";
+        return "comment-list.html";
     }
 
 //    @PreAuthorize("hasRole('ROLE_ADMIN')")
