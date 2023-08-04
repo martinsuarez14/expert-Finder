@@ -159,5 +159,16 @@ public class HomeController {
             return "index.html";
         }
     }
-
+     @GetMapping("/form-peticion")  // localhost:8080/form-peticion
+    public String contactAdmin(ModelMap model) {
+        return "form-peticion.html";
+    }
+     @PostMapping("/form-peticion")
+    public String contactAdmin(@RequestParam String name, @RequestParam String lastName,
+            @RequestParam String email, @RequestParam String password, @RequestParam String password2, 
+            @RequestParam String address, @RequestParam MultipartFile file, @RequestParam Long idJob,
+            @RequestParam String description, @RequestParam String license, 
+            @RequestParam String phone, ModelMap model) {
+                return "form-peticion.hmtl";
+    }      
 }

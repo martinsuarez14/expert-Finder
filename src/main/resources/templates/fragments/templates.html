@@ -12,7 +12,6 @@
 
     <!-- BEM CSS -->
     <link rel="stylesheet" th:href="@{/bem.css}" />
-    <link rel="stylesheet" th:href="@{index.css}">
 
     <!-- INDEX CSS -->
     <link rel="stylesheet" th:href="@{/index.css}" />
@@ -36,7 +35,7 @@
 <!--Header-->
 <header class="header">
     <a th:href="@{/home}" class="header__logo">
-        <img class="header__img" th:src="@{/img/logo.jpeg}" alt="Not Found">
+        <img class="header__img" th:src="@{/img/crack.jpg}" alt="Not Found">
     </a>
     <div class="modal__btns" th:if="${session.usersession == null}">
         <div class="boton__modal">
@@ -120,7 +119,8 @@
         <a class="footer__a"><i class="bi bi-twitter"></i></a>
         <br>
     </div>
-    <p>&copy; 2021 Chacras Company Inc. All rights reserved</p>
+
+    <p>&copy; 2023 Chacras Company Inc. All rights reserved</p>
 </footer>
 
 <!-- Form de login -->
