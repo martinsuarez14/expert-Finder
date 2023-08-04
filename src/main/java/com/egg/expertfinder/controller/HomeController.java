@@ -107,7 +107,7 @@ public class HomeController {
             return "index.html";
         }
     }
-     @GetMapping("/form-peticion")  // localhost:8080/register
+     @GetMapping("/form-peticion")  // localhost:8080/form-peticion
     public String contactAdmin(ModelMap model) {
         return "form-peticion.html";
     }
