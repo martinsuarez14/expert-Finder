@@ -64,11 +64,33 @@ public class HomeController {
             model.put("exito", "Usuario registrado.");
             return "redirect:/login";
         } catch (MyException e) {
-            model.put("error", e.getMessage());
+            model.put("name", name);
+            model.put("lastName", lastName);
+            model.put("address", address);
+            model.put("file",file);    
+             try {
+             userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, 7);
+             model.put("countryKey", countryKey);
+            } catch (MyException ex) {
+            }
+            try {
+             userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, 8);
+             model.put("email", email);
+            } catch (MyException ex) {
+            }
+            int i =1;
+            do {
+                try {
+                   userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, i);
+                } catch (MyException ex) {
+                    model.put("error"+i, ex.getMessage());
+                }finally{
+                    i++;
+                }
+            } while (i<=8);
             return "user-form.html";
         }
     }
-
     @GetMapping("/register-professional")  // localhost:8080/register
     public String registerProfessional(ModelMap model) {
         List<Job> jobs = jobService.getAllJobs();
@@ -95,9 +117,17 @@ public class HomeController {
             model.put("address", address);
             model.put("description",description);
             model.put("license", license);
-            model.put("phone", phone);
-            model.put("email", email);
-            
+            model.put("file",file);
+            try {
+                professionalService.validateAll(name, lastName, email, password, password2, file, idJob, description, license, phone, address,10);
+                model.put("phone", phone);
+            } catch (MyException e) {
+            }
+            try {
+                professionalService.validateAll(name, lastName, email, password, password2, file, idJob, description, license, phone, address,11);
+                model.put("email", email);
+            } catch (MyException e) {
+            }
             int i =1;
             do {
                 try {

@@ -6,3 +6,42 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+/*Manejo de errores*/
+.errores{
+    background: red;
+    text-align: center;
+}
+
+#name:not(:placeholder-shown) + #p1{
+  display: none;
+}
+#lastName:not(:placeholder-shown) + #p2{
+  display: none;
+}
+#email:not(:placeholder-shown) + #p11{
+  display: none;
+}
+#password:not(:placeholder-shown) + #p3{
+  display: none;
+}
+#password2:not(:placeholder-shown) + #p4{
+  display: none;
+}
+#address:not(:placeholder-shown) + #p5{
+  display: none;
+}
+#description:not(:placeholder-shown) + #p8{
+  display: none;
+}
+#license:not(:placeholder-shown) + #p9{
+  display: none;
+}
+#phone:not(:placeholder-shown) + #p10{
+  display: none;
+}
+#email:not(:placeholder-shown) + #p8{
+  display: none;
+}
+#countryKey:not(:placeholder-shown) + #p7{
+  display: none;
+}

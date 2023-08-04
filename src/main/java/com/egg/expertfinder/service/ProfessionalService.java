@@ -147,7 +147,7 @@ public class ProfessionalService {
         if (!password2.equals(password)) {
             throw new MyException("Las contraseñas no coinciden.");
         }
-        if (file == null) {
+        if (file == null || file.isEmpty()) {
             throw new MyException("Debe ingresar una imagen de perfil.");
         }
         if (idJob == null) {
@@ -161,11 +161,19 @@ public class ProfessionalService {
         }
         if (phone == null || phone.isEmpty()) {
             throw new MyException("Debe ingresar su número de teléfono.");
+               }else {
+                       for (int j = 0; j <= phone.length()-1 ; j++) {
+                           try {
+                               Integer.parseInt( phone.substring(j,j+1));
+                           } catch (Exception e) {
+                               throw new MyException("El numero de telefono debe ser solo numeros");
+                           }
+                       }
         }
         if (address==null || address.isEmpty()){
             throw new MyException("Debe ingresar una direccion");
         }
-        if (email==null) {
+        if (email==null || email.isEmpty()) {
             throw new MyException("Debe ingresar un correo");
         }else if(!email.contains("@")){
             throw new MyException("El correo debe poseer '@'");
@@ -190,6 +198,8 @@ public class ProfessionalService {
                    break;
                case 3:
                    if (password == null || password.isEmpty()) {
+                      throw new MyException("La contraseña no puede ser nula o estar vacía.");
+                   }else if(password.length() <= 5){
                        throw new MyException("La contraseña no puede contener 5 caracteres o menos.");
                    }
                    break;
@@ -204,7 +214,7 @@ public class ProfessionalService {
                    }
                    break;
                case 6:
-                   if (file == null) {
+                   if (file == null || file.isEmpty()) {
                        throw new MyException("Debe ingresar una imagen de perfil.");
                    }
                    break;
@@ -226,10 +236,18 @@ public class ProfessionalService {
                case 10:
                    if (phone == null || phone.isEmpty()) {
                        throw new MyException("Debe ingresar su número de teléfono.");
+                    }else {            
+                       for (int j = 0; j <= phone.length()-1 ; j++) {
+                           try {
+                               Integer.parseInt( phone.substring(j,j+1));
+                           } catch (Exception e) {
+                               throw new MyException("El numero de telefono debe ser solo numeros");
+                           }
+                       }
                    }
                        break;
                 case 11:
-                    if (email == null) {
+                    if (email == null || email.isEmpty()) {
                         throw new MyException("Debe ingresar un correo");
                     } else if (!email.contains("@")) {
                         throw new MyException("El correo debe poseer '@'");
