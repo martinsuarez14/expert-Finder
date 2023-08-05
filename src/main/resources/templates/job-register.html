@@ -2,47 +2,48 @@
 
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head th:replace="/fragments/templates.html :: head">     
-    </head>
+    <head th:replace="/fragments/templates.html :: head">
+        
+    </head> 
 
-<body>
 
-    <!--HEADER-->
-    <header th:replace="/fragments/templates.html :: header"></header>
+    <body>
 
-    <main class="main-container-flex">
+        <!--HEADER-->
+        <header th:replace="/fragments/templates.html :: header"></header>
 
-        <aside th:replace="/fragments/templates.html :: aside"></aside>
+        <main class="main-container-flex">
 
-        <section class="contenido">
+            <aside th:replace="/fragments/templates.html :: aside"></aside>
 
-            <form id="fileForm" th:action="@{/job/register}" enctype="multipart/form-data" method="post" class="form">
-                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                    <div class="card-body">
-                        <h5 class="card-title">Error al cargar</h5>
-                        <p class="card-text" th:text="${error}"></p>
+            <section class="contenido">
+
+                <form id="fileForm" th:action="@{/job/register}" enctype="multipart/form-data" method="post" class="form">
+                    <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                        <div class="card-body">
+                            <h5 class="card-title">Error al cargar</h5>
+                            <p class="card-text" th:text="${error}"></p>
+                        </div>
                     </div>
-                </div>
-                <div class="form__head">Crear Servicio</div>
-                <br>
-                <label class="form__label" for="nombre">Nombre del Servicio</label>
-                <input class="form__input" type="text" id="name" name="name" required>
-                <label class="form__label" for="nombre">Nombre del Servicio</label>
-                <input class="form__input" type="file" id="archivo" name="file" required>
-                <div class="frame">
-                    <button type="submit" class="custom-btn btn-3"><span>Crear Servicio</span></button>
-                </div>
-            </form>
-            <div>
-                <img id="img" src="https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280-580x580.jpg" alt="Vista previa de la imagen" style="width: 100px" />
-            </div>    
-            <div id="output"></div>
-            
-            
-        </section>
-    </main>
-    <script src="@{job-register.js}"></script>
+                    <div class="form__head">Crear Servicio</div>
+                    <br>
+                    <label class="form__label" for="nombre">Nombre del Servicio</label>
+                    <input class="form__input" type="text" id="name" name="name" required>
+                    <label class="form__label" for="nombre">Nombre del Servicio</label>
+                    <img id="img" src="https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280-580x580.jpg" alt="Vista previa de la imagen" style="width: 100px" />
+                    <input class="form__input" type="file" id="archivo" name="file" required>
+                    <div class="frame">
+                        <button type="submit" class="custom-btn btn-3"><span>Crear Servicio</span></button>
+                    </div>
+                </form>                  
+                <div id="output"></div>
 
-</body>
+
+            </section>
+        </main>   
+        <script src="jobprueba.js"></script>
+
+
+    </body>
 
 </html>

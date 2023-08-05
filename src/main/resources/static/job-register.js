@@ -7,7 +7,7 @@ file.addEventListener( 'change', e => {
         const reader = new FileReader();
         reader.onload = function(e) {
             img.src = e.target.result;
-        }
+        };
         reader.readAsDataURL(e.target.files[0]);
     } else {
         img.src = defaultFile;
