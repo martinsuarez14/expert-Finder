@@ -155,20 +155,80 @@ public class UserService implements UserDetailsService {
             throw new MyException("El apellido no debe estar vacío.");
         }
         if (email == null || email.isEmpty()) {
-            throw new MyException("El email no debe estar vacío.");
-        }
+                        throw new MyException("Debe ingresar un correo");
+                    } else if (!email.contains("@")) {
+                        throw new MyException("El correo debe poseer '@'");
+                    } else if (email.substring(email.length() - 1).equals("@")) {
+                        throw new MyException("El correo debe poseer caracteres luego de la '@'");
+                    }
         if (!password.equals(password2)) {
             throw new MyException("Las contraseñas no coinciden.");
         }
         if (password == null || password.isEmpty()) {
-            throw new MyException("La constraseña no debe estar vacía y debe ser mayor a 5 caracteres.");
+            throw new MyException("La contraseña no puede ser nula o estar vacía.");
+        }
+        if (password.length() <= 5) {
+            throw new MyException("La contraseña no puede contener 5 caracteres o menos.");
         }
         if (countryKey == null || countryKey.isEmpty()) {
             throw new MyException("Debe ingresar la clave del Barrio.");
         }
-        if (file == null) {
+        if (file == null || file.isEmpty()) {
             throw new MyException("Debe ingresar una imagen de perfil.");
         }
+    }
+     public void validateAll(String name, String lastName, String email, String password,
+            String password2, String countryKey,String address, MultipartFile file,int num) throws MyException {
+        switch (num) {
+               case 1:
+                   if (name == null || name.isEmpty()) {
+                       throw new MyException("El nombre no puede ser nulo o estar vacío.");
+                   }
+                   break;
+               case 2:
+                   if (lastName == null || lastName.isEmpty()) {
+                       throw new MyException("El apellido no puede ser nulo o estar vacío.");
+                   }
+                   break;
+               case 3:
+                   if (password == null || password.isEmpty()) {
+                      throw new MyException("La contraseña no puede ser nula o estar vacía.");
+                   }else if(password.length() <= 5){
+                       throw new MyException("La contraseña no puede contener 5 caracteres o menos.");
+                   }
+                   break;
+               case 4:
+                   if (!password2.equals(password)) {
+                       throw new MyException("Las contraseñas no coinciden.");
+                   }
+                   break;
+               case 5:
+                   if (address == null || address.isEmpty()) {
+                       throw new MyException("Debe ingresar una direccion");
+                   }
+                   break;
+               case 6:
+                   if (file == null || file.isEmpty()) {
+                       throw new MyException("Debe ingresar una imagen de perfil.");
+                   }
+                   break;
+               case 7:
+                   if (countryKey == null || countryKey.isEmpty()) {
+                    throw new MyException("Debe ingresar la clave del Barrio.");
+                   }else{
+                       validateCountryKey(countryKey);
+                   }
+                   break;
+                case 8:
+                    if (email == null || email.isEmpty()) {
+                        throw new MyException("Debe ingresar un correo");
+                    } else if (!email.contains("@")) {
+                        throw new MyException("El correo debe poseer '@'");
+                    } else if (email.substring(email.length() - 1).equals("@")) {
+                        throw new MyException("El correo debe poseer caracteres luego de la '@'");
+                    }
+                       break;
+           }
     }
 
     private String validateCountryKey(String countryKey) throws MyException {

@@ -1,0 +1,85 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+main{
+    height: 700px;
+}
+.barrasflex{
+    display: flex;
+    border:1px solid black;
+    padding: 20px;
+    background-color: aqua;
+    height: 80%;
+}
+.barraIzquierda{
+    display: flex;
+    background-color: brown;
+    height: 100%;
+    flex-basis: 40%;
+    flex-direction: column;
+}
+.barraDerecha{
+    display: flex;
+    background-color: blue;
+    flex-basis: 60%;
+    height: 100%;
+    text-align: center;
+    flex-direction: column;
+}
+.barraFinal{
+    background-color: blueviolet;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cajaImagen{
+    display: flex;
+    background: blanchedalmond;
+    height: 80%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.informacion{
+    display: flex;
+    background: black;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+img{
+    height: 95%;
+    width: 95%;
+}
+.informacion>div{
+    border: 1px solid white;
+}
+ p{
+    color: white;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.carts{
+    height: 100%;
+    width: 100%;
+    background: red;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.cart{
+    border: 1px solid white;
+    height: 100px;
+    width: 100px;
+}
+
