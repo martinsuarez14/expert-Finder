@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/perfilprofesional.css}" />
-    <title>Vista detalles profesional</title>
+    <head th:replace="/fragments/templates.html :: head">    
 </head>
-<body>
+<body>    
     <header th:replace="/fragments/templates.html :: header"></header>
-    <main>
+    <main class="main-container-flex">
+        <aside th:replace="/fragments/templates.html :: aside"></aside>
         <div class="barrasflex">
-
             <div class="barraIzquierda">
                 <div class="cajaImagen">
-                    <img th:src="@{/image/__${professional.image.id}__}" alt="">
+                    <img th:src="@{/image/__${session.usersession.image.id}__}" alt="">
                 </div>
                 <div class="informacion">
                     <div  id="tarea">
                         <p>Tarea:</p>
-                        <p th:if="${professional.tasks == null}">El profesional esta ocupado actualmente</p>
-                        <p th:if="${professional.tasks != null}">El profesional esta desocupado actualmente</p>
+                        <p th:if="${session.usersession.tasks == null}">El profesional esta ocupado actualmente</p>
+                        <p th:if="${session.usersession.tasks != null}">El profesional esta desocupado actualmente</p>
                     </div>
                     <div  id="profesion" >
                         <p>Profesion: </p>
-                        <p th:text="${professional.job.name}"></p>
+                        <p th:text="${session.usersession.job.name}"></p>
                     </div>
                     <div  id="licencia">
                         <p>Licencia</p>
-                        <p th:text="${professional.license}"></p>
+                        <p th:text="${session.usersession.license}"></p>
                     </div>
                     <div  id="numero">
                         <p>Numero</p>
-                        <p th:text="${professional.phone}"></p>
+                        <p th:text="${session.usersession.phone}"></p>
                     </div>
                     <div  id="descripcion">
                         <p>Descripcion</p>
-                        <p th:text="${professional.description}"></p>
+                        <p th:text="${session.usersession.description}"></p>
                     </div>
 
                 </div>
@@ -81,5 +77,6 @@
         </div>
         
     </main>
+    <footer th:replace="/fragments/templates.html :: footer"></footer>
 </body>
 </html>

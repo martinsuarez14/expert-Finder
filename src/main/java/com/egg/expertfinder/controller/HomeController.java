@@ -143,7 +143,7 @@ public class HomeController {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_PRO')")
     @GetMapping("/home")
     public String home(HttpSession session, ModelMap model) {
 
@@ -151,11 +151,12 @@ public class HomeController {
 
         if (userLogin.getRole().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
-        } if (userLogin.getRole().toString().equals("USER") || 
-                userLogin.getRole().toString().equals("PRO")) {
+        } if (userLogin.getRole().toString().equals("USER")) {
             model.addAttribute("jobs", jobService.getAllJobs());
             return "home.html";
-        } else {
+        } else if (userLogin.getRole().toString().equals("PRO")) {
+            return "professional-detail.html";
+                } else {
             return "index.html";
         }
     }

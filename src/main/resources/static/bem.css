@@ -357,15 +357,19 @@
     justify-content: center;
     align-items: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> d09e6a416349bf78d32fcae09368889c558f8eba
+=======
+>>>>>>> 319f52a424161d61aa3b61899c16460df70108a2
     flex-direction: column;
     background-color: orange;
     opacity: 0.9;
     padding: 20px;
     background: #e65c00;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 }   
@@ -374,19 +378,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+=======
+>>>>>>> 319f52a424161d61aa3b61899c16460df70108a2
 }
-
-
-
-
-
-
-
 
 .footer__container{
     display: flex;
-    flex-direction: column;
     text-align: left;
+<<<<<<< HEAD
     font-size: .8rem;
 
 
@@ -399,6 +398,8 @@
     text-align: left;
     font-size: .8rem;
 >>>>>>> d09e6a416349bf78d32fcae09368889c558f8eba
+=======
+>>>>>>> 319f52a424161d61aa3b61899c16460df70108a2
     gap: 30px;
     font-size: 2rem;
     margin-bottom: 10px;
