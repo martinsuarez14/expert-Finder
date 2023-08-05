@@ -363,30 +363,9 @@
     background: #e65c00;
 }
 
-.footer__container {
-    display: flex;
-<<<<<<< HEAD
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-
-
-
-
-
-
-
 .footer__container{
     display: flex;
-    flex-direction: column;
-=======
-    /* flex-direction: column; */
->>>>>>> d09e6a416349bf78d32fcae09368889c558f8eba
     text-align: left;
-    font-size: .8rem;
-
-
     gap: 30px;
     font-size: 2rem;
     margin-bottom: 10px;
