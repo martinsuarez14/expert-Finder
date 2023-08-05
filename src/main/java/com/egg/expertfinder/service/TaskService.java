@@ -31,15 +31,16 @@ public class TaskService {
     private EmailService emailService;
 
     @Transactional
-    public void createTask(String description, Long idProfessional, Long idUser) throws MyException {
+    public void createTask(String title, String description, Long idProfessional, 
+            Long idUser) throws MyException {
 
-        validate(description, idProfessional, idUser);
+        validate(title, description, idProfessional, idUser);
 
         Optional<Professional> response = professionalRepository.findById(idProfessional);
         if (response.isPresent()) {
             Professional professional = response.get();
 
-            Task task = new Task(description);
+            Task task = new Task(title, description);
 
             task.setProfessional(professional);
 
@@ -122,7 +123,10 @@ public class TaskService {
         }
     }
 
-    private void validate(String description, Long idProfessional, Long idUser) throws MyException {
+    private void validate(String title, String description, Long idProfessional, Long idUser) throws MyException {
+        if (title == null || title.isEmpty()) {
+            throw new MyException("Debe ingresar un título a la tarea.");
+        }
         if (description == null || description.isEmpty()) {
             throw new MyException("La tarea no puede estar vacia.");
         }

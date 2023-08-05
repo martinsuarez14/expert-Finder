@@ -27,6 +27,9 @@ public class Task {
     private Long id;
     
     @Column(nullable = false)
+    private String title;
+    
+    @Column(nullable = false)
     private String description;
     
     @Enumerated(EnumType.STRING)
@@ -47,7 +50,8 @@ public class Task {
     @JoinColumn(name = "comment_id")
     private Comment comment;
 
-    public Task(String description) {
+    public Task(String title, String description) {
+        this.title = title;
         this.description = description;
         this.status = StatusEnum.SOLICITADA;
     }

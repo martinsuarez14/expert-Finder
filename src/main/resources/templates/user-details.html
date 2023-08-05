@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/fragments/templates.html :: head"></head>
+
+<body>
+
+  <header th:replace="/fragments/templates.html :: header"></header>
+
+  <main class="main-container">
+
+    <aside th:replace="/fragments/templates.html :: aside"></aside>
+
+    <section>
+      <div class="img-detail-containter">
+        <img th:src="@{/image/__${user.image.id}__}" alt="">
+      </div>
+
+      <div class="name-detail-container">
+        <h3 th:text="${user.name} + ' ' + ${user.lastName}"></h3>
+      </div>
+
+      <div class="data-detail-container">
+        <p th:text="${user.email}"></p>
+  
+        <h4>Dirección</h4>
+  
+        <p th:text="${user.location.country}"></p>
+        <p th:text="${user.location.address}"></p>
+
+      </div>
+
+      <div class="buttons-detail-container">
+        <a th:href="@{/user/update/__${user.id}__}"><button>Editar Perfil</button></a>
+        <a th:href="@{/user/deactivate/__${user.id}__}">Eliminar Cuenta</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer th:replace="/fragments/templates.html :: footer"></footer>
+
+</body>
+
+</html>
