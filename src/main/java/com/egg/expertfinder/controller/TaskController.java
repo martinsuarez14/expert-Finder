@@ -24,10 +24,10 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping("/register")
-    public String registerTask(@RequestParam String description, @RequestParam Long idProfessional,
-            @RequestParam Long idUser, ModelMap model) {
+    public String registerTask(@RequestParam String title, @RequestParam String description, 
+            @RequestParam Long idProfessional, @RequestParam Long idUser, ModelMap model) {
         try {
-            taskService.createTask(description, idProfessional, idUser);
+            taskService.createTask(title, description, idProfessional, idUser);
             model.put("exito", "Se creó la tarea correctamente.");
             return "redirect:/home";
         } catch (MyException ex) {
