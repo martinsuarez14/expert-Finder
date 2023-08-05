@@ -352,23 +352,20 @@
 
 /* FOOTER */
 
-
 .footer {
     display: flex;
     justify-content: center;
     align-items: center;
-
-
     flex-direction: column;
     background-color: orange;
     opacity: 0.9;
     padding: 20px;
     background: #e65c00;
-
-}   
+}
 
 .footer__container {
     display: flex;
+<<<<<<< HEAD
     flex-direction: row;
     justify-content: space-between;
 }
@@ -383,6 +380,9 @@
 .footer__container{
     display: flex;
     flex-direction: column;
+=======
+    /* flex-direction: column; */
+>>>>>>> d09e6a416349bf78d32fcae09368889c558f8eba
     text-align: left;
     font-size: .8rem;
 
@@ -391,34 +391,6 @@
     font-size: 2rem;
     margin-bottom: 10px;
 }
-
-    .footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: orange;
-        opacity: 0.9;
-        padding: 20px;
-        background: #e65c00;
-    }   
-
-    /* .footer__container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: 0;
-    } */
-    .footer__container{
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        font-size: .8rem;
-        gap: 30px;
-        font-size: 2rem;
-        margin-bottom: 10px;
-    }
-
 
 .footer__h2 {
     color: black;
@@ -492,7 +464,8 @@
     width: 100%;
 }
 
-.form__input, .form__select {
+.form__input,
+.form__select {
     width: 100%;
     outline: none;
     margin-bottom: 20px;
@@ -503,11 +476,11 @@
     color: white;
 }
 
-.form__input[type=file]{
+.form__input[type=file] {
     border: none;
 }
 
-.form__input[type=file]::file-selector-button{
+.form__input[type=file]::file-selector-button {
     color: #333;
     background-color: #ff7217;
     border: 1px #333 solid;
@@ -517,7 +490,7 @@
     transition: all 0.5s ease;
 }
 
-.form__input[type=file]::file-selector-button:hover{
+.form__input[type=file]::file-selector-button:hover {
     color: #ff7217;
     background-color: #333;
     border: 1px #ff7217 solid;
