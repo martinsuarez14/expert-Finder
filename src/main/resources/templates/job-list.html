@@ -11,18 +11,21 @@
 
   <main class="main-container-flex">
 
+    <aside th:replace="/fragments/templates.html :: aside"></aside>
+
     <section style="display: flex; flex-direction: column;">
-      <aside th:replace="/fragments/templates.html :: aside"></aside>
 
       <form th:action="@{/buscar}" method="get" class="form">
+        <h2 class="form__head">Buscar un servicio...</h2>
         <div class="form__group">
-          <input type="text" name="q" placeholder="Buscar trabajos por nombre" onkeyup="findJobs(this.value)" />
-          <button type="submit">Buscar</button>
+            <!-- <label class="form__label" for="nombre">Buscar un servicio...</label> -->
+            <input id="searchInput" class="form__input" type="text" name="q" placeholder="Buscar trabajos por nombre"
+                onkeyup="findJobs(this.value)" />
         </div>
-      </form>
+    </form>
 
-      <!-- Aquí se mostrarán los resultados de la búsqueda -->
-      <div id="resultadosBusqueda"></div>
+    <!-- Aquí se mostrarán los resultados de la búsqueda -->
+    <div id="resultadosBusqueda"></div>
 
       <ul class="card-list">
 

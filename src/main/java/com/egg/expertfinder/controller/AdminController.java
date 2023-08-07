@@ -22,7 +22,7 @@ public class AdminController {
         
         CustomUser userLogin = (CustomUser) session.getAttribute("usersession");
         
-        List<CustomUser> users = userService.getAllUsers();
+        List<CustomUser> users = userService.getUsersWithRolePro();
         
         model.addAttribute("users", users);
         

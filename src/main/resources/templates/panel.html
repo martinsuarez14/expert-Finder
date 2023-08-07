@@ -10,7 +10,7 @@
 
     <!--Main-->
     <main class="main-container">
-        
+
         <aside th:replace="/fragments/templates.html :: aside"></aside>
 
         <div class="contenido">
@@ -36,7 +36,9 @@
                                 <td th:text="${user.email}"></td>
                                 <td th:text="${user.location.address}"></td>
                                 <td th:text="${user.active ? 'Activo' : 'No Activo'}"></td>
-                                <td><a th:href="@{/user/delete/__${user.id}__}"><button>Eliminar</button></a></td>
+                                <td><a th:href="@{/user/deactivate/__${user.id}__}"><button>Desactivar</button></a>
+                                    <a th:href="@{/user/activate/__${user.id}__}"><button>Activar</button></a>
+                                </td>
                             </tr>
                         </tbody>
 

@@ -44,7 +44,7 @@ public class Professional extends CustomUser{
             String description, String license, String phone) {
         super(name, lastName, email);
         this.role = RoleEnum.PRO;
-        this.active = false;
+        this.active = true;
         this.description = description;
         this.license = license;
         this.phone = phone;
