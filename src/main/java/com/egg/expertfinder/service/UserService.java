@@ -43,7 +43,7 @@ public class UserService implements UserDetailsService {
             MultipartFile file) throws MyException {
 
         validate(name, lastName, email, password, password2, countryKey, file);
-        
+
         if (userRepository.findCustomUserByEmail(email) != null) {
             throw new MyException("Ya existe un usuario con ese email.");
         }
@@ -112,6 +112,11 @@ public class UserService implements UserDetailsService {
         return userRepository.findCustomUserByActiveTrue();
     }
 
+    //  Listamos los Users con rol USER y PRO
+    public List<CustomUser> getUsersWithRolePro() {
+        return userRepository.findUsersWithRoleUser();
+    }
+
 //  Listamos los users desactivados
     public List<CustomUser> getUsersActiveFalse() {
         return userRepository.findCustomUserByActiveFalse();
@@ -132,7 +137,7 @@ public class UserService implements UserDetailsService {
             throw new Exception("No se encontró al usuario");
         }
     }
-    
+
     @Transactional
     public void deactivateUser(Long id) throws MyException {
         Optional<CustomUser> response = userRepository.findById(id);
@@ -155,12 +160,12 @@ public class UserService implements UserDetailsService {
             throw new MyException("El apellido no debe estar vacío.");
         }
         if (email == null || email.isEmpty()) {
-                        throw new MyException("Debe ingresar un correo");
-                    } else if (!email.contains("@")) {
-                        throw new MyException("El correo debe poseer '@'");
-                    } else if (email.substring(email.length() - 1).equals("@")) {
-                        throw new MyException("El correo debe poseer caracteres luego de la '@'");
-                    }
+            throw new MyException("Debe ingresar un correo");
+        } else if (!email.contains("@")) {
+            throw new MyException("El correo debe poseer '@'");
+        } else if (email.substring(email.length() - 1).equals("@")) {
+            throw new MyException("El correo debe poseer caracteres luego de la '@'");
+        }
         if (!password.equals(password2)) {
             throw new MyException("Las contraseñas no coinciden.");
         }
@@ -177,58 +182,59 @@ public class UserService implements UserDetailsService {
             throw new MyException("Debe ingresar una imagen de perfil.");
         }
     }
-     public void validateAll(String name, String lastName, String email, String password,
-            String password2, String countryKey,String address, MultipartFile file,int num) throws MyException {
+
+    public void validateAll(String name, String lastName, String email, String password,
+            String password2, String countryKey, String address, MultipartFile file, int num) throws MyException {
         switch (num) {
-               case 1:
-                   if (name == null || name.isEmpty()) {
-                       throw new MyException("El nombre no puede ser nulo o estar vacío.");
-                   }
-                   break;
-               case 2:
-                   if (lastName == null || lastName.isEmpty()) {
-                       throw new MyException("El apellido no puede ser nulo o estar vacío.");
-                   }
-                   break;
-               case 3:
-                   if (password == null || password.isEmpty()) {
-                      throw new MyException("La contraseña no puede ser nula o estar vacía.");
-                   }else if(password.length() <= 5){
-                       throw new MyException("La contraseña no puede contener 5 caracteres o menos.");
-                   }
-                   break;
-               case 4:
-                   if (!password2.equals(password)) {
-                       throw new MyException("Las contraseñas no coinciden.");
-                   }
-                   break;
-               case 5:
-                   if (address == null || address.isEmpty()) {
-                       throw new MyException("Debe ingresar una direccion");
-                   }
-                   break;
-               case 6:
-                   if (file == null || file.isEmpty()) {
-                       throw new MyException("Debe ingresar una imagen de perfil.");
-                   }
-                   break;
-               case 7:
-                   if (countryKey == null || countryKey.isEmpty()) {
+            case 1:
+                if (name == null || name.isEmpty()) {
+                    throw new MyException("El nombre no puede ser nulo o estar vacío.");
+                }
+                break;
+            case 2:
+                if (lastName == null || lastName.isEmpty()) {
+                    throw new MyException("El apellido no puede ser nulo o estar vacío.");
+                }
+                break;
+            case 3:
+                if (password == null || password.isEmpty()) {
+                    throw new MyException("La contraseña no puede ser nula o estar vacía.");
+                } else if (password.length() <= 5) {
+                    throw new MyException("La contraseña no puede contener 5 caracteres o menos.");
+                }
+                break;
+            case 4:
+                if (!password2.equals(password)) {
+                    throw new MyException("Las contraseñas no coinciden.");
+                }
+                break;
+            case 5:
+                if (address == null || address.isEmpty()) {
+                    throw new MyException("Debe ingresar una direccion");
+                }
+                break;
+            case 6:
+                if (file == null || file.isEmpty()) {
+                    throw new MyException("Debe ingresar una imagen de perfil.");
+                }
+                break;
+            case 7:
+                if (countryKey == null || countryKey.isEmpty()) {
                     throw new MyException("Debe ingresar la clave del Barrio.");
-                   }else{
-                       validateCountryKey(countryKey);
-                   }
-                   break;
-                case 8:
-                    if (email == null || email.isEmpty()) {
-                        throw new MyException("Debe ingresar un correo");
-                    } else if (!email.contains("@")) {
-                        throw new MyException("El correo debe poseer '@'");
-                    } else if (email.substring(email.length() - 1).equals("@")) {
-                        throw new MyException("El correo debe poseer caracteres luego de la '@'");
-                    }
-                       break;
-           }
+                } else {
+                    validateCountryKey(countryKey);
+                }
+                break;
+            case 8:
+                if (email == null || email.isEmpty()) {
+                    throw new MyException("Debe ingresar un correo");
+                } else if (!email.contains("@")) {
+                    throw new MyException("El correo debe poseer '@'");
+                } else if (email.substring(email.length() - 1).equals("@")) {
+                    throw new MyException("El correo debe poseer caracteres luego de la '@'");
+                }
+                break;
+        }
     }
 
     private String validateCountryKey(String countryKey) throws MyException {
@@ -279,6 +285,18 @@ public class UserService implements UserDetailsService {
             return new User(userLogin.getEmail(), userLogin.getPassword(), permissions);
         } else {
             return null;
+        }
+    }
+
+    @Transactional
+    public void activateUser(Long id) throws MyException {
+        Optional<CustomUser> response = userRepository.findById(id);
+        if (response.isPresent()) {
+            CustomUser user = response.get();
+            user.activateUser();
+            userRepository.save(user);
+        } else {
+            throw new MyException("No se encontró al usuario con ese id.");
         }
     }
 

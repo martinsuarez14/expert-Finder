@@ -24,7 +24,7 @@
 
     <!-- LOGIN CSS -->
     <link rel="stylesheet" th:href="@{/login.css}" />
-    
+
     <!-- PROFESSIONAL DETAIL CSS -->
     <link rel="stylesheet" th:href="@{/perfilprofesional.css}" />
 
@@ -108,14 +108,14 @@
             </a></li>
         <br>
     </ul>
-    
+
     <!-- SIDEBAR PROFESSIONAL -->
     <ul sec:authorize="hasRole('PRO')">
         <li><a th:href="@{/home}"><i class="bi bi-person-vcard"></i>
                 <p>Lista de tareas</p>
             </a></li>
-        <br>        
-        <li><a th:href="@{/user/get/__${session.usersession.id}__}"><i class="bi bi-person"></i>
+        <br>
+        <li><a th:href="@{/professional/detail/__${session.usersession.id}__}"><i class="bi bi-person"></i>
                 <p>Perfil</p>
             </a></li>
         <br>
@@ -126,31 +126,8 @@
     </ul>
 </aside>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 319f52a424161d61aa3b61899c16460df70108a2
-
-<!--Footer-->
-<!--<footer th:fragment="footer">
-   <div class="footer__container">
-    <br>
-    <p>Síguenos en redes sociales:</p>
-    <a><img th:src="@{img/f.PNG}" alt="Facebook" height="40"></a>
-    <br>
-    <a><img th:src="@{img/t.PNG}" alt="Twitter" height="40"></a>
-    <br>
-    <a><img th:src="@{img/p.PNG}" alt="Instagram" height="40"></a>
-    <br>
-     <p>&copy; 2023 Chacras Company Inc. All rights reserved</p>
-</footer>-->
-<<<<<<< HEAD
-=======
->>>>>>> d09e6a416349bf78d32fcae09368889c558f8eba
-=======
->>>>>>> 319f52a424161d61aa3b61899c16460df70108a2
 <!-- FOOTER  -->
-<footer  class="footer">
+<footer class="footer">
     <h2 class="footer__h2">Síguenos en redes sociales:</h2>
     <div class="footer__container">
         <br>
@@ -181,18 +158,17 @@
         </form>
     </div>
 </div>
-    
+
 
 <!--manejador de errores-->
- <p class="errores" id="p1" th:if="${error1!=null}" th:text=${error1} ></p>
- <p class="errores" id="p2" th:if="${error2!=null}" th:text=${error2} ></p>
-<p class="errores" id="p11" th:if="${error11!=null}" th:text=${error11} ></p>
-<p class="errores" id="p3" th:if="${error3!=null}" th:text=${error3} ></p>
-<p class="errores" id="p4" th:if="${error4!=null}" th:text=${error4} ></p>
-<p class="errores" id="p5" th:if="${error5!=null}" th:text=${error5} ></p>
+<p class="errores" id="p1" th:if="${error1!=null}" th:text=${error1}></p>
+<p class="errores" id="p2" th:if="${error2!=null}" th:text=${error2}></p>
+<p class="errores" id="p11" th:if="${error11!=null}" th:text=${error11}></p>
+<p class="errores" id="p3" th:if="${error3!=null}" th:text=${error3}></p>
+<p class="errores" id="p4" th:if="${error4!=null}" th:text=${error4}></p>
+<p class="errores" id="p5" th:if="${error5!=null}" th:text=${error5}></p>
 <p class="errores" id="p6" th:if="${error6!=null}" th:text=${error6}></p>
 <p class="errores" id="p7" th:if="${error7!=null}" th:text=${error7}></p>
-<p class="errores" id="p8" th:if="${error8!=null}" th:text=${error8} ></p>
-<p class="errores" id="p9" th:if="${error9!=null}" th:text=${error9} ></p>
-<p class="errores" id="p10" th:if="${error10!=null}" th:text=${error10} ></p>
-
+<p class="errores" id="p8" th:if="${error8!=null}" th:text=${error8}></p>
+<p class="errores" id="p9" th:if="${error9!=null}" th:text=${error9}></p>
+<p class="errores" id="p10" th:if="${error10!=null}" th:text=${error10}></p>
