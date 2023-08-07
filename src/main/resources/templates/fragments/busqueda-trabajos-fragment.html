@@ -6,7 +6,7 @@
       </a>
       <a class="card-description" th:href="@{/job/update/__${result.id}__}">
           <h2 th:text="${result.name}"></h2>
-          <div class="frame">
+          <div class="frame" sec:authorize="hasRole('ADMIN')">
               <button type="submit" class="custom-btn btn-3"><span>Editar Servicio</span></button>
           </div>
       </a>
