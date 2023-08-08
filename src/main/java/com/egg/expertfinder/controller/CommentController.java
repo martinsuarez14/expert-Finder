@@ -21,6 +21,7 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/list")
     public String list(ModelMap model) {
         List<Comment> comment = commentService.getAllComments();
@@ -28,11 +29,13 @@ public class CommentController {
         return "comment-list.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @GetMapping("/register")
     public String registerComment(ModelMap Model) {
         return "comment-register.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @PostMapping("/register")
     public String registComment(@RequestParam Long idTask, @RequestParam Long idUser,
             @RequestParam Long idProfessional, @RequestParam String content,
@@ -47,6 +50,7 @@ public class CommentController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PRO')")
     @GetMapping("/update/{id}")
     public String updateComment(@PathVariable Long id, ModelMap model) {
 
@@ -60,6 +64,7 @@ public class CommentController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PRO')")
     @PostMapping("/update")
     public String updateComment(@RequestParam Long idTask, @RequestParam Long idUser,
             @RequestParam String content, ModelMap model) {
@@ -81,7 +86,7 @@ public class CommentController {
         return "comment-list.html";
     }
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/deactivate/{id}")
     public String deactivateCommentById(@PathVariable Long id, ModelMap model) {
         try {
@@ -101,5 +106,5 @@ public class CommentController {
         model.addAttribute("comments", comments);
         return "comment-list.html";
     }
-
+    
 }
