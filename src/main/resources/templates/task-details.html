@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/fragments/templates.html :: head">
+</head>
+
+<body>
+
+  <header th:replace="/fragments/templates.html :: header"></header>
+
+  <main class="main-container-flex">
+
+    <aside th:replace="/fragments/templates.html :: aside"></aside>
+
+
+
+    <form th:action="@{/task/update}" method="post" class="form">
+      <input type="hidden" th:value="${task.id}">
+
+      <h2 class="form__head">Editar Tarea</h2>
+      <div class="form__group">
+
+        <label class="form__label" for="title">Título</label>
+        <input class="form__input" type="text" th:value="${task.title}" id="title">
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" th:text="'Estado Actual ' + ${task.status}"></label>
+      </div>
+      <br>
+
+      <div class="form__group">
+        <label class="form__label" for="">Estado</label>
+        <select class="form__select" id="status" name="status">
+          <option th:each="${status}" th:value="SOLICITADA">SOLICITADA</option>
+          
+        </select>
+      </div>
+
+      <div class="frame">
+        <button type="submit" class="custom-btn btn-3"><span>Editar</span></button>
+      </div>
+    </form>
+
+
+
+  </main>
+
+  <footer th:replace="/fragments/templates.html :: footer"></footer>
+</body>
+
+</html>

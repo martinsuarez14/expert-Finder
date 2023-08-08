@@ -111,7 +111,7 @@
 
     <!-- SIDEBAR PROFESSIONAL -->
     <ul sec:authorize="hasRole('PRO')">
-        <li><a th:href="@{/home}"><i class="bi bi-person-vcard"></i>
+        <li><a th:href="@{/task/list-by-pro/__${session.usersession.id}__}"><i class="bi bi-person-vcard"></i>
                 <p>Lista de tareas</p>
             </a></li>
         <br>

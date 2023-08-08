@@ -2,14 +2,11 @@
     display: flex;
     border: 1px solid black;
     padding: 20px;
-    background-color: aqua;
-    height: 80%;
 }
 
 .barraIzquierda {
     display: flex;
     background-color: brown;
-    height: 100%;
     flex-basis: 40%;
     flex-direction: column;
 }
@@ -24,8 +21,6 @@
 }
 
 .barraFinal {
-    background-color: blueviolet;
-    height: 100%;
     width: 100%;
     padding: 20px;
     display: flex;
@@ -36,7 +31,6 @@
 .cajaImagen {
     display: flex;
     background: blanchedalmond;
-    height: 80%;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -45,14 +39,12 @@
 .informacion {
     display: flex;
     background: black;
-    height: 100%;
     width: 100%;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
 img {
-    height: 95%;
     width: 95%;
 }
 
@@ -65,7 +57,6 @@ p {
 }
 
 .carts {
-    height: 100%;
     width: 100%;
     background: red;
     display: flex;
@@ -76,6 +67,5 @@ p {
 
 .cart {
     border: 1px solid white;
-    height: 100px;
     width: 100px;
 }
