@@ -101,10 +101,22 @@ public class UserController {
         }
     }
     
-    @PostMapping("/deactivate/{id}")
+    @GetMapping("/deactivate/{id}")
     public String deactivateUser(@PathVariable Long id, ModelMap model) {
         try {
             userService.deactivateUser(id);
+            model.put("exito", "El usuario fué desactivado con éxito.");
+            return "redirect:/admin/dashboard";
+        } catch (MyException ex) {
+            model.put("error", ex.getMessage());
+            return "redirect:/admin/dashboard";
+        }
+    }
+    
+    @GetMapping("/activate/{id}")
+    public String activateUser(@PathVariable Long id, ModelMap model) {
+        try {
+            userService.activateUser(id);
             model.put("exito", "El usuario fué desactivado con éxito.");
             return "redirect:/admin/dashboard";
         } catch (MyException ex) {

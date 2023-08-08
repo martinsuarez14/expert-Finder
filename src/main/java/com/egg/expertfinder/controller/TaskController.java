@@ -1,6 +1,7 @@
 package com.egg.expertfinder.controller;
 
 import com.egg.expertfinder.entity.Task;
+import com.egg.expertfinder.enumeration.StatusEnum;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.TaskService;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping("/register")
-    public String registerTask(@RequestParam String title, @RequestParam String description, 
+    public String registerTask(@RequestParam String title, @RequestParam String description,
             @RequestParam Long idProfessional, @RequestParam Long idUser, ModelMap model) {
         try {
             taskService.createTask(title, description, idProfessional, idUser);

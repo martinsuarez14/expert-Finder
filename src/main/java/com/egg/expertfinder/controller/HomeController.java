@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/")  // localhost:8080/
 public class HomeController {
-    
+
     @Autowired
     private JobService jobService;
 
@@ -55,9 +55,9 @@ public class HomeController {
 
     @PostMapping("/register-user")
     public String registerUser(@RequestParam String name, @RequestParam String lastName,
-                               @RequestParam String email, @RequestParam String password, @RequestParam String password2,
-                               @RequestParam String countryKey, @RequestParam(required = false) String country,
-                               @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
+            @RequestParam String email, @RequestParam String password, @RequestParam String password2,
+            @RequestParam String countryKey, @RequestParam(required = false) String country,
+            @RequestParam String address, @RequestParam MultipartFile file, ModelMap model) {
         try {
             userService.createUser(name, lastName, email, password, password2, countryKey,
                     country, address, file);
@@ -67,78 +67,79 @@ public class HomeController {
             model.put("name", name);
             model.put("lastName", lastName);
             model.put("address", address);
-            model.put("file",file);    
-             try {
-             userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, 7);
-             model.put("countryKey", countryKey);
+            model.put("file", file);
+            try {
+                userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, 7);
+                model.put("countryKey", countryKey);
             } catch (MyException ex) {
             }
             try {
-             userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, 8);
-             model.put("email", email);
+                userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, 8);
+                model.put("email", email);
             } catch (MyException ex) {
             }
-            int i =1;
+            int i = 1;
             do {
                 try {
-                   userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, i);
+                    userService.validateAll(name, lastName, email, password, password2, countryKey, address, file, i);
                 } catch (MyException ex) {
-                    model.put("error"+i, ex.getMessage());
-                }finally{
+                    model.put("error" + i, ex.getMessage());
+                } finally {
                     i++;
                 }
-            } while (i<=8);
+            } while (i <= 8);
             return "user-form.html";
         }
     }
+
     @GetMapping("/register-professional")  // localhost:8080/register
     public String registerProfessional(ModelMap model) {
         List<Job> jobs = jobService.getAllJobs();
-        model.addAttribute("jobs",jobs);
+        model.addAttribute("jobs", jobs);
         return "professional-form.html";
     }
 
     @PostMapping("/register-professional")
     public String registerProfessional(@RequestParam String name, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password, @RequestParam String password2, 
+            @RequestParam String email, @RequestParam String password, @RequestParam String password2,
             @RequestParam String address, @RequestParam MultipartFile file, @RequestParam Long idJob,
-            @RequestParam String description, @RequestParam String license, 
+            @RequestParam String description, @RequestParam String license,
             @RequestParam String phone, ModelMap model) {
         try {
-            professionalService.createProfessional(name, lastName, email, password, password2, 
+            professionalService.createProfessional(name, lastName, email, password, password2,
                     address, file, idJob, description, license, phone);
             model.put("exito", "Usuario registrado.");
             return "redirect:/login";
         } catch (MyException ex) {
             List<Job> jobs = jobService.getAllJobs();
-            model.addAttribute("jobs",jobs);
+            model.addAttribute("jobs", jobs);
             model.put("name", name);
             model.put("lastName", lastName);
             model.put("address", address);
-            model.put("description",description);
+            model.put("description", description);
             model.put("license", license);
-            model.put("file",file);
+            model.put("file", file);
             try {
-                professionalService.validateAll(name, lastName, email, password, password2, file, idJob, description, license, phone, address,10);
+                professionalService.validateAll(name, lastName, email, password, password2, file, idJob, description, license, phone, address, 10);
                 model.put("phone", phone);
             } catch (MyException e) {
             }
             try {
-                professionalService.validateAll(name, lastName, email, password, password2, file, idJob, description, license, phone, address,11);
+                professionalService.validateAll(name, lastName, email, password, password2, file, idJob, description, license, phone, address, 11);
                 model.put("email", email);
             } catch (MyException e) {
             }
-            int i =1;
+            int i = 1;
             do {
                 try {
                     professionalService.validateAll(name, lastName, email, password, password2, file, idJob, description, license, phone, address, i);
                 } catch (MyException e) {
-                    model.put("error"+i, e.getMessage());
-                }finally{
+                    model.put("error" + i, e.getMessage());
+                } finally {
                     i++;
                 }
-            } while (i<=11);
-            
+            } while (i <= 11);
+
             return "professional-form.html";
         }
     }
@@ -151,25 +152,30 @@ public class HomeController {
 
         if (userLogin.getRole().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
-        } if (userLogin.getRole().toString().equals("USER")) {
+        }
+        if (userLogin.getRole().toString().equals("USER")) {
             model.addAttribute("jobs", jobService.getAllJobs());
             return "home.html";
         } else if (userLogin.getRole().toString().equals("PRO")) {
+            
+            model.addAttribute("professional", userLogin);
             return "professional-detail.html";
-                } else {
+        } else {
             return "index.html";
         }
     }
-     @GetMapping("/form-peticion")  // localhost:8080/form-peticion
+
+    @GetMapping("/form-peticion")  // localhost:8080/form-peticion
     public String contactAdmin(ModelMap model) {
         return "form-peticion.html";
     }
-     @PostMapping("/form-peticion")
+
+    @PostMapping("/form-peticion")
     public String contactAdmin(@RequestParam String name, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password, @RequestParam String password2, 
+            @RequestParam String email, @RequestParam String password, @RequestParam String password2,
             @RequestParam String address, @RequestParam MultipartFile file, @RequestParam Long idJob,
-            @RequestParam String description, @RequestParam String license, 
+            @RequestParam String description, @RequestParam String license,
             @RequestParam String phone, ModelMap model) {
-                return "form-peticion.hmtl";
-    }      
+        return "form-peticion.hmtl";
+    }
 }

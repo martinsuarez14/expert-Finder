@@ -80,5 +80,9 @@ public class CustomUser {
     public void deactivateUser(){
         this.active = false;
     }
+
+    public void activateUser() {
+        this.active = true;
+    }
     
 }

@@ -26,13 +26,18 @@
             </thead>
             <tbody>
               <tr th:each="task : ${tasks}">
-                <td th:text="${task.createAt}"></td>
+                <td th:text="${task.createAt}" id="fechaCompleta"></td>
                 <td th:text="${task.professional.name}"></td>
                 <td th:text="${task.status}"></td>
                 <td>
-                  <div class="boton__modal" th:if="${session.usersession != null}">
-                    <a th:href="@{/task/__${professional.id}__}">
+                  <div class="boton__modal" th:if="${session.usersession != null}" sec:authorize="hasRole('USER')">
+                    <a th:href="@{/task/__${task.professional.id}__}">
                       Ver Perfil
+                    </a>
+                  </div>
+                  <div class="boton__modal" th:if="${session.usersession != null}" sec:authorize="hasRole('PRO')">
+                    <a th:href="@{/task/get/__${task.id}__}">
+                      Editar Tarea
                     </a>
                   </div>
                 </td>
@@ -48,6 +53,35 @@
 
   <footer th:replace="/fragments/templates.html :: footer"></footer>
 
+  <script>
+    // Obtener el contenido de la etiqueta que contiene la fecha completa
+    var fechaCompleta = document.getElementById("fechaCompleta").textContent;
+
+    // Convertir la fecha en un objeto Date de JavaScript
+    var fechaObjeto = new Date(fechaCompleta);
+
+    // Formatear la fecha en un formato más corto (YYYY-MM-DD)
+    var fechaCorta = fechaObjeto.toISOString().split('T')[0];
+
+    // Actualizar el contenido de la etiqueta con la fecha corta
+    document.getElementById("fechaCompleta").textContent = fechaCorta;
+
+
+    // Obtener el contenido de la etiqueta que contiene la fecha completa
+    var fechaCompleta = document.getElementById("fechaCompleta").textContent;
+
+    // Dividir la fecha en partes (año, mes, día)
+    var partesFecha = fechaCompleta.split('-');
+    var ano = partesFecha[0];
+    var mes = partesFecha[1];
+    var dia = partesFecha[2];
+
+    // Formatear la fecha en "DD-MM-YYYY"
+    var fechaCorta = dia + '-' + mes + '-' + ano;
+
+    // Actualizar el contenido de la etiqueta con la fecha corta
+    document.getElementById("fechaCompleta").textContent = fechaCorta;
+  </script>
 </body>
 
 </html>
