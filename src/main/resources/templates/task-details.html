@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/fragments/templates.html :: head">
+</head>
+
+<body>
+
+  <header th:replace="/fragments/templates.html :: header"></header>
+
+  <main class="main-container-flex">
+
+    <aside th:replace="/fragments/templates.html :: aside"></aside>
+
+
+
+    <form th:action="@{/task/update}" method="post" class="form" th:object="${task}">
+      <input type="hidden" th:field="*{id}">
+
+      <h2 class="form__head">Editar Tarea</h2>
+      <div class="form__group">
+        <label class="form__label" for="title">Título</label>
+        <input class="form__input" type="text" id="title" th:field="*{title}" readonly="readonly">
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" for="status">Estado</label>
+        <select class="form__select" id="status" th:field="*{status}">
+          <option th:each="status : ${T(com.egg.expertfinder.enumeration.StatusEnum).values()}" th:value="${status}"
+            th:text="${status}">
+          </option>
+        </select>
+      </div>
+
+      <div class="frame">
+        <button type="submit" class="custom-btn btn-3"><span>Actualizar</span></button>
+      </div>
+    </form>
+
+
+
+  </main>
+
+  <footer th:replace="/fragments/templates.html :: footer"></footer>
+</body>
+
+</html>

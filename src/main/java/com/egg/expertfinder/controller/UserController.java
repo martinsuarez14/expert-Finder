@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list") // /user/list
     public String list(ModelMap modelo) {
         List<CustomUser> users = userService.getAllUsers();
@@ -32,7 +32,7 @@ public class UserController {
         return "user-list.html";
     }
 
-//    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/update/{id}") // /user/update/{id}
     public String updateUser(@PathVariable Long id, ModelMap model) {
         try {
@@ -45,7 +45,7 @@ public class UserController {
         }
     }
 
-//    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/update") // /user/update
     public String updateUser(@RequestParam Long id, @RequestParam(required = false) String name,
             @RequestParam(required = false) String lastName, @RequestParam(required = false) String email,
@@ -60,7 +60,7 @@ public class UserController {
         }
     }
 
-//    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/get/{id}") // /user/user/{id}
     public String getUserById(@PathVariable Long id, ModelMap model) {
         try {
@@ -73,7 +73,7 @@ public class UserController {
         }
     }
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list-deactivate")
     public String getUsersDeactivate(ModelMap model) {
         List<CustomUser> users = userService.getUsersActiveFalse();
@@ -81,7 +81,7 @@ public class UserController {
         return "user-list.html";
     }
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list-activate")
     public String getUsersActivate(ModelMap model) {
         List<CustomUser> users = userService.getUsersActiveTrue();
@@ -89,6 +89,7 @@ public class UserController {
         return "user-list.html";
     }
     
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/delete/{id}")
     public String deleteUserById(@PathVariable Long id, ModelMap model) {
         try {
@@ -101,6 +102,7 @@ public class UserController {
         }
     }
     
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/deactivate/{id}")
     public String deactivateUser(@PathVariable Long id, ModelMap model) {
         try {
@@ -113,6 +115,7 @@ public class UserController {
         }
     }
     
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/activate/{id}")
     public String activateUser(@PathVariable Long id, ModelMap model) {
         try {

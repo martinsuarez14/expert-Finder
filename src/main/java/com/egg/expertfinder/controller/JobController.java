@@ -6,6 +6,7 @@ import com.egg.expertfinder.service.JobService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +23,13 @@ public class JobController {
     @Autowired
     private JobService jobService;
     
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
     public String registerJob(ModelMap Model){
         return "job-register.html";
     }
     
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/register")
     public String registerJob(@RequestParam String name, MultipartFile file, ModelMap model){
         try {
@@ -39,6 +42,7 @@ public class JobController {
         }
     }
     
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/update/{id}")
     public String updateJob(@PathVariable Long id, ModelMap model){
         try {
@@ -51,6 +55,7 @@ public class JobController {
         }
     }
     
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/update")
     public String updateJob(@RequestParam Long id, @RequestParam(required = false) String name, 
             @RequestParam(required = false) MultipartFile file, ModelMap model){
@@ -64,6 +69,7 @@ public class JobController {
         }
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_PRO')")
     @GetMapping("/list")
     public String list(ModelMap model){
         List<Job> jobs = jobService.getAllJobs();
@@ -71,11 +77,12 @@ public class JobController {
         return "job-list.html";
     }
     
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/delete/{id}")
     public String deleteJobById(@PathVariable Long id, ModelMap model) {
         try {
             jobService.deleteJob(id);
-            model.put("exito", "Se editó el Servicio correctamente.");
+            model.put("exito", "Se eliminó el Servicio correctamente.");
             return "redirect:/admin/dashboard";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
@@ -83,6 +90,7 @@ public class JobController {
         }
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_PRO')")
     @GetMapping("/buscar")
     public String findJobs(@RequestParam(name = "q", required = false) String query, ModelMap model) {
         if (query != null && !query.isEmpty()) {
@@ -99,4 +107,5 @@ public class JobController {
 
         return "/fragments/busqueda-trabajos-fragment.html"; // Nombre de la vista HTML parcial para la lista de resultados
     }
+    
 }

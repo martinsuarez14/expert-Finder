@@ -36,7 +36,7 @@
                                 <td th:text="${professional.phone}"></td>
                                 <td>
                                     <div class="boton__modal" th:if="${session.usersession != null}">
-                                        <a th:href="@{/professional/profile/__${professional.id}__}">
+                                        <a th:href="@{/professional/detail/__${professional.id}__}">
                                             Ver Perfil
                                         </a>
                                     </div>

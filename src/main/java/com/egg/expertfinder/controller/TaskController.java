@@ -1,6 +1,7 @@
 package com.egg.expertfinder.controller;
 
 import com.egg.expertfinder.entity.Task;
+import com.egg.expertfinder.enumeration.StatusEnum;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.TaskService;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +26,7 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping("/register")
-    public String registerTask(@RequestParam String title, @RequestParam String description, 
+    public String registerTask(@RequestParam String title, @RequestParam String description,
             @RequestParam Long idProfessional, @RequestParam Long idUser, ModelMap model) {
         try {
             taskService.createTask(title, description, idProfessional, idUser);
@@ -36,6 +38,7 @@ public class TaskController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/update/{id}")
     public String updateTask(@PathVariable Long id, ModelMap model) {
         try {
@@ -47,6 +50,7 @@ public class TaskController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_PRO', 'ROLE_ADMIN')")
     @PostMapping("/update")
     public String updateTask(@RequestParam Long id, @RequestParam(required = false) String description,
             @RequestParam(required = false) String status, ModelMap model) {
@@ -61,6 +65,7 @@ public class TaskController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/get/{id}")
     public String getTaskById(@PathVariable Long id, ModelMap model) {
         try {
@@ -73,6 +78,7 @@ public class TaskController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/list")
     public String getAllTasks(ModelMap model) {
         List<Task> tasks = taskService.getAllTasks();
@@ -80,6 +86,7 @@ public class TaskController {
         return "task-list.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/list-by-status")
     public String getTasksByIdProfessionalAndStatus(@RequestParam Long id, @RequestParam String status, ModelMap model) {
         List<Task> tasks = taskService.getTaskByStatus(id, status);
@@ -87,6 +94,7 @@ public class TaskController {
         return "task-list.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/list-by-pro/{idPro}")
     public String getTasksByIdProfessional(@PathVariable Long idPro, ModelMap model) {
         List<Task> tasks = taskService.getTasksByProfessionalId(idPro);
@@ -94,6 +102,7 @@ public class TaskController {
         return "task-list.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/list-by-user/{idUser}")
     public String getTasksByIdUser(@PathVariable Long idUser, ModelMap model) {
         List<Task> tasks = taskService.getTasksByUserId(idUser);
@@ -101,6 +110,7 @@ public class TaskController {
         return "task-list.html";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/delete/{id}")
     public String deleteTaskById(@PathVariable Long id, ModelMap model) {
         try {
