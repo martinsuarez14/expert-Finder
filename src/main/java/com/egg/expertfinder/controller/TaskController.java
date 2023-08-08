@@ -66,14 +66,7 @@ public class TaskController {
     public String getTaskById(@PathVariable Long id, ModelMap model) {
         try {
             Task task = taskService.getTaskById(id);
-            List<String> statusEnum = new ArrayList<>();
-            statusEnum.add(StatusEnum.FINALIZADA.toString());
-            statusEnum.add(StatusEnum.INICIADA.toString());
-            statusEnum.add(StatusEnum.SOLICITADA.toString());
-            statusEnum.add(StatusEnum.RECHAZADA.toString());
-
             model.addAttribute("task", task);
-            model.addAttribute("statusEnum", statusEnum);
             return "task-details.html";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());

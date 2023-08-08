@@ -271,7 +271,7 @@
 /* MENÚ SIDEBAR */
 .sidebar {
     width: 20%;
-    height: 100%;
+/*    height: 100%;*/
     background-color: #333;
     color: white;
     padding-top: 20px;
