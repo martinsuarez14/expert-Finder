@@ -6,12 +6,8 @@ import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.JobService;
 import com.egg.expertfinder.service.ProfessionalService;
 import com.egg.expertfinder.service.UserService;
-
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -178,4 +174,5 @@ public class HomeController {
             @RequestParam String phone, ModelMap model) {
         return "form-peticion.hmtl";
     }
+    
 }
