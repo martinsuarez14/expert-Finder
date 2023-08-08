@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +36,7 @@ public class ImageController {
     @Autowired
     private JobService jobService;
     
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/profile-user/{id}")
     public ResponseEntity<byte[]> imageUser(@PathVariable Long id) throws Exception {
         
@@ -77,6 +79,7 @@ public class ImageController {
         return new ResponseEntity<>(image, headers, HttpStatus.OK);
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<byte[]> imageById(@PathVariable Long id) throws MyException {
         
