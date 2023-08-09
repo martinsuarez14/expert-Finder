@@ -3,7 +3,10 @@ package com.egg.expertfinder.controller;
 import com.egg.expertfinder.entity.Comment;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.service.CommentService;
+import com.egg.expertfinder.service.TaskService;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -20,6 +23,9 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
+    
+    @Autowired
+    private TaskService taskService;
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_PRO', 'ROLE_ADMIN')")
     @GetMapping("/list")
@@ -30,9 +36,16 @@ public class CommentController {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER')")
-    @GetMapping("/register")
-    public String registerComment(ModelMap Model) {
-        return "comment-register.html";
+    @GetMapping("/register/{idTask}")
+    public String registerComment(@PathVariable Long idTask, ModelMap model) {
+        try {
+            model.addAttribute("task", taskService.getTaskById(idTask));
+            return "comment-form.html";
+        } catch (MyException ex) {
+            model.put("error", ex.getMessage());
+            return "redirect:/home";
+        }
+        
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER')")

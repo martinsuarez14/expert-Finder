@@ -75,7 +75,8 @@ public class TaskService {
                         "Trabajo Finalizado",
                         "El Trabajo con el profesional " + task.getProfessional().getName() + " "
                         + task.getProfessional().getLastName() + " fue finalizado. Por favor, deja un comentario "
-                        + "y una valoración de la atención recibida.");
+                        + "y una valoración de la atención recibida ingresando al siguiente link. \n"
+                                + "http://localhost:8080/comment/register/" + task.getId());
             }
             
             taskRepository.save(task);

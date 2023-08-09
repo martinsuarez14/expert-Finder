@@ -97,8 +97,12 @@
 
                         </div>
                     </div>
-         
             </section>
+
+            <div sec:authorize="hasRole('PRO')">
+
+                <a th:href="@{/professional/update/__${session.usersession.id}__}"><button>Editar Perfil</button></a>
+            </div>
 
         </main>
         <footer th:replace="/fragments/templates.html :: footer"></footer>

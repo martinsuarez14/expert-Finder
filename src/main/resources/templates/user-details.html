@@ -30,7 +30,7 @@
 
       </div>
 
-      <div class="buttons-detail-container">
+      <div class="buttons-detail-container" sec:authorize="hasRole('USER')">
         <a th:href="@{/user/update/__${user.id}__}"><button>Editar Perfil</button></a>
         <a th:href="@{/user/deactivate/__${user.id}__}">Eliminar Cuenta</a>
       </div>

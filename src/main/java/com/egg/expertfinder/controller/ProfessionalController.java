@@ -32,20 +32,21 @@ public class ProfessionalController {
     public String updateProfessional(@PathVariable Long id, ModelMap model) throws MyException {
         Professional professional = professionalService.getProfessionalById(id);
         model.addAttribute("professional", professional);
-        return "update-professional.html";
+        return "professional-update.html";
     }
 
     @PreAuthorize("hasRole('ROLE_PRO')")
     @PostMapping("/update") // /professional/update
     public String updateProfessional(Long id, String name, String lastName, String email,
-            MultipartFile file, String description, String phone, ModelMap model) {
+            MultipartFile file, String description, String phone, ModelMap model) throws MyException {
         try {
             professionalService.updateProfessional(id, name, lastName, email, file, description, phone);
             model.put("exito", "El Usuario se modificó correctamente.");
             return "redirect:/home";
         } catch (MyException ex) {
             model.put("error", ex.getMessage());
-            return "update-professional.html";
+            model.addAttribute("professional", professionalService.getProfessionalById(id));
+            return "professional-update.html";
         }
     }
 
