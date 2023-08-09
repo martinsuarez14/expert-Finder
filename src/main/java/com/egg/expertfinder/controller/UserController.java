@@ -38,10 +38,10 @@ public class UserController {
         try {
             CustomUser user = userService.getUserById(id);
             model.addAttribute("user", user);
-            return "update-user.html";
+            return "user-update.html";
         } catch (Exception ex) {
             model.put("error", ex.getMessage());
-            return "update-user.html";
+            return "user-update.html";
         }
     }
 
@@ -49,14 +49,15 @@ public class UserController {
     @PostMapping("/update") // /user/update
     public String updateUser(@RequestParam Long id, @RequestParam(required = false) String name,
             @RequestParam(required = false) String lastName, @RequestParam(required = false) String email,
-            @RequestParam(required = false) MultipartFile file, ModelMap model) {
+            @RequestParam(required = false) MultipartFile file, ModelMap model) throws Exception {
         try {
             userService.updateUser(id, name, lastName, email, file);
             model.put("exito", "El Usuario se modificó correctamente.");
             return "redirect:/home";
         } catch (MyException e) {
             model.put("error", e.getMessage());
-            return "update-user.html";
+            model.addAttribute("user", userService.getUserById(id));
+            return "user-update.html";
         }
     }
 

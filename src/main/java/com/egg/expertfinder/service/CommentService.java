@@ -1,9 +1,11 @@
 package com.egg.expertfinder.service;
 
 import com.egg.expertfinder.entity.Comment;
+import com.egg.expertfinder.entity.Professional;
 import com.egg.expertfinder.entity.Task;
 import com.egg.expertfinder.exception.MyException;
 import com.egg.expertfinder.repository.CommentRepository;
+import com.egg.expertfinder.repository.ProfessionalRepository;
 import com.egg.expertfinder.repository.TaskRepository;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +27,9 @@ public class CommentService {
 
     @Autowired
     private ProfessionalService professionalService;
+    
+    @Autowired
+    private ProfessionalRepository professionalRepository;
 
     @Transactional
     public void createComment(Long idTask, Long idUser, Long idProfessional,
@@ -45,6 +50,9 @@ public class CommentService {
 
                 task.setComment(commentRepository.save(comment));
                 taskRepository.save(task);
+                Professional professional = professionalService.getProfessionalById(idProfessional);
+                professional.getComments().add(comment);
+                professionalRepository.save(professional);
             } else {
                 throw new MyException("Ya existe un comentario en esta tarea.");
             }

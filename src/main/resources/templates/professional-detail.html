@@ -22,8 +22,14 @@
                                 <p th:if="${professional.tasks != null}">El profesional esta desocupado actualmente</p>
                             </div> -->
                             <div id="nombre">
-                                <p> 
-                                    Nombre: <strong th:text="${professional.name} + ' ' + ${professional.lastName}"></strong>
+                                <p>
+                                    Nombre: <strong
+                                        th:text="${professional.name} + ' ' + ${professional.lastName}"></strong>
+                                </p>
+                            </div>
+                            <div id="puntuacion">
+                                <p>
+                                    Puntuación: <strong th:text="${averageScore}"></strong>
                                 </p>
                             </div>
                             <div id="mail">
@@ -37,7 +43,7 @@
                                 </p>
                             </div>
                             <div id="licencia">
-                                <p >
+                                <p>
                                     Matrícula: <strong th:text="${professional.license}"></strong>
                                 </p>
                             </div>
@@ -50,65 +56,80 @@
                                 <p th:text="${professional.description}"></p>
                             </div>
 
+                            <div class="boton__modal" th:if="${session.usersession.id == professional.id}">
+                                <a class="" th:href="@{/professional/update/__${session.usersession.id}__}">Editar
+                                    Perfil</a>
+                            </div>
+
+                            <div class="boton__modal" th:if="${session.usersession.id == professional.id}">
+                                <a class="" th:href="@{/professional/deactivate/__${session.usersession.id}__}">Eliminar
+                                    Perfil</a>
+                            </div>
+
                         </div>
                     </div>
 
-                    <div class="barraDerecha">
+                    <div class="barraDerecha" sec:authorize="hasRole('USER')">
 
-                        <h1 class="titulo-barraDerecha">Comentarios de Clientes</h1>
+                        <form th:action="@{/task/register}" class="form" method="post">
+                            <input type="hidden" name="idProfessional" th:value="${professional.id}">
+                            <input type="hidden" name="idUser" th:value="${session.usersession.id}">
+                            <h2 class="form__head">Contactese con el profesional</h2>
+                            <div class="form__group">
+                                <label for="title" class="form__label">Título</label>
+                                <input class="form__input" type="text" name="title" id="title" autofocus>
+                            </div>
+                            <div class="form__group">
+                                <label for="description" class="form__label">Descripción</label>
+                                <input class="form__input" type="text" name="description" id="description"
+                                    maxlength="1000">
+                            </div>
+                            <div class="frame">
+                                <button type="submit" class="custom-btn btn-3"><span>Enviar</span></button>
+                            </div>
+                        </form>
 
-                        
 
 
-                        <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>Usuario</th>
-                                    <th>Comentario</th>
-                                    <th>Valoración</th>
-                                    <th>Reportar</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr th:each="comment : ${comments}">
-                                    <td th:text="${comment.user.name} + ' ' + ${comment.user.lastName}"></td>
-                                    <td th:text="${comment.content}"></td>
-                                    <td th:text="${comment.score}"></td>
-                                    <td><a th:href="@{/comment/report/__${comment.id}__}"><button>Reportar</button></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
 
                     </div>
                 </div>
-                <div class="barraFinal" sec:authorize="hasRole('USER')">
+                <div class="barraFinal">
 
-                    <form th:action="@{/task/register}" class="form" method="post">
-                        <input type="hidden" name="idProfessional" th:value="${professional.id}">
-                        <input type="hidden" name="idUser" th:value="${session.usersession.id}">
-                        <h2 class="form__head">Contactese con el profesional</h2>
-                        <div class="form__group">
-                            <label for="title" class="form__label">Título</label>
-                            <input class="form__input" type="text" name="title" id="title" placeholder="Arreglar Baño">
-                        </div>
-                        <div class="form__group">
-                            <label for="description" class="form__label">Descripción</label>
-                            <input class="form__input" type="text" name="description" id="description" maxlength="1000">
-                        </div>
-                        <div class="frame">
-                            <button type="submit" class="custom-btn btn-3"><span>Enviar</span></button>
-                        </div>
-                    </form>
+
+
+                    <h1 class="titulo-barraDerecha">Comentarios de Clientes</h1>
+
+
+
+
+                    <table class="tabla-usuarios">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Comentario</th>
+                                <th>Valoración</th>
+                                <th>Reportar</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="comment : ${comments}">
+                                <td th:text="${comment.user.name} + ' ' + ${comment.user.lastName}"></td>
+                                <td th:text="${comment.content}"></td>
+                                <td th:text="${comment.score}"></td>
+                                <td><a th:href="@{/comment/report/__${comment.id}__}"><button>Reportar</button></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
 
                 </div>
             </div>
+
+
         </section>
-
-        <div sec:authorize="hasRole('PRO')">
-
-            <a th:href="@{/professional/update/__${session.usersession.id}__}"><button>Editar Perfil</button></a>
-        </div>
 
     </main>
     <footer th:replace="/fragments/templates.html :: footer"></footer>

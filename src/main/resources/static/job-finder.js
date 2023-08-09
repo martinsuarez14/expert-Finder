@@ -23,9 +23,9 @@ function findJobs(query) {
   const searchInput = document.getElementById("searchInput");
 
   // Ocultar el jobList cuando se hace clic en el input de búsqueda
-  searchInput.addEventListener("click", () => {
-    jobList.style.display = "none";
-  });
+  // searchInput.addEventListener("click", () => {
+  //   jobList.style.display = "none";
+  // });
 
   // Mostrar el jobList cuando el input está vacío
   searchInput.addEventListener("input", () => {

@@ -60,6 +60,17 @@ public class Professional extends CustomUser{
         }
     }
     
+    public double calculateAverageScore() {
+        double totalScore = 0;
+        int commentCount = comments.size();
+
+        for (Comment comment : comments) {
+            totalScore += comment.getScore();
+        }
+        
+        return (double) totalScore / commentCount;
+    }
+    
     public void activateProfessional() {
         this.active = true;
     }

@@ -7,32 +7,34 @@
 
   <header th:replace="/fragments/templates.html :: header"></header>
 
-  <main class="main-container">
+  <main class="main-container-flex">
 
     <aside th:replace="/fragments/templates.html :: aside"></aside>
 
-    <section>
-      <div class="img-detail-containter">
+    <section class="user-container-flex">
+      <div class="cajaImagen">
         <img th:src="@{/image/__${user.image.id}__}" alt="">
       </div>
+      <div class="informacion">
+        <div id="nombre">
+          <p>
+            Nombre: <strong th:text="${user.name} + ' ' + ${user.lastName}"></strong>
+          </p>
+        </div>
+        <div id="mail">
+          <p>
+            Email: <strong th:text="${user.email}"></strong>
+          </p>
+        </div>
 
-      <div class="name-detail-container">
-        <h3 th:text="${user.name} + ' ' + ${user.lastName}"></h3>
-      </div>
+        <div class="boton__modal" th:if="${session.usersession.id == user.id}">
+          <a class="" th:href="@{/user/update/__${session.usersession.id}__}">Editar Perfil</a>
+        </div>
 
-      <div class="data-detail-container">
-        <p th:text="${user.email}"></p>
-  
-        <h4>Dirección</h4>
-  
-        <p th:text="${user.location.country}"></p>
-        <p th:text="${user.location.address}"></p>
-
-      </div>
-
-      <div class="buttons-detail-container" sec:authorize="hasRole('USER')">
-        <a th:href="@{/user/update/__${user.id}__}"><button>Editar Perfil</button></a>
-        <a th:href="@{/user/deactivate/__${user.id}__}">Eliminar Cuenta</a>
+        <div class="boton__modal" th:if="${session.usersession.id == user.id}">
+          <a class="" th:href="@{/user/deactivate/__${session.usersession.id}__}">Eliminar Perfil</a>
+        </div>
+        
       </div>
     </section>
 

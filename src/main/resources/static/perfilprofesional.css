@@ -8,6 +8,7 @@
 
 .barrasflex1 {
     display: flex;
+    justify-content: center;
 }
 
 .barraIzquierda {
@@ -60,7 +61,7 @@ img {
     padding: 10px;
 }
 
-p {
+.informacion > div > p {
     text-align: center;
     color: black;
 }

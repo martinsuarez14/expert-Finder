@@ -1,0 +1,30 @@
+.user-container-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 10px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttons .button-user {
+  color: white;
+  text-decoration: none;
+  margin: 25px;
+  padding: 10px;
+  background-color: #185e83;
+}
+
+.informacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

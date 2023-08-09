@@ -88,7 +88,10 @@ public class ProfessionalController {
         
         Professional professional = professionalService.getProfessionalById(id);
 //        CustomUser user= userService.getUserById(professional.getId());
+
+        
         model.addAttribute("professional", professional);
+        model.addAttribute("averageScore", professional.calculateAverageScore());
         return "professional-detail.html";
     }
 
