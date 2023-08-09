@@ -35,9 +35,9 @@
                                 <td th:text="${user.name} + ' ' + ${user.lastName}"></td>
                                 <td th:text="${user.email}"></td>
                                 <td th:text="${user.location.address}"></td>
-                                <td th:text="${user.active ? 'Activo' : 'No Activo'}"></td>
-                                <td><a th:href="@{/user/deactivate/__${user.id}__}"><button>Desactivar</button></a>
-                                    <a th:href="@{/user/activate/__${user.id}__}"><button>Activar</button></a>
+                                <td th:text="${user.active ? 'Activo' : 'Inactivo'}"></td>
+                                <td><a  th:if="${user.active}" th:href="@{/user/deactivate/__${user.id}__}"><button>Desactivar</button></a>
+                                    <a th:if="${!user.active}" th:href="@{/user/activate/__${user.id}__}"><button>Activar</button></a>
                                 </td>
                             </tr>
                         </tbody>
