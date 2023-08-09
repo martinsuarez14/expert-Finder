@@ -1,8 +1,10 @@
 package com.egg.expertfinder.controller;
 
+import com.egg.expertfinder.entity.Comment;
 import com.egg.expertfinder.entity.CustomUser;
 import com.egg.expertfinder.entity.Professional;
 import com.egg.expertfinder.exception.MyException;
+import com.egg.expertfinder.service.CommentService;
 import com.egg.expertfinder.service.ProfessionalService;
 import com.egg.expertfinder.service.UserService;
 import java.util.List;
@@ -24,6 +26,9 @@ public class ProfessionalController {
 
     @Autowired
     private ProfessionalService professionalService;
+    
+    @Autowired
+    private CommentService commentService;
 //    @Autowired
 //    private UserService userService;
 
@@ -77,6 +82,10 @@ public class ProfessionalController {
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_PRO')")
     @GetMapping("/detail/{id}") // /professional/detail/{id}
     public String profileProfessional(@PathVariable Long id, ModelMap model) throws MyException {
+        List<Comment> comments = commentService.getCommentsByProfessionalId(id);
+        
+        model.addAttribute("comments", comments);
+        
         Professional professional = professionalService.getProfessionalById(id);
 //        CustomUser user= userService.getUserById(professional.getId());
         model.addAttribute("professional", professional);

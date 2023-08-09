@@ -155,7 +155,7 @@ public class HomeController {
         } else if (userLogin.getRole().toString().equals("PRO")) {
             
             model.addAttribute("professional", userLogin);
-            return "professional-detail.html";
+            return "redirect:/professional/detail/" + userLogin.getId();
         } else {
             return "index.html";
         }

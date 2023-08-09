@@ -27,7 +27,7 @@
             <tbody>
               <tr th:each="task : ${tasks}">
                 <td th:text="${task.createAt}" id="fechaCompleta"></td>
-                <td th:text="${task.professional.name}"></td>
+                <td th:text="${task.professional.name} + ' ' + ${task.professional.lastName}"></td>
                 <td th:text="${task.status}"></td>
                 <td>
                   <div class="boton__modal" th:if="${session.usersession != null}" sec:authorize="hasRole('USER')">

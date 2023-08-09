@@ -24,6 +24,11 @@
       </div>
 
       <div class="form__group">
+        <label class="form__label" for="title">Usuario</label>
+        <input class="form__input" type="text" id="title" th:field="*{user.name}" readonly="readonly">
+      </div>
+
+      <div class="form__group">
         <label class="form__label" for="status">Estado</label>
         <select class="form__select" id="status" th:field="*{status}">
           <option th:each="status : ${T(com.egg.expertfinder.enumeration.StatusEnum).values()}" th:value="${status}"

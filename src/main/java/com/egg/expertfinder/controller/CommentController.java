@@ -23,7 +23,7 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
-    
+
     @Autowired
     private TaskService taskService;
 
@@ -45,7 +45,7 @@ public class CommentController {
             model.put("error", ex.getMessage());
             return "redirect:/home";
         }
-        
+
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER')")
@@ -119,5 +119,19 @@ public class CommentController {
         model.addAttribute("comments", comments);
         return "comment-list.html";
     }
-    
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_PRO')")
+    @GetMapping("/report/{id}")
+    public String reportComment(@PathVariable Long id, ModelMap model) {
+
+        try {
+            commentService.reportComment(id);
+            model.put("exito", "El Comentario Fué Reportado.");
+            return "redirect:/home";
+        } catch (MyException ex) {
+            model.put("error", ex.getMessage());
+            return "redirect:/home";
+        }
+    }
+
 }

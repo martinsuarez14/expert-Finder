@@ -1,26 +1,27 @@
-
 .barrasflex {
     display: flex;
     border: 1px solid black;
     padding: 20px;
     flex-direction: column;
-   width: 100%;
+    width: 100%;
 }
+
 .barrasflex1 {
     display: flex;
 }
+
 .barraIzquierda {
     display: flex;
-    background-color: brown;
+    /* background-color: brown; */
     flex-basis: 40%;
     flex-direction: column;
 }
 
 .barraDerecha {
     display: flex;
-    background-color: blue;
+    /* background-color: blue; */
     flex-basis: 60%;
-/*    height: 100%;*/
+    /*    height: 100%;*/
     text-align: center;
     flex-direction: column;
 }
@@ -34,31 +35,38 @@
 }
 
 .cajaImagen {
-    display: flex;
-    background: blanchedalmond;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* background: blanchedalmond; */
+    width: 15rem;
+    /* justify-content: center;
+    align-items: center; */
+    margin: 0 auto;
+    border: 3px solid #333;
 }
 
 .informacion {
     display: flex;
-    background: black;
+    /* background: #333; */
     width: 100%;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
 img {
-    width: 95%;
+    width: 100%;
 }
 
-.informacion>div {
-    border: 1px solid white;
+.informacion > div {
+    padding: 10px;
 }
 
 p {
-    color: white;
+    text-align: center;
+    color: black;
+}
+
+#descripcion p {
+    text-align: justify;
 }
 
 .carts {

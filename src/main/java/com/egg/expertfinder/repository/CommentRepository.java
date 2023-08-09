@@ -20,4 +20,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long>{
     @Query("SELECT c FROM Comment c WHERE c.reports > 0")
     List<Comment> findCommentsWithReportsGreaterThanZero();
     
+    @Query("SELECT c FROM Comment c WHERE c.professional.id = :id")
+    List<Comment> findCommentsByProfessionalId(@Param("id") Long id);
+    
 }

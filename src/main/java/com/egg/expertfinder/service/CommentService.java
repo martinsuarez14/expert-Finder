@@ -53,21 +53,16 @@ public class CommentService {
             throw new MyException("No existe una tarea con ese Id.");
         }
     }
-    
+
     @Transactional
-    public void reportComment(Long idComment, Long idUser, Long idProfessional) throws MyException {
+    public void reportComment(Long idComment) throws MyException {
         Optional<Comment> response = commentRepository.findById(idComment);
         if (response.isPresent()) {
             Comment comment = response.get();
-            
-            if (comment.getUser().getId() == idUser && 
-                    comment.getProfessional().getId() == idProfessional) {
-                comment.setReports(comment.getReports() + 1);
-                commentRepository.save(comment);
-            } else {
-                throw new MyException("El id del usuario o del profesional no "
-                        + "coinciden con los del Comentario.");
-            }
+
+            comment.updateReports();
+            commentRepository.save(comment);
+
         } else {
             throw new MyException("No se encontró el comentario con ese Id.");
         }
@@ -101,11 +96,11 @@ public class CommentService {
             throw new MyException("No se encontró un comentario con ese ID.");
         }
     }
-    
+
     public List<Comment> getCommentsWithReports() {
         return commentRepository.findCommentsWithReportsGreaterThanZero();
     }
-    
+
     @Transactional
     public void deactivateCommentById(Long id) throws MyException {
         Optional<Comment> response = commentRepository.findById(id);
@@ -116,6 +111,10 @@ public class CommentService {
         } else {
             throw new MyException("No se encontró el comentario.");
         }
+    }
+    
+    public List<Comment> getCommentsByProfessionalId(Long id) {
+        return commentRepository.findCommentsByProfessionalId(id);
     }
 
     private void validate(Long idTask, Long idUser, Long idProfessional, String content, Double score) throws MyException {

@@ -1,121 +1,117 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head th:replace="/fragments/templates.html :: head"></head>
+<head th:replace="/fragments/templates.html :: head"></head>
 
-    <body>
-        <header th:replace="/fragments/templates.html :: header"></header>
+<body>
+    <header th:replace="/fragments/templates.html :: header"></header>
 
-        <main class="main-container-flex">
-            <aside th:replace="/fragments/templates.html :: aside"></aside>
-            <section >
-                    <div class="barrasflex">
-                        <div class="barrasflex1">
-                            <div class="barraIzquierda">
-                                <div class="cajaImagen">
-                                    <img th:src="@{/image/__${professional.image.id}__}" alt="">
-                                </div>
-                                <div class="informacion">
-                                    <div id="tarea">
-                                        <p>Tarea:</p>
-                                        <p th:if="${professional.tasks == null}">El profesional esta ocupado actualmente</p>
-                                        <p th:if="${professional.tasks != null}">El profesional esta desocupado actualmente</p>
-                                    </div>
-                                    <div id="profesion">
-                                        <p>Profesion: </p>
-                                        <p th:text="${professional.job.name}"></p>
-                                    </div>
-                                    <div id="licencia">
-                                        <p>Licencia:</p>
-                                        <p th:text="${professional.license}"></p>
-                                    </div>
-                                    <div id="numero">
-                                        <p>Numero:</p>
-                                        <p th:text="${professional.phone}"></p>
-                                    </div>
-                                    <div id="descripcion">
-                                        <p>Descripcion:</p>
-                                        <p th:text="${professional.description}"></p>
-                                    </div>
-                                    <div  id="nombre">
-                                        <p>Nombre:</p>
-                                        <p th:text="${professional.name}"></p>
-                                    </div>
-                                    <div  id="segundoNombre">
-                                        <p>Apellido:</p>
-                                        <p th:text="${professional.lastName}"></p>
-                                    </div>
-                                    <div  id="mail">
-                                        <p>Email:</p>
-                                        <p th:text="${professional.email}"></p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="barraDerecha">
-
-                                <h1 class="titulo-barraDerecha">Comentarios de tareas</h1>
-
-                                <div class="carts">
-                                    <div class="cart">
-                                        <div class="hovercart">
-                                            <p class="nombre">nombre</p>
-                                            <p class="descripcion">descripcion</p>
-                                        </div>
-                                    </div>
-                                    <div class="cart">
-                                        <div class="hovercart">
-                                            <p class="nombre">nombre</p>
-                                            <p class="descripcion">descripcion</p>
-                                        </div>
-                                    </div>
-                                    <div class="cart">
-                                        <div class="hovercart">
-                                        <p class="nombre">nombre</p>
-                                       <p class="descripcion">descripcion</p>
-                                       </div>
-                                    </div>
-                                    <div class="cart">
-                                        <div class="hovercart">
-                                        <p class="nombre">nombre</p>
-                                       <p class="descripcion">descripcion</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+    <main class="main-container-flex">
+        <aside th:replace="/fragments/templates.html :: aside"></aside>
+        <section>
+            <div class="barrasflex">
+                <div class="barrasflex1">
+                    <div class="barraIzquierda">
+                        <div class="cajaImagen">
+                            <img th:src="@{/image/__${professional.image.id}__}" alt="">
                         </div>
-                        <div class="barraFinal" sec:authorize="hasRole('USER')">
-
-                            <form th:action="@{/task/register}" class="form" method="post">
-                                <input type="hidden" name="idProfessional" th:value="${professional.id}">
-                                <input type="hidden" name="idUser" th:value="${session.usersession.id}">
-                                <h2 class="form__head">Contactese con el profesional</h2>
-                                <div class="form__group">
-                                    <label for="title" class="form__label">Título</label>
-                                    <input class="form__input" type="text" name="title" id="title" placeholder="Arreglar Baño">
-                                </div>
-                                <div class="form__group">
-                                    <label for="description" class="form__label">Descripción</label>
-                                    <input class="form__input" type="text" name="description" id="description" maxlength="1000">
-                                </div>
-                                <div class="frame">
-                                    <button type="submit" class="custom-btn btn-3"><span>Enviar</span></button>
-                                </div>
-                            </form>
+                        <div class="informacion">
+                            <!-- <div id="tarea">
+                                <p>Tarea:</p>
+                                <p th:if="${professional.tasks == null}">El profesional esta ocupado actualmente</p>
+                                <p th:if="${professional.tasks != null}">El profesional esta desocupado actualmente</p>
+                            </div> -->
+                            <div id="nombre">
+                                <p> 
+                                    Nombre: <strong th:text="${professional.name} + ' ' + ${professional.lastName}"></strong>
+                                </p>
+                            </div>
+                            <div id="mail">
+                                <p>
+                                    Email: <strong th:text="${professional.email}"></strong>
+                                </p>
+                            </div>
+                            <div id="profesion">
+                                <p>
+                                    Oficio: <strong th:text="${professional.job.name}"></strong>
+                                </p>
+                            </div>
+                            <div id="licencia">
+                                <p >
+                                    Matrícula: <strong th:text="${professional.license}"></strong>
+                                </p>
+                            </div>
+                            <div id="numero">
+                                <p>
+                                    Teléfono: <strong th:text="${professional.phone}"></strong>
+                                </p>
+                            </div>
+                            <div id="descripcion">
+                                <p th:text="${professional.description}"></p>
+                            </div>
 
                         </div>
                     </div>
-            </section>
 
-            <div sec:authorize="hasRole('PRO')">
+                    <div class="barraDerecha">
 
-                <a th:href="@{/professional/update/__${session.usersession.id}__}"><button>Editar Perfil</button></a>
+                        <h1 class="titulo-barraDerecha">Comentarios de Clientes</h1>
+
+                        
+
+
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Comentario</th>
+                                    <th>Valoración</th>
+                                    <th>Reportar</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each="comment : ${comments}">
+                                    <td th:text="${comment.user.name} + ' ' + ${comment.user.lastName}"></td>
+                                    <td th:text="${comment.content}"></td>
+                                    <td th:text="${comment.score}"></td>
+                                    <td><a th:href="@{/comment/report/__${comment.id}__}"><button>Reportar</button></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="barraFinal" sec:authorize="hasRole('USER')">
+
+                    <form th:action="@{/task/register}" class="form" method="post">
+                        <input type="hidden" name="idProfessional" th:value="${professional.id}">
+                        <input type="hidden" name="idUser" th:value="${session.usersession.id}">
+                        <h2 class="form__head">Contactese con el profesional</h2>
+                        <div class="form__group">
+                            <label for="title" class="form__label">Título</label>
+                            <input class="form__input" type="text" name="title" id="title" placeholder="Arreglar Baño">
+                        </div>
+                        <div class="form__group">
+                            <label for="description" class="form__label">Descripción</label>
+                            <input class="form__input" type="text" name="description" id="description" maxlength="1000">
+                        </div>
+                        <div class="frame">
+                            <button type="submit" class="custom-btn btn-3"><span>Enviar</span></button>
+                        </div>
+                    </form>
+
+                </div>
             </div>
+        </section>
 
-        </main>
-        <footer th:replace="/fragments/templates.html :: footer"></footer>
-    </body>
+        <div sec:authorize="hasRole('PRO')">
+
+            <a th:href="@{/professional/update/__${session.usersession.id}__}"><button>Editar Perfil</button></a>
+        </div>
+
+    </main>
+    <footer th:replace="/fragments/templates.html :: footer"></footer>
+</body>
 
 </html>
