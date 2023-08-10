@@ -9,6 +9,10 @@
     font-family: "Poppins", sans-serif;
 }
 
+section {
+    width: 100%;
+}
+
 .container {
     align-items: center;
     justify-content: center;

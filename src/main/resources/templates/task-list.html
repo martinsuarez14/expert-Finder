@@ -31,8 +31,8 @@
                 <td th:text="${task.status}"></td>
                 <td>
                   <div class="boton__modal" th:if="${session.usersession != null}" sec:authorize="hasRole('USER')">
-                    <a th:href="@{/task/__${task.professional.id}__}">
-                      Ver Perfil
+                    <a th:href="@{/task/get/__${task.id}__}">
+                      Ver Tarea
                     </a>
                   </div>
                   <div class="boton__modal" th:if="${session.usersession != null}" sec:authorize="hasRole('PRO')">
