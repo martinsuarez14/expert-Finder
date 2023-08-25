@@ -9,6 +9,7 @@ import com.egg.expertfinder.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -289,14 +290,14 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public void activateUser(Long id) throws MyException {
+    public void activateUser(Long id) throws EntityNotFoundException {
         Optional<CustomUser> response = userRepository.findById(id);
         if (response.isPresent()) {
             CustomUser user = response.get();
             user.activateUser();
             userRepository.save(user);
         } else {
-            throw new MyException("No se encontró al usuario con ese id.");
+            throw new EntityNotFoundException("No se encontró al usuario con ese id.");
         }
     }
 
